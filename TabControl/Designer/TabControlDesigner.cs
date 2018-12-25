@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.ComponentModel;
-using System.ComponentModel.Design;
-using System.Windows.Forms;
-using System.Windows.Forms.Design;
 using System.Windows.Forms.Design.Behavior;
 
 namespace Manina.Windows.Forms
@@ -35,6 +31,25 @@ namespace Manina.Windows.Forms
 
                 var tabGlyph = new TabGlyph(BehaviorService, this);
                 tabButtonAdorner.Glyphs.Add(tabGlyph);
+
+                Control.PageChanged += Control_PageChanged;
+            }
+
+            protected override void Dispose(bool disposing)
+            {
+                base.Dispose(disposing);
+
+                if (disposing)
+                {
+                    Control.PageChanged -= Control_PageChanged;
+                }
+            }
+            #endregion
+
+            #region Event Handlers
+            private void Control_PageChanged(object sender, PageChangedEventArgs e)
+            {
+                SelectionService.SetSelectedComponents(new object[0]);
             }
             #endregion
         }
