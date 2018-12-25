@@ -217,7 +217,7 @@ namespace Manina.Windows.Forms
         private TabLocation tabHeaderLocation = TabLocation.Top;
         private Alignment tabHeaderAlignment = Alignment.Near;
         private Alignment textAlignment = Alignment.Near;
-        private TabSizing tabHeaderSizing = TabSizing.Fixed;
+        private TabSizing tabHeaderSizing = TabSizing.AutoFit;
 
         private TabControlRenderer renderer;
         #endregion
@@ -245,7 +245,7 @@ namespace Manina.Windows.Forms
         /// <summary>
         /// Gets or sets the sizing mode of tab headers.
         /// </summary>
-        [Category("Appearance"), DefaultValue(TabSizing.Fixed)]
+        [Category("Appearance"), DefaultValue(TabSizing.AutoFit)]
         [Description("Gets or sets the sizing mode of tab headers.")]
         public TabSizing TabHeaderSizing { get => tabHeaderSizing; set { tabHeaderSizing = value; UpdateTabHeaderLayout(); Invalidate(); } }
         /// <summary>
