@@ -8,8 +8,8 @@ namespace Manina.Windows.Forms
     public partial class TabControl
     {
         /// <summary>
-        /// Represent clickable areas of the control overlayed on the tabs.
-        /// This is an invisible adorner since tab headers are already drawn
+        /// Allows tab headers to be clicked in the designer.
+        /// This is an invisible glyph since tab headers are already drawn
         /// by the control.
         /// </summary>
         protected internal class TabGlyph : Glyph
