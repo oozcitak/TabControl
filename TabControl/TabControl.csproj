@@ -31,8 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PagedControl, Version=1.8.11.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\PagedControl.1.8.11\lib\net35\PagedControl.dll</HintPath>
+    <Reference Include="PagedControl, Version=1.8.13.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedControl.1.8.13\lib\net35\PagedControl.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -45,6 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Designer\TabControlActionList.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="TabControl.cs">
       <SubType>Component</SubType>

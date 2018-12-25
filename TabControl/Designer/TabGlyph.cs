@@ -12,7 +12,7 @@ namespace Manina.Windows.Forms
         /// This is an invisible glyph since tab headers are already drawn
         /// by the control.
         /// </summary>
-        protected internal class TabGlyph : Glyph
+        internal class TabGlyph : Glyph
         {
             #region Properties
             /// <summary>
@@ -51,6 +51,7 @@ namespace Manina.Windows.Forms
                         int index = tabGlyph.Control.PerformHitTest(mouseLoc.GetOffset(-pt.X, -pt.Y));
                         if (index != -1)
                             tabGlyph.Control.SelectedIndex = index;
+                        tabGlyph.Control.Invalidate();
                     }
 
                     return false;
