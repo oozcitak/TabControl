@@ -311,7 +311,7 @@ namespace Manina.Windows.Forms
                 {
                     using (Pen pen = new Pen(BorderColor))
                     {
-                        g.DrawRectangle(pen, borderBounds);
+                        g.DrawRectangle(pen, borderBounds.X, borderBounds.Y, borderBounds.Width - 1, borderBounds.Height - 1);
                     }
                     return;
                 }

@@ -278,6 +278,10 @@ namespace Manina.Windows.Forms
                 var bounds = ClientRectangle;
                 if (BorderStyle != BorderStyle.None)
                     bounds.Inflate(-1, -1);
+
+                if (Pages.Count == 0)
+                    return bounds;
+
                 if (tabHeaderLocation == TabLocation.Top)
                     return new Rectangle(bounds.Left, bounds.Top + TabHeaderSize.Height, bounds.Width, bounds.Height - TabHeaderSize.Height);
                 else if (tabHeaderLocation == TabLocation.Bottom)
