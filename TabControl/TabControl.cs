@@ -5,7 +5,12 @@ using System.Windows.Forms;
 
 namespace Manina.Windows.Forms
 {
-    public class TabControl : PagedControl
+    [ToolboxBitmap(typeof(TabControl))]
+    [Designer(typeof(TabControlDesigner))]
+    [Docking(DockingBehavior.Ask)]
+    [DefaultEvent("PageChanged")]
+    [DefaultProperty("SelectedPage")]
+    public partial class TabControl : PagedControl
     {
         #region Enums
         /// <summary>

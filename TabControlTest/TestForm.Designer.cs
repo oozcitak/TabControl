@@ -70,9 +70,9 @@
             this.tabControl1.Controls.Add(this.page6);
             this.tabControl1.Controls.Add(this.page7);
             this.tabControl1.Controls.Add(this.page8);
-            this.tabControl1.Location = new System.Drawing.Point(81, 63);
+            this.tabControl1.Location = new System.Drawing.Point(53, 35);
             this.tabControl1.Name = "tabControl1";
-            this.tabControl1.Size = new System.Drawing.Size(422, 255);
+            this.tabControl1.Size = new System.Drawing.Size(551, 290);
             this.tabControl1.TabHeaderSize = new System.Drawing.Size(75, 25);
             this.tabControl1.TabHeaderSizing = Manina.Windows.Forms.TabControl.TabSizing.AutoFit;
             this.tabControl1.TabIndex = 0;
@@ -81,7 +81,7 @@
             // 
             this.page5.Location = new System.Drawing.Point(1, 26);
             this.page5.Name = "page5";
-            this.page5.Size = new System.Drawing.Size(420, 228);
+            this.page5.Size = new System.Drawing.Size(549, 263);
             this.page5.Text = "Page 1";
             // 
             // page6
@@ -102,7 +102,7 @@
             // 
             this.page8.Location = new System.Drawing.Point(1, 26);
             this.page8.Name = "page8";
-            this.page8.Size = new System.Drawing.Size(401, 226);
+            this.page8.Size = new System.Drawing.Size(420, 228);
             this.page8.Text = "Page 4";
             // 
             // TestForm
