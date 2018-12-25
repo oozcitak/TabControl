@@ -52,12 +52,12 @@ namespace Manina.Windows.Forms
 
             protected override void Dispose(bool disposing)
             {
-                base.Dispose(disposing);
-
                 if (disposing)
                 {
                     Control.PageChanged -= Control_PageChanged;
                 }
+
+                base.Dispose(disposing);
             }
             #endregion
 
