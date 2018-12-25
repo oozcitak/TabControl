@@ -48,9 +48,9 @@ namespace Manina.Windows.Forms
                         TabGlyph tabGlyph = (TabGlyph)g;
                         Point pt = tabGlyph.BehaviorService.ControlToAdornerWindow(tabGlyph.Control);
 
-                        int index = tabGlyph.Control.PerformHitTest(mouseLoc.GetOffset(-pt.X, -pt.Y));
-                        if (index != -1)
-                            tabGlyph.Control.SelectedIndex = index;
+                        var tabHeader = tabGlyph.Control.PerformHitTest(mouseLoc.GetOffset(-pt.X, -pt.Y));
+                        if (tabHeader != null)
+                            tabGlyph.Control.SelectedPage = tabHeader.Page;
                         tabGlyph.Control.Invalidate();
                     }
 
@@ -68,7 +68,7 @@ namespace Manina.Windows.Forms
             public override Cursor GetHitTest(Point p)
             {
                 Point ptControl = BehaviorService.ControlToAdornerWindow(Control);
-                return (Control.PerformHitTest(p.GetOffset(-ptControl.X, -ptControl.Y)) != -1 ? Cursors.Default : null);
+                return (Control.PerformHitTest(p.GetOffset(-ptControl.X, -ptControl.Y)) != null ? Cursors.Default : null);
             }
 
             /// <summary>

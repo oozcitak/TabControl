@@ -112,13 +112,13 @@ namespace Manina.Windows.Forms
         public class TabHeaderEventArgs : EventArgs
         {
             /// <summary>
-            /// Gets the index of the tab header.
+            /// Gets the tab header under the mouse cursor.
             /// </summary>
-            public int Index { get; private set; }
+            public TabHeader TabHeader { get; private set; }
 
-            public TabHeaderEventArgs(int index)
+            public TabHeaderEventArgs(TabHeader header)
             {
-                Index = index;
+                TabHeader = header;
             }
         }
 
@@ -153,7 +153,7 @@ namespace Manina.Windows.Forms
             /// </summary>
             public Point Location { get; }
 
-            public TabHeaderMouseEventArgs(int index, MouseButtons button, int clicks, int delta, Point location) : base(index)
+            public TabHeaderMouseEventArgs(TabHeader header, MouseButtons button, int clicks, int delta, Point location) : base(header)
             {
                 Button = button;
                 Clicks = clicks;
@@ -209,9 +209,8 @@ namespace Manina.Windows.Forms
         #endregion
 
         #region Member Variables
-        private int hoveredTabHeader = -1;
-        private int mouseDownTabHeader = -1;
-        private Rectangle[] tabHeaderBounds = new Rectangle[0];
+        internal TabHeader hoveredTabHeader = null;
+        internal TabHeader mouseDownTabHeader = null;
 
         private Size tabHeaderSize = new Size(75, 23);
         private TabLocation tabHeaderLocation = TabLocation.Top;
@@ -254,6 +253,12 @@ namespace Manina.Windows.Forms
         [Category("Appearance"), DefaultValue(Alignment.Near)]
         [Description("Gets or sets the alignment of tab text.")]
         public Alignment TextAlignment { get => textAlignment; set { textAlignment = value; Invalidate(); } }
+
+        /// <summary>
+        /// Gets the collection of tabs.
+        /// </summary>
+        [Browsable(false)]
+        public TabHeaderCollection Tabs { get; private set; }
 
         /// <summary>
         /// Gets the rectangle that represents the client area of the control.
@@ -320,6 +325,7 @@ namespace Manina.Windows.Forms
         /// </summary>
         public TabControl()
         {
+            Tabs = new TabHeaderCollection(this);
             SetRenderer(new TabControlRenderer(this));
             UpdateTabHeaderLayout();
         }
@@ -327,36 +333,21 @@ namespace Manina.Windows.Forms
 
         #region Instance Methods
         /// <summary>
-        /// Performs a hit test with at given coordinates and returns the
-        /// zero based index of the tab header which contains the given point.
+        /// Performs a hit test with given coordinates and returns the
+        /// <see cref="TabHeader"/> which contains the given point.
         /// </summary>
-        /// <param name="pt">hit test coordinates</param>
-        /// <returns>The zero based index of the tab header which contains the given point; or -1
+        /// <param name="pt">Hit test coordinates</param>
+        /// <returns>The tab header which contains the given point; or null
         /// if none of the tab headers contains the given point.</returns>
-        public int PerformHitTest(Point pt)
+        public TabHeader PerformHitTest(Point pt)
         {
-            if (!TabHeaderArea.Contains(pt)) return -1;
+            if (!TabHeaderArea.Contains(pt)) return null;
 
-            for (int i = 0; i < Pages.Count; i++)
+            foreach (var header in Tabs)
             {
-                var bounds = GetTabHeaderBounds(i);
-                if (bounds.Contains(pt)) return i;
+                if (header.Bounds.Contains(pt)) return header;
             }
-            return -1;
-        }
-
-        /// <summary>
-        /// Calculates the bounding rectangle of a tab header.
-        /// </summary>
-        /// <param name="index">The zero based index of the tab header.</param>
-        /// <returns>A <see cref="Rectangle"/> which defines the bounds of the 
-        /// given tab header.</returns>
-        public Rectangle GetTabHeaderBounds(int index)
-        {
-            if (index == -1)
-                return Rectangle.Empty;
-
-            return tabHeaderBounds[index];
+            return null;
         }
 
         /// <summary>
@@ -366,26 +357,6 @@ namespace Manina.Windows.Forms
         public void SetRenderer(TabControlRenderer renderer)
         {
             this.renderer = renderer;
-        }
-
-        /// <summary>
-        /// Returns the visual state of a tab header.
-        /// </summary>
-        /// <param name="index">The zero based index of the tab header.</param>
-        public TabHeaderState GetTabState(int index)
-        {
-            TabHeaderState state = TabHeaderState.Inactive;
-
-            // active
-            if (SelectedIndex == index) state |= TabHeaderState.Active;
-            // hot
-            if (hoveredTabHeader == index) state |= TabHeaderState.Hot;
-            // pressed
-            if (mouseDownTabHeader == index) state |= TabHeaderState.Pressed;
-            // focused
-            if (Focused && (SelectedIndex == index)) state |= TabHeaderState.Focused;
-
-            return state;
         }
         #endregion
 
@@ -402,20 +373,20 @@ namespace Manina.Windows.Forms
         {
             base.OnMouseClick(e);
 
-            int index = PerformHitTest(e.Location);
-            if (index != -1)
-                SelectedIndex = index;
+            var header = PerformHitTest(e.Location);
+            if (header != null)
+                SelectedPage = header.Page;
         }
 
         protected override void OnMouseMove(MouseEventArgs e)
         {
             base.OnMouseMove(e);
 
-            int oldHoveredTabHeader = hoveredTabHeader;
+            var oldHoveredTabHeader = hoveredTabHeader;
             hoveredTabHeader = PerformHitTest(e.Location);
-            if (hoveredTabHeader != -1)
+            if (hoveredTabHeader != null)
                 OnTabHeaderMouseMove(new TabHeaderMouseEventArgs(hoveredTabHeader, e.Button, e.Clicks, e.Delta, e.Location));
-            if (oldHoveredTabHeader != hoveredTabHeader)
+            if (!ReferenceEquals(oldHoveredTabHeader, hoveredTabHeader))
                 Invalidate();
         }
 
@@ -423,9 +394,9 @@ namespace Manina.Windows.Forms
         {
             base.OnMouseLeave(e);
 
-            if (hoveredTabHeader != -1)
+            if (hoveredTabHeader != null)
             {
-                hoveredTabHeader = -1;
+                hoveredTabHeader = null;
                 Invalidate();
             }
         }
@@ -434,9 +405,9 @@ namespace Manina.Windows.Forms
         {
             base.OnMouseMove(e);
 
-            if (hoveredTabHeader != -1)
+            if (hoveredTabHeader != null)
             {
-                int oldmouseDownTabHeader = mouseDownTabHeader;
+                var oldmouseDownTabHeader = mouseDownTabHeader;
                 mouseDownTabHeader = hoveredTabHeader;
                 OnTabHeaderMouseDown(new TabHeaderMouseEventArgs(hoveredTabHeader, e.Button, e.Clicks, e.Delta, e.Location));
                 if (oldmouseDownTabHeader != mouseDownTabHeader)
@@ -448,15 +419,15 @@ namespace Manina.Windows.Forms
         {
             base.OnMouseMove(e);
 
-            if (mouseDownTabHeader != -1)
+            if (mouseDownTabHeader != null)
                 OnTabHeaderClick(new TabHeaderMouseEventArgs(mouseDownTabHeader, e.Button, e.Clicks, e.Delta, e.Location));
 
-            if (hoveredTabHeader != -1)
+            if (hoveredTabHeader != null)
                 OnTabHeaderMouseUp(new TabHeaderMouseEventArgs(hoveredTabHeader, e.Button, e.Clicks, e.Delta, e.Location));
 
-            int oldmouseDownTabHeader = mouseDownTabHeader;
-            mouseDownTabHeader = -1;
-            if (oldmouseDownTabHeader != mouseDownTabHeader)
+            var oldmouseDownTabHeader = mouseDownTabHeader;
+            mouseDownTabHeader = null;
+            if (!ReferenceEquals(oldmouseDownTabHeader, mouseDownTabHeader))
                 Invalidate();
         }
 
@@ -464,7 +435,7 @@ namespace Manina.Windows.Forms
         {
             base.OnMouseDoubleClick(e);
 
-            if (mouseDownTabHeader != -1)
+            if (mouseDownTabHeader != null)
                 OnTabHeaderDoubleClick(new TabHeaderMouseEventArgs(mouseDownTabHeader, e.Button, e.Clicks, e.Delta, e.Location));
         }
 
@@ -472,7 +443,7 @@ namespace Manina.Windows.Forms
         {
             base.OnMouseWheel(e);
 
-            if (hoveredTabHeader != -1)
+            if (hoveredTabHeader != null)
                 OnTabHeaderMouseWheel(new TabHeaderMouseEventArgs(hoveredTabHeader, e.Button, e.Clicks, e.Delta, e.Location));
         }
 
@@ -486,6 +457,8 @@ namespace Manina.Windows.Forms
 
         protected override void OnPageAdded(PageEventArgs e)
         {
+            Tabs.AddPage(e.Page);
+
             UpdateTabHeaderLayout();
             e.Page.TextChanged += Page_TextChanged;
             base.OnPageAdded(e);
@@ -493,6 +466,8 @@ namespace Manina.Windows.Forms
 
         protected override void OnPageRemoved(PageEventArgs e)
         {
+            Tabs.RemovePage(e.Page);
+
             UpdateTabHeaderLayout();
             e.Page.TextChanged -= Page_TextChanged;
             base.OnPageRemoved(e);
@@ -510,7 +485,6 @@ namespace Manina.Windows.Forms
         /// </summary>
         protected void UpdateTabHeaderLayout()
         {
-            tabHeaderBounds = new Rectangle[Pages.Count];
             if (Pages.Count == 0) return;
 
             var bounds = TabHeaderArea;
@@ -589,13 +563,13 @@ namespace Manina.Windows.Forms
             {
 
                 if (TabHeaderLocation == TabLocation.Top)
-                    tabHeaderBounds[index] = new Rectangle(bounds.Left + tabHeaderLocations[index], bounds.Top, tabHeaderWidths[index], bounds.Height);
+                    Tabs[index].Bounds = new Rectangle(bounds.Left + tabHeaderLocations[index], bounds.Top, tabHeaderWidths[index], bounds.Height);
                 else if (TabHeaderLocation == TabLocation.Bottom)
-                    tabHeaderBounds[index] = new Rectangle(bounds.Left + tabHeaderLocations[index], bounds.Top, tabHeaderWidths[index], bounds.Height);
+                    Tabs[index].Bounds = new Rectangle(bounds.Left + tabHeaderLocations[index], bounds.Top, tabHeaderWidths[index], bounds.Height);
                 else if (TabHeaderLocation == TabLocation.Left)
-                    tabHeaderBounds[index] = new Rectangle(bounds.Left, bounds.Top + tabHeaderLocations[index] - tabHeaderWidths[index], bounds.Width, tabHeaderWidths[index]);
+                    Tabs[index].Bounds = new Rectangle(bounds.Left, bounds.Top + tabHeaderLocations[index] - tabHeaderWidths[index], bounds.Width, tabHeaderWidths[index]);
                 else
-                    tabHeaderBounds[index] = new Rectangle(bounds.Left, bounds.Top + tabHeaderLocations[index], bounds.Width, tabHeaderWidths[index]);
+                    Tabs[index].Bounds = new Rectangle(bounds.Left, bounds.Top + tabHeaderLocations[index], bounds.Width, tabHeaderWidths[index]);
             }
         }
         #endregion

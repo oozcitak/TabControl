@@ -62,6 +62,12 @@
     <Compile Include="Designer\TabGlyph.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="TabHeaderCollection.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TabHeader.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

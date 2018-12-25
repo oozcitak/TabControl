@@ -164,12 +164,10 @@ namespace Manina.Windows.Forms
 
                 // sort headers
                 var drawParams = new List<DrawTabHeaderParams>();
-                for (int i = 0; i < Parent.Pages.Count; i++)
+                for (int i=0;i<Parent.Tabs.Count;i++)
                 {
-                    var state = Parent.GetTabState(i);
-                    var tabBounds = Parent.GetTabHeaderBounds(i);
-                    var text = Parent.Pages[i].Text;
-                    drawParams.Add(new DrawTabHeaderParams(i, text, tabBounds, state));
+                    var tab = Parent.Tabs[i];
+                    drawParams.Add(new DrawTabHeaderParams(i, tab.Text, tab.Bounds, tab.State));
                 }
                 drawParams.Sort(new DrawTabHeaderParamsComparer());
 
@@ -316,7 +314,7 @@ namespace Manina.Windows.Forms
                     return;
                 }
 
-                var tabBounds = Parent.GetTabHeaderBounds(index);
+                var tabBounds = Parent.Tabs[Parent.SelectedPage].Bounds;
 
                 Point[] pt = new Point[8];
                 if (Parent.TabHeaderLocation == TabControl.TabLocation.Top)
