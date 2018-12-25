@@ -28,73 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.tabControl1 = new Manina.Windows.Forms.TabControl();
             this.page1 = new Manina.Windows.Forms.Page();
             this.page2 = new Manina.Windows.Forms.Page();
             this.page3 = new Manina.Windows.Forms.Page();
             this.page4 = new Manina.Windows.Forms.Page();
-            this.tabControl1 = new Manina.Windows.Forms.TabControl();
-            this.page5 = new Manina.Windows.Forms.Page();
-            this.page6 = new Manina.Windows.Forms.Page();
-            this.page7 = new Manina.Windows.Forms.Page();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.page1);
+            this.tabControl1.Controls.Add(this.page2);
+            this.tabControl1.Controls.Add(this.page3);
+            this.tabControl1.Controls.Add(this.page4);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.Size = new System.Drawing.Size(800, 450);
+            this.tabControl1.TabIndex = 0;
+            // 
             // page1
             // 
-            this.page1.Location = new System.Drawing.Point(0, 0);
+            this.page1.Location = new System.Drawing.Point(1, 24);
             this.page1.Name = "page1";
-            this.page1.Size = new System.Drawing.Size(0, 0);
+            this.page1.Size = new System.Drawing.Size(798, 425);
+            this.page1.Text = "Page 1";
             // 
             // page2
             // 
-            this.page2.Location = new System.Drawing.Point(0, 0);
+            this.page2.Location = new System.Drawing.Point(1, 24);
             this.page2.Name = "page2";
-            this.page2.Size = new System.Drawing.Size(0, 0);
+            this.page2.Size = new System.Drawing.Size(393, 263);
+            this.page2.Text = "Page 2";
             // 
             // page3
             // 
-            this.page3.Location = new System.Drawing.Point(0, 0);
+            this.page3.Location = new System.Drawing.Point(1, 24);
             this.page3.Name = "page3";
-            this.page3.Size = new System.Drawing.Size(0, 0);
+            this.page3.Size = new System.Drawing.Size(393, 263);
+            this.page3.Text = "Page 3";
             // 
             // page4
             // 
-            this.page4.Location = new System.Drawing.Point(0, 0);
+            this.page4.Location = new System.Drawing.Point(1, 24);
             this.page4.Name = "page4";
-            this.page4.Size = new System.Drawing.Size(0, 0);
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.page5);
-            this.tabControl1.Controls.Add(this.page6);
-            this.tabControl1.Controls.Add(this.page7);
-            this.tabControl1.Location = new System.Drawing.Point(53, 35);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.Size = new System.Drawing.Size(564, 290);
-            this.tabControl1.TabHeaderSize = new System.Drawing.Size(75, 25);
-            this.tabControl1.TabHeaderSizing = Manina.Windows.Forms.TabControl.TabSizing.AutoFit;
-            this.tabControl1.TabIndex = 0;
-            // 
-            // page5
-            // 
-            this.page5.Location = new System.Drawing.Point(1, 26);
-            this.page5.Name = "page5";
-            this.page5.Size = new System.Drawing.Size(562, 263);
-            this.page5.Text = "Page 1";
-            // 
-            // page6
-            // 
-            this.page6.Location = new System.Drawing.Point(1, 26);
-            this.page6.Name = "page6";
-            this.page6.Size = new System.Drawing.Size(562, 263);
-            this.page6.Text = "Page 2";
-            // 
-            // page7
-            // 
-            this.page7.Location = new System.Drawing.Point(1, 26);
-            this.page7.Name = "page7";
-            this.page7.Size = new System.Drawing.Size(562, 263);
-            this.page7.Text = "Page 3";
+            this.page4.Size = new System.Drawing.Size(798, 425);
+            this.page4.Text = "Page 4";
             // 
             // TestForm
             // 
@@ -103,22 +83,20 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tabControl1);
             this.Name = "TestForm";
-            this.Text = "Form1";
+            this.Text = "TabControl Test Form";
             this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
+
         #endregion
 
+        private Manina.Windows.Forms.TabControl tabControl1;
         private Manina.Windows.Forms.Page page1;
         private Manina.Windows.Forms.Page page2;
         private Manina.Windows.Forms.Page page3;
         private Manina.Windows.Forms.Page page4;
-        private Manina.Windows.Forms.TabControl tabControl1;
-        private Manina.Windows.Forms.Page page5;
-        private Manina.Windows.Forms.Page page6;
-        private Manina.Windows.Forms.Page page7;
     }
 }
 
