@@ -6,29 +6,29 @@ namespace Manina.Windows.Forms
     public partial class TabControl
     {
         /// <summary>
-        /// Represents a collection of tab headers.
+        /// Represents a collection of tabs.
         /// </summary>
-        public class TabHeaderCollection : IEnumerable<TabHeader>
+        public class TabCollection : IEnumerable<Tab>
         {
             #region Member Variables
-            private readonly Dictionary<Page, TabHeader> pageLookup = new Dictionary<Page, TabHeader>();
-            private readonly List<TabHeader> items = new List<TabHeader>();
+            private readonly Dictionary<Page, Tab> pageLookup = new Dictionary<Page, Tab>();
+            private readonly List<Tab> items = new List<Tab>();
             #endregion
 
             #region Properties
             /// <summary>
             /// Gets the owner control.
             /// </summary>
-            public TabControl Control { get; private set; }
+            protected TabControl Control { get; private set; }
 
             /// <summary>
             /// Gets the header associated with a page.
             /// </summary>
-            public TabHeader this[Page page] => pageLookup[page];
+            public Tab this[Page page] => pageLookup[page];
             /// <summary>
             /// Gets the header at the given index.
             /// </summary>
-            public TabHeader this[int index] => items[index];
+            public Tab this[int index] => items[index];
 
             /// <summary>
             /// Gets the count of items.
@@ -38,10 +38,10 @@ namespace Manina.Windows.Forms
 
             #region Constructor
             /// <summary>
-            /// Intializes a new instance of  <see cref="TabHeaderCollection"/>.
+            /// Intializes a new instance of <see cref="TabCollection"/>.
             /// </summary>
             /// <param name="parent">The parent control.</param>
-            protected internal TabHeaderCollection(TabControl parent)
+            protected internal TabCollection(TabControl parent)
             {
                 Control = parent;
             }
@@ -53,7 +53,7 @@ namespace Manina.Windows.Forms
             /// </summary>
             internal void AddPage(Page page)
             {
-                var header = new TabHeader(Control, page);
+                var header = new Tab(Control, page);
                 pageLookup.Add(page, header);
                 items.Add(header);
             }
@@ -70,7 +70,7 @@ namespace Manina.Windows.Forms
             #endregion
 
             #region IEnumerable
-            public IEnumerator<TabHeader> GetEnumerator()
+            public IEnumerator<Tab> GetEnumerator()
             {
                 return items.GetEnumerator();
             }

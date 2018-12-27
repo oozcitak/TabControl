@@ -7,13 +7,13 @@ namespace Manina.Windows.Forms
         /// <summary>
         /// Represents a tab header associated wth a page.
         /// </summary>
-        public class TabHeader
+        public class Tab
         {
             #region Properties
             /// <summary>
             /// Gets the owner control.
             /// </summary>
-            public TabControl Control { get; private set; }
+            protected TabControl Control { get; private set; }
 
             /// <summary>
             /// Gets the <see cref="Page"/> associated with this header.
@@ -57,10 +57,10 @@ namespace Manina.Windows.Forms
 
             #region Constructor
             /// <summary>
-            /// Initializes a new instance of <see cref="TabHeader"/>.
+            /// Initializes a new instance of <see cref="Tab"/>.
             /// </summary>
             /// <param name="page">The associated page.</param>
-            protected internal TabHeader(TabControl parent, Page page)
+            protected internal Tab(TabControl parent, Page page)
             {
                 Control = parent;
                 Page = page;

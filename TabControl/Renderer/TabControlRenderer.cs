@@ -29,13 +29,13 @@ namespace Manina.Windows.Forms
                 /// <summary>
                 /// Visual state of the tab.
                 /// </summary>
-                public TabControl.TabHeaderState State { get; private set; }
+                public TabHeaderState State { get; private set; }
                 /// <summary>
                 /// Bounding rectangle of the tab.
                 /// </summary>
                 public Rectangle Bounds { get; private set; }
 
-                public DrawTabHeaderParams(int index, string text, Rectangle bounds, TabControl.TabHeaderState state)
+                public DrawTabHeaderParams(int index, string text, Rectangle bounds, TabHeaderState state)
                 {
                     Index = index;
                     Text = text;
@@ -59,17 +59,17 @@ namespace Manina.Windows.Forms
                     if (ReferenceEquals(p1, p2) || p1.Index == p2.Index)
                         return 0;
 
-                    if ((p1.State & TabControl.TabHeaderState.Pressed) != TabControl.TabHeaderState.Inactive)
+                    if ((p1.State & TabHeaderState.Pressed) != TabHeaderState.Inactive)
                         return 1;
-                    else if ((p2.State & TabControl.TabHeaderState.Pressed) != TabControl.TabHeaderState.Inactive)
+                    else if ((p2.State & TabHeaderState.Pressed) != TabHeaderState.Inactive)
                         return -1;
-                    else if ((p1.State & TabControl.TabHeaderState.Active) != TabControl.TabHeaderState.Inactive)
+                    else if ((p1.State & TabHeaderState.Active) != TabHeaderState.Inactive)
                         return 1;
-                    else if ((p2.State & TabControl.TabHeaderState.Active) != TabControl.TabHeaderState.Inactive)
+                    else if ((p2.State & TabHeaderState.Active) != TabHeaderState.Inactive)
                         return -1;
-                    else if ((p1.State & TabControl.TabHeaderState.Hot) != TabControl.TabHeaderState.Inactive)
+                    else if ((p1.State & TabHeaderState.Hot) != TabHeaderState.Inactive)
                         return 1;
-                    else if ((p2.State & TabControl.TabHeaderState.Hot) != TabControl.TabHeaderState.Inactive)
+                    else if ((p2.State & TabHeaderState.Hot) != TabHeaderState.Inactive)
                         return -1;
 
                     return p1.Index.CompareTo(p2.Index);
@@ -164,7 +164,7 @@ namespace Manina.Windows.Forms
 
                 // sort headers
                 var drawParams = new List<DrawTabHeaderParams>();
-                for (int i=0;i<Parent.Tabs.Count;i++)
+                for (int i = 0; i < Parent.Tabs.Count; i++)
                 {
                     var tab = Parent.Tabs[i];
                     drawParams.Add(new DrawTabHeaderParams(i, tab.Text, tab.Bounds, tab.State));
@@ -214,15 +214,15 @@ namespace Manina.Windows.Forms
                 var foreColor = GetTabForeColor(param.State);
 
                 TextFormatFlags flags = TextFormatFlags.EndEllipsis | TextFormatFlags.VerticalCenter | TextFormatFlags.SingleLine;
-                if (Parent.TextAlignment == TabControl.Alignment.Far)
+                if (Parent.TextAlignment == Alignment.Far)
                     flags |= TextFormatFlags.Right;
-                else if (Parent.TextAlignment == TabControl.Alignment.Center)
+                else if (Parent.TextAlignment == Alignment.Center)
                     flags |= TextFormatFlags.HorizontalCenter;
 
                 var textBounds = param.Bounds;
                 textBounds.Inflate(-4, -4);
 
-                if (Parent.TabHeaderLocation == TabControl.TabLocation.Top || Parent.TabHeaderLocation == TabControl.TabLocation.Bottom)
+                if (Parent.TabHeaderLocation == TabLocation.Top || Parent.TabHeaderLocation == TabLocation.Bottom)
                 {
                     TextRenderer.DrawText(g, param.Text, Font, textBounds, foreColor, backColor, flags);
                 }
@@ -238,13 +238,13 @@ namespace Manina.Windows.Forms
                         TextRenderer.DrawText(imageGraphics, param.Text, Font, textBounds, foreColor, backColor, flags);
                         // Rotate, translate and draw the image
                         Point[] ptMap = new Point[3];
-                        if (Parent.TabHeaderLocation == TabControl.TabLocation.Top || Parent.TabHeaderLocation == TabControl.TabLocation.Bottom)
+                        if (Parent.TabHeaderLocation == TabLocation.Top || Parent.TabHeaderLocation == TabLocation.Bottom)
                         {
                             ptMap[0] = param.Bounds.GetTopLeft();    // upper-left
                             ptMap[1] = param.Bounds.GetTopRight();   // upper-right
                             ptMap[2] = param.Bounds.GetBottomLeft(); // lower-left
                         }
-                        else if (Parent.TabHeaderLocation == TabControl.TabLocation.Left)
+                        else if (Parent.TabHeaderLocation == TabLocation.Left)
                         {
                             ptMap[0] = param.Bounds.GetBottomLeft();  // upper-left
                             ptMap[1] = param.Bounds.GetTopLeft();     // upper-right
@@ -268,18 +268,18 @@ namespace Manina.Windows.Forms
             /// <param name="param">The parameters required to draw the tab header.</param>
             public virtual void DrawSeparator(Graphics g, DrawTabHeaderParams param)
             {
-                using (var pen = new Pen(SeparatorColor))
+                if (param.Index != Parent.SelectedIndex)
                 {
-                    if (param.Index != Parent.SelectedIndex)
+                    using (var pen = new Pen(SeparatorColor))
                     {
-                        if (Parent.TabHeaderLocation == TabControl.TabLocation.Top || Parent.TabHeaderLocation == TabControl.TabLocation.Bottom)
+                        if (Parent.TabHeaderLocation == TabLocation.Top || Parent.TabHeaderLocation == TabLocation.Bottom)
                         {
                             if (param.Index != 0 && param.Index != Parent.SelectedIndex + 1)
                                 g.DrawLine(pen, param.Bounds.Left, param.Bounds.Top + 4, param.Bounds.Left, param.Bounds.Bottom - 4);
                             if (param.Index != Parent.Pages.Count - 1 && param.Index != Parent.SelectedIndex - 1)
                                 g.DrawLine(pen, param.Bounds.Right, param.Bounds.Top + 4, param.Bounds.Right, param.Bounds.Bottom - 4);
                         }
-                        else if (Parent.TabHeaderLocation == TabControl.TabLocation.Left)
+                        else if (Parent.TabHeaderLocation == TabLocation.Left)
                         {
                             if (param.Index != 0 && param.Index != Parent.SelectedIndex + 1)
                                 g.DrawLine(pen, param.Bounds.Left + 4, param.Bounds.Bottom, param.Bounds.Right - 4, param.Bounds.Bottom);
@@ -317,7 +317,7 @@ namespace Manina.Windows.Forms
                 var tabBounds = Parent.Tabs[Parent.SelectedPage].Bounds;
 
                 Point[] pt = new Point[8];
-                if (Parent.TabHeaderLocation == TabControl.TabLocation.Top)
+                if (Parent.TabHeaderLocation == TabLocation.Top)
                 {
                     pt[0] = borderBounds.GetBottomLeft().GetOffset(0, -1);
                     pt[1] = borderBounds.GetBottomRight().GetOffset(-1, -1);
@@ -328,7 +328,7 @@ namespace Manina.Windows.Forms
                     pt[6] = tabBounds.GetBottomLeft().GetOffset(0, -1);
                     pt[7] = borderBounds.GetTopLeft();
                 }
-                else if (Parent.TabHeaderLocation == TabControl.TabLocation.Bottom)
+                else if (Parent.TabHeaderLocation == TabLocation.Bottom)
                 {
                     pt[0] = borderBounds.GetBottomLeft().GetOffset(0, -1);
                     pt[1] = tabBounds.GetTopLeft();
@@ -339,7 +339,7 @@ namespace Manina.Windows.Forms
                     pt[6] = borderBounds.GetTopRight().GetOffset(-1, 0);
                     pt[7] = borderBounds.GetTopLeft();
                 }
-                else if (Parent.TabHeaderLocation == TabControl.TabLocation.Left)
+                else if (Parent.TabHeaderLocation == TabLocation.Left)
                 {
                     pt[0] = borderBounds.GetBottomLeft().GetOffset(0, -1);
                     pt[1] = borderBounds.GetBottomRight().GetOffset(-1, -1);
@@ -376,12 +376,12 @@ namespace Manina.Windows.Forms
             /// <param name="state">The state of the tab header.</param>
             protected Color GetTabBackColor(TabControl.TabHeaderState state)
             {
-                if ((state & TabControl.TabHeaderState.Pressed) != TabControl.TabHeaderState.Inactive)
+                if ((state & TabHeaderState.Pressed) != TabHeaderState.Inactive)
                     return PressedTabBackColor;
-                else if ((state & TabControl.TabHeaderState.Hot) != TabControl.TabHeaderState.Inactive &&
-                    (state & TabControl.TabHeaderState.Active) == TabControl.TabHeaderState.Inactive)
+                else if ((state & TabHeaderState.Hot) != TabHeaderState.Inactive &&
+                    (state & TabHeaderState.Active) == TabHeaderState.Inactive)
                     return HotTabBackColor;
-                else if ((state & TabControl.TabHeaderState.Active) != TabControl.TabHeaderState.Inactive)
+                else if ((state & TabHeaderState.Active) != TabHeaderState.Inactive)
                     return ActiveTabBackColor;
                 else
                     return InactiveTabBackColor;
@@ -393,12 +393,12 @@ namespace Manina.Windows.Forms
             /// <param name="state">The state of the tab header.</param>
             protected Color GetTabForeColor(TabControl.TabHeaderState state)
             {
-                if ((state & TabControl.TabHeaderState.Pressed) != TabControl.TabHeaderState.Inactive)
+                if ((state & TabHeaderState.Pressed) != TabHeaderState.Inactive)
                     return PressedTabForeColor;
-                else if ((state & TabControl.TabHeaderState.Hot) != TabControl.TabHeaderState.Inactive &&
-                    (state & TabControl.TabHeaderState.Active) == TabControl.TabHeaderState.Inactive)
+                else if ((state & TabHeaderState.Hot) != TabHeaderState.Inactive &&
+                    (state & TabHeaderState.Active) == TabHeaderState.Inactive)
                     return HotTabForeColor;
-                else if ((state & TabControl.TabHeaderState.Active) != TabControl.TabHeaderState.Inactive)
+                else if ((state & TabHeaderState.Active) != TabHeaderState.Inactive)
                     return ActiveTabForeColor;
                 else
                     return InactiveTabForeColor;

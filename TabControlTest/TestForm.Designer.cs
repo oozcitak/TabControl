@@ -59,14 +59,14 @@
             // 
             this.page2.Location = new System.Drawing.Point(1, 24);
             this.page2.Name = "page2";
-            this.page2.Size = new System.Drawing.Size(393, 263);
+            this.page2.Size = new System.Drawing.Size(798, 425);
             this.page2.Text = "Page 2";
             // 
             // page3
             // 
             this.page3.Location = new System.Drawing.Point(1, 24);
             this.page3.Name = "page3";
-            this.page3.Size = new System.Drawing.Size(393, 263);
+            this.page3.Size = new System.Drawing.Size(798, 425);
             this.page3.Text = "Page 3";
             // 
             // page4

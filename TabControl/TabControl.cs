@@ -114,9 +114,9 @@ namespace Manina.Windows.Forms
             /// <summary>
             /// Gets the tab header under the mouse cursor.
             /// </summary>
-            public TabHeader TabHeader { get; private set; }
+            public Tab TabHeader { get; private set; }
 
-            public TabHeaderEventArgs(TabHeader header)
+            public TabHeaderEventArgs(Tab header)
             {
                 TabHeader = header;
             }
@@ -153,7 +153,7 @@ namespace Manina.Windows.Forms
             /// </summary>
             public Point Location { get; }
 
-            public TabHeaderMouseEventArgs(TabHeader header, MouseButtons button, int clicks, int delta, Point location) : base(header)
+            public TabHeaderMouseEventArgs(Tab header, MouseButtons button, int clicks, int delta, Point location) : base(header)
             {
                 Button = button;
                 Clicks = clicks;
@@ -209,8 +209,8 @@ namespace Manina.Windows.Forms
         #endregion
 
         #region Member Variables
-        internal TabHeader hoveredTabHeader = null;
-        internal TabHeader mouseDownTabHeader = null;
+        internal Tab hoveredTabHeader = null;
+        internal Tab mouseDownTabHeader = null;
 
         private Size tabHeaderSize = new Size(75, 23);
         private TabLocation tabHeaderLocation = TabLocation.Top;
@@ -258,7 +258,7 @@ namespace Manina.Windows.Forms
         /// Gets the collection of tabs.
         /// </summary>
         [Browsable(false)]
-        public TabHeaderCollection Tabs { get; private set; }
+        public TabCollection Tabs { get; private set; }
 
         /// <summary>
         /// Gets the rectangle that represents the client area of the control.
@@ -325,7 +325,7 @@ namespace Manina.Windows.Forms
         /// </summary>
         public TabControl()
         {
-            Tabs = new TabHeaderCollection(this);
+            Tabs = new TabCollection(this);
             SetRenderer(new TabControlRenderer(this));
             UpdateTabHeaderLayout();
         }
@@ -334,12 +334,12 @@ namespace Manina.Windows.Forms
         #region Instance Methods
         /// <summary>
         /// Performs a hit test with given coordinates and returns the
-        /// <see cref="TabHeader"/> which contains the given point.
+        /// <see cref="Tab"/> which contains the given point.
         /// </summary>
         /// <param name="pt">Hit test coordinates</param>
         /// <returns>The tab header which contains the given point; or null
         /// if none of the tab headers contains the given point.</returns>
-        public TabHeader PerformHitTest(Point pt)
+        public Tab PerformHitTest(Point pt)
         {
             if (!TabHeaderArea.Contains(pt)) return null;
 

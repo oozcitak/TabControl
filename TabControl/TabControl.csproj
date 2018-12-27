@@ -62,15 +62,18 @@
     <Compile Include="Designer\TabGlyph.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="TabHeaderCollection.cs">
+    <Compile Include="TabCollection.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="TabHeader.cs">
+    <Compile Include="Tab.cs">
       <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="TabControl.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
