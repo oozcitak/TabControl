@@ -47,19 +47,21 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.Size = new System.Drawing.Size(800, 450);
             this.tabControl1.TabIndex = 0;
+            this.tabControl1.TabLocation = Manina.Windows.Forms.TabLocation.Left;
+            this.tabControl1.TabSize = new System.Drawing.Size(250, 23);
             // 
             // page1
             // 
-            this.page1.Location = new System.Drawing.Point(1, 24);
+            this.page1.Location = new System.Drawing.Point(49, 1);
             this.page1.Name = "page1";
-            this.page1.Size = new System.Drawing.Size(798, 425);
+            this.page1.Size = new System.Drawing.Size(750, 448);
             this.page1.Text = "Page 1";
             // 
             // page2
             // 
-            this.page2.Location = new System.Drawing.Point(1, 24);
+            this.page2.Location = new System.Drawing.Point(49, 1);
             this.page2.Name = "page2";
-            this.page2.Size = new System.Drawing.Size(798, 425);
+            this.page2.Size = new System.Drawing.Size(750, 448);
             this.page2.Text = "Page 2";
             // 
             // page3

@@ -8,8 +8,8 @@ namespace Manina.Windows.Forms
     public partial class TabControl
     {
         /// <summary>
-        /// Allows tab headers to be clicked in the designer.
-        /// This is an invisible glyph since tab headers are already drawn
+        /// Allows tabs to be clicked in the designer.
+        /// This is an invisible glyph since tabs are already drawn
         /// by the control.
         /// </summary>
         internal class TabGlyph : Glyph
@@ -48,9 +48,9 @@ namespace Manina.Windows.Forms
                         TabGlyph tabGlyph = (TabGlyph)g;
                         Point pt = tabGlyph.BehaviorService.ControlToAdornerWindow(tabGlyph.Control);
 
-                        var tabHeader = tabGlyph.Control.PerformHitTest(mouseLoc.GetOffset(-pt.X, -pt.Y));
-                        if (tabHeader != null)
-                            tabGlyph.Control.SelectedPage = tabHeader.Page;
+                        var tab = tabGlyph.Control.PerformHitTest(mouseLoc.GetOffset(-pt.X, -pt.Y));
+                        if (tab != null)
+                            tabGlyph.Control.SelectedPage = tab.Page;
                         tabGlyph.Control.Invalidate();
                     }
 

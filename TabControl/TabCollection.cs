@@ -22,11 +22,11 @@ namespace Manina.Windows.Forms
             protected TabControl Control { get; private set; }
 
             /// <summary>
-            /// Gets the header associated with a page.
+            /// Gets the tab associated with a page.
             /// </summary>
             public Tab this[Page page] => pageLookup[page];
             /// <summary>
-            /// Gets the header at the given index.
+            /// Gets the tab at the given index.
             /// </summary>
             public Tab this[int index] => items[index];
 
@@ -49,23 +49,23 @@ namespace Manina.Windows.Forms
 
             #region Page Handlers
             /// <summary>
-            /// Adds a tab header whenever a new page is added to the owner control.
+            /// Adds a tab whenever a new page is added to the owner control.
             /// </summary>
             internal void AddPage(Page page)
             {
-                var header = new Tab(Control, page);
-                pageLookup.Add(page, header);
-                items.Add(header);
+                var tab = new Tab(Control, page);
+                pageLookup.Add(page, tab);
+                items.Add(tab);
             }
 
             /// <summary>
-            /// Removes the associated tab header whenever a page is removed from the owner control.
+            /// Removes the associated tab whenever a page is removed from the owner control.
             /// </summary>
             internal void RemovePage(Page page)
             {
-                var header = pageLookup[page];
+                var tab = pageLookup[page];
                 pageLookup.Remove(page);
-                items.Remove(header);
+                items.Remove(tab);
             }
             #endregion
 

@@ -48,6 +48,7 @@
     <Compile Include="Designer\TabControlActionList.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Enums.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="TabControl.cs">
       <SubType>Component</SubType>

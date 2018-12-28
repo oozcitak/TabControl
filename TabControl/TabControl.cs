@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Manina.Windows.Forms
@@ -12,120 +13,27 @@ namespace Manina.Windows.Forms
     [DefaultProperty("SelectedPage")]
     public partial class TabControl : PagedControl
     {
-        #region Enums
-        /// <summary>
-        /// Represents the visual state of a tab header.
-        /// </summary>
-        [Flags]
-        public enum TabHeaderState
-        {
-            /// <summary>
-            /// The tab header is inactive.
-            /// </summary>
-            Inactive = 0,
-            /// <summary>
-            /// The tab header is the <see cref="PagedControl.SelectedPage"/> of the control.
-            /// </summary>
-            Active = 1,
-            /// <summary>
-            /// Mouse cursor is over the tab header.
-            /// </summary>
-            Hot = 2,
-            /// <summary>
-            /// The left mouse button is clicked over the tab header.
-            /// </summary>
-            Pressed = 4,
-            /// <summary>
-            /// The tab header has input focus.
-            /// </summary>
-            Focused = 8,
-        }
-
-        /// <summary>
-        /// Represents the location of the tab header area within the control.
-        /// </summary>
-        public enum TabLocation
-        {
-            /// <summary>
-            /// The top header area is at the top of the control.
-            /// </summary>
-            Top,
-            /// <summary>
-            /// The top header area is at the bottom of the control.
-            /// </summary>
-            Bottom,
-            /// <summary>
-            /// The top header area is at the left of the control. Tab header texts
-            /// are drawn vertically.
-            /// </summary>
-            Left,
-            /// <summary>
-            /// The top header area is at the right of the control. Tab header texts
-            /// are drawn vertically.
-            /// </summary>
-            Right
-        }
-
-        /// <summary>
-        /// Represents the alignment of tab headers relative to the control.
-        /// </summary>
-        public enum Alignment
-        {
-            /// <summary>
-            /// Tab headers are aligned to the left or top of the control.
-            /// </summary>
-            Near,
-            /// <summary>
-            /// Tab headers are aligned to center of the control.
-            /// </summary>
-            Center,
-            /// <summary>
-            /// Tab headers are aligned to the right or bottom of the control.
-            /// </summary>
-            Far
-        }
-
-        /// <summary>
-        /// Represents the sizing behavior  of tabs.
-        /// </summary>
-        public enum TabSizing
-        {
-            /// <summary>
-            /// Tabs are automatically sized to fit their texts.
-            /// </summary>
-            AutoFit,
-            /// <summary>
-            /// Tabs are fixed size which is defined by the <see cref="TabControl.TabHeaderSize"/>.
-            /// </summary>
-            Fixed,
-            /// <summary>
-            /// Tabs are stretched to fit the entire tab header area.
-            /// </summary>
-            Stretch
-        }
-        #endregion
-
         #region Events
         /// <summary>
-        /// Contains event data for events related to a single tab header.
+        /// Contains event data for events related to a single tab.
         /// </summary>
-        public class TabHeaderEventArgs : EventArgs
+        public class TabEventArgs : EventArgs
         {
             /// <summary>
-            /// Gets the tab header under the mouse cursor.
+            /// Gets the tab related to the event.
             /// </summary>
-            public Tab TabHeader { get; private set; }
+            public Tab Tab { get; private set; }
 
-            public TabHeaderEventArgs(Tab header)
+            public TabEventArgs(Tab tab)
             {
-                TabHeader = header;
+                Tab = tab;
             }
         }
 
         /// <summary>
-        /// Contains event data for mouse events related to a single tab header.
+        /// Contains event data for mouse events related to a single tab.
         /// </summary>
-        public class TabHeaderMouseEventArgs : TabHeaderEventArgs
+        public class TabMouseEventArgs : TabEventArgs
         {
             /// <summary>
             /// Gets which mouse button was pressed.
@@ -153,7 +61,7 @@ namespace Manina.Windows.Forms
             /// </summary>
             public Point Location { get; }
 
-            public TabHeaderMouseEventArgs(Tab header, MouseButtons button, int clicks, int delta, Point location) : base(header)
+            public TabMouseEventArgs(Tab tab, MouseButtons button, int clicks, int delta, Point location) : base(tab)
             {
                 Button = button;
                 Clicks = clicks;
@@ -162,97 +70,237 @@ namespace Manina.Windows.Forms
             }
         }
 
-        public delegate void TabHeaderMouseEventHandler(object sender, TabHeaderMouseEventArgs e);
+        /// <summary>
+        /// Contains event data for measurement related events.
+        /// </summary>
+        public class MeasureEventArgs : EventArgs
+        {
+            /// <summary>
+            /// The size of the item to be measured.
+            /// </summary>
+            public Size Size { get; set; }
 
-        protected internal virtual void OnTabHeaderClick(TabHeaderMouseEventArgs e) { TabHeaderClick?.Invoke(this, e); }
-        protected internal virtual void OnTabHeaderDoubleClick(TabHeaderMouseEventArgs e) { TabHeaderDoubleClick?.Invoke(this, e); }
-        protected internal virtual void OnTabHeaderMouseDown(TabHeaderMouseEventArgs e) { TabHeaderMouseDown?.Invoke(this, e); }
-        protected internal virtual void OnTabHeaderMouseUp(TabHeaderMouseEventArgs e) { TabHeaderMouseUp?.Invoke(this, e); }
-        protected internal virtual void OnTabHeaderMouseMove(TabHeaderMouseEventArgs e) { TabHeaderMouseMove?.Invoke(this, e); }
-        protected internal virtual void OnTabHeaderMouseWheel(TabHeaderMouseEventArgs e) { TabHeaderMouseWheel?.Invoke(this, e); }
+            public MeasureEventArgs(Size size)
+            {
+                Size = size;
+            }
+        }
 
         /// <summary>
-        /// Occurs when a tab header is clicked.
+        /// Contains event data for tab measurement related events.
         /// </summary>
-        [Category("Behavior"), Description("Occurs when a tab header is clicked.")]
-        public event TabHeaderMouseEventHandler TabHeaderClick;
+        public class MeasureTabEventArgs : TabEventArgs
+        {
+            /// <summary>
+            /// The size of the item to be measured.
+            /// </summary>
+            public Size Size { get; set; }
+
+            public MeasureTabEventArgs(Tab tab, Size size) : base(tab)
+            {
+                Size = size;
+            }
+        }
 
         /// <summary>
-        /// Occurs when a tab header is double clicked by the mouse.
+        /// Contains event data for layout events.
         /// </summary>
-        [Category("Behavior"), Description("Occurs when a tab header is double clicked by the mouse.")]
-        public event TabHeaderMouseEventHandler TabHeaderDoubleClick;
+        public class LayoutTabsEventArgs : EventArgs
+        {
+            /// <summary>
+            /// The bounding rectangle where tabs are located.
+            /// </summary>
+            public Rectangle TabAreaBounds { get; set; }
+            /// <summary>
+            /// The bounding rectangle where pages are located.
+            /// </summary>
+            public Rectangle DisplayAreaBounds { get; set; }
+            /// <summary>
+            /// The bounding rectangle of the near scroll button.
+            /// </summary>
+            public Rectangle NearScrollButtonBounds { get; set; }
+            /// <summary>
+            /// The bounding rectangle of the far scroll button.
+            /// </summary>
+            public Rectangle FarScrollButtonBounds { get; set; }
+
+            public LayoutTabsEventArgs(Rectangle tabArea, Rectangle displayArea, Rectangle nearButton, Rectangle farButton)
+            {
+                TabAreaBounds = tabArea;
+                DisplayAreaBounds = displayArea;
+                NearScrollButtonBounds = nearButton;
+                FarScrollButtonBounds = farButton;
+            }
+        }
+
+        public delegate void TabMouseEventHandler(object sender, TabMouseEventArgs e);
+        public delegate void MeasureTabEventHandler(object sender, MeasureTabEventArgs e);
+        public delegate void MeasureEventHandler(object sender, MeasureEventArgs e);
+        public delegate void LayoutTabsEventHandler(object sender, LayoutTabsEventArgs e);
+
+        protected internal virtual void OnTabClick(TabMouseEventArgs e) { TabClick?.Invoke(this, e); }
+        protected internal virtual void OnTabDoubleClick(TabMouseEventArgs e) { TabDoubleClick?.Invoke(this, e); }
+        protected internal virtual void OnTabMouseDown(TabMouseEventArgs e) { TabMouseDown?.Invoke(this, e); }
+        protected internal virtual void OnTabMouseUp(TabMouseEventArgs e) { TabMouseUp?.Invoke(this, e); }
+        protected internal virtual void OnTabMouseMove(TabMouseEventArgs e) { TabMouseMove?.Invoke(this, e); }
+        protected internal virtual void OnTabMouseWheel(TabMouseEventArgs e) { TabMouseWheel?.Invoke(this, e); }
+
+        protected internal virtual void OnMeasureTab(MeasureTabEventArgs e)
+        {
+            var size = TextRenderer.MeasureText(e.Tab.Text, Font, Size.Empty);
+            if (TextDirection == TextDirection.Right)
+                e.Size = size + TabPadding.Size;
+            else
+                e.Size = new Size(size.Height, size.Width) + TabPadding.Size;
+
+            MeasureTab?.Invoke(this, e);
+        }
+        protected internal virtual void OnMeasureNearScrollButton(MeasureEventArgs e)
+        {
+            e.Size = new Size(16, 16) + TabPadding.Size;
+
+            MeasureNearScrollButton?.Invoke(this, e);
+        }
+        protected internal virtual void OnMeasureFarScrollButton(MeasureEventArgs e)
+        {
+            e.Size = new Size(16, 16) + TabPadding.Size;
+
+            MeasureFarScrollButton?.Invoke(this, e);
+        }
+
+        protected internal virtual void OnLayoutTabs(LayoutTabsEventArgs e) { LayoutTabs?.Invoke(this, e); }
 
         /// <summary>
-        /// Occurs when the mouse pointer is over a tab header and a mouse button is pressed.
+        /// Occurs when a tab is clicked.
         /// </summary>
-        [Category("Behavior"), Description("Occurs when the mouse pointer is over a tab header and a mouse button is pressed.")]
-        public event TabHeaderMouseEventHandler TabHeaderMouseDown;
+        [Category("Behavior"), Description("Occurs when a tab is clicked.")]
+        public event TabMouseEventHandler TabClick;
 
         /// <summary>
-        /// Occurs when the mouse pointer is over a tab header and a mouse button is released.
+        /// Occurs when a tab is double clicked by the mouse.
         /// </summary>
-        [Category("Behavior"), Description("Occurs when the mouse pointer is over a tab header and a mouse button is released.")]
-        public event TabHeaderMouseEventHandler TabHeaderMouseUp;
+        [Category("Behavior"), Description("Occurs when a tab is double clicked by the mouse.")]
+        public event TabMouseEventHandler TabDoubleClick;
 
         /// <summary>
-        /// Occurs when the mouse pointer is moved over a tab header.
+        /// Occurs when the mouse pointer is over a tab and a mouse button is pressed.
         /// </summary>
-        [Category("Behavior"), Description("Occurs when the mouse pointer is moved over a tab header.")]
-        public event TabHeaderMouseEventHandler TabHeaderMouseMove;
+        [Category("Behavior"), Description("Occurs when the mouse pointer is over a tab and a mouse button is pressed.")]
+        public event TabMouseEventHandler TabMouseDown;
 
         /// <summary>
-        /// Occurs when the mouse pointer is over a tab header and the mouse wheel is rotated.
+        /// Occurs when the mouse pointer is over a tab and a mouse button is released.
         /// </summary>
-        [Category("Behavior"), Description("Occurs when the mouse pointer is over a tab header and the mouse wheel is rotated.")]
-        public event TabHeaderMouseEventHandler TabHeaderMouseWheel;
+        [Category("Behavior"), Description("Occurs when the mouse pointer is over a tab and a mouse button is released.")]
+        public event TabMouseEventHandler TabMouseUp;
+
+        /// <summary>
+        /// Occurs when the mouse pointer is moved over a tab.
+        /// </summary>
+        [Category("Behavior"), Description("Occurs when the mouse pointer is moved over a tab.")]
+        public event TabMouseEventHandler TabMouseMove;
+
+        /// <summary>
+        /// Occurs when the mouse pointer is over a tab and the mouse wheel is rotated.
+        /// </summary>
+        [Category("Behavior"), Description("Occurs when the mouse pointer is over a tab and the mouse wheel is rotated.")]
+        public event TabMouseEventHandler TabMouseWheel;
+
+        /// <summary>
+        /// Occurs when the size of a tab needs to be determined.
+        /// </summary>
+        [Category("Appearance"), Description("Occurs when the size of a tab needs to be determined.")]
+        public event MeasureTabEventHandler MeasureTab;
+
+        /// <summary>
+        /// Occurs when the size of the near scroll button needs to be determined.
+        /// </summary>
+        [Category("Appearance"), Description("Occurs when the size of the near scroll button needs to be determined.")]
+        public event MeasureEventHandler MeasureNearScrollButton;
+
+        /// <summary>
+        /// Occurs when the size of the far scroll button needs to be determined.
+        /// </summary>
+        [Category("Appearance"), Description("Occurs when the size of the far scroll button needs to be determined.")]
+        public event MeasureEventHandler MeasureFarScrollButton;
+
+        /// <summary>
+        /// Occurs when the layout of all interface elements are calculated.
+        /// </summary>
+        [Category("Appearance"), Description("Occurs when the layout of all interface elements are calculated.")]
+        public event LayoutTabsEventHandler LayoutTabs;
         #endregion
 
         #region Member Variables
-        internal Tab hoveredTabHeader = null;
-        internal Tab mouseDownTabHeader = null;
+        internal Tab hoveredTab = null;
+        internal Tab mouseDownTab = null;
 
-        private Size tabHeaderSize = new Size(75, 23);
-        private TabLocation tabHeaderLocation = TabLocation.Top;
-        private Alignment tabHeaderAlignment = Alignment.Near;
+        private Rectangle tabArea;
+        private Rectangle displayArea;
+        private Rectangle nearScrollButtonBounds;
+        private Rectangle farScrollButtonBounds;
+
+        private Size tabSize = new Size(75, 23);
+        private TabLocation tabLocation = TabLocation.Top;
+        private Alignment tabAlignment = Alignment.Near;
         private Alignment textAlignment = Alignment.Near;
-        private TabSizing tabHeaderSizing = TabSizing.AutoFit;
+        private TabSizing tabSizing = TabSizing.AutoFit;
+        private Padding tabPadding = new Padding(4);
+        private TextDirection textDirection = TextDirection.Right;
+
+        private bool scrollButtons;
+        private int viewOffset = 0;
+        private int maxViewOffset = 0;
+
 
         private TabControlRenderer renderer;
         #endregion
 
         #region Properties
         /// <summary>
-        /// Gets or sets the size of a tab header.
+        /// Gets or sets the size of tabs.
         /// </summary>
         [Category("Appearance"), DefaultValue(typeof(Size), "75, 23")]
-        [Description("Gets or sets the size of a tab header.")]
-        public Size TabHeaderSize { get => tabHeaderSize; set { tabHeaderSize = value; UpdateTabHeaderLayout(); UpdatePages(); Invalidate(); } }
+        [Description("Gets or sets the size of tabs.")]
+        public Size TabSize { get => tabSize; set { tabSize = value; UpdateTabLayout(); UpdatePages(); CheckViewOffset(); Invalidate(); } }
 
         /// <summary>
-        /// Gets or sets the location of tab headers.
+        /// Gets or sets the padding between the contents a tab and its borders.
+        /// </summary>
+        [Category("Appearance"), DefaultValue(typeof(Padding), "4, 4, 4, 4")]
+        [Description("Gets or sets the padding between the contents a tab and its borders.")]
+        public Padding TabPadding { get => tabPadding; set { tabPadding = value; UpdateTabLayout(); UpdatePages(); CheckViewOffset(); Invalidate(); } }
+
+        /// <summary>
+        /// Gets or sets the location of tabs.
         /// </summary>
         [Category("Appearance"), DefaultValue(TabLocation.Top)]
-        [Description("Gets or sets the location of tab headers.")]
-        public TabLocation TabHeaderLocation { get => tabHeaderLocation; set { tabHeaderLocation = value; UpdateTabHeaderLayout(); UpdatePages(); Invalidate(); } }
+        [Description("Gets or sets the location of tabs.")]
+        public TabLocation TabLocation { get => tabLocation; set { tabLocation = value; viewOffset = 0; UpdateTabLayout(); UpdatePages(); Invalidate(); } }
         /// <summary>
-        /// Gets or sets the alignment of tab headers.
+        /// Gets or sets the alignment of tabs within the control.
         /// </summary>
         [Category("Appearance"), DefaultValue(Alignment.Near)]
-        [Description("Gets or sets the alignment of tab headers.")]
-        public Alignment TabHeaderAlignment { get => tabHeaderAlignment; set { tabHeaderAlignment = value; UpdateTabHeaderLayout(); Invalidate(); } }
+        [Description("Gets or sets the alignment of tabs within the control.")]
+        public Alignment TabAlignment { get => tabAlignment; set { tabAlignment = value; viewOffset = 0; UpdateTabLayout(); Invalidate(); } }
         /// <summary>
-        /// Gets or sets the sizing mode of tab headers.
+        /// Gets or sets the sizing mode of tabs.
         /// </summary>
         [Category("Appearance"), DefaultValue(TabSizing.AutoFit)]
-        [Description("Gets or sets the sizing mode of tab headers.")]
-        public TabSizing TabHeaderSizing { get => tabHeaderSizing; set { tabHeaderSizing = value; UpdateTabHeaderLayout(); Invalidate(); } }
+        [Description("Gets or sets the sizing mode of tabs.")]
+        public TabSizing TabSizing { get => tabSizing; set { tabSizing = value; viewOffset = 0; UpdateTabLayout(); UpdatePages(); Invalidate(); } }
         /// <summary>
         /// Gets or sets the alignment of tab text.
         /// </summary>
         [Category("Appearance"), DefaultValue(Alignment.Near)]
         [Description("Gets or sets the alignment of tab text.")]
         public Alignment TextAlignment { get => textAlignment; set { textAlignment = value; Invalidate(); } }
+        /// <summary>
+        /// Gets or sets the direction of tab texts.
+        /// </summary>
+        [Category("Appearance"), DefaultValue(TextDirection.Right)]
+        [Description("Gets or sets the direction of tab texts.")]
+        public TextDirection TextDirection { get => textDirection; set { textDirection = value; UpdateTabLayout(); UpdatePages(); CheckViewOffset(); Invalidate(); } }
 
         /// <summary>
         /// Gets the collection of tabs.
@@ -276,47 +324,33 @@ namespace Manina.Windows.Forms
         /// Gets the client rectangle where pages are located.
         /// </summary>
         [Browsable(false)]
-        public override Rectangle DisplayRectangle
-        {
-            get
-            {
-                var bounds = ClientRectangle;
-                if (BorderStyle != BorderStyle.None)
-                    bounds.Inflate(-1, -1);
-
-                if (Pages.Count == 0)
-                    return bounds;
-
-                if (tabHeaderLocation == TabLocation.Top)
-                    return new Rectangle(bounds.Left, bounds.Top + TabHeaderSize.Height, bounds.Width, bounds.Height - TabHeaderSize.Height);
-                else if (tabHeaderLocation == TabLocation.Bottom)
-                    return new Rectangle(bounds.Left, bounds.Top, bounds.Width, bounds.Height - TabHeaderSize.Height);
-                else if (tabHeaderLocation == TabLocation.Left)
-                    return new Rectangle(bounds.Left + TabHeaderSize.Height, bounds.Top, bounds.Width - TabHeaderSize.Height, bounds.Height);
-                else // if (tabHeaderLocation == TabLocation.Right)
-                    return new Rectangle(bounds.Left, bounds.Top, bounds.Width - TabHeaderSize.Height, bounds.Height);
-            }
-        }
+        public override Rectangle DisplayRectangle => displayArea;
 
         /// <summary>
-        /// Gets the client rectangle where tab headers are located.
+        /// Gets the client rectangle where tabs are located.
         /// </summary>
         [Browsable(false)]
-        public Rectangle TabHeaderArea
-        {
-            get
-            {
-                var bounds = ClientRectangle;
-                if (tabHeaderLocation == TabLocation.Top)
-                    return new Rectangle(bounds.Left, bounds.Top, bounds.Width, TabHeaderSize.Height + 1);
-                else if (tabHeaderLocation == TabLocation.Bottom)
-                    return new Rectangle(bounds.Left, bounds.Bottom - TabHeaderSize.Height - 1, bounds.Width, TabHeaderSize.Height + 1);
-                else if (tabHeaderLocation == TabLocation.Left)
-                    return new Rectangle(bounds.Left, bounds.Top, TabHeaderSize.Height + 1, bounds.Height);
-                else // if (tabHeaderLocation == TabLocation.Right)
-                    return new Rectangle(bounds.Right - TabHeaderSize.Height - 1, bounds.Top, TabHeaderSize.Height + 1, bounds.Height);
-            }
-        }
+        public Rectangle TabArea => tabArea;
+
+        /// <summary>
+        /// Gets whether the scroll buttons are visible.
+        /// </summary>
+        [Browsable(false)]
+        public bool ScrollButtons => scrollButtons;
+
+        /// <summary>
+        /// Gets the bounds of the near scroll button. Although scroll button size is returned
+        /// by the renderer, it may be resized along with tabs while layout logic is applied.
+        /// </summary>
+        [Browsable(false)]
+        protected internal Rectangle NearScrollButtonBounds => nearScrollButtonBounds;
+
+        /// <summary>
+        /// Gets the bounds of the far scroll button. Although scroll button size is returned
+        /// by the renderer, it may be resized along with tabs while layout logic is applied.
+        /// </summary>
+        [Browsable(false)]
+        protected internal Rectangle FarScrollButtonBounds => farScrollButtonBounds;
         #endregion
 
         #region Constructor
@@ -327,7 +361,7 @@ namespace Manina.Windows.Forms
         {
             Tabs = new TabCollection(this);
             SetRenderer(new TabControlRenderer(this));
-            UpdateTabHeaderLayout();
+            UpdateTabLayout();
         }
         #endregion
 
@@ -337,15 +371,15 @@ namespace Manina.Windows.Forms
         /// <see cref="Tab"/> which contains the given point.
         /// </summary>
         /// <param name="pt">Hit test coordinates</param>
-        /// <returns>The tab header which contains the given point; or null
-        /// if none of the tab headers contains the given point.</returns>
+        /// <returns>The tab which contains the given point; or null
+        /// if none of the tabs contains the given point.</returns>
         public Tab PerformHitTest(Point pt)
         {
-            if (!TabHeaderArea.Contains(pt)) return null;
+            if (!TabArea.Contains(pt)) return null;
 
-            foreach (var header in Tabs)
+            foreach (var tab in Tabs)
             {
-                if (header.Bounds.Contains(pt)) return header;
+                if (tab.Bounds.Contains(pt)) return tab;
             }
             return null;
         }
@@ -365,7 +399,7 @@ namespace Manina.Windows.Forms
         {
             base.OnResize(e);
 
-            UpdateTabHeaderLayout();
+            UpdateTabLayout();
             Invalidate();
         }
 
@@ -373,20 +407,20 @@ namespace Manina.Windows.Forms
         {
             base.OnMouseClick(e);
 
-            var header = PerformHitTest(e.Location);
-            if (header != null)
-                SelectedPage = header.Page;
+            var tab = PerformHitTest(e.Location);
+            if (tab != null)
+                SelectedPage = tab.Page;
         }
 
         protected override void OnMouseMove(MouseEventArgs e)
         {
             base.OnMouseMove(e);
 
-            var oldHoveredTabHeader = hoveredTabHeader;
-            hoveredTabHeader = PerformHitTest(e.Location);
-            if (hoveredTabHeader != null)
-                OnTabHeaderMouseMove(new TabHeaderMouseEventArgs(hoveredTabHeader, e.Button, e.Clicks, e.Delta, e.Location));
-            if (!ReferenceEquals(oldHoveredTabHeader, hoveredTabHeader))
+            var oldHoveredTab = hoveredTab;
+            hoveredTab = PerformHitTest(e.Location);
+            if (hoveredTab != null)
+                OnTabMouseMove(new TabMouseEventArgs(hoveredTab, e.Button, e.Clicks, e.Delta, e.Location));
+            if (!ReferenceEquals(oldHoveredTab, hoveredTab))
                 Invalidate();
         }
 
@@ -394,9 +428,9 @@ namespace Manina.Windows.Forms
         {
             base.OnMouseLeave(e);
 
-            if (hoveredTabHeader != null)
+            if (hoveredTab != null)
             {
-                hoveredTabHeader = null;
+                hoveredTab = null;
                 Invalidate();
             }
         }
@@ -405,12 +439,12 @@ namespace Manina.Windows.Forms
         {
             base.OnMouseMove(e);
 
-            if (hoveredTabHeader != null)
+            if (hoveredTab != null)
             {
-                var oldmouseDownTabHeader = mouseDownTabHeader;
-                mouseDownTabHeader = hoveredTabHeader;
-                OnTabHeaderMouseDown(new TabHeaderMouseEventArgs(hoveredTabHeader, e.Button, e.Clicks, e.Delta, e.Location));
-                if (oldmouseDownTabHeader != mouseDownTabHeader)
+                var oldmouseDownTab = mouseDownTab;
+                mouseDownTab = hoveredTab;
+                OnTabMouseDown(new TabMouseEventArgs(hoveredTab, e.Button, e.Clicks, e.Delta, e.Location));
+                if (oldmouseDownTab != mouseDownTab)
                     Invalidate();
             }
         }
@@ -419,15 +453,15 @@ namespace Manina.Windows.Forms
         {
             base.OnMouseMove(e);
 
-            if (mouseDownTabHeader != null)
-                OnTabHeaderClick(new TabHeaderMouseEventArgs(mouseDownTabHeader, e.Button, e.Clicks, e.Delta, e.Location));
+            if (mouseDownTab != null)
+                OnTabClick(new TabMouseEventArgs(mouseDownTab, e.Button, e.Clicks, e.Delta, e.Location));
 
-            if (hoveredTabHeader != null)
-                OnTabHeaderMouseUp(new TabHeaderMouseEventArgs(hoveredTabHeader, e.Button, e.Clicks, e.Delta, e.Location));
+            if (hoveredTab != null)
+                OnTabMouseUp(new TabMouseEventArgs(hoveredTab, e.Button, e.Clicks, e.Delta, e.Location));
 
-            var oldmouseDownTabHeader = mouseDownTabHeader;
-            mouseDownTabHeader = null;
-            if (!ReferenceEquals(oldmouseDownTabHeader, mouseDownTabHeader))
+            var oldmouseDownTab = mouseDownTab;
+            mouseDownTab = null;
+            if (!ReferenceEquals(oldmouseDownTab, mouseDownTab))
                 Invalidate();
         }
 
@@ -435,16 +469,16 @@ namespace Manina.Windows.Forms
         {
             base.OnMouseDoubleClick(e);
 
-            if (mouseDownTabHeader != null)
-                OnTabHeaderDoubleClick(new TabHeaderMouseEventArgs(mouseDownTabHeader, e.Button, e.Clicks, e.Delta, e.Location));
+            if (mouseDownTab != null)
+                OnTabDoubleClick(new TabMouseEventArgs(mouseDownTab, e.Button, e.Clicks, e.Delta, e.Location));
         }
 
         protected override void OnMouseWheel(MouseEventArgs e)
         {
             base.OnMouseWheel(e);
 
-            if (hoveredTabHeader != null)
-                OnTabHeaderMouseWheel(new TabHeaderMouseEventArgs(hoveredTabHeader, e.Button, e.Clicks, e.Delta, e.Location));
+            if (hoveredTab != null)
+                OnTabMouseWheel(new TabMouseEventArgs(hoveredTab, e.Button, e.Clicks, e.Delta, e.Location));
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -459,7 +493,7 @@ namespace Manina.Windows.Forms
         {
             Tabs.AddPage(e.Page);
 
-            UpdateTabHeaderLayout();
+            UpdateTabLayout();
             e.Page.TextChanged += Page_TextChanged;
             base.OnPageAdded(e);
         }
@@ -468,7 +502,7 @@ namespace Manina.Windows.Forms
         {
             Tabs.RemovePage(e.Page);
 
-            UpdateTabHeaderLayout();
+            UpdateTabLayout();
             e.Page.TextChanged -= Page_TextChanged;
             base.OnPageRemoved(e);
         }
@@ -477,99 +511,238 @@ namespace Manina.Windows.Forms
         #region Helper Methods
         private void Page_TextChanged(object sender, EventArgs e)
         {
-            UpdateTabHeaderLayout();
+            UpdateTabLayout();
             Invalidate();
         }
+
         /// <summary>
-        /// Updates the layout of all tab headers.
+        /// Makes sure that the view offset is within the scrollable width.
         /// </summary>
-        protected void UpdateTabHeaderLayout()
+        private void CheckViewOffset()
         {
+            if (ScrollButtons)
+                viewOffset = Math.Max(0, Math.Min(viewOffset, maxViewOffset));
+            else
+                viewOffset = 0;
+        }
+
+        /// <summary>
+        /// Updates the layout of all tabs.
+        /// </summary>
+        protected void UpdateTabLayout()
+        {
+            tabArea = Rectangle.Empty;
+            displayArea = ClientRectangle;
+            if (BorderStyle != BorderStyle.None)
+                displayArea.Inflate(-1, -1);
+
             if (Pages.Count == 0) return;
 
-            var bounds = TabHeaderArea;
-            int[] tabHeaderWidths = new int[Pages.Count];
-            int[] tabHeaderLocations = new int[Pages.Count];
-            int width = (TabHeaderLocation == TabLocation.Top || TabHeaderLocation == TabLocation.Bottom) ? bounds.Width : bounds.Height;
+            bool horizontal = tabLocation == TabLocation.Top || tabLocation == TabLocation.Bottom;
+            var bounds = ClientRectangle;
 
-            for (int index = 0; index < Pages.Count; index++)
+            // measure tabs
+            var tabSizes = Tabs.Select(t =>
             {
-                int tabWidth = 0;
-                if (TabHeaderSizing == TabSizing.Fixed)
-                    tabWidth = TabHeaderSize.Width;
-                else if (TabHeaderSizing == TabSizing.AutoFit)
-                    tabWidth = TextRenderer.MeasureText(Pages[index].Text, Font, Size.Empty).Width + 8;
-                else // if (TabHeaderSizing == TabSizing.Stretch)
-                    tabWidth = (int)(width / (float)Pages.Count);
-
-                tabHeaderWidths[index] = tabWidth;
-            }
-
-            // check if auto sized headers exceed control bounds
-            if (TabHeaderSizing == TabSizing.AutoFit)
-            {
-                int averageHeaderWidth = (int)(width / (float)Pages.Count);
-                int countOverAverage = 0;
-                int totalWidth = 0;
-                for (int index = 0; index < Pages.Count; index++)
+                if (TabSizing == TabSizing.Fixed)
                 {
-                    totalWidth += tabHeaderWidths[index];
-                    if (tabHeaderWidths[index] > averageHeaderWidth)
-                        countOverAverage++;
+                    return TabSize;
                 }
-                int toSubtract = (int)((totalWidth - width) / (float)countOverAverage);
-                for (int index = 0; index < Pages.Count; index++)
+                else if (TabSizing == TabSizing.AutoFit)
                 {
-                    if (tabHeaderWidths[index] > averageHeaderWidth)
-                        tabHeaderWidths[index] = tabHeaderWidths[index] - toSubtract;
+                    MeasureTabEventArgs e = new MeasureTabEventArgs(t, Size.Empty);
+                    OnMeasureTab(e);
+                    return e.Size;
                 }
-            }
-
-            // calculate total width
-            int totalTabWidth = 0;
-            for (int index = 0; index < Pages.Count; index++)
-            {
-                totalTabWidth += tabHeaderWidths[index];
-            }
-
-            // place headers
-            if (TabHeaderLocation == TabLocation.Left)
-            {
-                tabHeaderLocations[0] = (TabHeaderAlignment == Alignment.Near ? width : TabHeaderAlignment == Alignment.Far ? totalTabWidth : width - (width - totalTabWidth) / 2);
-                for (int index = 1; index < Pages.Count; index++)
+                else // if (TabSizing == TabSizing.Stretch)
                 {
-                    tabHeaderLocations[index] = tabHeaderLocations[index - 1] - tabHeaderWidths[index - 1];
+                    MeasureTabEventArgs e = new MeasureTabEventArgs(t, Size.Empty);
+                    OnMeasureTab(e);
+                    if (horizontal)
+                    {
+                        int stretchedWidth = Math.Max(10, (int)(bounds.Width / (float)Tabs.Count));
+                        return new Size(stretchedWidth, e.Size.Height);
+                    }
+                    else
+                    {
+                        int stretchedHeight = Math.Max(10, (int)(bounds.Height / (float)Tabs.Count));
+                        return new Size(e.Size.Width, stretchedHeight);
+                    }
                 }
+            }).ToArray();
 
-                // make sure the last header does not exceed bounds
-                if (tabHeaderLocations[Pages.Count - 1] - tabHeaderWidths[Pages.Count - 1] < 0)
-                    tabHeaderWidths[Pages.Count - 1] = tabHeaderLocations[Pages.Count - 1];
+            // tolerate up-to a 2-pixel difference by sizing last tab
+            int totalTabWidth = tabSizes.Sum(t => t.Width);
+            int totalTabHeight = tabSizes.Sum(t => t.Height);
+            if (horizontal)
+            {
+                int diff = totalTabWidth - bounds.Width;
+                if (Math.Abs(diff) <= 2)
+                {
+                    Size size = tabSizes[tabSizes.Length - 1];
+                    size.Width -= diff;
+                    tabSizes[tabSizes.Length - 1] = size;
+                    totalTabWidth -= diff;
+                }
             }
             else
             {
-                tabHeaderLocations[0] = (TabHeaderAlignment == Alignment.Near ? 0 : TabHeaderAlignment == Alignment.Far ? width - totalTabWidth : (width - totalTabWidth) / 2);
-                for (int index = 1; index < Pages.Count; index++)
+                int diff = totalTabHeight - bounds.Height;
+                if (Math.Abs(diff) <= 2)
                 {
-                    tabHeaderLocations[index] = tabHeaderLocations[index - 1] + tabHeaderWidths[index - 1];
+                    Size size = tabSizes[tabSizes.Length - 1];
+                    size.Height -= diff;
+                    tabSizes[tabSizes.Length - 1] = size;
+                    totalTabHeight -= diff;
                 }
-
-                // make sure the last header does not exceed bounds
-                if (tabHeaderLocations[Pages.Count - 1] + tabHeaderWidths[Pages.Count - 1] > width)
-                    tabHeaderWidths[Pages.Count - 1] = width - tabHeaderLocations[Pages.Count - 1];
             }
 
-            // create header bounds
-            for (int index = 0; index < Pages.Count; index++)
+            // calculate maximum tab size
+            Size maxSize = new Size(0, 0);
+            foreach (var size in tabSizes)
             {
+                maxSize.Width = Math.Max(maxSize.Width, size.Width);
+                maxSize.Height = Math.Max(maxSize.Height, size.Height);
+            }
 
-                if (TabHeaderLocation == TabLocation.Top)
-                    Tabs[index].Bounds = new Rectangle(bounds.Left + tabHeaderLocations[index], bounds.Top, tabHeaderWidths[index], bounds.Height);
-                else if (TabHeaderLocation == TabLocation.Bottom)
-                    Tabs[index].Bounds = new Rectangle(bounds.Left + tabHeaderLocations[index], bounds.Top, tabHeaderWidths[index], bounds.Height);
-                else if (TabHeaderLocation == TabLocation.Left)
-                    Tabs[index].Bounds = new Rectangle(bounds.Left, bounds.Top + tabHeaderLocations[index] - tabHeaderWidths[index], bounds.Width, tabHeaderWidths[index]);
+            // make sure tabs have the same height (if horizontal) or width (if vertical)
+            for (int i = 0; i < tabSizes.Length; i++)
+            {
+                Size size = tabSizes[i];
+                if (horizontal)
+                    size.Height = maxSize.Height;
                 else
-                    Tabs[index].Bounds = new Rectangle(bounds.Left, bounds.Top + tabHeaderLocations[index], bounds.Width, tabHeaderWidths[index]);
+                    size.Width = maxSize.Width;
+                tabSizes[i] = size;
+            }
+
+            // update tab area
+            if (tabLocation == TabLocation.Top)
+                tabArea = new Rectangle(bounds.Left, bounds.Top, bounds.Width, maxSize.Height);
+            else if (tabLocation == TabLocation.Bottom)
+                tabArea = new Rectangle(bounds.Left, bounds.Bottom - maxSize.Height, bounds.Width, maxSize.Height);
+            else if (tabLocation == TabLocation.Left)
+                tabArea = new Rectangle(bounds.Left, bounds.Top, maxSize.Width, bounds.Height);
+            else // if (tabLocation == TabLocation.Right)
+                tabArea = new Rectangle(bounds.Right - maxSize.Width, bounds.Top, maxSize.Width, bounds.Height);
+
+            // do we need to show scroll buttons?
+            maxViewOffset = Math.Max(0, horizontal ? totalTabWidth - tabArea.Width : totalTabHeight - tabArea.Height);
+            scrollButtons = (maxViewOffset > 0);
+            if (scrollButtons)
+            {
+                // update tab area to account for scroll buttons
+                MeasureEventArgs eNear = new MeasureEventArgs(Size.Empty);
+                MeasureEventArgs eFar = new MeasureEventArgs(Size.Empty);
+                OnMeasureNearScrollButton(eNear);
+                OnMeasureFarScrollButton(eFar);
+                var nearScrollButtonSize = eNear.Size;
+                var farScrollButtonSize = eFar.Size;
+
+                if (TabLocation == TabLocation.Top)
+                {
+                    nearScrollButtonBounds = new Rectangle(bounds.Left, bounds.Top, nearScrollButtonSize.Width, maxSize.Height);
+                    farScrollButtonBounds = new Rectangle(bounds.Right - farScrollButtonSize.Width, bounds.Top, farScrollButtonSize.Width, maxSize.Height);
+
+                    tabArea.X = bounds.Left + nearScrollButtonBounds.Width;
+                    tabArea.Width = bounds.Width - nearScrollButtonBounds.Width - farScrollButtonBounds.Width;
+                    maxViewOffset = totalTabWidth - tabArea.Width;
+                }
+                else if (TabLocation == TabLocation.Bottom)
+                {
+                    nearScrollButtonBounds = new Rectangle(bounds.Left, bounds.Bottom - nearScrollButtonSize.Height, nearScrollButtonSize.Width, maxSize.Height);
+                    farScrollButtonBounds = new Rectangle(bounds.Right - farScrollButtonSize.Width, bounds.Bottom - nearScrollButtonSize.Height, farScrollButtonSize.Width, maxSize.Height);
+
+                    tabArea.X = bounds.Left + nearScrollButtonBounds.Width;
+                    tabArea.Width = bounds.Width - nearScrollButtonBounds.Width - farScrollButtonBounds.Width;
+                    maxViewOffset = totalTabWidth - tabArea.Width;
+                }
+                else if (TabLocation == TabLocation.Left)
+                {
+                    nearScrollButtonBounds = new Rectangle(bounds.Left, bounds.Bottom - nearScrollButtonSize.Height, maxSize.Width, nearScrollButtonSize.Height);
+                    farScrollButtonBounds = new Rectangle(bounds.Left, bounds.Top, maxSize.Width, farScrollButtonSize.Height);
+
+                    tabArea.Y = bounds.Top + nearScrollButtonBounds.Height;
+                    tabArea.Height = bounds.Height - nearScrollButtonBounds.Height - farScrollButtonBounds.Height;
+                    maxViewOffset = totalTabHeight - tabArea.Height;
+                }
+                else // if (TabLocation == TabLocation.Right)
+                {
+                    nearScrollButtonBounds = new Rectangle(bounds.Left, bounds.Top, maxSize.Width, nearScrollButtonSize.Height);
+                    farScrollButtonBounds = new Rectangle(bounds.Left, bounds.Bottom - farScrollButtonSize.Height, maxSize.Width, farScrollButtonSize.Height);
+
+                    tabArea.Y = bounds.Top + nearScrollButtonBounds.Height;
+                    tabArea.Height = bounds.Height - nearScrollButtonBounds.Height - farScrollButtonBounds.Height;
+                    maxViewOffset = totalTabHeight - tabArea.Height;
+                }
+            }
+            else
+            {
+                nearScrollButtonBounds = Rectangle.Empty;
+                farScrollButtonBounds = Rectangle.Empty;
+            }
+            CheckViewOffset();
+
+            // update display area
+            bounds = ClientRectangle;
+            if (BorderStyle != BorderStyle.None)
+                bounds.Inflate(-1, -1);
+
+            if (tabLocation == TabLocation.Top)
+                displayArea = new Rectangle(bounds.Left, tabArea.Bottom, bounds.Width, bounds.Height - tabArea.Height + 1);
+            else if (tabLocation == TabLocation.Bottom)
+                displayArea = new Rectangle(bounds.Left, bounds.Top, bounds.Width, bounds.Height - tabArea.Height + 1);
+            else if (tabLocation == TabLocation.Left)
+                displayArea = new Rectangle(TabArea.Right, bounds.Top, bounds.Width - tabArea.Width + 1, bounds.Height);
+            else // if (tabLocation == TabLocation.Right)
+                displayArea = new Rectangle(bounds.Left, bounds.Top, bounds.Width - tabArea.Width + 1, bounds.Height);
+
+            // raise the layout event
+            LayoutTabsEventArgs eLayout = new LayoutTabsEventArgs(tabArea, displayArea, nearScrollButtonBounds, farScrollButtonBounds);
+            OnLayoutTabs(eLayout);
+
+            // recalculate view offset in case layout bounds were modified in the event
+            tabArea = eLayout.TabAreaBounds;
+            displayArea = eLayout.DisplayAreaBounds;
+            nearScrollButtonBounds = eLayout.NearScrollButtonBounds;
+            farScrollButtonBounds = eLayout.FarScrollButtonBounds;
+            // do we need to show scroll buttons?
+            maxViewOffset = Math.Max(0, horizontal ? totalTabWidth - tabArea.Width : totalTabHeight - tabArea.Height);
+            scrollButtons = (maxViewOffset > 0);
+            CheckViewOffset();
+
+            // place tabs
+            if (TabLocation == TabLocation.Top || TabLocation == TabLocation.Bottom)
+            {
+                if (scrollButtons || TabAlignment == Alignment.Near)
+                    Tabs[0].Bounds = new Rectangle(tabArea.Left + viewOffset, tabArea.Top, tabSizes[0].Width, tabSizes[0].Height);
+                else if (TabAlignment == Alignment.Far)
+                    Tabs[0].Bounds = new Rectangle(tabArea.Left + (tabArea.Width - totalTabWidth), tabArea.Top, tabSizes[0].Width, tabSizes[0].Height);
+                else // if (TabAlignment == Alignment.Center)
+                    Tabs[0].Bounds = new Rectangle(tabArea.Left + (tabArea.Width - totalTabWidth) / 2, tabArea.Top, tabSizes[0].Width, tabSizes[0].Height);
+
+                for (int i = 1; i < Tabs.Count; i++)
+                {
+                    Point tabLocation = Tabs[i - 1].Bounds.Location;
+                    tabLocation.Offset(Tabs[i - 1].Bounds.Width, 0);
+                    Tabs[i].Bounds = new Rectangle(tabLocation, tabSizes[i]);
+                }
+            }
+            else // if (TabLocation == TabLocation.Left || TabLocation == TabLocation.Right)
+            {
+                if (scrollButtons || TabAlignment == Alignment.Near)
+                    Tabs[0].Bounds = new Rectangle(tabArea.Left, tabArea.Top - viewOffset, tabSizes[0].Width, tabSizes[0].Height);
+                else if (TabAlignment == Alignment.Far)
+                    Tabs[0].Bounds = new Rectangle(tabArea.Left, tabArea.Top + (tabArea.Height - totalTabHeight), tabSizes[0].Width, tabSizes[0].Height);
+                else // if (TabAlignment == Alignment.Center)
+                    Tabs[0].Bounds = new Rectangle(tabArea.Left, tabArea.Top + (tabArea.Height - totalTabHeight) / 2, tabSizes[0].Width, tabSizes[0].Height);
+
+                for (int i = 1; i < Tabs.Count; i++)
+                {
+                    Point tabLocation = Tabs[i - 1].Bounds.Location;
+                    tabLocation.Offset(0, Tabs[i - 1].Bounds.Height);
+                    Tabs[i].Bounds = new Rectangle(tabLocation, tabSizes[i]);
+                }
             }
         }
         #endregion

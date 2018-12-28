@@ -12,11 +12,11 @@ namespace Manina.Windows.Forms
         /// </summary>
         public class TabControlRenderer
         {
-            #region DrawTabHeaderParams
+            #region DrawTabParams
             /// <summary>
-            /// Represents the parameters required to draw a tab header.
+            /// Represents the parameters required to draw a tab.
             /// </summary>
-            public struct DrawTabHeaderParams
+            public struct DrawTabParams
             {
                 /// <summary>
                 /// Index of the tab in its container collection.
@@ -29,13 +29,13 @@ namespace Manina.Windows.Forms
                 /// <summary>
                 /// Visual state of the tab.
                 /// </summary>
-                public TabHeaderState State { get; private set; }
+                public TabState State { get; private set; }
                 /// <summary>
                 /// Bounding rectangle of the tab.
                 /// </summary>
                 public Rectangle Bounds { get; private set; }
 
-                public DrawTabHeaderParams(int index, string text, Rectangle bounds, TabHeaderState state)
+                public DrawTabParams(int index, string text, Rectangle bounds, TabState state)
                 {
                     Index = index;
                     Text = text;
@@ -45,31 +45,31 @@ namespace Manina.Windows.Forms
             }
             #endregion
 
-            #region DrawTabHeaderParamsComparer
+            #region DrawTabParamsComparer
             /// <summary>
             /// Compares items so that they are sorted as: Inactive > Hot > Active > Pressed
             /// </summary>
-            private class DrawTabHeaderParamsComparer : IComparer<DrawTabHeaderParams>
+            private class DrawTabParamsComparer : IComparer<DrawTabParams>
             {
                 /// <summary>
                 /// Compares tabs by draw order.
                 /// </summary>
-                public int Compare(DrawTabHeaderParams p1, DrawTabHeaderParams p2)
+                public int Compare(DrawTabParams p1, DrawTabParams p2)
                 {
                     if (ReferenceEquals(p1, p2) || p1.Index == p2.Index)
                         return 0;
 
-                    if ((p1.State & TabHeaderState.Pressed) != TabHeaderState.Inactive)
+                    if ((p1.State & TabState.Pressed) != TabState.Inactive)
                         return 1;
-                    else if ((p2.State & TabHeaderState.Pressed) != TabHeaderState.Inactive)
+                    else if ((p2.State & TabState.Pressed) != TabState.Inactive)
                         return -1;
-                    else if ((p1.State & TabHeaderState.Active) != TabHeaderState.Inactive)
+                    else if ((p1.State & TabState.Active) != TabState.Inactive)
                         return 1;
-                    else if ((p2.State & TabHeaderState.Active) != TabHeaderState.Inactive)
+                    else if ((p2.State & TabState.Active) != TabState.Inactive)
                         return -1;
-                    else if ((p1.State & TabHeaderState.Hot) != TabHeaderState.Inactive)
+                    else if ((p1.State & TabState.Hot) != TabState.Inactive)
                         return 1;
-                    else if ((p2.State & TabHeaderState.Hot) != TabHeaderState.Inactive)
+                    else if ((p2.State & TabState.Hot) != TabState.Inactive)
                         return -1;
 
                     return p1.Index.CompareTo(p2.Index);
@@ -84,11 +84,11 @@ namespace Manina.Windows.Forms
             public TabControl Parent { get; protected set; }
 
             /// <summary>
-            /// Gets the background color of tab header area.
+            /// Gets the background color of the tab area.
             /// </summary>
             public virtual Color BackColor { get; protected set; } = SystemColors.Control;
             /// <summary>
-            /// Gets the foreground color of tab header area.
+            /// Gets the foreground color of the tab area.
             /// </summary>
             public virtual Color ForeColor { get; protected set; } = Color.Black;
             /// <summary>
@@ -97,7 +97,7 @@ namespace Manina.Windows.Forms
             public virtual Color BorderColor { get; protected set; } = Color.Black;
 
             /// <summary>
-            /// Gets the font of tab headers.
+            /// Gets the font of tab texts.
             /// </summary>
             public virtual Font Font { get; protected set; }
 
@@ -139,6 +139,23 @@ namespace Manina.Windows.Forms
             /// Gets the color of tab separators.
             /// </summary>
             public virtual Color SeparatorColor { get; protected set; } = Color.FromArgb(166, 166, 166);
+
+            /// <summary>
+            /// Gets the background color of scroll buttons.
+            /// </summary>
+            public virtual Color ButtonBackColor { get; protected set; } = SystemColors.Control;
+            /// <summary>
+            /// Gets the foreground color of scroll buttons.
+            /// </summary>
+            public virtual Color ButtonForeColor { get; protected set; } = Color.FromArgb(255, 244, 192);
+            /// <summary>
+            /// Gets the shape fill color of scroll buttons.
+            /// </summary>
+            public virtual Color ButtonFillColor { get; protected set; } = Color.FromArgb(92, 184, 92);
+            /// <summary>
+            /// Gets the shape border color of scroll buttons.
+            /// </summary>
+            public virtual Color ButtonBorderColor { get; protected set; } = Color.FromArgb(51, 51, 51);
             #endregion
 
             #region Constructor
@@ -155,45 +172,52 @@ namespace Manina.Windows.Forms
 
             #region Render Methods
             /// <summary>
-            /// Draws the background of the tab header area.
+            /// Draws the background of the tab area.
             /// </summary>
             public virtual void Render(Graphics g)
             {
+                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+
                 // clear backgound
                 g.Clear(BackColor);
 
-                // sort headers
-                var drawParams = new List<DrawTabHeaderParams>();
+                // sort tabs
+                var drawParams = new List<DrawTabParams>();
                 for (int i = 0; i < Parent.Tabs.Count; i++)
                 {
                     var tab = Parent.Tabs[i];
-                    drawParams.Add(new DrawTabHeaderParams(i, tab.Text, tab.Bounds, tab.State));
+                    drawParams.Add(new DrawTabParams(i, tab.Text, tab.Bounds, tab.State));
                 }
-                drawParams.Sort(new DrawTabHeaderParamsComparer());
+                drawParams.Sort(new DrawTabParamsComparer());
 
-                // draw headers
+                // draw tabs
                 foreach (var param in drawParams)
                 {
-                    DrawTabHeaderBackGround(g, param);
-                    DrawTabHeaderText(g, param);
+                    DrawTabBackGround(g, param);
+                    DrawTabText(g, param);
                     DrawSeparator(g, param);
+                }
+
+                // draw scroll buttons
+                if (Parent.ScrollButtons)
+                {
+                    DrawNearScrollButton(g, Parent.NearScrollButtonBounds);
+                    DrawFarScrollButton(g, Parent.FarScrollButtonBounds);
                 }
 
                 // draw border
                 if (Parent.BorderStyle != BorderStyle.None)
                 {
-                    var borderBounds = Parent.DisplayRectangle;
-                    borderBounds.Inflate(1, 1);
-                    DrawBorder(g, borderBounds);
+                    DrawBorder(g, Parent.DisplayRectangle.GetInflated(1, 1));
                 }
             }
 
             /// <summary>
-            /// Draws the backgound of a tab header.
+            /// Draws the backgound of a tab.
             /// </summary>
             /// <param name="g">The graphics to draw on.</param>
-            /// <param name="param">The parameters required to draw the tab header.</param>
-            public virtual void DrawTabHeaderBackGround(Graphics g, DrawTabHeaderParams param)
+            /// <param name="param">The parameters required to draw the tab.</param>
+            public virtual void DrawTabBackGround(Graphics g, DrawTabParams param)
             {
                 using (var brush = new SolidBrush(GetTabBackColor(param.State)))
                 {
@@ -202,11 +226,11 @@ namespace Manina.Windows.Forms
             }
 
             /// <summary>
-            /// Draws the text of a tab header.
+            /// Draws the text of a tab.
             /// </summary>
             /// <param name="g">The graphics to draw on.</param>
-            /// <param name="param">The parameters required to draw the tab header.</param>
-            public virtual void DrawTabHeaderText(Graphics g, DrawTabHeaderParams param)
+            /// <param name="param">The parameters required to draw the tab.</param>
+            public virtual void DrawTabText(Graphics g, DrawTabParams param)
             {
                 if (string.IsNullOrEmpty(param.Text)) return;
 
@@ -220,9 +244,12 @@ namespace Manina.Windows.Forms
                     flags |= TextFormatFlags.HorizontalCenter;
 
                 var textBounds = param.Bounds;
-                textBounds.Inflate(-4, -4);
+                textBounds.X += Parent.TabPadding.Left;
+                textBounds.Y += Parent.TabPadding.Top;
+                textBounds.Width -= Parent.TabPadding.Horizontal;
+                textBounds.Height -= Parent.TabPadding.Vertical;
 
-                if (Parent.TabHeaderLocation == TabLocation.Top || Parent.TabHeaderLocation == TabLocation.Bottom)
+                if (Parent.TextDirection == TextDirection.Right)
                 {
                     TextRenderer.DrawText(g, param.Text, Font, textBounds, foreColor, backColor, flags);
                 }
@@ -238,19 +265,19 @@ namespace Manina.Windows.Forms
                         TextRenderer.DrawText(imageGraphics, param.Text, Font, textBounds, foreColor, backColor, flags);
                         // Rotate, translate and draw the image
                         Point[] ptMap = new Point[3];
-                        if (Parent.TabHeaderLocation == TabLocation.Top || Parent.TabHeaderLocation == TabLocation.Bottom)
+                        if (Parent.TextDirection == TextDirection.Right)
                         {
                             ptMap[0] = param.Bounds.GetTopLeft();    // upper-left
                             ptMap[1] = param.Bounds.GetTopRight();   // upper-right
                             ptMap[2] = param.Bounds.GetBottomLeft(); // lower-left
                         }
-                        else if (Parent.TabHeaderLocation == TabLocation.Left)
+                        else if (Parent.TextDirection == TextDirection.Up)
                         {
                             ptMap[0] = param.Bounds.GetBottomLeft();  // upper-left
                             ptMap[1] = param.Bounds.GetTopLeft();     // upper-right
                             ptMap[2] = param.Bounds.GetBottomRight(); // lower-left
                         }
-                        else // if (Parent.TabHeaderLocation == TabControl.TabLocation.Right)
+                        else // if (Parent.TextDirection == TextDirection.Down)
                         {
                             ptMap[0] = param.Bounds.GetTopRight();    // upper-left
                             ptMap[1] = param.Bounds.GetBottomRight(); // upper-right
@@ -265,28 +292,28 @@ namespace Manina.Windows.Forms
             /// Draws the separators between tabs.
             /// </summary>
             /// <param name="g">The graphics to draw on.</param>
-            /// <param name="param">The parameters required to draw the tab header.</param>
-            public virtual void DrawSeparator(Graphics g, DrawTabHeaderParams param)
+            /// <param name="param">The parameters required to draw the tab.</param>
+            public virtual void DrawSeparator(Graphics g, DrawTabParams param)
             {
                 if (param.Index != Parent.SelectedIndex)
                 {
                     using (var pen = new Pen(SeparatorColor))
                     {
-                        if (Parent.TabHeaderLocation == TabLocation.Top || Parent.TabHeaderLocation == TabLocation.Bottom)
+                        if (Parent.TabLocation == TabLocation.Top || Parent.TabLocation == TabLocation.Bottom)
                         {
                             if (param.Index != 0 && param.Index != Parent.SelectedIndex + 1)
                                 g.DrawLine(pen, param.Bounds.Left, param.Bounds.Top + 4, param.Bounds.Left, param.Bounds.Bottom - 4);
                             if (param.Index != Parent.Pages.Count - 1 && param.Index != Parent.SelectedIndex - 1)
                                 g.DrawLine(pen, param.Bounds.Right, param.Bounds.Top + 4, param.Bounds.Right, param.Bounds.Bottom - 4);
                         }
-                        else if (Parent.TabHeaderLocation == TabLocation.Left)
+                        else if (Parent.TabLocation == TabLocation.Left)
                         {
                             if (param.Index != 0 && param.Index != Parent.SelectedIndex + 1)
                                 g.DrawLine(pen, param.Bounds.Left + 4, param.Bounds.Bottom, param.Bounds.Right - 4, param.Bounds.Bottom);
                             if (param.Index != Parent.Pages.Count - 1 && param.Index != Parent.SelectedIndex - 1)
                                 g.DrawLine(pen, param.Bounds.Left + 4, param.Bounds.Top, param.Bounds.Right - 4, param.Bounds.Top);
                         }
-                        else // if (Parent.TabHeaderLocation == TabControl.TabLocation.Right)
+                        else // if (Parent.TabLocation == TabControl.TabLocation.Right)
                         {
                             if (param.Index != 0 && param.Index != Parent.SelectedIndex + 1)
                                 g.DrawLine(pen, param.Bounds.Left + 4, param.Bounds.Top, param.Bounds.Right - 4, param.Bounds.Top);
@@ -309,7 +336,7 @@ namespace Manina.Windows.Forms
                 {
                     using (Pen pen = new Pen(BorderColor))
                     {
-                        g.DrawRectangle(pen, borderBounds.X, borderBounds.Y, borderBounds.Width - 1, borderBounds.Height - 1);
+                        g.DrawRectangleFixed(pen, borderBounds);
                     }
                     return;
                 }
@@ -317,7 +344,7 @@ namespace Manina.Windows.Forms
                 var tabBounds = Parent.Tabs[Parent.SelectedPage].Bounds;
 
                 Point[] pt = new Point[8];
-                if (Parent.TabHeaderLocation == TabLocation.Top)
+                if (Parent.TabLocation == TabLocation.Top)
                 {
                     pt[0] = borderBounds.GetBottomLeft().GetOffset(0, -1);
                     pt[1] = borderBounds.GetBottomRight().GetOffset(-1, -1);
@@ -328,7 +355,7 @@ namespace Manina.Windows.Forms
                     pt[6] = tabBounds.GetBottomLeft().GetOffset(0, -1);
                     pt[7] = borderBounds.GetTopLeft();
                 }
-                else if (Parent.TabHeaderLocation == TabLocation.Bottom)
+                else if (Parent.TabLocation == TabLocation.Bottom)
                 {
                     pt[0] = borderBounds.GetBottomLeft().GetOffset(0, -1);
                     pt[1] = tabBounds.GetTopLeft();
@@ -339,7 +366,7 @@ namespace Manina.Windows.Forms
                     pt[6] = borderBounds.GetTopRight().GetOffset(-1, 0);
                     pt[7] = borderBounds.GetTopLeft();
                 }
-                else if (Parent.TabHeaderLocation == TabLocation.Left)
+                else if (Parent.TabLocation == TabLocation.Left)
                 {
                     pt[0] = borderBounds.GetBottomLeft().GetOffset(0, -1);
                     pt[1] = borderBounds.GetBottomRight().GetOffset(-1, -1);
@@ -350,7 +377,7 @@ namespace Manina.Windows.Forms
                     pt[6] = tabBounds.GetBottomLeft().GetOffset(0, -1);
                     pt[7] = tabBounds.GetBottomRight().GetOffset(-1, -1);
                 }
-                else // if (Parent.TabHeaderLocation == TabControl.TabLocation.Right)
+                else // if (Parent.TabLocation == TabControl.TabLocation.Right)
                 {
                     pt[0] = borderBounds.GetBottomLeft().GetOffset(0, -1);
                     pt[1] = borderBounds.GetBottomRight().GetOffset(-1, -1);
@@ -367,21 +394,105 @@ namespace Manina.Windows.Forms
                     g.DrawPolygon(pen, pt);
                 }
             }
+
+            /// <summary>
+            /// Draws the near scroll button.
+            /// </summary>
+            /// <param name="g">The graphics to draw on.</param>
+            /// <param name="bounds">Button bounds.</param>
+            public virtual void DrawNearScrollButton(Graphics g, Rectangle bounds)
+            {
+                using (Brush backBrush = new SolidBrush(ButtonBackColor))
+                using (Brush brush = new SolidBrush(ButtonFillColor))
+                using (Pen pen = new Pen(ButtonBorderColor))
+                using (Pen textPen = new Pen(ButtonForeColor))
+                {
+                    g.FillRectangle(backBrush, bounds);
+
+                    bounds = bounds.GetDeflated(Parent.TabPadding);
+                    bounds = bounds.GetInflated(-4, -4);
+                    Point[] points = new Point[3];
+
+                    if (Parent.TabLocation == TabLocation.Top || Parent.TabLocation == TabLocation.Bottom)
+                    {
+                        points[0] = new Point(bounds.Right, bounds.Top);
+                        points[1] = new Point(bounds.Left, (bounds.Top + bounds.Bottom) / 2);
+                        points[2] = new Point(bounds.Right, bounds.Bottom);
+                    }
+                    else if (Parent.TabLocation == TabLocation.Left)
+                    {
+                        points[0] = new Point(bounds.Left, bounds.Top);
+                        points[1] = new Point((bounds.Left + bounds.Right) / 2, bounds.Bottom);
+                        points[2] = new Point(bounds.Right, bounds.Top);
+                    }
+                    else if (Parent.TabLocation == TabLocation.Top)
+                    {
+                        points[0] = new Point(bounds.Left, bounds.Bottom);
+                        points[1] = new Point((bounds.Left + bounds.Right) / 2, bounds.Top);
+                        points[2] = new Point(bounds.Right, bounds.Bottom);
+                    }
+
+                    g.FillPolygon(brush, points);
+                    g.DrawPolygon(pen, points);
+                }
+            }
+
+            /// <summary>
+            /// Draws the far scroll button.
+            /// </summary>
+            /// <param name="g">The graphics to draw on.</param>
+            /// <param name="bounds">Button bounds.</param>
+            public virtual void DrawFarScrollButton(Graphics g, Rectangle bounds)
+            {
+                using (Brush backBrush = new SolidBrush(ButtonBackColor))
+                using (Brush brush = new SolidBrush(ButtonFillColor))
+                using (Pen pen = new Pen(ButtonBorderColor))
+                using (Pen textPen = new Pen(ButtonForeColor))
+                {
+                    g.FillRectangle(backBrush, bounds);
+
+                    bounds = bounds.GetDeflated(Parent.TabPadding);
+                    bounds = bounds.GetInflated(-4, -4);
+                    Point[] points = new Point[3];
+
+                    if (Parent.TabLocation == TabLocation.Top || Parent.TabLocation == TabLocation.Bottom)
+                    {
+                        points[0] = new Point(bounds.Left, bounds.Top);
+                        points[1] = new Point(bounds.Right, (bounds.Top + bounds.Bottom) / 2);
+                        points[2] = new Point(bounds.Left, bounds.Bottom);
+                    }
+                    else if (Parent.TabLocation == TabLocation.Left)
+                    {
+                        points[0] = new Point(bounds.Left, bounds.Bottom);
+                        points[1] = new Point((bounds.Left + bounds.Right) / 2, bounds.Top);
+                        points[2] = new Point(bounds.Right, bounds.Bottom);
+                    }
+                    else if (Parent.TabLocation == TabLocation.Top)
+                    {
+                        points[0] = new Point(bounds.Left, bounds.Top);
+                        points[1] = new Point((bounds.Left + bounds.Right) / 2, bounds.Bottom);
+                        points[2] = new Point(bounds.Right, bounds.Top);
+                    }
+
+                    g.FillPolygon(brush, points);
+                    g.DrawPolygon(pen, points);
+                }
+            }
             #endregion
 
             #region Helper Methods
             /// <summary>
             /// Returns tab backcolor for the given state.
             /// </summary>
-            /// <param name="state">The state of the tab header.</param>
-            protected Color GetTabBackColor(TabControl.TabHeaderState state)
+            /// <param name="state">The state of the tab.</param>
+            protected Color GetTabBackColor(TabState state)
             {
-                if ((state & TabHeaderState.Pressed) != TabHeaderState.Inactive)
+                if ((state & TabState.Pressed) != TabState.Inactive)
                     return PressedTabBackColor;
-                else if ((state & TabHeaderState.Hot) != TabHeaderState.Inactive &&
-                    (state & TabHeaderState.Active) == TabHeaderState.Inactive)
+                else if ((state & TabState.Hot) != TabState.Inactive &&
+                    (state & TabState.Active) == TabState.Inactive)
                     return HotTabBackColor;
-                else if ((state & TabHeaderState.Active) != TabHeaderState.Inactive)
+                else if ((state & TabState.Active) != TabState.Inactive)
                     return ActiveTabBackColor;
                 else
                     return InactiveTabBackColor;
@@ -390,15 +501,15 @@ namespace Manina.Windows.Forms
             /// <summary>
             /// Returns tab forecolor for the given state.
             /// </summary>
-            /// <param name="state">The state of the tab header.</param>
-            protected Color GetTabForeColor(TabControl.TabHeaderState state)
+            /// <param name="state">The state of the tab.</param>
+            protected Color GetTabForeColor(TabState state)
             {
-                if ((state & TabHeaderState.Pressed) != TabHeaderState.Inactive)
+                if ((state & TabState.Pressed) != TabState.Inactive)
                     return PressedTabForeColor;
-                else if ((state & TabHeaderState.Hot) != TabHeaderState.Inactive &&
-                    (state & TabHeaderState.Active) == TabHeaderState.Inactive)
+                else if ((state & TabState.Hot) != TabState.Inactive &&
+                    (state & TabState.Active) == TabState.Inactive)
                     return HotTabForeColor;
-                else if ((state & TabHeaderState.Active) != TabHeaderState.Inactive)
+                else if ((state & TabState.Active) != TabState.Inactive)
                     return ActiveTabForeColor;
                 else
                     return InactiveTabForeColor;

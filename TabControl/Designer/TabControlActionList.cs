@@ -30,28 +30,28 @@ namespace Manina.Windows.Forms
 
             #region Actions
             /// <summary>
-            /// Gets or sets the TabHeaderLocation of the designed control.
+            /// Gets or sets the TabLocation of the designed control.
             /// </summary>
-            public TabLocation TabHeaderLocation
+            public TabLocation TabLocation
             {
-                get { return Control.TabHeaderLocation; }
-                set { GetPropertyByName("TabHeaderLocation").SetValue(Control, value); }
+                get { return Control.TabLocation; }
+                set { GetPropertyByName("TabLocation").SetValue(Control, value); }
             }
             /// <summary>
-            /// Gets or sets the TabHeaderAlignment of the designed control.
+            /// Gets or sets the TabAlignment of the designed control.
             /// </summary>
-            public Alignment TabHeaderAlignment
+            public Alignment TabAlignment
             {
-                get { return Control.TabHeaderAlignment; }
-                set { GetPropertyByName("TabHeaderAlignment").SetValue(Control, value); }
+                get { return Control.TabAlignment; }
+                set { GetPropertyByName("TabAlignment").SetValue(Control, value); }
             }
             /// <summary>
-            /// Gets or sets the TabHeaderSizing of the designed control.
+            /// Gets or sets the TabSizing of the designed control.
             /// </summary>
-            public TabSizing TabHeaderSizing
+            public TabSizing TabSizing
             {
-                get { return Control.TabHeaderSizing; }
-                set { GetPropertyByName("TabHeaderSizing").SetValue(Control, value); }
+                get { return Control.TabSizing; }
+                set { GetPropertyByName("TabSizing").SetValue(Control, value); }
             }
             /// <summary>
             /// Gets or sets the TextAlignment of the designed control.
@@ -147,9 +147,9 @@ namespace Manina.Windows.Forms
                     new DesignerActionHeaderItem("Appearance"),
                     new DesignerActionHeaderItem("Data"),
 
-                    new DesignerActionPropertyItem("TabHeaderLocation", "Tab Location", "Appearance", "Set the location of tabs  relative to the control"),
-                    new DesignerActionPropertyItem("TabHeaderAlignment", "Tab Alignment", "Appearance", "Set the alignment of tabs relative to the control"),
-                    new DesignerActionPropertyItem("TabHeaderSizing", "Tab Sizing", "Appearance", "Set the sizing mode of tabs"),
+                    new DesignerActionPropertyItem("TabLocation", "Tab Location", "Appearance", "Set the location of tabs relative to the control"),
+                    new DesignerActionPropertyItem("TabAlignment", "Tab Alignment", "Appearance", "Set the alignment of tabs relative to the control"),
+                    new DesignerActionPropertyItem("TabSizing", "Tab Sizing", "Appearance", "Set the sizing mode of tabs"),
                     new DesignerActionPropertyItem("TextAlignment", "Text Alignment", "Appearance", "Set the alignment of tab text"),
                     new DesignerActionMethodItem(this, "AddPage", "Add Page", "Data", "Add a new page to the control"),
                     new DesignerActionMethodItem(this, "RemovePage", "Remove Page", "Data" ,"Remove the current page")

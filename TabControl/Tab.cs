@@ -5,7 +5,7 @@ namespace Manina.Windows.Forms
     public partial class TabControl
     {
         /// <summary>
-        /// Represents a tab header associated wth a page.
+        /// Represents a tab associated with a page.
         /// </summary>
         public class Tab
         {
@@ -16,39 +16,39 @@ namespace Manina.Windows.Forms
             protected TabControl Control { get; private set; }
 
             /// <summary>
-            /// Gets the <see cref="Page"/> associated with this header.
+            /// Gets the <see cref="Page"/> associated with this tab.
             /// </summary>
             public Page Page { get; private set; }
 
             /// <summary>
-            /// Gets the header text.
+            /// Gets the tab text.
             /// </summary>
             public string Text => Page != null ? Page.Text : "";
 
             /// <summary>
-            /// Gets the bounding rectangle of the tab header.
+            /// Gets the bounding rectangle of the tab.
             /// </summary>
             public Rectangle Bounds { get; internal set; }
 
             /// <summary>
-            /// Gets the visual state of a tab header.
+            /// Gets the visual state of a tab.
             /// </summary>
-            public TabHeaderState State
+            public TabState State
             {
                 get
                 {
-                    if (Control == null) return TabHeaderState.Inactive;
+                    if (Control == null) return TabState.Inactive;
 
-                    TabHeaderState state = TabHeaderState.Inactive;
+                    TabState state = TabState.Inactive;
 
                     // active
-                    if (ReferenceEquals(Control.SelectedPage, Page)) state |= TabHeaderState.Active;
+                    if (ReferenceEquals(Control.SelectedPage, Page)) state |= TabState.Active;
                     // hot
-                    if (ReferenceEquals(Control.hoveredTabHeader, this)) state |= TabHeaderState.Hot;
+                    if (ReferenceEquals(Control.hoveredTab, this)) state |= TabState.Hot;
                     // pressed
-                    if (ReferenceEquals(Control.mouseDownTabHeader, this)) state |= TabHeaderState.Pressed;
+                    if (ReferenceEquals(Control.mouseDownTab, this)) state |= TabState.Pressed;
                     // focused
-                    if (Control.Focused && (ReferenceEquals(Control.SelectedPage, Page))) state |= TabHeaderState.Focused;
+                    if (Control.Focused && (ReferenceEquals(Control.SelectedPage, Page))) state |= TabState.Focused;
 
                     return state;
                 }
