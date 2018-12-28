@@ -48,6 +48,12 @@
     <Compile Include="Designer\TabControlActionList.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Designer\TabLocationEditor.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Designer\TabLocationSelector.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Enums.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="TabControl.cs">

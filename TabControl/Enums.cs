@@ -40,19 +40,19 @@ namespace Manina.Windows.Forms
         [EditorBrowsable(EditorBrowsableState.Never)]
         None = 0,
         [EditorBrowsable(EditorBrowsableState.Never)]
-        Top = 1,
+        Near = 1,
         [EditorBrowsable(EditorBrowsableState.Never)]
-        Bottom = 2,
+        Center = 2,
         [EditorBrowsable(EditorBrowsableState.Never)]
-        Left = 4,
+        Far = 4,
         [EditorBrowsable(EditorBrowsableState.Never)]
-        Right = 8,
+        Top = 8,
         [EditorBrowsable(EditorBrowsableState.Never)]
-        Near = 16,
+        Bottom = 16,
         [EditorBrowsable(EditorBrowsableState.Never)]
-        Center = 32,
+        Left = 32,
         [EditorBrowsable(EditorBrowsableState.Never)]
-        Far = 64,
+        Right = 64,
         /// <summary>
         /// The tab area is at the top of the control.
         /// Tab buttons are aligned to the left of the tab area.

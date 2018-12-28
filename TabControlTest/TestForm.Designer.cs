@@ -47,6 +47,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.Size = new System.Drawing.Size(800, 450);
             this.tabControl1.TabIndex = 0;
+            this.tabControl1.TabLocation = ((Manina.Windows.Forms.TabLocation)((Manina.Windows.Forms.TabLocation.Near | Manina.Windows.Forms.TabLocation.Top)));
             this.tabControl1.TabSize = new System.Drawing.Size(250, 23);
             this.tabControl1.TextDirection = Manina.Windows.Forms.TextDirection.Up;
             // 

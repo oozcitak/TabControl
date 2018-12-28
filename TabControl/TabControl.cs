@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Design;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -275,6 +276,7 @@ namespace Manina.Windows.Forms
         /// </summary>
         [Category("Appearance"), DefaultValue(TabLocation.LeftTop)]
         [Description("Gets or sets the location of tabs.")]
+        [Editor(typeof(TabLocationEditor), typeof(UITypeEditor))]
         public TabLocation TabLocation { get => tabLocation; set { tabLocation = value; viewOffset = 0; UpdateTabLayout(); UpdatePages(); Invalidate(); } }
 
         /// <summary>
