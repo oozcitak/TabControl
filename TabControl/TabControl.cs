@@ -241,8 +241,7 @@ namespace Manina.Windows.Forms
         private Rectangle farScrollButtonBounds;
 
         private Size tabSize = new Size(75, 23);
-        private TabLocation tabLocation = TabLocation.Top;
-        private Alignment tabAlignment = Alignment.Near;
+        private TabLocation tabLocation = Forms.TabLocation.TopLeft;
         private Alignment textAlignment = Alignment.Near;
         private TabSizing tabSizing = TabSizing.AutoFit;
         private Padding tabPadding = new Padding(4);
@@ -274,15 +273,10 @@ namespace Manina.Windows.Forms
         /// <summary>
         /// Gets or sets the location of tabs.
         /// </summary>
-        [Category("Appearance"), DefaultValue(TabLocation.Top)]
+        [Category("Appearance"), DefaultValue(TabLocation.LeftTop)]
         [Description("Gets or sets the location of tabs.")]
         public TabLocation TabLocation { get => tabLocation; set { tabLocation = value; viewOffset = 0; UpdateTabLayout(); UpdatePages(); Invalidate(); } }
-        /// <summary>
-        /// Gets or sets the alignment of tabs within the control.
-        /// </summary>
-        [Category("Appearance"), DefaultValue(Alignment.Near)]
-        [Description("Gets or sets the alignment of tabs within the control.")]
-        public Alignment TabAlignment { get => tabAlignment; set { tabAlignment = value; viewOffset = 0; UpdateTabLayout(); Invalidate(); } }
+
         /// <summary>
         /// Gets or sets the sizing mode of tabs.
         /// </summary>
@@ -538,7 +532,7 @@ namespace Manina.Windows.Forms
 
             if (Pages.Count == 0) return;
 
-            bool horizontal = tabLocation == TabLocation.Top || tabLocation == TabLocation.Bottom;
+            bool horizontal = (tabLocation & TabLocation.Top) != TabLocation.None || (tabLocation & TabLocation.Bottom) != TabLocation.None;
             var bounds = ClientRectangle;
 
             // measure tabs
@@ -617,13 +611,13 @@ namespace Manina.Windows.Forms
             }
 
             // update tab area
-            if (tabLocation == TabLocation.Top)
+            if ((tabLocation & TabLocation.Top) != TabLocation.None)
                 tabArea = new Rectangle(bounds.Left, bounds.Top, bounds.Width, maxSize.Height);
-            else if (tabLocation == TabLocation.Bottom)
+            else if ((tabLocation & TabLocation.Bottom) != TabLocation.None)
                 tabArea = new Rectangle(bounds.Left, bounds.Bottom - maxSize.Height, bounds.Width, maxSize.Height);
-            else if (tabLocation == TabLocation.Left)
+            else if ((tabLocation & TabLocation.Left) != TabLocation.None)
                 tabArea = new Rectangle(bounds.Left, bounds.Top, maxSize.Width, bounds.Height);
-            else // if (tabLocation == TabLocation.Right)
+            else
                 tabArea = new Rectangle(bounds.Right - maxSize.Width, bounds.Top, maxSize.Width, bounds.Height);
 
             // do we need to show scroll buttons?
@@ -639,7 +633,7 @@ namespace Manina.Windows.Forms
                 var nearScrollButtonSize = eNear.Size;
                 var farScrollButtonSize = eFar.Size;
 
-                if (TabLocation == TabLocation.Top)
+                if ((tabLocation & TabLocation.Top) != TabLocation.None)
                 {
                     nearScrollButtonBounds = new Rectangle(bounds.Left, bounds.Top, nearScrollButtonSize.Width, maxSize.Height);
                     farScrollButtonBounds = new Rectangle(bounds.Right - farScrollButtonSize.Width, bounds.Top, farScrollButtonSize.Width, maxSize.Height);
@@ -648,7 +642,7 @@ namespace Manina.Windows.Forms
                     tabArea.Width = bounds.Width - nearScrollButtonBounds.Width - farScrollButtonBounds.Width;
                     maxViewOffset = totalTabWidth - tabArea.Width;
                 }
-                else if (TabLocation == TabLocation.Bottom)
+                else if ((tabLocation & TabLocation.Bottom) != TabLocation.None)
                 {
                     nearScrollButtonBounds = new Rectangle(bounds.Left, bounds.Bottom - nearScrollButtonSize.Height, nearScrollButtonSize.Width, maxSize.Height);
                     farScrollButtonBounds = new Rectangle(bounds.Right - farScrollButtonSize.Width, bounds.Bottom - nearScrollButtonSize.Height, farScrollButtonSize.Width, maxSize.Height);
@@ -657,7 +651,7 @@ namespace Manina.Windows.Forms
                     tabArea.Width = bounds.Width - nearScrollButtonBounds.Width - farScrollButtonBounds.Width;
                     maxViewOffset = totalTabWidth - tabArea.Width;
                 }
-                else if (TabLocation == TabLocation.Left)
+                else if ((tabLocation & TabLocation.Left) != TabLocation.None)
                 {
                     nearScrollButtonBounds = new Rectangle(bounds.Left, bounds.Bottom - nearScrollButtonSize.Height, maxSize.Width, nearScrollButtonSize.Height);
                     farScrollButtonBounds = new Rectangle(bounds.Left, bounds.Top, maxSize.Width, farScrollButtonSize.Height);
@@ -666,7 +660,7 @@ namespace Manina.Windows.Forms
                     tabArea.Height = bounds.Height - nearScrollButtonBounds.Height - farScrollButtonBounds.Height;
                     maxViewOffset = totalTabHeight - tabArea.Height;
                 }
-                else // if (TabLocation == TabLocation.Right)
+                else
                 {
                     nearScrollButtonBounds = new Rectangle(bounds.Left, bounds.Top, maxSize.Width, nearScrollButtonSize.Height);
                     farScrollButtonBounds = new Rectangle(bounds.Left, bounds.Bottom - farScrollButtonSize.Height, maxSize.Width, farScrollButtonSize.Height);
@@ -688,13 +682,13 @@ namespace Manina.Windows.Forms
             if (BorderStyle != BorderStyle.None)
                 bounds.Inflate(-1, -1);
 
-            if (tabLocation == TabLocation.Top)
+            if ((tabLocation & TabLocation.Top) != TabLocation.None)
                 displayArea = new Rectangle(bounds.Left, tabArea.Bottom, bounds.Width, bounds.Height - tabArea.Height + 1);
-            else if (tabLocation == TabLocation.Bottom)
+            else if ((tabLocation & TabLocation.Bottom) != TabLocation.None)
                 displayArea = new Rectangle(bounds.Left, bounds.Top, bounds.Width, bounds.Height - tabArea.Height + 1);
-            else if (tabLocation == TabLocation.Left)
+            else if ((tabLocation & TabLocation.Left) != TabLocation.None)
                 displayArea = new Rectangle(TabArea.Right, bounds.Top, bounds.Width - tabArea.Width + 1, bounds.Height);
-            else // if (tabLocation == TabLocation.Right)
+            else
                 displayArea = new Rectangle(bounds.Left, bounds.Top, bounds.Width - tabArea.Width + 1, bounds.Height);
 
             // raise the layout event
@@ -712,13 +706,13 @@ namespace Manina.Windows.Forms
             CheckViewOffset();
 
             // place tabs
-            if (TabLocation == TabLocation.Top || TabLocation == TabLocation.Bottom)
+            if (horizontal)
             {
-                if (scrollButtons || TabAlignment == Alignment.Near)
+                if (scrollButtons || (tabLocation & TabLocation.Near) != TabLocation.None)
                     Tabs[0].Bounds = new Rectangle(tabArea.Left + viewOffset, tabArea.Top, tabSizes[0].Width, tabSizes[0].Height);
-                else if (TabAlignment == Alignment.Far)
+                else if ((tabLocation & TabLocation.Far) != TabLocation.None)
                     Tabs[0].Bounds = new Rectangle(tabArea.Left + (tabArea.Width - totalTabWidth), tabArea.Top, tabSizes[0].Width, tabSizes[0].Height);
-                else // if (TabAlignment == Alignment.Center)
+                else
                     Tabs[0].Bounds = new Rectangle(tabArea.Left + (tabArea.Width - totalTabWidth) / 2, tabArea.Top, tabSizes[0].Width, tabSizes[0].Height);
 
                 for (int i = 1; i < Tabs.Count; i++)
@@ -728,13 +722,13 @@ namespace Manina.Windows.Forms
                     Tabs[i].Bounds = new Rectangle(tabLocation, tabSizes[i]);
                 }
             }
-            else // if (TabLocation == TabLocation.Left || TabLocation == TabLocation.Right)
+            else
             {
-                if (scrollButtons || TabAlignment == Alignment.Near)
+                if (scrollButtons || (tabLocation & TabLocation.Near) != TabLocation.None)
                     Tabs[0].Bounds = new Rectangle(tabArea.Left, tabArea.Top - viewOffset, tabSizes[0].Width, tabSizes[0].Height);
-                else if (TabAlignment == Alignment.Far)
+                else if ((tabLocation & TabLocation.Far) != TabLocation.None)
                     Tabs[0].Bounds = new Rectangle(tabArea.Left, tabArea.Top + (tabArea.Height - totalTabHeight), tabSizes[0].Width, tabSizes[0].Height);
-                else // if (TabAlignment == Alignment.Center)
+                else
                     Tabs[0].Bounds = new Rectangle(tabArea.Left, tabArea.Top + (tabArea.Height - totalTabHeight) / 2, tabSizes[0].Width, tabSizes[0].Height);
 
                 for (int i = 1; i < Tabs.Count; i++)

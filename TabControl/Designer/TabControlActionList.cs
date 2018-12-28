@@ -38,14 +38,6 @@ namespace Manina.Windows.Forms
                 set { GetPropertyByName("TabLocation").SetValue(Control, value); }
             }
             /// <summary>
-            /// Gets or sets the TabAlignment of the designed control.
-            /// </summary>
-            public Alignment TabAlignment
-            {
-                get { return Control.TabAlignment; }
-                set { GetPropertyByName("TabAlignment").SetValue(Control, value); }
-            }
-            /// <summary>
             /// Gets or sets the TabSizing of the designed control.
             /// </summary>
             public TabSizing TabSizing
@@ -147,10 +139,9 @@ namespace Manina.Windows.Forms
                     new DesignerActionHeaderItem("Appearance"),
                     new DesignerActionHeaderItem("Data"),
 
-                    new DesignerActionPropertyItem("TabLocation", "Tab Location", "Appearance", "Set the location of tabs relative to the control"),
-                    new DesignerActionPropertyItem("TabAlignment", "Tab Alignment", "Appearance", "Set the alignment of tabs relative to the control"),
-                    new DesignerActionPropertyItem("TabSizing", "Tab Sizing", "Appearance", "Set the sizing mode of tabs"),
-                    new DesignerActionPropertyItem("TextAlignment", "Text Alignment", "Appearance", "Set the alignment of tab text"),
+                    new DesignerActionPropertyItem("TabLocation", "TabLocation", "Appearance", "Set the location of tabs relative to the control"),
+                    new DesignerActionPropertyItem("TabSizing", "TabSizing", "Appearance", "Set the sizing mode of tabs"),
+                    new DesignerActionPropertyItem("TextAlignment", "TextAlignment", "Appearance", "Set the alignment of tab text"),
                     new DesignerActionMethodItem(this, "AddPage", "Add Page", "Data", "Add a new page to the control"),
                     new DesignerActionMethodItem(this, "RemovePage", "Remove Page", "Data" ,"Remove the current page")
                 };

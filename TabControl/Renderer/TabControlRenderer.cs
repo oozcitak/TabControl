@@ -299,21 +299,14 @@ namespace Manina.Windows.Forms
                 {
                     using (var pen = new Pen(SeparatorColor))
                     {
-                        if (Parent.TabLocation == TabLocation.Top || Parent.TabLocation == TabLocation.Bottom)
+                        if ((Parent.TabLocation & TabLocation.Top) != TabLocation.None || (Parent.TabLocation & TabLocation.Bottom) != TabLocation.None)
                         {
                             if (param.Index != 0 && param.Index != Parent.SelectedIndex + 1)
                                 g.DrawLine(pen, param.Bounds.Left, param.Bounds.Top + 4, param.Bounds.Left, param.Bounds.Bottom - 4);
                             if (param.Index != Parent.Pages.Count - 1 && param.Index != Parent.SelectedIndex - 1)
                                 g.DrawLine(pen, param.Bounds.Right, param.Bounds.Top + 4, param.Bounds.Right, param.Bounds.Bottom - 4);
                         }
-                        else if (Parent.TabLocation == TabLocation.Left)
-                        {
-                            if (param.Index != 0 && param.Index != Parent.SelectedIndex + 1)
-                                g.DrawLine(pen, param.Bounds.Left + 4, param.Bounds.Bottom, param.Bounds.Right - 4, param.Bounds.Bottom);
-                            if (param.Index != Parent.Pages.Count - 1 && param.Index != Parent.SelectedIndex - 1)
-                                g.DrawLine(pen, param.Bounds.Left + 4, param.Bounds.Top, param.Bounds.Right - 4, param.Bounds.Top);
-                        }
-                        else // if (Parent.TabLocation == TabControl.TabLocation.Right)
+                        else
                         {
                             if (param.Index != 0 && param.Index != Parent.SelectedIndex + 1)
                                 g.DrawLine(pen, param.Bounds.Left + 4, param.Bounds.Top, param.Bounds.Right - 4, param.Bounds.Top);
@@ -344,7 +337,7 @@ namespace Manina.Windows.Forms
                 var tabBounds = Parent.Tabs[Parent.SelectedPage].Bounds;
 
                 Point[] pt = new Point[8];
-                if (Parent.TabLocation == TabLocation.Top)
+                if ((Parent.TabLocation & TabLocation.Top) != TabLocation.None)
                 {
                     pt[0] = borderBounds.GetBottomLeft().GetOffset(0, -1);
                     pt[1] = borderBounds.GetBottomRight().GetOffset(-1, -1);
@@ -355,7 +348,7 @@ namespace Manina.Windows.Forms
                     pt[6] = tabBounds.GetBottomLeft().GetOffset(0, -1);
                     pt[7] = borderBounds.GetTopLeft();
                 }
-                else if (Parent.TabLocation == TabLocation.Bottom)
+                else if ((Parent.TabLocation & TabLocation.Bottom) != TabLocation.None)
                 {
                     pt[0] = borderBounds.GetBottomLeft().GetOffset(0, -1);
                     pt[1] = tabBounds.GetTopLeft();
@@ -366,7 +359,7 @@ namespace Manina.Windows.Forms
                     pt[6] = borderBounds.GetTopRight().GetOffset(-1, 0);
                     pt[7] = borderBounds.GetTopLeft();
                 }
-                else if (Parent.TabLocation == TabLocation.Left)
+                else if ((Parent.TabLocation & TabLocation.Left) != TabLocation.None)
                 {
                     pt[0] = borderBounds.GetBottomLeft().GetOffset(0, -1);
                     pt[1] = borderBounds.GetBottomRight().GetOffset(-1, -1);
@@ -377,7 +370,7 @@ namespace Manina.Windows.Forms
                     pt[6] = tabBounds.GetBottomLeft().GetOffset(0, -1);
                     pt[7] = tabBounds.GetBottomRight().GetOffset(-1, -1);
                 }
-                else // if (Parent.TabLocation == TabControl.TabLocation.Right)
+                else
                 {
                     pt[0] = borderBounds.GetBottomLeft().GetOffset(0, -1);
                     pt[1] = borderBounds.GetBottomRight().GetOffset(-1, -1);
@@ -413,19 +406,13 @@ namespace Manina.Windows.Forms
                     bounds = bounds.GetInflated(-4, -4);
                     Point[] points = new Point[3];
 
-                    if (Parent.TabLocation == TabLocation.Top || Parent.TabLocation == TabLocation.Bottom)
+                    if ((Parent.TabLocation & TabLocation.Top) != TabLocation.None || (Parent.TabLocation & TabLocation.Bottom) != TabLocation.None)
                     {
                         points[0] = new Point(bounds.Right, bounds.Top);
                         points[1] = new Point(bounds.Left, (bounds.Top + bounds.Bottom) / 2);
                         points[2] = new Point(bounds.Right, bounds.Bottom);
                     }
-                    else if (Parent.TabLocation == TabLocation.Left)
-                    {
-                        points[0] = new Point(bounds.Left, bounds.Top);
-                        points[1] = new Point((bounds.Left + bounds.Right) / 2, bounds.Bottom);
-                        points[2] = new Point(bounds.Right, bounds.Top);
-                    }
-                    else if (Parent.TabLocation == TabLocation.Top)
+                    else
                     {
                         points[0] = new Point(bounds.Left, bounds.Bottom);
                         points[1] = new Point((bounds.Left + bounds.Right) / 2, bounds.Top);
@@ -455,19 +442,13 @@ namespace Manina.Windows.Forms
                     bounds = bounds.GetInflated(-4, -4);
                     Point[] points = new Point[3];
 
-                    if (Parent.TabLocation == TabLocation.Top || Parent.TabLocation == TabLocation.Bottom)
+                    if ((Parent.TabLocation & TabLocation.Top) != TabLocation.None || (Parent.TabLocation & TabLocation.Bottom) != TabLocation.None)
                     {
                         points[0] = new Point(bounds.Left, bounds.Top);
                         points[1] = new Point(bounds.Right, (bounds.Top + bounds.Bottom) / 2);
                         points[2] = new Point(bounds.Left, bounds.Bottom);
                     }
-                    else if (Parent.TabLocation == TabLocation.Left)
-                    {
-                        points[0] = new Point(bounds.Left, bounds.Bottom);
-                        points[1] = new Point((bounds.Left + bounds.Right) / 2, bounds.Top);
-                        points[2] = new Point(bounds.Right, bounds.Bottom);
-                    }
-                    else if (Parent.TabLocation == TabLocation.Top)
+                    else
                     {
                         points[0] = new Point(bounds.Left, bounds.Top);
                         points[1] = new Point((bounds.Left + bounds.Right) / 2, bounds.Bottom);

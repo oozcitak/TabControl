@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace Manina.Windows.Forms
 {
@@ -33,43 +34,102 @@ namespace Manina.Windows.Forms
     /// <summary>
     /// Represents the location of the tab area within the control.
     /// </summary>
+    [Flags]
     public enum TabLocation
     {
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        None = 0,
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        Top = 1,
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        Bottom = 2,
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        Left = 4,
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        Right = 8,
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        Near = 16,
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        Center = 32,
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        Far = 64,
         /// <summary>
-        /// The top area is at the top of the control.
+        /// The tab area is at the top of the control.
+        /// Tab buttons are aligned to the left of the tab area.
         /// </summary>
-        Top,
+        TopLeft = Top | Near,
         /// <summary>
-        /// The top area is at the bottom of the control.
+        /// The tab area is at the top of the control.
+        /// Tab buttons are aligned to the center of the tab area.
         /// </summary>
-        Bottom,
+        TopCenter = Top | Center,
         /// <summary>
-        /// The top area is at the left of the control. Tab texts
-        /// are drawn vertically.
+        /// The tab area is at the top of the control.
+        /// Tab buttons are aligned to the right of the tab area.
         /// </summary>
-        Left,
+        TopRight = Top | Far,
         /// <summary>
-        /// The top area is at the right of the control. Tab texts
-        /// are drawn vertically.
+        /// The tab area is at the bottom of the control.
+        /// Tab buttons are aligned to the left of the tab area.
         /// </summary>
-        Right
+        BottomLeft = Bottom | Near,
+        /// <summary>
+        /// The tab area is at the bottom of the control.
+        /// Tab buttons are aligned to the center of the tab area.
+        /// </summary>
+        BottomCenter = Bottom | Center,
+        /// <summary>
+        /// The tab area is at the bottom of the control.
+        /// Tab buttons are aligned to the right of the tab area.
+        /// </summary>
+        BottomRight = Bottom | Far,
+        /// <summary>
+        /// The tab area is at the left of the control.
+        /// Tab buttons are aligned to the top of the tab area.
+        /// </summary>
+        LeftTop = Left | Near,
+        /// <summary>
+        /// The tab area is at the left of the control.
+        /// Tab buttons are aligned to the center of the tab area.
+        /// </summary>
+        LeftCenter = Left | Center,
+        /// <summary>
+        /// The tab area is at the left of the control.
+        /// Tab buttons are aligned to the bottom of the tab area.
+        /// </summary>
+        LeftBottom = Left | Far,
+        /// <summary>
+        /// The tab area is at the right of the control.
+        /// Tab buttons are aligned to the top of the tab area.
+        /// </summary>
+        RightTop = Right | Near,
+        /// <summary>
+        /// The tab area is at the right of the control.
+        /// Tab buttons are aligned to the center of the tab area.
+        /// </summary>
+        RightCenter = Right | Center,
+        /// <summary>
+        /// The tab area is at the right of the control.
+        /// Tab buttons are aligned to the bottom of the tab area.
+        /// </summary>
+        RightBottom = Right | Far,
     }
 
     /// <summary>
-    /// Represents the alignment of tabs relative to the control.
+    /// Represents the alignment of tab contents relative to the tab.
     /// </summary>
     public enum Alignment
     {
         /// <summary>
-        /// Tabs are aligned to the left or top of the control.
+        /// Content is aligned to the left or top of the tab.
         /// </summary>
         Near,
         /// <summary>
-        /// Tabs are aligned to center of the control.
+        /// Content is aligned to center of the tab.
         /// </summary>
         Center,
         /// <summary>
-        /// Tabs are aligned to the right or bottom of the control.
+        /// Content is aligned to the right or bottom of the tab.
         /// </summary>
         Far
     }
