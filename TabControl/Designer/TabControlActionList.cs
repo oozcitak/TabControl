@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.Design;
+using System.Drawing.Design;
 
 namespace Manina.Windows.Forms
 {
@@ -32,6 +33,7 @@ namespace Manina.Windows.Forms
             /// <summary>
             /// Gets or sets the TabLocation of the designed control.
             /// </summary>
+            [Editor(typeof(TabLocationEditor), typeof(UITypeEditor))]
             public TabLocation TabLocation
             {
                 get { return Control.TabLocation; }
