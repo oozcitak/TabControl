@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.Windows.Forms;
 
 namespace Manina.Windows.Forms
@@ -73,38 +72,13 @@ namespace Manina.Windows.Forms
                     g.DrawRectangle(borderPen, bounds);
                 }
 
+                var textBounds = bounds.GetInflated(-4, -4);
                 if (direction == TextDirection.Right)
-                {
-                    var textBounds = bounds.GetInflated(-4, -4);
-                    TextRenderer.DrawText(g, sampleText, Font, bounds, foreColor, backColor, flags);
-                }
+                    TextRenderer.DrawText(g, sampleText, Font, textBounds, foreColor, backColor, flags);
+                else if (direction == TextDirection.Down)
+                    g.DrawVerticalTextDown(sampleText, Font, textBounds, foreColor, backColor, flags);
                 else
-                {
-                    var imageBounds = new Rectangle(0, 0, bounds.Height, bounds.Width);
-                    var textBounds = imageBounds.GetInflated(-4, -4);
-
-                    using (var image = new Bitmap(imageBounds.Width, imageBounds.Height, PixelFormat.Format32bppArgb))
-                    using (Graphics imageGraphics = Graphics.FromImage(image))
-                    {
-                        TextRenderer.DrawText(imageGraphics, sampleText, Font, textBounds, foreColor, backColor, flags);
-                        // Rotate, translate and draw the image
-                        Point[] ptMap = new Point[3];
-                        if (direction == TextDirection.Up)
-                        {
-                            ptMap[0] = bounds.GetBottomLeft();  // upper-left
-                            ptMap[1] = bounds.GetTopLeft();     // upper-right
-                            ptMap[2] = bounds.GetBottomRight(); // lower-left
-                        }
-                        else
-                        {
-                            ptMap[0] = bounds.GetTopRight();    // upper-left
-                            ptMap[1] = bounds.GetBottomRight(); // upper-right
-                            ptMap[2] = bounds.GetTopLeft();     // lower-left
-                        }
-                        g.DrawImage(image, ptMap);
-
-                    }
-                }
+                    g.DrawVerticalTextUp(sampleText, Font, textBounds, foreColor, backColor, flags);
             }
             #endregion
 
