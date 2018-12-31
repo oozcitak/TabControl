@@ -310,8 +310,8 @@ namespace Manina.Windows.Forms
                     pt[0] = borderBounds.GetBottomLeft().GetOffset(0, -1);
                     pt[1] = borderBounds.GetBottomRight().GetOffset(-1, -1);
                     pt[2] = borderBounds.GetTopRight().GetOffset(-1, 0);
-                    pt[3] = tabBounds.GetBottomRight().GetOffset(0, -1);
-                    pt[4] = tabBounds.GetTopRight();
+                    pt[3] = tabBounds.GetBottomRight().GetOffset(-1, -1);
+                    pt[4] = tabBounds.GetTopRight().GetOffset(-1, 0);
                     pt[5] = tabBounds.GetTopLeft();
                     pt[6] = tabBounds.GetBottomLeft().GetOffset(0, -1);
                     pt[7] = borderBounds.GetTopLeft();
@@ -321,8 +321,8 @@ namespace Manina.Windows.Forms
                     pt[0] = borderBounds.GetBottomLeft().GetOffset(0, -1);
                     pt[1] = tabBounds.GetTopLeft();
                     pt[2] = tabBounds.GetBottomLeft().GetOffset(0, -1);
-                    pt[3] = tabBounds.GetBottomRight().GetOffset(0, -1);
-                    pt[4] = tabBounds.GetTopRight();
+                    pt[3] = tabBounds.GetBottomRight().GetOffset(-1, -1);
+                    pt[4] = tabBounds.GetTopRight().GetOffset(-1, 0);
                     pt[5] = borderBounds.GetBottomRight().GetOffset(-1, -1);
                     pt[6] = borderBounds.GetTopRight().GetOffset(-1, 0);
                     pt[7] = borderBounds.GetTopLeft();
@@ -342,8 +342,8 @@ namespace Manina.Windows.Forms
                 {
                     pt[0] = borderBounds.GetBottomLeft().GetOffset(0, -1);
                     pt[1] = borderBounds.GetBottomRight().GetOffset(-1, -1);
-                    pt[2] = tabBounds.GetBottomLeft();
-                    pt[3] = tabBounds.GetBottomRight().GetOffset(-1, 0);
+                    pt[2] = tabBounds.GetBottomLeft().GetOffset(0, -1);
+                    pt[3] = tabBounds.GetBottomRight().GetOffset(-1, -1);
                     pt[4] = tabBounds.GetTopRight().GetOffset(-1, 0);
                     pt[5] = tabBounds.GetTopLeft();
                     pt[6] = borderBounds.GetTopRight().GetOffset(-1, 0);
