@@ -265,13 +265,7 @@ namespace Manina.Windows.Forms
                         TextRenderer.DrawText(imageGraphics, param.Text, Font, textBounds, foreColor, backColor, flags);
                         // Rotate, translate and draw the image
                         Point[] ptMap = new Point[3];
-                        if (Parent.TextDirection == TextDirection.Right)
-                        {
-                            ptMap[0] = param.Bounds.GetTopLeft();    // upper-left
-                            ptMap[1] = param.Bounds.GetTopRight();   // upper-right
-                            ptMap[2] = param.Bounds.GetBottomLeft(); // lower-left
-                        }
-                        else if (Parent.TextDirection == TextDirection.Up)
+                        if (Parent.TextDirection == TextDirection.Up)
                         {
                             ptMap[0] = param.Bounds.GetBottomLeft();  // upper-left
                             ptMap[1] = param.Bounds.GetTopLeft();     // upper-right

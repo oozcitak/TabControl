@@ -48,6 +48,15 @@ namespace Manina.Windows.Forms
                 set { GetPropertyByName("TabSizing").SetValue(Control, value); }
             }
             /// <summary>
+            /// Gets or sets the TextDirection of the designed control.
+            /// </summary>
+            [Editor(typeof(TextDirectionEditor), typeof(UITypeEditor))]
+            public TextDirection TextDirection
+            {
+                get { return Control.TextDirection; }
+                set { GetPropertyByName("TextDirection").SetValue(Control, value); }
+            }
+            /// <summary>
             /// Gets or sets the TextAlignment of the designed control.
             /// </summary>
             public Alignment TextAlignment
@@ -144,6 +153,7 @@ namespace Manina.Windows.Forms
                     new DesignerActionPropertyItem("TabLocation", "TabLocation", "Appearance", "Set the location of tabs relative to the control"),
                     new DesignerActionPropertyItem("TabSizing", "TabSizing", "Appearance", "Set the sizing mode of tabs"),
                     new DesignerActionPropertyItem("TextAlignment", "TextAlignment", "Appearance", "Set the alignment of tab text"),
+                    new DesignerActionPropertyItem("TextDirection", "TextDirection", "Appearance", "Set the direction of tab text"),
                     new DesignerActionMethodItem(this, "AddPage", "Add Page", "Data", "Add a new page to the control"),
                     new DesignerActionMethodItem(this, "RemovePage", "Remove Page", "Data" ,"Remove the current page")
                 };

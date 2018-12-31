@@ -296,6 +296,7 @@ namespace Manina.Windows.Forms
         /// </summary>
         [Category("Appearance"), DefaultValue(TextDirection.Right)]
         [Description("Gets or sets the direction of tab texts.")]
+        [Editor(typeof(TextDirectionEditor), typeof(UITypeEditor))]
         public TextDirection TextDirection { get => textDirection; set { textDirection = value; UpdateTabLayout(); UpdatePages(); CheckViewOffset(); Invalidate(); } }
 
         /// <summary>

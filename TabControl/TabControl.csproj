@@ -48,7 +48,13 @@
     <Compile Include="Designer\TabControlActionList.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Designer\TextDirectionEditor.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Designer\TabLocationEditor.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Designer\TextDirectionSelector.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Designer\TabLocationSelector.cs">
