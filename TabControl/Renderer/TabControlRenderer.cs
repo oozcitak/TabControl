@@ -261,7 +261,7 @@ namespace Manina.Windows.Forms
                 }
 
                 // close buttons
-                if (Parent.ShowCloseTabButtons)
+                if (Parent.ShowCloseTabButtons && (param.State & TabState.Active) != TabState.Inactive)
                 {
                     if (Parent.TextDirection == TextDirection.Right)
                         g.DrawImage(Parent.CloseTabImage, param.Tab.CloseButtonBounds);
