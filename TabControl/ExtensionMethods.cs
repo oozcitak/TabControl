@@ -30,6 +30,11 @@ namespace Manina.Windows.Forms
             return new Point(r.Right, r.Top);
         }
 
+        public static Rectangle GetOffset(this Rectangle rec, int dx, int dy)
+        {
+            return new Rectangle(rec.Left + dx, rec.Top + dy, rec.Width, rec.Height);
+        }
+
         public static Rectangle GetInflated(this Rectangle rec, int dx, int dy)
         {
             return new Rectangle(rec.Left - dx, rec.Top - dy, rec.Width + 2 * dx, rec.Height + 2 * dy);
@@ -58,6 +63,24 @@ namespace Manina.Windows.Forms
         public static Rectangle GetDeflated(this Rectangle rec, Padding padding)
         {
             return new Rectangle(rec.Left + padding.Left, rec.Top + padding.Top, rec.Width - padding.Horizontal, rec.Height - padding.Vertical);
+        }
+
+        public static Rectangle GetRotated(this Rectangle rec, Rectangle fitInside, TextDirection direction)
+        {
+            var rotatedRec = rec;
+
+            if (direction == TextDirection.Down)
+            {
+                rotatedRec = new Rectangle(fitInside.Width - rec.Height - rec.Top, rec.Left, rec.Height, rec.Width);
+            }
+            else if (direction == TextDirection.Up)
+            {
+                rotatedRec = new Rectangle(rec.Top, fitInside.Height - rec.Width - rec.Left, rec.Height, rec.Width);
+            }
+
+            rotatedRec.Offset(fitInside.Left, fitInside.Top);
+
+            return rotatedRec;
         }
         #endregion
 
@@ -113,6 +136,28 @@ namespace Manina.Windows.Forms
                 };
                 g.DrawImage(image, ptMap);
             }
+        }
+
+        public static void DrawImageRotatedDown(this Graphics g, Image image, Rectangle bounds)
+        {
+            // Rotate, translate and draw the image
+            Point[] ptMap = new Point[] {
+                bounds.GetTopRight(),    // upper-left
+                bounds.GetBottomRight(), // upper-right
+                bounds.GetTopLeft(),     // lower-left
+            };
+            g.DrawImage(image, ptMap);
+        }
+
+        public static void DrawImageRotatedUp(this Graphics g, Image image, Rectangle bounds)
+        {
+            // Rotate, translate and draw the image
+            Point[] ptMap = new Point[] {
+                bounds.GetBottomLeft(),  // upper-left
+                bounds.GetTopLeft(),     // upper-right
+                bounds.GetBottomRight(), // lower-left
+            };
+            g.DrawImage(image, ptMap);
         }
         #endregion
     }

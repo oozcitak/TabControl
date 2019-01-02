@@ -148,11 +148,38 @@ namespace Manina.Windows.Forms
 
         protected internal virtual void OnMeasureTab(MeasureTabEventArgs e)
         {
-            var size = TextRenderer.MeasureText(e.Tab.Text, Font, Size.Empty);
+            int width = 0;
+            int height = 0;
+
+            if (e.Tab.HasIcon)
+            {
+                width = width + e.Tab.Icon.Width;
+                height = Math.Max(height, e.Tab.Icon.Height);
+            }
+
+            if (e.Tab.HasText)
+            {
+                Size size = TextRenderer.MeasureText(e.Tab.Text, Font);
+                width = width + size.Width;
+                height = Math.Max(height, size.Height);
+            }
+
+            if (e.Tab.HasIcon && e.Tab.HasText)
+                width += ContentSpacing;
+
+            if (ShowCloseTabButtons)
+            {
+                if (width != 0)
+                    width += ContentSpacing;
+
+                width = width + CloseTabImage.Width;
+                height = Math.Max(height, CloseTabImage.Height);
+            }
+
             if (TextDirection == TextDirection.Right)
-                e.Size = size + TabPadding.Size;
+                e.Size = new Size(width, height) + TabPadding.Size;
             else
-                e.Size = new Size(size.Height, size.Width) + TabPadding.Size;
+                e.Size = new Size(height, width) + TabPadding.Size;
 
             MeasureTab?.Invoke(this, e);
         }
@@ -243,15 +270,18 @@ namespace Manina.Windows.Forms
 
         private Size tabSize = new Size(75, 23);
         private TabLocation tabLocation = Forms.TabLocation.TopLeft;
-        private Alignment textAlignment = Alignment.Near;
+        private Alignment contentAlignment = Alignment.Near;
         private TabSizing tabSizing = TabSizing.AutoFit;
         private Padding tabPadding = new Padding(4);
         private TextDirection textDirection = TextDirection.Right;
+        private Image defaultCloseImage = null;
+        private Image closeImage = null;
+        private bool showCloseTabButtons = false;
+        private int contentSpacing = 3;
 
         private bool scrollButtons;
         private int viewOffset = 0;
         private int maxViewOffset = 0;
-
 
         private TabControlRenderer renderer;
         #endregion
@@ -290,7 +320,7 @@ namespace Manina.Windows.Forms
         /// </summary>
         [Category("Appearance"), DefaultValue(Alignment.Near)]
         [Description("Gets or sets the alignment of tab text.")]
-        public Alignment TextAlignment { get => textAlignment; set { textAlignment = value; Invalidate(); } }
+        public Alignment ContentAlignment { get => contentAlignment; set { contentAlignment = value; UpdateTabLayout(); UpdatePages(); CheckViewOffset(); Invalidate(); } }
         /// <summary>
         /// Gets or sets the direction of tab texts.
         /// </summary>
@@ -298,6 +328,40 @@ namespace Manina.Windows.Forms
         [Description("Gets or sets the direction of tab texts.")]
         [Editor(typeof(TextDirectionEditor), typeof(UITypeEditor))]
         public TextDirection TextDirection { get => textDirection; set { textDirection = value; UpdateTabLayout(); UpdatePages(); CheckViewOffset(); Invalidate(); } }
+
+        /// <summary>
+        /// Gets or sets the image of close buttons.
+        /// </summary>
+        [Category("Appearance")]
+        [Description("Gets or sets the image of close buttons.")]
+        public Image CloseTabImage
+        {
+            get
+            {
+                return (closeImage ?? defaultCloseImage);
+            }
+            set
+            {
+                closeImage = value;
+                UpdateTabLayout();
+                UpdatePages();
+                CheckViewOffset();
+                Invalidate();
+            }
+        }
+        /// <summary>
+        /// Gets or sets whether to show close tab buttons.
+        /// </summary>
+        [Category("Appearance"), DefaultValue(false)]
+        [Description("Gets or sets whether to show close tab buttons.")]
+        public bool ShowCloseTabButtons { get => showCloseTabButtons; set { showCloseTabButtons = value; UpdateTabLayout(); UpdatePages(); CheckViewOffset(); Invalidate(); } }
+
+        /// <summary>
+        /// Gets or sets the spacing between tab contents (i.e. icon, text and close button).
+        /// </summary>
+        [Category("Appearance"), DefaultValue(3)]
+        [Description("Gets or sets the spacing between tab contents (i.e. icon, text and close button).")]
+        public int ContentSpacing { get => contentSpacing; set { contentSpacing = value; UpdateTabLayout(); UpdatePages(); CheckViewOffset(); Invalidate(); } }
 
         /// <summary>
         /// Gets the collection of tabs.
@@ -309,13 +373,7 @@ namespace Manina.Windows.Forms
         /// Gets the rectangle that represents the client area of the control.
         /// </summary>
         [Browsable(false)]
-        public new Rectangle ClientRectangle
-        {
-            get
-            {
-                return new Rectangle(0, 0, Width, Height);
-            }
-        }
+        public new Rectangle ClientRectangle => new Rectangle(0, 0, Width, Height);
 
         /// <summary>
         /// Gets the client rectangle where pages are located.
@@ -356,9 +414,30 @@ namespace Manina.Windows.Forms
         /// </summary>
         public TabControl()
         {
+            defaultCloseImage = Properties.Resources.CloseImage;
+
             Tabs = new TabCollection(this);
             SetRenderer(new TabControlRenderer(this));
             UpdateTabLayout();
+        }
+        #endregion
+
+        #region Property Defaults
+        /// <summary>
+        /// Determines if the close image should be serialized.
+        /// </summary>
+        /// <returns>true if the designer should serialize 
+        /// the property; otherwise false.</returns>
+        public bool ShouldSerializeCloseImage()
+        {
+            return (closeImage != null);
+        }
+        /// <summary>
+        /// Resets the close image to its default value.
+        /// </summary>
+        public void ResetCloseImage()
+        {
+            closeImage = null;
         }
         #endregion
 

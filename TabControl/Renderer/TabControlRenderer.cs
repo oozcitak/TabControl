@@ -22,9 +22,9 @@ namespace Manina.Windows.Forms
                 /// </summary>
                 public int Index { get; private set; }
                 /// <summary>
-                /// Tab text.
+                /// The tab to be drawn.
                 /// </summary>
-                public string Text { get; private set; }
+                public Tab Tab { get; private set; }
                 /// <summary>
                 /// Visual state of the tab.
                 /// </summary>
@@ -34,12 +34,12 @@ namespace Manina.Windows.Forms
                 /// </summary>
                 public Rectangle Bounds { get; private set; }
 
-                public DrawTabParams(int index, string text, Rectangle bounds, TabState state)
+                public DrawTabParams(int index, Tab tab, TabState state, Rectangle bounds)
                 {
                     Index = index;
-                    Text = text;
-                    Bounds = bounds;
+                    Tab = tab;
                     State = state;
+                    Bounds = bounds;
                 }
             }
             #endregion
@@ -185,7 +185,7 @@ namespace Manina.Windows.Forms
                 for (int i = 0; i < Parent.Tabs.Count; i++)
                 {
                     var tab = Parent.Tabs[i];
-                    drawParams.Add(new DrawTabParams(i, tab.Text, tab.Bounds, tab.State));
+                    drawParams.Add(new DrawTabParams(i, tab, tab.State, tab.Bounds));
                 }
                 drawParams.Sort(new DrawTabParamsComparer());
 
@@ -193,7 +193,7 @@ namespace Manina.Windows.Forms
                 foreach (var param in drawParams)
                 {
                     DrawTabBackGround(g, param);
-                    DrawTabText(g, param);
+                    DrawTabContents(g, param);
                     DrawSeparator(g, param);
                 }
 
@@ -225,35 +225,51 @@ namespace Manina.Windows.Forms
             }
 
             /// <summary>
-            /// Draws the text of a tab.
+            /// Draws the contents of a tab.
             /// </summary>
             /// <param name="g">The graphics to draw on.</param>
             /// <param name="param">The parameters required to draw the tab.</param>
-            public virtual void DrawTabText(Graphics g, DrawTabParams param)
+            public virtual void DrawTabContents(Graphics g, DrawTabParams param)
             {
-                if (string.IsNullOrEmpty(param.Text)) return;
+                // text
+                if (!string.IsNullOrEmpty(param.Tab.Text))
+                {
+                    var backColor = GetTabBackColor(param.State);
+                    var foreColor = GetTabForeColor(param.State);
 
-                var backColor = GetTabBackColor(param.State);
-                var foreColor = GetTabForeColor(param.State);
+                    TextFormatFlags flags = TextFormatFlags.EndEllipsis | TextFormatFlags.VerticalCenter | TextFormatFlags.SingleLine;
 
-                TextFormatFlags flags = TextFormatFlags.EndEllipsis | TextFormatFlags.VerticalCenter | TextFormatFlags.SingleLine;
-                if (Parent.TextAlignment == Alignment.Far)
-                    flags |= TextFormatFlags.Right;
-                else if (Parent.TextAlignment == Alignment.Center)
-                    flags |= TextFormatFlags.HorizontalCenter;
+                    var textBounds = param.Tab.TextBounds;
 
-                var textBounds = param.Bounds;
-                textBounds.X += Parent.TabPadding.Left;
-                textBounds.Y += Parent.TabPadding.Top;
-                textBounds.Width -= Parent.TabPadding.Horizontal;
-                textBounds.Height -= Parent.TabPadding.Vertical;
+                    if (Parent.TextDirection == TextDirection.Right)
+                        TextRenderer.DrawText(g, param.Tab.Text, Font, textBounds, foreColor, backColor, flags);
+                    else if (Parent.TextDirection == TextDirection.Down)
+                        g.DrawVerticalTextDown(param.Tab.Text, Font, textBounds, foreColor, backColor, flags);
+                    else
+                        g.DrawVerticalTextUp(param.Tab.Text, Font, textBounds, foreColor, backColor, flags);
+                }
 
-                if (Parent.TextDirection == TextDirection.Right)
-                    TextRenderer.DrawText(g, param.Text, Font, textBounds, foreColor, backColor, flags);
-                else if (Parent.TextDirection == TextDirection.Down)
-                    g.DrawVerticalTextDown(param.Text, Font, textBounds, foreColor, backColor, flags);
-                else
-                    g.DrawVerticalTextUp(param.Text, Font, textBounds, foreColor, backColor, flags);
+                // icon
+                if (param.Tab.Icon != null)
+                {
+                    if (Parent.TextDirection == TextDirection.Right)
+                        g.DrawImage(param.Tab.Icon, param.Tab.IconBounds);
+                    else if (Parent.TextDirection == TextDirection.Down)
+                        g.DrawImageRotatedDown(param.Tab.Icon, param.Tab.IconBounds);
+                    else
+                        g.DrawImageRotatedUp(param.Tab.Icon, param.Tab.IconBounds);
+                }
+
+                // close buttons
+                if (Parent.ShowCloseTabButtons)
+                {
+                    if (Parent.TextDirection == TextDirection.Right)
+                        g.DrawImage(Parent.CloseTabImage, param.Tab.CloseButtonBounds);
+                    else if (Parent.TextDirection == TextDirection.Down)
+                        g.DrawImageRotatedDown(Parent.CloseTabImage, param.Tab.CloseButtonBounds);
+                    else
+                        g.DrawImageRotatedUp(Parent.CloseTabImage, param.Tab.CloseButtonBounds);
+                }
             }
 
             /// <summary>
