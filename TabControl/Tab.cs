@@ -74,6 +74,28 @@ namespace Manina.Windows.Forms
             }
 
             /// <summary>
+            /// Gets the visual state of the close tab button.
+            /// </summary>
+            public ItemState CloseButtonState
+            {
+                get
+                {
+                    if (Control == null) return ItemState.Inactive;
+
+                    ItemState state = ItemState.Inactive;
+
+                    // hot
+                    if (ReferenceEquals(Control.hoveredTab, this) && Control.hoveredButton) state |= ItemState.Hot;
+                    // pressed
+                    if (ReferenceEquals(Control.mouseDownTab, this) && Control.mouseDownButton) state |= ItemState.Pressed;
+                    // focused
+                    if (Control.Focused && (ReferenceEquals(Control.SelectedPage, Page))) state |= ItemState.Focused;
+
+                    return state;
+                }
+            }
+
+            /// <summary>
             /// Gets the bounding rectangle of tab icon in control's client coordinates.
             /// </summary>
             public Rectangle IconBounds { get; private set; }

@@ -32,6 +32,22 @@ namespace Manina.Windows.Forms
         }
 
         /// <summary>
+        /// Contains cancellable event data for events related to a single tab.
+        /// </summary>
+        public class CancelTabEventArgs : CancelEventArgs
+        {
+            /// <summary>
+            /// Gets the tab related to the event.
+            /// </summary>
+            public Tab Tab { get; private set; }
+
+            public CancelTabEventArgs(Tab tab)
+            {
+                Tab = tab;
+            }
+        }
+
+        /// <summary>
         /// Contains event data for mouse events related to a single tab.
         /// </summary>
         public class TabMouseEventArgs : TabEventArgs
@@ -135,6 +151,7 @@ namespace Manina.Windows.Forms
         }
 
         public delegate void TabMouseEventHandler(object sender, TabMouseEventArgs e);
+        public delegate void CancelTabEventHandler(object sender, CancelTabEventArgs e);
         public delegate void MeasureTabEventHandler(object sender, MeasureTabEventArgs e);
         public delegate void MeasureEventHandler(object sender, MeasureEventArgs e);
         public delegate void LayoutTabsEventHandler(object sender, LayoutTabsEventArgs e);
@@ -145,6 +162,13 @@ namespace Manina.Windows.Forms
         protected internal virtual void OnTabMouseUp(TabMouseEventArgs e) { TabMouseUp?.Invoke(this, e); }
         protected internal virtual void OnTabMouseMove(TabMouseEventArgs e) { TabMouseMove?.Invoke(this, e); }
         protected internal virtual void OnTabMouseWheel(TabMouseEventArgs e) { TabMouseWheel?.Invoke(this, e); }
+
+        protected internal virtual void OnCloseTabButtonClick(CancelTabEventArgs e)
+        {
+            CloseTabButtonClick?.Invoke(this, e);
+            if (!e.Cancel && SelectedPage != null)
+                Pages.Remove(SelectedPage);
+        }
 
         protected internal virtual void OnMeasureTab(MeasureTabEventArgs e)
         {
@@ -211,6 +235,12 @@ namespace Manina.Windows.Forms
         public event TabMouseEventHandler TabDoubleClick;
 
         /// <summary>
+        /// Occurs when a close tab button is clicked.
+        /// </summary>
+        [Category("Behavior"), Description("Occurs when a close tab button is clicked.")]
+        public event CancelTabEventHandler CloseTabButtonClick;
+
+        /// <summary>
         /// Occurs when the mouse pointer is over a tab and a mouse button is pressed.
         /// </summary>
         [Category("Behavior"), Description("Occurs when the mouse pointer is over a tab and a mouse button is pressed.")]
@@ -262,6 +292,8 @@ namespace Manina.Windows.Forms
         #region Member Variables
         internal Tab hoveredTab = null;
         internal Tab mouseDownTab = null;
+        internal bool hoveredButton = false;
+        internal bool mouseDownButton = false;
 
         private Rectangle tabArea;
         private Rectangle displayArea;
@@ -485,7 +517,7 @@ namespace Manina.Windows.Forms
             base.OnMouseClick(e);
 
             var tab = PerformHitTest(e.Location);
-            if (tab != null)
+            if (tab != null && !ReferenceEquals(tab.Page, SelectedPage))
                 SelectedPage = tab.Page;
         }
 
@@ -494,10 +526,15 @@ namespace Manina.Windows.Forms
             base.OnMouseMove(e);
 
             var oldHoveredTab = hoveredTab;
+            var oldHoveredButton = hoveredButton;
             hoveredTab = PerformHitTest(e.Location);
+            hoveredButton = false;
             if (hoveredTab != null)
+            {
+                hoveredButton = hoveredTab.CloseButtonBounds.Contains(e.Location);
                 OnTabMouseMove(new TabMouseEventArgs(hoveredTab, e.Button, e.Clicks, e.Delta, e.Location));
-            if (!ReferenceEquals(oldHoveredTab, hoveredTab))
+            }
+            if (!ReferenceEquals(oldHoveredTab, hoveredTab) || oldHoveredButton != hoveredButton)
                 Invalidate();
         }
 
@@ -508,6 +545,7 @@ namespace Manina.Windows.Forms
             if (hoveredTab != null)
             {
                 hoveredTab = null;
+                hoveredButton = false;
                 Invalidate();
             }
         }
@@ -520,8 +558,14 @@ namespace Manina.Windows.Forms
             {
                 var oldmouseDownTab = mouseDownTab;
                 mouseDownTab = hoveredTab;
+                mouseDownButton = false;
+                var oldMouseDownButton = mouseDownButton;
+                if (ReferenceEquals(mouseDownTab.Page, SelectedPage) && hoveredButton != false)
+                {
+                    mouseDownButton = mouseDownTab.CloseButtonBounds.Contains(e.Location);
+                }
                 OnTabMouseDown(new TabMouseEventArgs(hoveredTab, e.Button, e.Clicks, e.Delta, e.Location));
-                if (oldmouseDownTab != mouseDownTab)
+                if (oldmouseDownTab != mouseDownTab || oldMouseDownButton != mouseDownButton)
                     Invalidate();
             }
         }
@@ -536,8 +580,13 @@ namespace Manina.Windows.Forms
             if (hoveredTab != null)
                 OnTabMouseUp(new TabMouseEventArgs(hoveredTab, e.Button, e.Clicks, e.Delta, e.Location));
 
+            if (mouseDownButton != false)
+                OnCloseTabButtonClick(new CancelTabEventArgs(mouseDownTab));
+
             var oldmouseDownTab = mouseDownTab;
             mouseDownTab = null;
+            hoveredButton = false;
+            mouseDownButton = false;
             if (!ReferenceEquals(oldmouseDownTab, mouseDownTab))
                 Invalidate();
         }

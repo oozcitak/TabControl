@@ -268,6 +268,10 @@ namespace Manina.Windows.Forms
                 // close button
                 if (Parent.ShowCloseTabButtons && param.IsSelected)
                 {
+                    Color buttonBackColor = GetCloseTabButtonBackColor(param);
+                    using (var buttonBrush = new SolidBrush(buttonBackColor))
+                        g.FillRectangle(buttonBrush, param.Tab.CloseButtonBounds);
+
                     if (Parent.TextDirection == TextDirection.Right)
                         g.DrawImage(Parent.CloseTabImage, param.Tab.CloseButtonBounds);
                     else if (Parent.TextDirection == TextDirection.Down)
@@ -481,6 +485,18 @@ namespace Manina.Windows.Forms
                     return ActiveTabForeColor;
                 else
                     return InactiveTabForeColor;
+            }
+
+            /// <summary>
+            /// Returns close tab button backcolor for the given state.
+            /// </summary>
+            /// <param name="param">The state of the tab.</param>
+            protected Color GetCloseTabButtonBackColor(DrawTabParams param)
+            {
+                if ((param.Tab.CloseButtonState & ItemState.Hot) != ItemState.Inactive)
+                    return HotTabBackColor;
+                else
+                    return GetTabBackColor(param);
             }
             #endregion
         }
