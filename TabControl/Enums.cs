@@ -4,31 +4,27 @@ using System.ComponentModel;
 namespace Manina.Windows.Forms
 {
     /// <summary>
-    /// Represents the visual state of a tab.
+    /// Represents the visual state of an item.
     /// </summary>
     [Flags]
-    public enum TabState
+    public enum ItemState
     {
         /// <summary>
-        /// The tab is inactive.
+        /// The item is inactive.
         /// </summary>
         Inactive = 0,
         /// <summary>
-        /// The tab is the <see cref="PagedControl.SelectedPage"/> of the control.
+        /// Mouse cursor is over the item.
         /// </summary>
-        Active = 1,
+        Hot = 1,
         /// <summary>
-        /// Mouse cursor is over the tab.
+        /// The left mouse button is clicked over the item.
         /// </summary>
-        Hot = 2,
+        Pressed = 2,
         /// <summary>
-        /// The left mouse button is clicked over the tab.
+        /// The item has input focus.
         /// </summary>
-        Pressed = 4,
-        /// <summary>
-        /// The tab has input focus.
-        /// </summary>
-        Focused = 8,
+        Focused = 4,
     }
 
     /// <summary>

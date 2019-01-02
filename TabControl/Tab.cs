@@ -54,22 +54,20 @@ namespace Manina.Windows.Forms
             /// <summary>
             /// Gets the visual state of a tab.
             /// </summary>
-            public TabState State
+            public ItemState State
             {
                 get
                 {
-                    if (Control == null) return TabState.Inactive;
+                    if (Control == null) return ItemState.Inactive;
 
-                    TabState state = TabState.Inactive;
+                    ItemState state = ItemState.Inactive;
 
-                    // active
-                    if (ReferenceEquals(Control.SelectedPage, Page)) state |= TabState.Active;
                     // hot
-                    if (ReferenceEquals(Control.hoveredTab, this)) state |= TabState.Hot;
+                    if (ReferenceEquals(Control.hoveredTab, this)) state |= ItemState.Hot;
                     // pressed
-                    if (ReferenceEquals(Control.mouseDownTab, this)) state |= TabState.Pressed;
+                    if (ReferenceEquals(Control.mouseDownTab, this)) state |= ItemState.Pressed;
                     // focused
-                    if (Control.Focused && (ReferenceEquals(Control.SelectedPage, Page))) state |= TabState.Focused;
+                    if (Control.Focused && (ReferenceEquals(Control.SelectedPage, Page))) state |= ItemState.Focused;
 
                     return state;
                 }

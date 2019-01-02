@@ -26,18 +26,23 @@ namespace Manina.Windows.Forms
                 /// </summary>
                 public Tab Tab { get; private set; }
                 /// <summary>
+                /// Whether the tab is the selected tab of the control.
+                /// </summary>
+                public bool IsSelected { get; private set; }
+                /// <summary>
                 /// Visual state of the tab.
                 /// </summary>
-                public TabState State { get; private set; }
+                public ItemState State { get; private set; }
                 /// <summary>
                 /// Bounding rectangle of the tab.
                 /// </summary>
                 public Rectangle Bounds { get; private set; }
 
-                public DrawTabParams(int index, Tab tab, TabState state, Rectangle bounds)
+                public DrawTabParams(int index, Tab tab, bool isSelected, ItemState state, Rectangle bounds)
                 {
                     Index = index;
                     Tab = tab;
+                    IsSelected = isSelected;
                     State = state;
                     Bounds = bounds;
                 }
@@ -58,17 +63,17 @@ namespace Manina.Windows.Forms
                     if (ReferenceEquals(p1, p2) || p1.Index == p2.Index)
                         return 0;
 
-                    if ((p1.State & TabState.Pressed) != TabState.Inactive)
+                    if ((p1.State & ItemState.Pressed) != ItemState.Inactive)
                         return 1;
-                    else if ((p2.State & TabState.Pressed) != TabState.Inactive)
+                    else if ((p2.State & ItemState.Pressed) != ItemState.Inactive)
                         return -1;
-                    else if ((p1.State & TabState.Active) != TabState.Inactive)
+                    else if (p1.IsSelected)
                         return 1;
-                    else if ((p2.State & TabState.Active) != TabState.Inactive)
+                    else if (p2.IsSelected)
                         return -1;
-                    else if ((p1.State & TabState.Hot) != TabState.Inactive)
+                    else if ((p1.State & ItemState.Hot) != ItemState.Inactive)
                         return 1;
-                    else if ((p2.State & TabState.Hot) != TabState.Inactive)
+                    else if ((p2.State & ItemState.Hot) != ItemState.Inactive)
                         return -1;
 
                     return p1.Index.CompareTo(p2.Index);
@@ -185,7 +190,7 @@ namespace Manina.Windows.Forms
                 for (int i = 0; i < Parent.Tabs.Count; i++)
                 {
                     var tab = Parent.Tabs[i];
-                    drawParams.Add(new DrawTabParams(i, tab, tab.State, tab.Bounds));
+                    drawParams.Add(new DrawTabParams(i, tab, (i == Parent.SelectedIndex), tab.State, tab.Bounds));
                 }
                 drawParams.Sort(new DrawTabParamsComparer());
 
@@ -218,7 +223,7 @@ namespace Manina.Windows.Forms
             /// <param name="param">The parameters required to draw the tab.</param>
             public virtual void DrawTabBackGround(Graphics g, DrawTabParams param)
             {
-                using (var brush = new SolidBrush(GetTabBackColor(param.State)))
+                using (var brush = new SolidBrush(GetTabBackColor(param)))
                 {
                     g.FillRectangle(brush, param.Bounds);
                 }
@@ -234,8 +239,8 @@ namespace Manina.Windows.Forms
                 // text
                 if (!string.IsNullOrEmpty(param.Tab.Text))
                 {
-                    var backColor = GetTabBackColor(param.State);
-                    var foreColor = GetTabForeColor(param.State);
+                    var backColor = GetTabBackColor(param);
+                    var foreColor = GetTabForeColor(param);
 
                     TextFormatFlags flags = TextFormatFlags.EndEllipsis | TextFormatFlags.VerticalCenter | TextFormatFlags.SingleLine;
 
@@ -260,8 +265,8 @@ namespace Manina.Windows.Forms
                         g.DrawImageRotatedUp(param.Tab.Icon, param.Tab.IconBounds);
                 }
 
-                // close buttons
-                if (Parent.ShowCloseTabButtons && (param.State & TabState.Active) != TabState.Inactive)
+                // close button
+                if (Parent.ShowCloseTabButtons && param.IsSelected)
                 {
                     if (Parent.TextDirection == TextDirection.Right)
                         g.DrawImage(Parent.CloseTabImage, param.Tab.CloseButtonBounds);
@@ -449,15 +454,14 @@ namespace Manina.Windows.Forms
             /// <summary>
             /// Returns tab backcolor for the given state.
             /// </summary>
-            /// <param name="state">The state of the tab.</param>
-            protected Color GetTabBackColor(TabState state)
+            /// <param name="param">The state of the tab.</param>
+            protected Color GetTabBackColor(DrawTabParams param)
             {
-                if ((state & TabState.Pressed) != TabState.Inactive)
+                if ((param.State & ItemState.Pressed) != ItemState.Inactive)
                     return PressedTabBackColor;
-                else if ((state & TabState.Hot) != TabState.Inactive &&
-                    (state & TabState.Active) == TabState.Inactive)
+                else if ((param.State & ItemState.Hot) != ItemState.Inactive && !param.IsSelected)
                     return HotTabBackColor;
-                else if ((state & TabState.Active) != TabState.Inactive)
+                else if (param.IsSelected)
                     return ActiveTabBackColor;
                 else
                     return InactiveTabBackColor;
@@ -466,15 +470,14 @@ namespace Manina.Windows.Forms
             /// <summary>
             /// Returns tab forecolor for the given state.
             /// </summary>
-            /// <param name="state">The state of the tab.</param>
-            protected Color GetTabForeColor(TabState state)
+            /// <param name="param">The state of the tab.</param>
+            protected Color GetTabForeColor(DrawTabParams param)
             {
-                if ((state & TabState.Pressed) != TabState.Inactive)
+                if ((param.State & ItemState.Pressed) != ItemState.Inactive)
                     return PressedTabForeColor;
-                else if ((state & TabState.Hot) != TabState.Inactive &&
-                    (state & TabState.Active) == TabState.Inactive)
+                else if ((param.State & ItemState.Hot) != ItemState.Inactive && !param.IsSelected)
                     return HotTabForeColor;
-                else if ((state & TabState.Active) != TabState.Inactive)
+                else if (param.IsSelected)
                     return ActiveTabForeColor;
                 else
                     return InactiveTabForeColor;
