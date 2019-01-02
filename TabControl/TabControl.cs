@@ -476,6 +476,7 @@ namespace Manina.Windows.Forms
             base.OnResize(e);
 
             UpdateTabLayout();
+            UpdatePages();
             Invalidate();
         }
 
