@@ -428,14 +428,14 @@ namespace Manina.Windows.Forms
         /// </summary>
         /// <returns>true if the designer should serialize 
         /// the property; otherwise false.</returns>
-        public bool ShouldSerializeCloseImage()
+        internal bool ShouldSerializeCloseTabImage()
         {
             return (closeImage != null);
         }
         /// <summary>
         /// Resets the close image to its default value.
         /// </summary>
-        public void ResetCloseImage()
+        internal void ResetCloseTabImage()
         {
             closeImage = null;
         }
