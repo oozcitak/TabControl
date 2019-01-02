@@ -33,6 +33,7 @@
             this.page2 = new Manina.Windows.Forms.Page();
             this.page3 = new Manina.Windows.Forms.Page();
             this.page4 = new Manina.Windows.Forms.Page();
+            this.page5 = new Manina.Windows.Forms.Page();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,33 +43,34 @@
             this.tabControl1.Controls.Add(this.page2);
             this.tabControl1.Controls.Add(this.page3);
             this.tabControl1.Controls.Add(this.page4);
+            this.tabControl1.Controls.Add(this.page5);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
+            this.tabControl1.ShowCloseTabButtons = true;
             this.tabControl1.Size = new System.Drawing.Size(800, 450);
             this.tabControl1.TabIndex = 0;
-            this.tabControl1.TabSize = new System.Drawing.Size(250, 23);
-            this.tabControl1.TextDirection = Manina.Windows.Forms.TextDirection.Up;
+            this.tabControl1.TabLocation = ((Manina.Windows.Forms.TabLocation)((Manina.Windows.Forms.TabLocation.Near | Manina.Windows.Forms.TabLocation.Right)));
             // 
             // page1
             // 
-            this.page1.Location = new System.Drawing.Point(21, 1);
+            this.page1.Location = new System.Drawing.Point(1, 1);
             this.page1.Name = "page1";
-            this.page1.Size = new System.Drawing.Size(778, 448);
+            this.page1.Size = new System.Drawing.Size(731, 448);
             this.page1.Text = "Page 1";
             // 
             // page2
             // 
-            this.page2.Location = new System.Drawing.Point(49, 1);
+            this.page2.Location = new System.Drawing.Point(1, 1);
             this.page2.Name = "page2";
-            this.page2.Size = new System.Drawing.Size(750, 448);
+            this.page2.Size = new System.Drawing.Size(731, 448);
             this.page2.Text = "Page 2";
             // 
             // page3
             // 
-            this.page3.Location = new System.Drawing.Point(1, 24);
+            this.page3.Location = new System.Drawing.Point(1, 21);
             this.page3.Name = "page3";
-            this.page3.Size = new System.Drawing.Size(798, 425);
+            this.page3.Size = new System.Drawing.Size(798, 428);
             this.page3.Text = "Page 3";
             // 
             // page4
@@ -77,6 +79,13 @@
             this.page4.Name = "page4";
             this.page4.Size = new System.Drawing.Size(798, 425);
             this.page4.Text = "Page 4";
+            // 
+            // page5
+            // 
+            this.page5.Location = new System.Drawing.Point(1, 24);
+            this.page5.Name = "page5";
+            this.page5.Size = new System.Drawing.Size(798, 425);
+            this.page5.Text = "Page 5";
             // 
             // TestForm
             // 
@@ -99,6 +108,7 @@
         private Manina.Windows.Forms.Page page2;
         private Manina.Windows.Forms.Page page3;
         private Manina.Windows.Forms.Page page4;
+        private Manina.Windows.Forms.Page page5;
     }
 }
 

@@ -514,7 +514,7 @@ namespace Manina.Windows.Forms
 
         protected override void OnMouseDown(MouseEventArgs e)
         {
-            base.OnMouseMove(e);
+            base.OnMouseDown(e);
 
             if (hoveredTab != null)
             {
@@ -528,7 +528,7 @@ namespace Manina.Windows.Forms
 
         protected override void OnMouseUp(MouseEventArgs e)
         {
-            base.OnMouseMove(e);
+            base.OnMouseUp(e);
 
             if (mouseDownTab != null)
                 OnTabClick(new TabMouseEventArgs(mouseDownTab, e.Button, e.Clicks, e.Delta, e.Location));
