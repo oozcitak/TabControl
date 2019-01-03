@@ -88,14 +88,6 @@ namespace Manina.Windows.Forms
             public TabControl Parent { get; protected set; }
 
             /// <summary>
-            /// Gets the background color of the tab area.
-            /// </summary>
-            public virtual Color BackColor { get; protected set; } = SystemColors.Control;
-            /// <summary>
-            /// Gets the foreground color of the tab area.
-            /// </summary>
-            public virtual Color ForeColor { get; protected set; } = Color.Black;
-            /// <summary>
             /// Gets the color of control border.
             /// </summary>
             public virtual Color BorderColor { get; protected set; } = Color.Black;
@@ -183,7 +175,7 @@ namespace Manina.Windows.Forms
                 g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
 
                 // clear backgound
-                g.Clear(BackColor);
+                g.Clear(Parent.BackColor);
 
                 // sort tabs
                 var drawParams = new List<DrawTabParams>();

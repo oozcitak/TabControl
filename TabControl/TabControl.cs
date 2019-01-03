@@ -366,21 +366,8 @@ namespace Manina.Windows.Forms
         /// </summary>
         [Category("Appearance")]
         [Description("Gets or sets the image of close buttons.")]
-        public Image CloseTabImage
-        {
-            get
-            {
-                return (closeImage ?? defaultCloseImage);
-            }
-            set
-            {
-                closeImage = value;
-                UpdateTabLayout();
-                UpdatePages();
-                CheckViewOffset();
-                Invalidate();
-            }
-        }
+        public Image CloseTabImage { get => (closeImage ?? defaultCloseImage); set { closeImage = value; UpdateTabLayout(); UpdatePages(); CheckViewOffset(); Invalidate(); } }
+
         /// <summary>
         /// Gets or sets whether to show close tab buttons.
         /// </summary>
