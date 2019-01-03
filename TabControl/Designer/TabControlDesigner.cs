@@ -1,6 +1,8 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.Collections;
+using System.ComponentModel;
 using System.ComponentModel.Design;
-using System.Windows.Forms.Design.Behavior;
+using System.Drawing;
 
 namespace Manina.Windows.Forms
 {
@@ -9,7 +11,7 @@ namespace Manina.Windows.Forms
         protected class TabControlDesigner : PageContainerDesigner
         {
             #region Member Variables
-            private Adorner tabButtonAdorner;
+            private bool controlSelected = false;
             private DesignerActionListCollection actionLists = null;
             #endregion
 
@@ -41,13 +43,21 @@ namespace Manina.Windows.Forms
             {
                 base.Initialize(component);
 
-                tabButtonAdorner = new Adorner();
-                BehaviorService.Adorners.Add(tabButtonAdorner);
-
-                var tabGlyph = new TabGlyph(BehaviorService, this);
-                tabButtonAdorner.Glyphs.Add(tabGlyph);
-                
                 Control.PageChanged += Control_PageChanged;
+
+                if (SelectionService != null)
+                    SelectionService.SelectionChanged += SelectionService_SelectionChanged;
+            }
+
+            public override void InitializeNewComponent(IDictionary defaultValues)
+            {
+                // add two default tabs
+                AddTabHandler(this, EventArgs.Empty);
+                AddTabHandler(this, EventArgs.Empty);
+
+                base.InitializeNewComponent(defaultValues);
+
+                Control.SelectedIndex = 0;
             }
 
             protected override void Dispose(bool disposing)
@@ -55,16 +65,76 @@ namespace Manina.Windows.Forms
                 if (disposing)
                 {
                     Control.PageChanged -= Control_PageChanged;
+
+                    if (SelectionService != null)
+                        SelectionService.SelectionChanged -= SelectionService_SelectionChanged;
                 }
 
                 base.Dispose(disposing);
             }
             #endregion
 
+            #region Verb Handlers
+            /// <summary>
+            /// Adds a new tab.
+            /// </summary>
+            protected void AddTabHandler(object sender, EventArgs e)
+            {
+                if (DesignerHost != null)
+                {
+                    MemberDescriptor member = TypeDescriptor.GetProperties(Component)["Controls"];
+                    RaiseComponentChanging(member);
+
+                    Tab tab = (Tab)DesignerHost.CreateComponent(typeof(Tab));
+                    PropertyDescriptor nameProp = TypeDescriptor.GetProperties(tab)["Name"];
+                    string name = (string)nameProp.GetValue(tab);
+                    PropertyDescriptor textProp = TypeDescriptor.GetProperties(tab)["Text"];
+                    textProp.SetValue(tab, name);
+
+                    Control.Tabs.Add(tab);
+                    Control.SelectedTab = tab;
+
+                    RaiseComponentChanged(member, null, null);
+
+                    if (SelectionService != null)
+                        SelectionService.SetSelectedComponents(new Component[] { Control });
+                }
+            }
+            #endregion
+
+            #region Overridden Methods
+            protected override bool GetHitTest(Point point)
+            {
+                if (controlSelected)
+                {
+                    point = Control.PointToClient(point);
+                    foreach (var tab in Control.Tabs)
+                    {
+                        if (tab.TabBounds.Contains(point))
+                        {
+                            return true;
+                        }
+                    }
+                }
+                return base.GetHitTest(point);
+            }
+            #endregion
+
             #region Event Handlers
             private void Control_PageChanged(object sender, PageChangedEventArgs e)
             {
-                SelectionService.SetSelectedComponents(new object[] { Control });
+                if (SelectionService != null)
+                    SelectionService.SetSelectedComponents(new object[] { Control });
+            }
+
+            private void SelectionService_SelectionChanged(object sender, EventArgs e)
+            {
+                controlSelected = false;
+                foreach (var component in SelectionService.GetSelectedComponents())
+                {
+                    if (ReferenceEquals(component, Control))
+                        controlSelected = true;
+                }
             }
             #endregion
         }

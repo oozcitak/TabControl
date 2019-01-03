@@ -301,7 +301,7 @@ namespace Manina.Windows.Forms
         private Rectangle farScrollButtonBounds;
 
         private Size tabSize = new Size(75, 23);
-        private TabLocation tabLocation = Forms.TabLocation.TopLeft;
+        private TabLocation tabLocation = TabLocation.TopLeft;
         private Alignment contentAlignment = Alignment.Near;
         private TabSizing tabSizing = TabSizing.AutoFit;
         private Padding tabPadding = new Padding(4);
@@ -336,7 +336,7 @@ namespace Manina.Windows.Forms
         /// <summary>
         /// Gets or sets the location of tabs.
         /// </summary>
-        [Category("Appearance"), DefaultValue(TabLocation.LeftTop)]
+        [Category("Appearance"), DefaultValue(TabLocation.TopLeft)]
         [Description("Gets or sets the location of tabs.")]
         [Editor(typeof(TabLocationEditor), typeof(UITypeEditor))]
         public TabLocation TabLocation { get => tabLocation; set { tabLocation = value; viewOffset = 0; UpdateTabLayout(); UpdatePages(); Invalidate(); } }
@@ -396,10 +396,35 @@ namespace Manina.Windows.Forms
         public int ContentSpacing { get => contentSpacing; set { contentSpacing = value; UpdateTabLayout(); UpdatePages(); CheckViewOffset(); Invalidate(); } }
 
         /// <summary>
-        /// Gets the collection of tabs.
+        /// Gets or sets the collection of pages.
         /// </summary>
         [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public override PageCollection Pages => base.Pages;
+
+        /// <summary>
+        /// Gets the collection of tabs.
+        /// </summary>
+        [Category("Behavior")]
+        [Description("Gets the collection of tabs.")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public TabCollection Tabs { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the current page.
+        /// </summary>
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public override Page SelectedPage { get => base.SelectedPage; set => base.SelectedPage = value; }
+
+        /// <summary>
+        /// Gets or sets the current tab.
+        /// </summary>
+        [Category("Behavior")]
+        [Description("Gets or sets the current tab.")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Editor(typeof(SelectedTabEditor), typeof(UITypeEditor))]
+        public Tab SelectedTab { get => (Tab)SelectedPage; set => SelectedPage = value; }
 
         /// <summary>
         /// Gets the rectangle that represents the client area of the control.
@@ -487,7 +512,7 @@ namespace Manina.Windows.Forms
 
             foreach (var tab in Tabs)
             {
-                if (tab.Bounds.Contains(pt)) return tab;
+                if (tab.TabBounds.Contains(pt)) return tab;
             }
             return null;
         }
@@ -517,8 +542,8 @@ namespace Manina.Windows.Forms
             base.OnMouseClick(e);
 
             var tab = PerformHitTest(e.Location);
-            if (tab != null && !ReferenceEquals(tab.Page, SelectedPage))
-                SelectedPage = tab.Page;
+            if (tab != null && !ReferenceEquals(tab, SelectedPage))
+                SelectedPage = tab;
         }
 
         protected override void OnMouseMove(MouseEventArgs e)
@@ -560,7 +585,7 @@ namespace Manina.Windows.Forms
                 mouseDownTab = hoveredTab;
                 mouseDownButton = false;
                 var oldMouseDownButton = mouseDownButton;
-                if (ReferenceEquals(mouseDownTab.Page, SelectedPage) && hoveredButton != false)
+                if (ReferenceEquals(mouseDownTab, SelectedPage) && hoveredButton != false)
                 {
                     mouseDownButton = mouseDownTab.CloseButtonBounds.Contains(e.Location);
                 }
@@ -609,28 +634,27 @@ namespace Manina.Windows.Forms
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            if (!OwnerDraw)
-            {
-                renderer.Render(e.Graphics);
-            }
+            renderer.Render(e.Graphics);
         }
 
         protected override void OnPageAdded(PageEventArgs e)
         {
-            Tabs.AddPage(e.Page);
+            e.Page.TextChanged += Page_TextChanged;
+
+            base.OnPageAdded(e);
 
             UpdateTabLayout();
-            e.Page.TextChanged += Page_TextChanged;
-            base.OnPageAdded(e);
+            Invalidate();
         }
 
         protected override void OnPageRemoved(PageEventArgs e)
         {
-            Tabs.RemovePage(e.Page);
+            e.Page.TextChanged -= Page_TextChanged;
+
+            base.OnPageRemoved(e);
 
             UpdateTabLayout();
-            e.Page.TextChanged -= Page_TextChanged;
-            base.OnPageRemoved(e);
+            Invalidate();
         }
         #endregion
 
@@ -841,33 +865,33 @@ namespace Manina.Windows.Forms
             if (horizontal)
             {
                 if (scrollButtons || (tabLocation & TabLocation.Near) != TabLocation.None)
-                    Tabs[0].Bounds = new Rectangle(tabArea.Left + viewOffset, tabArea.Top, tabSizes[0].Width, tabSizes[0].Height);
+                    Tabs[0].TabBounds = new Rectangle(tabArea.Left + viewOffset, tabArea.Top, tabSizes[0].Width, tabSizes[0].Height);
                 else if ((tabLocation & TabLocation.Far) != TabLocation.None)
-                    Tabs[0].Bounds = new Rectangle(tabArea.Left + (tabArea.Width - totalTabWidth), tabArea.Top, tabSizes[0].Width, tabSizes[0].Height);
+                    Tabs[0].TabBounds = new Rectangle(tabArea.Left + (tabArea.Width - totalTabWidth), tabArea.Top, tabSizes[0].Width, tabSizes[0].Height);
                 else
-                    Tabs[0].Bounds = new Rectangle(tabArea.Left + (tabArea.Width - totalTabWidth) / 2, tabArea.Top, tabSizes[0].Width, tabSizes[0].Height);
+                    Tabs[0].TabBounds = new Rectangle(tabArea.Left + (tabArea.Width - totalTabWidth) / 2, tabArea.Top, tabSizes[0].Width, tabSizes[0].Height);
 
                 for (int i = 1; i < Tabs.Count; i++)
                 {
-                    Point tabLocation = Tabs[i - 1].Bounds.Location;
-                    tabLocation.Offset(Tabs[i - 1].Bounds.Width, 0);
-                    Tabs[i].Bounds = new Rectangle(tabLocation, tabSizes[i]);
+                    Point tabLocation = Tabs[i - 1].TabBounds.Location;
+                    tabLocation.Offset(Tabs[i - 1].TabBounds.Width, 0);
+                    Tabs[i].TabBounds = new Rectangle(tabLocation, tabSizes[i]);
                 }
             }
             else
             {
                 if (scrollButtons || (tabLocation & TabLocation.Near) != TabLocation.None)
-                    Tabs[0].Bounds = new Rectangle(tabArea.Left, tabArea.Top - viewOffset, tabSizes[0].Width, tabSizes[0].Height);
+                    Tabs[0].TabBounds = new Rectangle(tabArea.Left, tabArea.Top - viewOffset, tabSizes[0].Width, tabSizes[0].Height);
                 else if ((tabLocation & TabLocation.Far) != TabLocation.None)
-                    Tabs[0].Bounds = new Rectangle(tabArea.Left, tabArea.Top + (tabArea.Height - totalTabHeight), tabSizes[0].Width, tabSizes[0].Height);
+                    Tabs[0].TabBounds = new Rectangle(tabArea.Left, tabArea.Top + (tabArea.Height - totalTabHeight), tabSizes[0].Width, tabSizes[0].Height);
                 else
-                    Tabs[0].Bounds = new Rectangle(tabArea.Left, tabArea.Top + (tabArea.Height - totalTabHeight) / 2, tabSizes[0].Width, tabSizes[0].Height);
+                    Tabs[0].TabBounds = new Rectangle(tabArea.Left, tabArea.Top + (tabArea.Height - totalTabHeight) / 2, tabSizes[0].Width, tabSizes[0].Height);
 
                 for (int i = 1; i < Tabs.Count; i++)
                 {
-                    Point tabLocation = Tabs[i - 1].Bounds.Location;
-                    tabLocation.Offset(0, Tabs[i - 1].Bounds.Height);
-                    Tabs[i].Bounds = new Rectangle(tabLocation, tabSizes[i]);
+                    Point tabLocation = Tabs[i - 1].TabBounds.Location;
+                    tabLocation.Offset(0, Tabs[i - 1].TabBounds.Height);
+                    Tabs[i].TabBounds = new Rectangle(tabLocation, tabSizes[i]);
                 }
             }
         }

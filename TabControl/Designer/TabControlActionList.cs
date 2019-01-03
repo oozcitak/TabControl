@@ -66,43 +66,47 @@ namespace Manina.Windows.Forms
             }
 
             /// <summary>
-            /// Adds a page to the designed control.
+            /// Adds a tab to the designed control.
             /// </summary>
-            public void AddPage()
+            public void AddTab()
             {
                 if (DesignerHost != null)
                 {
-                    Page page = (Page)DesignerHost.CreateComponent(typeof(Page));
-                    page.Text = string.Format("Page {0}", Control.Pages.Count + 1);
-                    Control.Pages.Add(page);
-                    Control.SelectedPage = page;
+                    Tab tab = (Tab)DesignerHost.CreateComponent(typeof(Tab));
+                    PropertyDescriptor nameProp = TypeDescriptor.GetProperties(tab)["Name"];
+                    string name = (string)nameProp.GetValue(tab);
+                    PropertyDescriptor textProp = TypeDescriptor.GetProperties(tab)["Text"];
+                    textProp.SetValue(tab, name);
+
+                    Control.Tabs.Add(tab);
+                    Control.SelectedTab = tab;
 
                     if (SelectionService != null)
-                        SelectionService.SetSelectedComponents(new Component[] { Control.SelectedPage });
+                        SelectionService.SetSelectedComponents(new Component[] { Control });
                 }
             }
 
             /// <summary>
             /// Removes the current page of the designed control.
             /// </summary>
-            protected void RemovePage()
+            protected void RemoveTab()
             {
                 if (DesignerHost != null)
                 {
-                    if (Control.Pages.Count > 1)
+                    if (Control.Tabs.Count > 1)
                     {
-                        Page page = Control.SelectedPage;
-                        if (page != null)
+                        Tab tab = Control.SelectedTab;
+                        if (tab != null)
                         {
                             int index = Control.SelectedIndex;
 
-                            DesignerHost.DestroyComponent(page);
-                            if (index == Control.Pages.Count)
-                                index = Control.Pages.Count - 1;
+                            DesignerHost.DestroyComponent(tab);
+                            if (index == Control.Tabs.Count)
+                                index = Control.Tabs.Count - 1;
                             Control.SelectedIndex = index;
 
                             if (SelectionService != null)
-                                SelectionService.SetSelectedComponents(new Component[] { Control.SelectedPage });
+                                SelectionService.SetSelectedComponents(new Component[] { Control });
                         }
                     }
                 }
@@ -154,8 +158,8 @@ namespace Manina.Windows.Forms
                     new DesignerActionPropertyItem("TabSizing", "TabSizing", "Appearance", "Set the sizing mode of tabs"),
                     new DesignerActionPropertyItem("ContentAlignment", "ContentAlignment", "Appearance", "Set the alignment of tab contents"),
                     new DesignerActionPropertyItem("TextDirection", "TextDirection", "Appearance", "Set the direction of tab text"),
-                    new DesignerActionMethodItem(this, "AddPage", "Add Page", "Data", "Add a new page to the control"),
-                    new DesignerActionMethodItem(this, "RemovePage", "Remove Page", "Data" ,"Remove the current page")
+                    new DesignerActionMethodItem(this, "AddTab", "Add Tab", "Data", "Add a new tab to the control"),
+                    new DesignerActionMethodItem(this, "RemoveTab", "Remove Tab", "Data" ,"Remove the current tab")
                 };
             }
             #endregion

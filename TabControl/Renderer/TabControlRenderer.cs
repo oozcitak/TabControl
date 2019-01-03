@@ -190,7 +190,7 @@ namespace Manina.Windows.Forms
                 for (int i = 0; i < Parent.Tabs.Count; i++)
                 {
                     var tab = Parent.Tabs[i];
-                    drawParams.Add(new DrawTabParams(i, tab, (i == Parent.SelectedIndex), tab.State, tab.Bounds));
+                    drawParams.Add(new DrawTabParams(i, tab, (i == Parent.SelectedIndex), tab.State, tab.TabBounds));
                 }
                 drawParams.Sort(new DrawTabParamsComparer());
 
@@ -327,7 +327,7 @@ namespace Manina.Windows.Forms
                     return;
                 }
 
-                var tabBounds = Parent.Tabs[Parent.SelectedPage].Bounds;
+                var tabBounds = ((Tab)Parent.SelectedPage).TabBounds;
 
                 Point[] pt = new Point[8];
                 if ((Parent.TabLocation & TabLocation.Top) != TabLocation.None)

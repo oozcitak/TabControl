@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Manina.Windows.Forms
@@ -8,13 +9,8 @@ namespace Manina.Windows.Forms
         /// <summary>
         /// Represents a collection of tabs.
         /// </summary>
-        public class TabCollection : IEnumerable<Tab>
+        public class TabCollection : IList<Tab>, IList
         {
-            #region Member Variables
-            private readonly Dictionary<Page, Tab> pageLookup = new Dictionary<Page, Tab>();
-            private readonly List<Tab> items = new List<Tab>();
-            #endregion
-
             #region Properties
             /// <summary>
             /// Gets the owner control.
@@ -22,18 +18,29 @@ namespace Manina.Windows.Forms
             protected TabControl Control { get; private set; }
 
             /// <summary>
-            /// Gets the tab associated with a page.
+            /// Gets the page collection of owner control.
             /// </summary>
-            public Tab this[Page page] => pageLookup[page];
+            protected PageCollection Pages { get; private set; }
+
             /// <summary>
             /// Gets the tab at the given index.
             /// </summary>
-            public Tab this[int index] => items[index];
+            public Tab this[int index] { get => (Tab)Pages[index]; set => Pages[index] = value; }
 
             /// <summary>
             /// Gets the count of items.
             /// </summary>
-            public int Count => items.Count;
+            public int Count => Pages.Count;
+
+            public bool IsReadOnly => false;
+
+            bool IList.IsFixedSize => false;
+
+            object ICollection.SyncRoot => throw new NotImplementedException();
+
+            bool ICollection.IsSynchronized => false;
+
+            object IList.this[int index] { get => this[index]; set => this[index] = (Tab)value; }
             #endregion
 
             #region Constructor
@@ -44,41 +51,46 @@ namespace Manina.Windows.Forms
             protected internal TabCollection(TabControl parent)
             {
                 Control = parent;
-            }
-            #endregion
-
-            #region Page Handlers
-            /// <summary>
-            /// Adds a tab whenever a new page is added to the owner control.
-            /// </summary>
-            internal void AddPage(Page page)
-            {
-                var tab = new Tab(Control, page);
-                pageLookup.Add(page, tab);
-                items.Add(tab);
-            }
-
-            /// <summary>
-            /// Removes the associated tab whenever a page is removed from the owner control.
-            /// </summary>
-            internal void RemovePage(Page page)
-            {
-                var tab = pageLookup[page];
-                pageLookup.Remove(page);
-                items.Remove(tab);
+                Pages = parent.Pages;
             }
             #endregion
 
             #region IEnumerable
             public IEnumerator<Tab> GetEnumerator()
             {
-                return items.GetEnumerator();
+                foreach (var page in Pages)
+                    yield return (Tab)page;
             }
 
             IEnumerator IEnumerable.GetEnumerator()
             {
-                return items.GetEnumerator();
+                return Pages.GetEnumerator();
             }
+            #endregion
+
+            #region IList<>
+            public void Add(Tab item) => Pages.Add(item);
+            public void Clear() => Pages.Clear();
+            public bool Contains(Tab item) => Pages.Contains(item);
+            public void CopyTo(Tab[] array, int arrayIndex) => Pages.CopyTo(array, arrayIndex);
+            public int IndexOf(Tab item) => Pages.IndexOf(item);
+            public void Insert(int index, Tab item) => Pages.Insert(index, item);
+            public bool Remove(Tab item) => Pages.Remove(item);
+            public void RemoveAt(int index) => Pages.RemoveAt(index);
+            #endregion
+
+            #region IList
+            int IList.Add(object value)
+            {
+                Add((Tab)value);
+                return Count - 1;
+            }
+
+            bool IList.Contains(object value) => Contains((Tab)value);
+            int IList.IndexOf(object value) => IndexOf((Tab)value);
+            void IList.Insert(int index, object value) => Insert(index, (Tab)value);
+            void IList.Remove(object value) => Remove((Tab)value);
+            void ICollection.CopyTo(Array array, int arrayIndex) => CopyTo((Tab[])array, arrayIndex);
             #endregion
         }
     }

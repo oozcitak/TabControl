@@ -28,74 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabControl1 = new Manina.Windows.Forms.TabControl();
-            this.page1 = new Manina.Windows.Forms.Page();
-            this.page2 = new Manina.Windows.Forms.Page();
-            this.page3 = new Manina.Windows.Forms.Page();
-            this.page4 = new Manina.Windows.Forms.Page();
-            this.page5 = new Manina.Windows.Forms.Page();
-            this.tabControl1.SuspendLayout();
+            this.tab2 = new Manina.Windows.Forms.TabControl.Tab();
+            this.tab4 = new Manina.Windows.Forms.TabControl.Tab();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // tab2
             // 
-            this.tabControl1.Controls.Add(this.page1);
-            this.tabControl1.Controls.Add(this.page2);
-            this.tabControl1.Controls.Add(this.page3);
-            this.tabControl1.Controls.Add(this.page4);
-            this.tabControl1.Controls.Add(this.page5);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.ShowCloseTabButtons = true;
-            this.tabControl1.Size = new System.Drawing.Size(800, 450);
-            this.tabControl1.TabIndex = 0;
-            this.tabControl1.TabLocation = ((Manina.Windows.Forms.TabLocation)((Manina.Windows.Forms.TabLocation.Near | Manina.Windows.Forms.TabLocation.Right)));
+            this.tab2.Icon = null;
+            this.tab2.Location = new System.Drawing.Point(1, 23);
+            this.tab2.Name = "tab2";
+            this.tab2.Size = new System.Drawing.Size(798, 426);
+            this.tab2.Text = "tab2";
             // 
-            // page1
+            // tab4
             // 
-            this.page1.Location = new System.Drawing.Point(1, 1);
-            this.page1.Name = "page1";
-            this.page1.Size = new System.Drawing.Size(731, 448);
-            this.page1.Text = "Page 1";
-            // 
-            // page2
-            // 
-            this.page2.Location = new System.Drawing.Point(1, 1);
-            this.page2.Name = "page2";
-            this.page2.Size = new System.Drawing.Size(731, 448);
-            this.page2.Text = "Page 2";
-            // 
-            // page3
-            // 
-            this.page3.Location = new System.Drawing.Point(1, 21);
-            this.page3.Name = "page3";
-            this.page3.Size = new System.Drawing.Size(798, 428);
-            this.page3.Text = "Page 3";
-            // 
-            // page4
-            // 
-            this.page4.Location = new System.Drawing.Point(1, 24);
-            this.page4.Name = "page4";
-            this.page4.Size = new System.Drawing.Size(798, 425);
-            this.page4.Text = "Page 4";
-            // 
-            // page5
-            // 
-            this.page5.Location = new System.Drawing.Point(1, 24);
-            this.page5.Name = "page5";
-            this.page5.Size = new System.Drawing.Size(798, 425);
-            this.page5.Text = "Page 5";
+            this.tab4.Icon = null;
+            this.tab4.Location = new System.Drawing.Point(1, 23);
+            this.tab4.Name = "tab4";
+            this.tab4.Size = new System.Drawing.Size(798, 426);
+            this.tab4.Text = "tab4";
             // 
             // TestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.tabControl1);
             this.Name = "TestForm";
             this.Text = "TabControl Test Form";
-            this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -103,12 +62,8 @@
 
         #endregion
 
-        private Manina.Windows.Forms.TabControl tabControl1;
-        private Manina.Windows.Forms.Page page1;
-        private Manina.Windows.Forms.Page page2;
-        private Manina.Windows.Forms.Page page3;
-        private Manina.Windows.Forms.Page page4;
-        private Manina.Windows.Forms.Page page5;
+        private Manina.Windows.Forms.TabControl.Tab tab2;
+        private Manina.Windows.Forms.TabControl.Tab tab4;
     }
 }
 
