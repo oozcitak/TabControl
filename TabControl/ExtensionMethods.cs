@@ -160,5 +160,56 @@ namespace Manina.Windows.Forms
             g.DrawImage(image, ptMap);
         }
         #endregion
+
+        #region Color
+        public static Color Lighten(this Color color, float amount)
+        {
+            float h = color.GetHue() / 360f;
+            float s = color.GetSaturation();
+            float l = color.GetBrightness();
+
+            l = l + (1.0f - l) * amount;
+
+            return ColorFromHSL(color.A / 255f, h, s, l);
+        }
+
+        public static Color Darken(this Color color, float amount)
+        {
+            float h = color.GetHue() / 360f;
+            float s = color.GetSaturation();
+            float l = color.GetBrightness();
+
+            l = l - (l - 0f) * amount;
+
+            return ColorFromHSL(color.A / 255f, h, s, l);
+        }
+
+        public static Color ColorFromHSL(float a, float h, float s, float l)
+        {
+            float m2 = (l <= 0.5f ? l * (s + 1f) : (l + s - l * s));
+            float m1 = l * 2f - m2;
+            float r = HueToRgb(m1, m2, h + 1f / 3f);
+            float g = HueToRgb(m1, m2, h);
+            float b = HueToRgb(m1, m2, h - 1f / 3f);
+
+            return Color.FromArgb((int)(a * 255f), (int)(r * 255f), (int)(g * 255f), (int)(b * 255f));
+        }
+
+        private static float HueToRgb(float m1, float m2, float h)
+        {
+            if (h < 0f) h = h + 1f;
+            if (h > 1f) h = h - 1f;
+
+
+            if (h * 6f < 1f)
+                return m1 + (m2 - m1) * h * 6f;
+            else if (h * 2f < 1f)
+                return m2;
+            else if (h * 3f < 2f)
+                return m1 + (m2 - m1) * (2f / 3f - h) * 6f;
+            else
+                return m1;
+        }
+        #endregion
     }
 }

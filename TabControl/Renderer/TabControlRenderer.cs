@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -85,68 +86,75 @@ namespace Manina.Windows.Forms
             /// <summary>
             /// Gets the parent control.
             /// </summary>
+            [Browsable(false)]
             public TabControl Parent { get; protected set; }
 
             /// <summary>
-            /// Gets the color of control border.
+            /// Gets or sets whether to use the ForeColor and BackColor properties of the control
+            /// to paint tabs.
             /// </summary>
-            public virtual Color BorderColor { get; protected set; } = Color.Black;
+            public virtual bool UseTabColors { get; set; } = true;
 
             /// <summary>
-            /// Gets the background color of inactive tabs.
+            /// Gets or sets the color of control border.
             /// </summary>
-            public virtual Color InactiveTabBackColor { get; protected set; } = Color.FromArgb(225, 225, 225);
-            /// <summary>
-            /// Gets the background color of active tabs.
-            /// </summary>
-            public virtual Color ActiveTabBackColor { get; protected set; } = Color.White;
-            /// <summary>
-            /// Gets the background color of hot tabs.
-            /// </summary>
-            public virtual Color HotTabBackColor { get; protected set; } = Color.FromArgb(235, 235, 235);
-            /// <summary>
-            /// Gets the background color of pressed tabs.
-            /// </summary>
-            public virtual Color PressedTabBackColor { get; protected set; } = Color.White;
+            public virtual Color BorderColor { get; set; } = Color.Black;
 
             /// <summary>
-            /// Gets the foreground color of inactive tabs.
+            /// Gets or sets the background color of inactive tabs.
             /// </summary>
-            public virtual Color InactiveTabForeColor { get; protected set; } = Color.Black;
+            public virtual Color InactiveTabBackColor { get; set; } = Color.FromArgb(225, 225, 225);
             /// <summary>
-            /// Gets the foreground color of active tabs.
+            /// Gets or sets the background color of active tabs.
             /// </summary>
-            public virtual Color ActiveTabForeColor { get; protected set; } = Color.Black;
+            public virtual Color ActiveTabBackColor { get; set; } = Color.White;
             /// <summary>
-            /// Gets the foreground color of hot tabs.
+            /// Gets or sets the background color of hot tabs.
             /// </summary>
-            public virtual Color HotTabForeColor { get; protected set; } = Color.Black;
+            public virtual Color HotTabBackColor { get; set; } = Color.FromArgb(235, 235, 235);
             /// <summary>
-            /// Gets the foreground color of pressed tabs.
+            /// Gets or sets the background color of pressed tabs.
             /// </summary>
-            public virtual Color PressedTabForeColor { get; protected set; } = Color.Black;
+            public virtual Color PressedTabBackColor { get; set; } = Color.White;
 
             /// <summary>
-            /// Gets the color of tab separators.
+            /// Gets or sets the foreground color of inactive tabs.
             /// </summary>
-            public virtual Color SeparatorColor { get; protected set; } = Color.FromArgb(166, 166, 166);
+            public virtual Color InactiveTabForeColor { get; set; } = Color.Black;
+            /// <summary>
+            /// Gets or sets the foreground color of active tabs.
+            /// </summary>
+            public virtual Color ActiveTabForeColor { get; set; } = Color.Black;
+            /// <summary>
+            /// Gets or sets the foreground color of hot tabs.
+            /// </summary>
+            public virtual Color HotTabForeColor { get; set; } = Color.Black;
+            /// <summary>
+            /// Gets or sets the foreground color of pressed tabs.
+            /// </summary>
+            public virtual Color PressedTabForeColor { get; set; } = Color.Black;
 
             /// <summary>
-            /// Gets the background color of scroll buttons.
+            /// Gets or sets the color of tab separators.
             /// </summary>
-            public virtual Color ButtonBackColor { get; protected set; } = SystemColors.Control;
+            public virtual Color SeparatorColor { get; set; } = Color.FromArgb(166, 166, 166);
+
             /// <summary>
-            /// Gets the foreground color of scroll buttons.
+            /// Gets or sets the background color of scroll buttons.
             /// </summary>
-            public virtual Color ButtonForeColor { get; protected set; } = Color.FromArgb(255, 244, 192);
+            public virtual Color ButtonBackColor { get; set; } = SystemColors.Control;
             /// <summary>
-            /// Gets the shape fill color of scroll buttons.
+            /// Gets or sets the foreground color of scroll buttons.
             /// </summary>
-            public virtual Color ButtonFillColor { get; protected set; } = Color.FromArgb(92, 184, 92);
+            public virtual Color ButtonForeColor { get; set; } = Color.FromArgb(255, 244, 192);
             /// <summary>
-            /// Gets the shape border color of scroll buttons.
+            /// Gets or sets the shape fill color of scroll buttons.
             /// </summary>
-            public virtual Color ButtonBorderColor { get; protected set; } = Color.FromArgb(51, 51, 51);
+            public virtual Color ButtonFillColor { get; set; } = Color.FromArgb(92, 184, 92);
+            /// <summary>
+            /// Gets or sets the shape border color of scroll buttons.
+            /// </summary>
+            public virtual Color ButtonBorderColor { get; set; } = Color.FromArgb(51, 51, 51);
             #endregion
 
             #region Constructor
@@ -230,11 +238,11 @@ namespace Manina.Windows.Forms
                     var textBounds = param.Tab.TextBounds;
 
                     if (Parent.TextDirection == TextDirection.Right)
-                        TextRenderer.DrawText(g, param.Tab.Text, Parent.Font, textBounds, foreColor, backColor, flags);
+                        TextRenderer.DrawText(g, param.Tab.Text, param.Tab.Font, textBounds, foreColor, backColor, flags);
                     else if (Parent.TextDirection == TextDirection.Down)
-                        g.DrawVerticalTextDown(param.Tab.Text, Parent.Font, textBounds, foreColor, backColor, flags);
+                        g.DrawVerticalTextDown(param.Tab.Text, param.Tab.Font, textBounds, foreColor, backColor, flags);
                     else
-                        g.DrawVerticalTextUp(param.Tab.Text, Parent.Font, textBounds, foreColor, backColor, flags);
+                        g.DrawVerticalTextUp(param.Tab.Text, param.Tab.Font, textBounds, foreColor, backColor, flags);
                 }
 
                 // icon
@@ -445,13 +453,13 @@ namespace Manina.Windows.Forms
             protected Color GetTabBackColor(DrawTabParams param)
             {
                 if ((param.State & ItemState.Pressed) != ItemState.Inactive)
-                    return PressedTabBackColor;
+                    return UseTabColors ? param.Tab.BackColor.Lighten(0.1f) : PressedTabBackColor;
                 else if ((param.State & ItemState.Hot) != ItemState.Inactive && !param.IsSelected)
-                    return HotTabBackColor;
+                    return UseTabColors ? param.Tab.BackColor.Darken(0.05f) : HotTabBackColor;
                 else if (param.IsSelected)
-                    return ActiveTabBackColor;
+                    return UseTabColors ? param.Tab.BackColor : ActiveTabBackColor;
                 else
-                    return InactiveTabBackColor;
+                    return UseTabColors ? param.Tab.BackColor.Darken(0.1f) : InactiveTabBackColor;
             }
 
             /// <summary>
@@ -460,6 +468,8 @@ namespace Manina.Windows.Forms
             /// <param name="param">The state of the tab.</param>
             protected Color GetTabForeColor(DrawTabParams param)
             {
+                if (UseTabColors) return param.Tab.ForeColor;
+
                 if ((param.State & ItemState.Pressed) != ItemState.Inactive)
                     return PressedTabForeColor;
                 else if ((param.State & ItemState.Hot) != ItemState.Inactive && !param.IsSelected)

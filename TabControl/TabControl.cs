@@ -183,7 +183,7 @@ namespace Manina.Windows.Forms
 
             if (e.Tab.HasText)
             {
-                Size size = TextRenderer.MeasureText(e.Tab.Text, Font);
+                Size size = TextRenderer.MeasureText(e.Tab.Text, e.Tab.Font);
                 width = width + size.Width;
                 height = Math.Max(height, size.Height);
             }
@@ -319,6 +319,12 @@ namespace Manina.Windows.Forms
         #endregion
 
         #region Properties
+        /// <summary>
+        /// Gets or sets the renderer associated with the control.
+        /// </summary>
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public TabControlRenderer Renderer { get => renderer; set { renderer = value; Invalidate(); } }
+
         /// <summary>
         /// Gets or sets the size of tabs.
         /// </summary>
@@ -469,7 +475,7 @@ namespace Manina.Windows.Forms
             defaultCloseImage = Properties.Resources.CloseImage;
 
             Tabs = new TabCollection(this);
-            SetRenderer(new TabControlRenderer(this));
+            renderer = new TabControlRenderer(this);
             UpdateTabLayout();
         }
         #endregion
@@ -510,15 +516,6 @@ namespace Manina.Windows.Forms
                 if (tab.TabBounds.Contains(pt)) return tab;
             }
             return null;
-        }
-
-        /// <summary>
-        /// Changes the renderer associated with the control.
-        /// </summary>
-        /// <param name="renderer">The new renderer</param>
-        public void SetRenderer(TabControlRenderer renderer)
-        {
-            this.renderer = renderer;
         }
         #endregion
 

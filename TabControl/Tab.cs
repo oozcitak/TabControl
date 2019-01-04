@@ -96,6 +96,28 @@ namespace Manina.Windows.Forms
             [Browsable(false)]
             public Rectangle CloseButtonBounds { get; private set; }
 
+            /// <summary>
+            /// Gets or sets the font associated with the control.
+            /// </summary>
+            [Localizable(true)]
+            [Category("Appearance")]
+            [Description("Gets or sets the font associated with the control.")]
+            public override Font Font
+            {
+                get => base.Font;
+                set
+                {
+                    base.Font = value;
+                    if (Parent != null)
+                    {
+                        Parent.UpdateTabLayout();
+                        Parent.UpdatePages();
+                        Parent.CheckViewOffset();
+                        Parent.Invalidate();
+                    }
+                }
+            }
+
             internal bool HasIcon => Icon != null;
             internal bool HasText => !string.IsNullOrEmpty(Text);
             #endregion
@@ -128,7 +150,7 @@ namespace Manina.Windows.Forms
                 int height = (Parent.TextDirection == TextDirection.Right ? tabBounds.Height : tabBounds.Width);
 
                 Size iconSize = HasIcon ? Icon.Size : Size.Empty;
-                Size textSize = HasText ? TextRenderer.MeasureText(Text, Parent.Font) : Size.Empty;
+                Size textSize = HasText ? TextRenderer.MeasureText(Text, Font) : Size.Empty;
                 Size buttonSize = Parent.ShowCloseTabButtons ? Parent.CloseTabImage.Size : Size.Empty;
 
                 int availableIconAndTextWidth = width - (Parent.ShowCloseTabButtons ? buttonSize.Width + Parent.ContentSpacing : 0);
