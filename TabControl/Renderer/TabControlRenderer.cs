@@ -172,8 +172,6 @@ namespace Manina.Windows.Forms
             /// </summary>
             public virtual void Render(Graphics g)
             {
-                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-
                 // clear backgound
                 g.Clear(Parent.BackColor);
 
