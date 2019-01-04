@@ -438,6 +438,14 @@ namespace Manina.Windows.Forms
         public bool ScrollButtons => scrollButtons;
 
         /// <summary>
+        /// Gets or sets the font associated with the control.
+        /// </summary>
+        [Localizable(true)]
+        [Category("Appearance")]
+        [Description("Gets or sets the font associated with the control.")]
+        public override Font Font { get => base.Font; set { base.Font = value; UpdateTabLayout(); UpdatePages(); CheckViewOffset(); Invalidate(); } }
+
+        /// <summary>
         /// Gets the bounds of the near scroll button. Although scroll button size is returned
         /// by the renderer, it may be resized along with tabs while layout logic is applied.
         /// </summary>

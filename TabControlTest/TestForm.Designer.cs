@@ -28,33 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.tabControl1 = new Manina.Windows.Forms.TabControl();
+            this.tab1 = new Manina.Windows.Forms.TabControl.Tab();
             this.tab2 = new Manina.Windows.Forms.TabControl.Tab();
-            this.tab4 = new Manina.Windows.Forms.TabControl.Tab();
+            this.tabControl1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tab1);
+            this.tabControl1.Controls.Add(this.tab2);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.Size = new System.Drawing.Size(800, 450);
+            this.tabControl1.TabIndex = 0;
+            // 
+            // tab1
+            // 
+            this.tab1.Icon = null;
+            this.tab1.Location = new System.Drawing.Point(1, 21);
+            this.tab1.Name = "tab1";
+            this.tab1.Size = new System.Drawing.Size(798, 428);
+            this.tab1.Text = "tab1";
             // 
             // tab2
             // 
             this.tab2.Icon = null;
-            this.tab2.Location = new System.Drawing.Point(1, 23);
+            this.tab2.Location = new System.Drawing.Point(1, 33);
             this.tab2.Name = "tab2";
-            this.tab2.Size = new System.Drawing.Size(798, 426);
+            this.tab2.Size = new System.Drawing.Size(798, 416);
             this.tab2.Text = "tab2";
-            // 
-            // tab4
-            // 
-            this.tab4.Icon = null;
-            this.tab4.Location = new System.Drawing.Point(1, 23);
-            this.tab4.Name = "tab4";
-            this.tab4.Size = new System.Drawing.Size(798, 426);
-            this.tab4.Text = "tab4";
             // 
             // TestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.tabControl1);
             this.Name = "TestForm";
             this.Text = "TabControl Test Form";
+            this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -62,8 +76,9 @@
 
         #endregion
 
+        private Manina.Windows.Forms.TabControl tabControl1;
+        private Manina.Windows.Forms.TabControl.Tab tab1;
         private Manina.Windows.Forms.TabControl.Tab tab2;
-        private Manina.Windows.Forms.TabControl.Tab tab4;
     }
 }
 

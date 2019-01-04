@@ -93,11 +93,6 @@ namespace Manina.Windows.Forms
             public virtual Color BorderColor { get; protected set; } = Color.Black;
 
             /// <summary>
-            /// Gets the font of tab texts.
-            /// </summary>
-            public virtual Font Font { get; protected set; }
-
-            /// <summary>
             /// Gets the background color of inactive tabs.
             /// </summary>
             public virtual Color InactiveTabBackColor { get; protected set; } = Color.FromArgb(225, 225, 225);
@@ -161,14 +156,12 @@ namespace Manina.Windows.Forms
             public TabControlRenderer(TabControl parent)
             {
                 Parent = parent;
-
-                Font = parent.Font;
             }
             #endregion
 
             #region Render Methods
             /// <summary>
-            /// Draws the background of the tab area.
+            /// Draws the control.
             /// </summary>
             public virtual void Render(Graphics g)
             {
@@ -237,11 +230,11 @@ namespace Manina.Windows.Forms
                     var textBounds = param.Tab.TextBounds;
 
                     if (Parent.TextDirection == TextDirection.Right)
-                        TextRenderer.DrawText(g, param.Tab.Text, Font, textBounds, foreColor, backColor, flags);
+                        TextRenderer.DrawText(g, param.Tab.Text, Parent.Font, textBounds, foreColor, backColor, flags);
                     else if (Parent.TextDirection == TextDirection.Down)
-                        g.DrawVerticalTextDown(param.Tab.Text, Font, textBounds, foreColor, backColor, flags);
+                        g.DrawVerticalTextDown(param.Tab.Text, Parent.Font, textBounds, foreColor, backColor, flags);
                     else
-                        g.DrawVerticalTextUp(param.Tab.Text, Font, textBounds, foreColor, backColor, flags);
+                        g.DrawVerticalTextUp(param.Tab.Text, Parent.Font, textBounds, foreColor, backColor, flags);
                 }
 
                 // icon
