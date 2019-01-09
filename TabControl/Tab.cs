@@ -26,6 +26,8 @@ namespace Manina.Windows.Forms
             /// <summary>
             /// Gets or sets the tab icon.
             /// </summary>
+            [Category("Appearance")]
+            [Description("Gets or sets the tab icon."), DefaultValue(null)]
             public Image Icon { get; set; } = null;
 
             /// <summary>
