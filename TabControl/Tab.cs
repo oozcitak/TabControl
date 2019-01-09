@@ -19,12 +19,6 @@ namespace Manina.Windows.Forms
 
             #region Properties
             /// <summary>
-            /// Gets the owner control.
-            /// </summary>
-            [Browsable(false)]
-            public new TabControl Parent => (TabControl)base.Parent;
-
-            /// <summary>
             /// Gets or sets the tab icon.
             /// </summary>
             [Category("Appearance")]
@@ -44,6 +38,34 @@ namespace Manina.Windows.Forms
                     }
                 }
             }
+
+            /// <summary>
+            /// Gets or sets the font associated with the control.
+            /// </summary>
+            [Localizable(true)]
+            [Category("Appearance")]
+            [Description("Gets or sets the font associated with the control.")]
+            public override Font Font
+            {
+                get => base.Font;
+                set
+                {
+                    base.Font = value;
+                    if (Parent != null)
+                    {
+                        Parent.UpdateTabLayout();
+                        Parent.UpdatePages();
+                        Parent.CheckViewOffset();
+                        Parent.Invalidate();
+                    }
+                }
+            }
+
+            /// <summary>
+            /// Gets the owner control.
+            /// </summary>
+            [Browsable(false)]
+            public new TabControl Parent => (TabControl)base.Parent;
 
             /// <summary>
             /// Gets the bounding rectangle of the tab.
@@ -114,28 +136,12 @@ namespace Manina.Windows.Forms
             public Rectangle CloseButtonBounds { get; private set; }
 
             /// <summary>
-            /// Gets or sets the font associated with the control.
+            /// Determines whether the tab has an icon.
             /// </summary>
-            [Localizable(true)]
-            [Category("Appearance")]
-            [Description("Gets or sets the font associated with the control.")]
-            public override Font Font
-            {
-                get => base.Font;
-                set
-                {
-                    base.Font = value;
-                    if (Parent != null)
-                    {
-                        Parent.UpdateTabLayout();
-                        Parent.UpdatePages();
-                        Parent.CheckViewOffset();
-                        Parent.Invalidate();
-                    }
-                }
-            }
-
             internal bool HasIcon => Icon != null;
+            /// <summary>
+            /// Determines whether the tab has text.
+            /// </summary>
             internal bool HasText => !string.IsNullOrEmpty(Text);
             #endregion
 
