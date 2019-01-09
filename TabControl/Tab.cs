@@ -14,6 +14,7 @@ namespace Manina.Windows.Forms
         {
             #region Member Variables
             private Rectangle tabBounds;
+            private Image icon = null;
             #endregion
 
             #region Properties
@@ -28,7 +29,21 @@ namespace Manina.Windows.Forms
             /// </summary>
             [Category("Appearance")]
             [Description("Gets or sets the tab icon."), DefaultValue(null)]
-            public Image Icon { get; set; } = null;
+            public Image Icon
+            {
+                get => icon;
+                set
+                {
+                    icon = value;
+                    if (Parent != null)
+                    {
+                        Parent.UpdateTabLayout();
+                        Parent.UpdatePages();
+                        Parent.CheckViewOffset();
+                        Parent.Invalidate();
+                    }
+                }
+            }
 
             /// <summary>
             /// Gets the bounding rectangle of the tab.
