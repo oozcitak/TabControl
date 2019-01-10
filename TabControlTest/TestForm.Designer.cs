@@ -61,7 +61,8 @@
             this.tabControl1.Size = new System.Drawing.Size(626, 347);
             this.tabControl1.TabIndex = 0;
             this.tabControl1.TabLocation = ((Manina.Windows.Forms.TabLocation)((Manina.Windows.Forms.TabLocation.Near | Manina.Windows.Forms.TabLocation.Left)));
-            this.tabControl1.TextDirection = Manina.Windows.Forms.TextDirection.Up;
+            this.tabControl1.TextDirection = Manina.Windows.Forms.TextDirection.Down;
+            this.tabControl1.PageChanged += new System.EventHandler<Manina.Windows.Forms.PageChangedEventArgs>(this.tabControl1_PageChanged);
             // 
             // tab1
             // 
@@ -130,14 +131,14 @@
             // 
             this.tab9.Location = new System.Drawing.Point(1, 24);
             this.tab9.Name = "tab9";
-            this.tab9.Size = new System.Drawing.Size(582, 236);
+            this.tab9.Size = new System.Drawing.Size(624, 322);
             this.tab9.Text = "tab9";
             // 
             // tab10
             // 
             this.tab10.Location = new System.Drawing.Point(1, 24);
             this.tab10.Name = "tab10";
-            this.tab10.Size = new System.Drawing.Size(582, 236);
+            this.tab10.Size = new System.Drawing.Size(624, 322);
             this.tab10.Text = "tab10";
             // 
             // TestForm
