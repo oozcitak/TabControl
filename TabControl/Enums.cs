@@ -25,6 +25,10 @@ namespace Manina.Windows.Forms
         /// The item has input focus.
         /// </summary>
         Focused = 4,
+        /// <summary>
+        /// The item is disabled.
+        /// </summary>
+        Disabled = 8,
     }
 
     /// <summary>
@@ -163,5 +167,21 @@ namespace Manina.Windows.Forms
         /// Text is rotated 90 degrees pointing up.
         /// </summary>
         Up
+    }
+
+    /// <summary>
+    /// Represents a scroll button.
+    /// </summary>
+    internal enum ScrollButton
+    {
+        None,
+        /// <summary>
+        /// The near scroll button.
+        /// </summary>
+        Near,
+        /// <summary>
+        /// The far scroll button.
+        /// </summary>
+        Far
     }
 }

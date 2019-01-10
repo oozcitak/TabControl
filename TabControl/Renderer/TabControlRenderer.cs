@@ -50,6 +50,29 @@ namespace Manina.Windows.Forms
             }
             #endregion
 
+            #region DrawButtonParams
+            /// <summary>
+            /// Represents the parameters required to draw a scroll button.
+            /// </summary>
+            public struct DrawButtonParams
+            {
+                /// <summary>
+                /// Visual state of the button.
+                /// </summary>
+                public ItemState State { get; private set; }
+                /// <summary>
+                /// Bounding rectangle of the button.
+                /// </summary>
+                public Rectangle Bounds { get; private set; }
+
+                public DrawButtonParams(ItemState state, Rectangle bounds)
+                {
+                    State = state;
+                    Bounds = bounds;
+                }
+            }
+            #endregion
+
             #region DrawTabParamsComparer
             /// <summary>
             /// Compares items so that they are sorted as: Inactive > Hot > Active > Pressed
@@ -140,21 +163,17 @@ namespace Manina.Windows.Forms
             public virtual Color SeparatorColor { get; set; } = Color.FromArgb(166, 166, 166);
 
             /// <summary>
-            /// Gets or sets the background color of scroll buttons.
+            /// Gets or sets the background color of inactive scroll buttons.
             /// </summary>
-            public virtual Color ButtonBackColor { get; set; } = SystemColors.Control;
+            public virtual Color InactiveButtonBackColor { get; set; } = Color.FromArgb(225, 225, 225);
             /// <summary>
-            /// Gets or sets the foreground color of scroll buttons.
+            /// Gets or sets the background color of hot scroll buttons.
             /// </summary>
-            public virtual Color ButtonForeColor { get; set; } = Color.FromArgb(255, 244, 192);
+            public virtual Color HotButtonBackColor { get; set; } = Color.FromArgb(235, 235, 235);
             /// <summary>
-            /// Gets or sets the shape fill color of scroll buttons.
+            /// Gets or sets the background color of pressed scroll buttons.
             /// </summary>
-            public virtual Color ButtonFillColor { get; set; } = Color.FromArgb(92, 184, 92);
-            /// <summary>
-            /// Gets or sets the shape border color of scroll buttons.
-            /// </summary>
-            public virtual Color ButtonBorderColor { get; set; } = Color.FromArgb(51, 51, 51);
+            public virtual Color PressedButtonBackColor { get; set; } = Color.White;
             #endregion
 
             #region Constructor
@@ -193,17 +212,17 @@ namespace Manina.Windows.Forms
                     DrawSeparator(g, param);
                 }
 
-                // draw scroll buttons
-                if (Parent.ScrollButtons)
-                {
-                    DrawNearScrollButton(g, Parent.NearScrollButtonBounds);
-                    DrawFarScrollButton(g, Parent.FarScrollButtonBounds);
-                }
-
                 // draw border
                 if (Parent.BorderStyle != BorderStyle.None)
                 {
                     DrawBorder(g, Parent.DisplayRectangle.GetInflated(1, 1));
+                }
+
+                // draw scroll buttons
+                if (Parent.ScrollButtons)
+                {
+                    DrawNearScrollButton(g, new DrawButtonParams(Parent.GetNearScrollButtonState(), Parent.NearScrollButtonBounds));
+                    DrawFarScrollButton(g, new DrawButtonParams(Parent.GetFarScrollButtonState(), Parent.FarScrollButtonBounds));
                 }
             }
 
@@ -283,19 +302,19 @@ namespace Manina.Windows.Forms
                 {
                     using (var pen = new Pen(SeparatorColor))
                     {
-                        if ((Parent.TabLocation & TabLocation.Top) != TabLocation.None || (Parent.TabLocation & TabLocation.Bottom) != TabLocation.None)
+                        if (Parent.IsHorizontal)
                         {
-                            if (param.Index != 0 && param.Index != Parent.SelectedIndex + 1)
+                            if (param.Index != Parent.SelectedIndex + 1)
                                 g.DrawLine(pen, param.Bounds.Left, param.Bounds.Top + 4, param.Bounds.Left, param.Bounds.Bottom - 4);
-                            if (param.Index != Parent.Pages.Count - 1 && param.Index != Parent.SelectedIndex - 1)
-                                g.DrawLine(pen, param.Bounds.Right, param.Bounds.Top + 4, param.Bounds.Right, param.Bounds.Bottom - 4);
+                            if (param.Index == Parent.Tabs.Count - 1)
+                                g.DrawLine(pen, param.Bounds.Right - 1, param.Bounds.Top + 4, param.Bounds.Right - 1, param.Bounds.Bottom - 4);
                         }
                         else
                         {
-                            if (param.Index != 0 && param.Index != Parent.SelectedIndex + 1)
+                            if (param.Index != Parent.SelectedIndex + 1)
                                 g.DrawLine(pen, param.Bounds.Left + 4, param.Bounds.Top, param.Bounds.Right - 4, param.Bounds.Top);
-                            if (param.Index != Parent.Pages.Count - 1 && param.Index != Parent.SelectedIndex - 1)
-                                g.DrawLine(pen, param.Bounds.Left + 4, param.Bounds.Bottom, param.Bounds.Right - 4, param.Bounds.Bottom);
+                            if (param.Index == Parent.Tabs.Count - 1)
+                                g.DrawLine(pen, param.Bounds.Left + 4, param.Bounds.Bottom - 1, param.Bounds.Right - 4, param.Bounds.Bottom - 1);
                         }
                     }
                 }
@@ -318,7 +337,7 @@ namespace Manina.Windows.Forms
                     return;
                 }
 
-                var tabBounds = ((Tab)Parent.SelectedPage).TabBounds;
+                var tabBounds = Parent.SelectedTab.TabBounds;
 
                 Point[] pt = new Point[8];
                 if ((Parent.TabLocation & TabLocation.Top) != TabLocation.None)
@@ -376,35 +395,35 @@ namespace Manina.Windows.Forms
             /// Draws the near scroll button.
             /// </summary>
             /// <param name="g">The graphics to draw on.</param>
-            /// <param name="bounds">Button bounds.</param>
-            public virtual void DrawNearScrollButton(Graphics g, Rectangle bounds)
+            /// <param name="param">The parameters required to draw the button.</param>
+            public virtual void DrawNearScrollButton(Graphics g, DrawButtonParams param)
             {
-                using (Brush backBrush = new SolidBrush(ButtonBackColor))
-                using (Brush brush = new SolidBrush(ButtonFillColor))
-                using (Pen pen = new Pen(ButtonBorderColor))
-                using (Pen textPen = new Pen(ButtonForeColor))
+                var backColor = GetScrollButtonBackColor(param);
+                using (var brush = new SolidBrush(backColor))
                 {
-                    g.FillRectangle(backBrush, bounds);
+                    g.FillRectangle(brush, param.Bounds);
+                }
 
-                    bounds = bounds.GetDeflated(Parent.TabPadding);
-                    bounds = bounds.GetInflated(-4, -4);
-                    Point[] points = new Point[3];
+                Image img = Parent.IsHorizontal ? Parent.LeftArrowImage : Parent.UpArrowImage;
+                var rec = new Rectangle(Point.Empty, img.Size).GetCenteredInside(param.Bounds);
+                if ((param.State & ItemState.Disabled) != ItemState.Inactive)
+                    ControlPaint.DrawImageDisabled(g, img, rec.X, rec.Y, backColor);
+                else
+                    g.DrawImage(img, rec);
 
-                    if ((Parent.TabLocation & TabLocation.Top) != TabLocation.None || (Parent.TabLocation & TabLocation.Bottom) != TabLocation.None)
+                if (Parent.BorderStyle != BorderStyle.None)
+                {
+                    using (Pen pen = new Pen(BorderColor))
                     {
-                        points[0] = new Point(bounds.Right, bounds.Top);
-                        points[1] = new Point(bounds.Left, (bounds.Top + bounds.Bottom) / 2);
-                        points[2] = new Point(bounds.Right, bounds.Bottom);
+                        if ((Parent.TabLocation & TabLocation.Top) != TabLocation.None)
+                            g.DrawLine(pen, param.Bounds.Left, param.Bounds.Bottom - 1, param.Bounds.Right - 1, param.Bounds.Bottom - 1);
+                        else if ((Parent.TabLocation & TabLocation.Bottom) != TabLocation.None)
+                            g.DrawLine(pen, param.Bounds.Left, param.Bounds.Top, param.Bounds.Right - 1, param.Bounds.Top);
+                        else if ((Parent.TabLocation & TabLocation.Left) != TabLocation.None)
+                            g.DrawLine(pen, param.Bounds.Right - 1, param.Bounds.Top, param.Bounds.Right - 1, param.Bounds.Bottom - 1);
+                        else
+                            g.DrawLine(pen, param.Bounds.Left, param.Bounds.Top, param.Bounds.Left, param.Bounds.Bottom - 1);
                     }
-                    else
-                    {
-                        points[0] = new Point(bounds.Left, bounds.Bottom);
-                        points[1] = new Point((bounds.Left + bounds.Right) / 2, bounds.Top);
-                        points[2] = new Point(bounds.Right, bounds.Bottom);
-                    }
-
-                    g.FillPolygon(brush, points);
-                    g.DrawPolygon(pen, points);
                 }
             }
 
@@ -412,35 +431,35 @@ namespace Manina.Windows.Forms
             /// Draws the far scroll button.
             /// </summary>
             /// <param name="g">The graphics to draw on.</param>
-            /// <param name="bounds">Button bounds.</param>
-            public virtual void DrawFarScrollButton(Graphics g, Rectangle bounds)
+            /// <param name="param">The parameters required to draw the button.</param>
+            public virtual void DrawFarScrollButton(Graphics g, DrawButtonParams param)
             {
-                using (Brush backBrush = new SolidBrush(ButtonBackColor))
-                using (Brush brush = new SolidBrush(ButtonFillColor))
-                using (Pen pen = new Pen(ButtonBorderColor))
-                using (Pen textPen = new Pen(ButtonForeColor))
+                var backColor = GetScrollButtonBackColor(param);
+                using (var brush = new SolidBrush(backColor))
                 {
-                    g.FillRectangle(backBrush, bounds);
+                    g.FillRectangle(brush, param.Bounds);
+                }
 
-                    bounds = bounds.GetDeflated(Parent.TabPadding);
-                    bounds = bounds.GetInflated(-4, -4);
-                    Point[] points = new Point[3];
+                Image img = Parent.IsHorizontal ? Parent.RightArrowImage : Parent.DownArrowImage;
+                var rec = new Rectangle(Point.Empty, img.Size).GetCenteredInside(param.Bounds);
+                if ((param.State & ItemState.Disabled) != ItemState.Inactive)
+                    ControlPaint.DrawImageDisabled(g, img, rec.X, rec.Y, backColor);
+                else
+                    g.DrawImage(img, rec);
 
-                    if ((Parent.TabLocation & TabLocation.Top) != TabLocation.None || (Parent.TabLocation & TabLocation.Bottom) != TabLocation.None)
+                if (Parent.BorderStyle != BorderStyle.None)
+                {
+                    using (Pen pen = new Pen(BorderColor))
                     {
-                        points[0] = new Point(bounds.Left, bounds.Top);
-                        points[1] = new Point(bounds.Right, (bounds.Top + bounds.Bottom) / 2);
-                        points[2] = new Point(bounds.Left, bounds.Bottom);
+                        if ((Parent.TabLocation & TabLocation.Top) != TabLocation.None)
+                            g.DrawLine(pen, param.Bounds.Left, param.Bounds.Bottom - 1, param.Bounds.Right - 1, param.Bounds.Bottom - 1);
+                        else if ((Parent.TabLocation & TabLocation.Bottom) != TabLocation.None)
+                            g.DrawLine(pen, param.Bounds.Left, param.Bounds.Top, param.Bounds.Right - 1, param.Bounds.Top);
+                        else if ((Parent.TabLocation & TabLocation.Left) != TabLocation.None)
+                            g.DrawLine(pen, param.Bounds.Right - 1, param.Bounds.Top, param.Bounds.Right - 1, param.Bounds.Bottom - 1);
+                        else
+                            g.DrawLine(pen, param.Bounds.Left, param.Bounds.Top, param.Bounds.Left, param.Bounds.Bottom - 1);
                     }
-                    else
-                    {
-                        points[0] = new Point(bounds.Left, bounds.Top);
-                        points[1] = new Point((bounds.Left + bounds.Right) / 2, bounds.Bottom);
-                        points[2] = new Point(bounds.Right, bounds.Top);
-                    }
-
-                    g.FillPolygon(brush, points);
-                    g.DrawPolygon(pen, points);
                 }
             }
             #endregion
@@ -478,6 +497,22 @@ namespace Manina.Windows.Forms
                     return ActiveTabForeColor;
                 else
                     return InactiveTabForeColor;
+            }
+
+            /// <summary>
+            /// Returns scroll button backcolor for the given state.
+            /// </summary>
+            /// <param name="param">The state of the button.</param>
+            protected Color GetScrollButtonBackColor(DrawButtonParams param)
+            {
+                if ((param.State & ItemState.Disabled) != ItemState.Inactive)
+                    return InactiveButtonBackColor;
+                else if ((param.State & ItemState.Pressed) != ItemState.Inactive)
+                    return PressedButtonBackColor;
+                else if ((param.State & ItemState.Hot) != ItemState.Inactive)
+                    return HotButtonBackColor;
+                else
+                    return InactiveButtonBackColor;
             }
 
             /// <summary>

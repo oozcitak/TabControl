@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
 
@@ -81,6 +82,18 @@ namespace Manina.Windows.Forms
             rotatedRec.Offset(fitInside.Left, fitInside.Top);
 
             return rotatedRec;
+        }
+
+        public static Rectangle GetCenteredInside(this Rectangle rec, Rectangle inside)
+        {
+            return new Rectangle(inside.Left + (inside.Width - rec.Width) / 2, inside.Top + (inside.Height - rec.Height) / 2, rec.Width, rec.Height);
+        }
+        #endregion
+
+        #region Size
+        public static Size Max(this Size thisSize, Size size)
+        {
+            return new Size(Math.Max(thisSize.Width, size.Width), Math.Max(thisSize.Height, size.Height));
         }
         #endregion
 
