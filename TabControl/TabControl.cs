@@ -665,7 +665,7 @@ namespace Manina.Windows.Forms
             if (hoveredTab != null)
                 OnTabMouseUp(new TabMouseEventArgs(hoveredTab, e.Button, e.Clicks, e.Delta, e.Location));
 
-            if (mouseDownButton != false)
+            if (mouseDownButton != false && e.Button == MouseButtons.Left)
                 OnCloseTabButtonClick(new CancelTabEventArgs(mouseDownTab));
 
             if (mouseDownScrollButton == ScrollButton.Near && (GetNearScrollButtonState() & ItemState.Disabled) == ItemState.Inactive)
