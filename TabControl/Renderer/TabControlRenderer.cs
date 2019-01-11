@@ -200,7 +200,7 @@ namespace Manina.Windows.Forms
                 for (int i = 0; i < Parent.Tabs.Count; i++)
                 {
                     var tab = Parent.Tabs[i];
-                    drawParams.Add(new DrawTabParams(i, tab, (i == Parent.SelectedIndex), tab.State, tab.TabBounds));
+                    drawParams.Add(new DrawTabParams(i, tab, (i == Parent.SelectedIndex), Parent.GetTabState(tab), tab.TabBounds));
                 }
                 drawParams.Sort(new DrawTabParamsComparer());
 
@@ -254,14 +254,12 @@ namespace Manina.Windows.Forms
 
                     TextFormatFlags flags = TextFormatFlags.EndEllipsis | TextFormatFlags.VerticalCenter | TextFormatFlags.SingleLine;
 
-                    var textBounds = param.Tab.TextBounds;
-
                     if (Parent.TextDirection == TextDirection.Right)
-                        TextRenderer.DrawText(g, param.Tab.Text, param.Tab.Font, textBounds, foreColor, backColor, flags);
+                        TextRenderer.DrawText(g, param.Tab.Text, param.Tab.Font, param.Tab.TextBounds, foreColor, backColor, flags);
                     else if (Parent.TextDirection == TextDirection.Down)
-                        g.DrawVerticalTextDown(param.Tab.Text, param.Tab.Font, textBounds, foreColor, backColor, flags);
+                        g.DrawVerticalTextDown(param.Tab.Text, param.Tab.Font, param.Tab.TextBounds, foreColor, backColor, flags);
                     else
-                        g.DrawVerticalTextUp(param.Tab.Text, param.Tab.Font, textBounds, foreColor, backColor, flags);
+                        g.DrawVerticalTextUp(param.Tab.Text, param.Tab.Font, param.Tab.TextBounds, foreColor, backColor, flags);
                 }
 
                 // icon
@@ -521,7 +519,8 @@ namespace Manina.Windows.Forms
             /// <param name="param">The state of the tab.</param>
             protected Color GetCloseTabButtonBackColor(DrawTabParams param)
             {
-                if ((param.Tab.CloseButtonState & ItemState.Hot) != ItemState.Inactive)
+                var state = Parent.GetTabCloseButtonState(param.Tab);
+                if ((state & ItemState.Hot) != ItemState.Inactive)
                     return HotTabBackColor;
                 else
                     return GetTabBackColor(param);

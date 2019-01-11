@@ -96,21 +96,23 @@ namespace Manina.Windows.Forms
         {
             int width = 0;
             int height = 0;
+            var hasIcon = e.Tab.Icon != null;
+            var hasText = !string.IsNullOrEmpty(e.Tab.Text);
 
-            if (e.Tab.HasIcon)
+            if (hasIcon)
             {
                 width = width + e.Tab.Icon.Width;
                 height = Math.Max(height, e.Tab.Icon.Height);
             }
 
-            if (e.Tab.HasText)
+            if (hasText)
             {
                 Size size = TextRenderer.MeasureText(e.Tab.Text, e.Tab.Font);
                 width = width + size.Width;
                 height = Math.Max(height, size.Height);
             }
 
-            if (e.Tab.HasIcon && e.Tab.HasText)
+            if (hasIcon && hasText)
                 width += ContentSpacing;
 
             if (ShowCloseTabButtons)
@@ -704,7 +706,7 @@ namespace Manina.Windows.Forms
 
         protected override void OnPageAdded(PageEventArgs e)
         {
-            e.Page.TextChanged += Page_TextChanged;
+            ((Tab)e.Page).ContentsChanged += Tab_ContentsChanged;
 
             base.OnPageAdded(e);
 
@@ -714,7 +716,7 @@ namespace Manina.Windows.Forms
 
         protected override void OnPageRemoved(PageEventArgs e)
         {
-            e.Page.TextChanged -= Page_TextChanged;
+            ((Tab)e.Page).ContentsChanged -= Tab_ContentsChanged;
 
             base.OnPageRemoved(e);
 
@@ -731,6 +733,45 @@ namespace Manina.Windows.Forms
         #endregion
 
         #region Helper Methods
+        /// <summary>
+        /// Gets the visual state of a tab.
+        /// </summary>
+        /// <param name="tab">The tab to check.</param>
+        protected internal ItemState GetTabState(Tab tab)
+        {
+            var state = ItemState.Inactive;
+
+            // hot
+            if (ReferenceEquals(hoveredTab, tab)) state |= ItemState.Hot;
+            // pressed
+            if (ReferenceEquals(mouseDownTab, tab)) state |= ItemState.Pressed;
+            // focused
+            if (Parent.Focused && (ReferenceEquals(SelectedPage, tab))) state |= ItemState.Focused;
+
+            return state;
+        }
+
+        /// <summary>
+        /// Gets the visual state of the close tab button.
+        /// </summary>
+        /// <param name="tab">The tab to check.</param>
+        protected internal ItemState GetTabCloseButtonState(Tab tab)
+        {
+            var state = ItemState.Inactive;
+
+            // hot
+            if (ReferenceEquals(hoveredTab, tab) && hoveredButton) state |= ItemState.Hot;
+            // pressed
+            if (ReferenceEquals(mouseDownTab, tab) && mouseDownButton) state |= ItemState.Pressed;
+            // focused
+            if (Parent.Focused && (ReferenceEquals(SelectedPage, tab))) state |= ItemState.Focused;
+
+            return state;
+        }
+
+        /// <summary>
+        /// Gets the visual state of the near scroll button.
+        /// </summary>
         protected internal ItemState GetNearScrollButtonState()
         {
             var state = ItemState.Inactive;
@@ -745,6 +786,9 @@ namespace Manina.Windows.Forms
             return state;
         }
 
+        /// <summary>
+        /// Gets the visual state of the far scroll button.
+        /// </summary>
         protected internal ItemState GetFarScrollButtonState()
         {
             var state = ItemState.Inactive;
@@ -759,7 +803,7 @@ namespace Manina.Windows.Forms
             return state;
         }
 
-        private void Page_TextChanged(object sender, EventArgs e)
+        private void Tab_ContentsChanged(object sender, EventArgs e)
         {
             UpdateTabLayout();
             Invalidate();
@@ -932,35 +976,100 @@ namespace Manina.Windows.Forms
             if (horizontal)
             {
                 if (ScrollButtons || (tabLocation & TabLocation.Near) != TabLocation.None)
-                    Tabs[0].TabBounds = new Rectangle(tabArea.Left + ViewOffset, tabArea.Top, tabSizes[0].Width, tabSizes[0].Height);
+                    UpdateContentBounds(Tabs[0], new Rectangle(tabArea.Left + ViewOffset, tabArea.Top, tabSizes[0].Width, tabSizes[0].Height));
                 else if ((tabLocation & TabLocation.Far) != TabLocation.None)
-                    Tabs[0].TabBounds = new Rectangle(tabArea.Left + (tabArea.Width - totalTabWidth), tabArea.Top, tabSizes[0].Width, tabSizes[0].Height);
+                    UpdateContentBounds(Tabs[0], new Rectangle(tabArea.Left + (tabArea.Width - totalTabWidth), tabArea.Top, tabSizes[0].Width, tabSizes[0].Height));
                 else
-                    Tabs[0].TabBounds = new Rectangle(tabArea.Left + (tabArea.Width - totalTabWidth) / 2, tabArea.Top, tabSizes[0].Width, tabSizes[0].Height);
+                    UpdateContentBounds(Tabs[0], new Rectangle(tabArea.Left + (tabArea.Width - totalTabWidth) / 2, tabArea.Top, tabSizes[0].Width, tabSizes[0].Height));
 
                 for (int i = 1; i < Tabs.Count; i++)
                 {
                     Point tabLocation = Tabs[i - 1].TabBounds.Location;
                     tabLocation.Offset(Tabs[i - 1].TabBounds.Width, 0);
-                    Tabs[i].TabBounds = new Rectangle(tabLocation, tabSizes[i]);
+                    UpdateContentBounds(Tabs[i], new Rectangle(tabLocation, tabSizes[i]));
                 }
             }
             else
             {
                 if (ScrollButtons || (tabLocation & TabLocation.Near) != TabLocation.None)
-                    Tabs[0].TabBounds = new Rectangle(tabArea.Left, tabArea.Top + ViewOffset, tabSizes[0].Width, tabSizes[0].Height);
+                    UpdateContentBounds(Tabs[0], new Rectangle(tabArea.Left, tabArea.Top + ViewOffset, tabSizes[0].Width, tabSizes[0].Height));
                 else if ((tabLocation & TabLocation.Far) != TabLocation.None)
-                    Tabs[0].TabBounds = new Rectangle(tabArea.Left, tabArea.Top + (tabArea.Height - totalTabHeight), tabSizes[0].Width, tabSizes[0].Height);
+                    UpdateContentBounds(Tabs[0], new Rectangle(tabArea.Left, tabArea.Top + (tabArea.Height - totalTabHeight), tabSizes[0].Width, tabSizes[0].Height));
                 else
-                    Tabs[0].TabBounds = new Rectangle(tabArea.Left, tabArea.Top + (tabArea.Height - totalTabHeight) / 2, tabSizes[0].Width, tabSizes[0].Height);
+                    UpdateContentBounds(Tabs[0], new Rectangle(tabArea.Left, tabArea.Top + (tabArea.Height - totalTabHeight) / 2, tabSizes[0].Width, tabSizes[0].Height));
 
                 for (int i = 1; i < Tabs.Count; i++)
                 {
                     Point tabLocation = Tabs[i - 1].TabBounds.Location;
                     tabLocation.Offset(0, Tabs[i - 1].TabBounds.Height);
-                    Tabs[i].TabBounds = new Rectangle(tabLocation, tabSizes[i]);
+                    UpdateContentBounds(Tabs[i], new Rectangle(tabLocation, tabSizes[i]));
                 }
             }
+        }
+
+        /// <summary>
+        /// Updates the bounding rectangles of tab contents.
+        /// </summary>
+        /// <param name="tab">The tab to update.</param>
+        /// <param name="tabBounds">The bounding rectangle of the tab.</param>
+        private void UpdateContentBounds(Tab tab, Rectangle tabBounds)
+        {
+            var hasIcon = tab.Icon != null;
+            var hasText = !string.IsNullOrEmpty(tab.Text);
+
+            tab.TabBounds = tabBounds;
+            var iconBounds = Rectangle.Empty;
+            var closeButtonBounds = Rectangle.Empty;
+            var textBounds = Rectangle.Empty;
+
+            tabBounds = tabBounds.GetDeflated(TabPadding);
+            int width = (TextDirection == TextDirection.Right ? tabBounds.Width : tabBounds.Height);
+            int height = (TextDirection == TextDirection.Right ? tabBounds.Height : tabBounds.Width);
+
+            Size iconSize = hasIcon ? tab.Icon.Size : Size.Empty;
+            Size textSize = hasText ? TextRenderer.MeasureText(tab.Text, tab.Font) : Size.Empty;
+            Size buttonSize = ShowCloseTabButtons ? CloseTabImage.Size : Size.Empty;
+
+            int availableIconAndTextWidth = width - (ShowCloseTabButtons ? buttonSize.Width + ContentSpacing : 0);
+            int availableTextWidth = availableIconAndTextWidth - (hasIcon ? iconSize.Width + ContentSpacing : 0);
+
+            if (hasIcon)
+                iconBounds = new Rectangle(0, (height - iconSize.Height) / 2, iconSize.Width, iconSize.Height);
+
+            if (ShowCloseTabButtons)
+                closeButtonBounds = new Rectangle(width - buttonSize.Width, (height - buttonSize.Height) / 2, buttonSize.Width, buttonSize.Height);
+
+            if (hasText)
+                textBounds = new Rectangle(0, (height - textSize.Height) / 2,
+                    Math.Min(availableTextWidth, textSize.Width), textSize.Height);
+
+            int actualIconAndTextWidth = (hasIcon ? iconBounds.Width + ContentSpacing : 0) + textBounds.Width;
+
+            if (ContentAlignment == Alignment.Near)
+            {
+                if (hasText && hasIcon)
+                    textBounds = textBounds.GetOffset(iconSize.Width + ContentSpacing, 0);
+            }
+            else if (ContentAlignment == Alignment.Center)
+            {
+                if (hasIcon)
+                    iconBounds = iconBounds.GetOffset((availableIconAndTextWidth - actualIconAndTextWidth) / 2, 0);
+
+                if (hasText)
+                    textBounds = textBounds.GetOffset((availableIconAndTextWidth - actualIconAndTextWidth) / 2 + (hasIcon ? iconSize.Width + ContentSpacing : 0), 0);
+            }
+            else
+            {
+                if (hasIcon)
+                    iconBounds = iconBounds.GetOffset(availableIconAndTextWidth - actualIconAndTextWidth, 0);
+
+                if (hasText)
+                    textBounds = textBounds.GetOffset(availableIconAndTextWidth - actualIconAndTextWidth + (hasIcon ? iconSize.Width + ContentSpacing : 0), 0);
+            }
+
+            tab.IconBounds = iconBounds.GetRotated(tabBounds, TextDirection);
+            tab.CloseButtonBounds = closeButtonBounds.GetRotated(tabBounds, TextDirection);
+            tab.TextBounds = textBounds.GetRotated(tabBounds, TextDirection);
         }
         #endregion
     }
