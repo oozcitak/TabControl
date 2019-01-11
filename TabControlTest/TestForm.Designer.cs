@@ -30,10 +30,10 @@
         {
             this.tabControl1 = new Manina.Windows.Forms.TabControl();
             this.tab1 = new Manina.Windows.Forms.Tab();
+            this.tab5 = new Manina.Windows.Forms.Tab();
             this.tab2 = new Manina.Windows.Forms.Tab();
             this.tab3 = new Manina.Windows.Forms.Tab();
             this.tab4 = new Manina.Windows.Forms.Tab();
-            this.tab5 = new Manina.Windows.Forms.Tab();
             this.tab6 = new Manina.Windows.Forms.Tab();
             this.tab7 = new Manina.Windows.Forms.Tab();
             this.tab8 = new Manina.Windows.Forms.Tab();
@@ -45,10 +45,10 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tab1);
+            this.tabControl1.Controls.Add(this.tab5);
             this.tabControl1.Controls.Add(this.tab2);
             this.tabControl1.Controls.Add(this.tab3);
             this.tabControl1.Controls.Add(this.tab4);
-            this.tabControl1.Controls.Add(this.tab5);
             this.tabControl1.Controls.Add(this.tab6);
             this.tabControl1.Controls.Add(this.tab7);
             this.tabControl1.Controls.Add(this.tab8);
@@ -60,25 +60,30 @@
             this.tabControl1.ShowCloseTabButtons = true;
             this.tabControl1.Size = new System.Drawing.Size(626, 347);
             this.tabControl1.TabIndex = 0;
-            this.tabControl1.TabLocation = ((Manina.Windows.Forms.TabLocation)((Manina.Windows.Forms.TabLocation.Near | Manina.Windows.Forms.TabLocation.Left)));
-            this.tabControl1.TextDirection = Manina.Windows.Forms.TextDirection.Down;
-            this.tabControl1.PageChanged += new System.EventHandler<Manina.Windows.Forms.PageChangedEventArgs>(this.tabControl1_PageChanged);
             // 
             // tab1
             // 
             this.tab1.Icon = global::TabControlTest.Properties.Resources.brick;
-            this.tab1.Location = new System.Drawing.Point(24, 1);
+            this.tab1.Location = new System.Drawing.Point(1, 24);
             this.tab1.Name = "tab1";
-            this.tab1.Size = new System.Drawing.Size(601, 345);
+            this.tab1.Size = new System.Drawing.Size(624, 322);
             this.tab1.Text = "tab1";
+            // 
+            // tab5
+            // 
+            this.tab5.Icon = global::TabControlTest.Properties.Resources.camera;
+            this.tab5.Location = new System.Drawing.Point(74, 1);
+            this.tab5.Name = "tab5";
+            this.tab5.Size = new System.Drawing.Size(551, 345);
+            this.tab5.Text = "tab5";
             // 
             // tab2
             // 
             this.tab2.ForeColor = System.Drawing.Color.Red;
             this.tab2.Icon = global::TabControlTest.Properties.Resources.cake;
-            this.tab2.Location = new System.Drawing.Point(1, 24);
+            this.tab2.Location = new System.Drawing.Point(74, 1);
             this.tab2.Name = "tab2";
-            this.tab2.Size = new System.Drawing.Size(582, 236);
+            this.tab2.Size = new System.Drawing.Size(551, 345);
             this.tab2.Text = "tab2";
             // 
             // tab3
@@ -97,20 +102,12 @@
             this.tab4.Size = new System.Drawing.Size(582, 236);
             this.tab4.Text = "tab4";
             // 
-            // tab5
-            // 
-            this.tab5.Icon = global::TabControlTest.Properties.Resources.camera;
-            this.tab5.Location = new System.Drawing.Point(1, 24);
-            this.tab5.Name = "tab5";
-            this.tab5.Size = new System.Drawing.Size(582, 236);
-            this.tab5.Text = "tab5";
-            // 
             // tab6
             // 
             this.tab6.Icon = global::TabControlTest.Properties.Resources.calendar;
-            this.tab6.Location = new System.Drawing.Point(1, 24);
+            this.tab6.Location = new System.Drawing.Point(74, 1);
             this.tab6.Name = "tab6";
-            this.tab6.Size = new System.Drawing.Size(582, 236);
+            this.tab6.Size = new System.Drawing.Size(551, 345);
             this.tab6.Text = "tab6";
             // 
             // tab7
@@ -136,7 +133,7 @@
             // 
             // tab10
             // 
-            this.tab10.Location = new System.Drawing.Point(1, 24);
+            this.tab10.Location = new System.Drawing.Point(1, 1);
             this.tab10.Name = "tab10";
             this.tab10.Size = new System.Drawing.Size(624, 322);
             this.tab10.Text = "tab10";

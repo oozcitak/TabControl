@@ -88,6 +88,26 @@ namespace Manina.Windows.Forms
         {
             return new Rectangle(inside.Left + (inside.Width - rec.Width) / 2, inside.Top + (inside.Height - rec.Height) / 2, rec.Width, rec.Height);
         }
+
+        public static Rectangle EnsureMinSize(this Rectangle rec, Size size)
+        {
+            return rec.EnsureMinSize(size.Width, size.Height);
+        }
+
+        public static Rectangle EnsureMinSize(this Rectangle rec, int width, int height)
+        {
+            return new Rectangle(rec.Left, rec.Top, Math.Max(rec.Width, width), Math.Max(rec.Height, height));
+        }
+
+        public static Rectangle EnsureMaxSize(this Rectangle rec, Size size)
+        {
+            return rec.EnsureMaxSize(size.Width, size.Height);
+        }
+
+        public static Rectangle EnsureMaxSize(this Rectangle rec, int width, int height)
+        {
+            return new Rectangle(rec.Left, rec.Top, Math.Min(rec.Width, width), Math.Min(rec.Height, height));
+        }
         #endregion
 
         #region Size

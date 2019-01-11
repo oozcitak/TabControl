@@ -8,10 +8,5 @@ namespace TabControlTest
         {
             InitializeComponent();
         }
-
-        private void tabControl1_PageChanged(object sender, Manina.Windows.Forms.PageChangedEventArgs e)
-        {
-
-        }
     }
 }

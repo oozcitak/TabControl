@@ -595,7 +595,7 @@ namespace Manina.Windows.Forms
             var oldHoveredButton = hoveredButton;
             hoveredTab = PerformHitTest(e.Location);
             hoveredButton = false;
-            var oldHoveredScrollButton = hoveredScrollButton; 
+            var oldHoveredScrollButton = hoveredScrollButton;
             hoveredScrollButton = ScrollButton.None;
             if (hoveredTab != null)
             {
@@ -969,9 +969,35 @@ namespace Manina.Windows.Forms
             nearScrollButtonBounds = eLayout.NearScrollButtonBounds;
             farScrollButtonBounds = eLayout.FarScrollButtonBounds;
 
+            // update tab sizes in stretch mode in case layout bounds are modified
+            if (TabSizing == TabSizing.Stretch)
+            {
+                for (int i = 0; i < Tabs.Count; i++)
+                {
+                    if (horizontal)
+                        tabSizes[i].Width = Math.Max(10, (int)(bounds.Width / (float)Tabs.Count));
+                    else
+                        tabSizes[i].Height = Math.Max(10, (int)(bounds.Height / (float)Tabs.Count));
+                }
+
+                // total tab size
+                totalTabWidth = tabSizes.Sum(t => t.Width);
+                totalTabHeight = tabSizes.Sum(t => t.Height);
+
+                // fit last tab to bounds
+                if (horizontal)
+                    tabSizes[tabSizes.Length - 1].Width = tabArea.Width - (totalTabWidth - tabSizes[tabSizes.Length - 1].Width);
+                else
+                    tabSizes[tabSizes.Length - 1].Height = tabArea.Height - (totalTabHeight - tabSizes[tabSizes.Length - 1].Height);
+            }
+
+            // total tab size
+            totalTabWidth = tabSizes.Sum(t => t.Width);
+            totalTabHeight = tabSizes.Sum(t => t.Height);
+
             // the minimum view offset that we can scroll to
             MinViewOffset = -Math.Max(0, horizontal ? totalTabWidth - tabArea.Width : totalTabHeight - tabArea.Height);
-            
+
             // place tabs
             if (horizontal)
             {
@@ -1067,9 +1093,9 @@ namespace Manina.Windows.Forms
                     textBounds = textBounds.GetOffset(availableIconAndTextWidth - actualIconAndTextWidth + (hasIcon ? iconSize.Width + ContentSpacing : 0), 0);
             }
 
-            tab.IconBounds = iconBounds.GetRotated(tabBounds, TextDirection);
-            tab.CloseButtonBounds = closeButtonBounds.GetRotated(tabBounds, TextDirection);
-            tab.TextBounds = textBounds.GetRotated(tabBounds, TextDirection);
+            tab.IconBounds = iconBounds.GetRotated(tabBounds, TextDirection).EnsureMinSize(1, 1);
+            tab.CloseButtonBounds = closeButtonBounds.GetRotated(tabBounds, TextDirection).EnsureMinSize(1, 1);
+            tab.TextBounds = textBounds.GetRotated(tabBounds, TextDirection).EnsureMinSize(1, 1);
         }
         #endregion
     }
