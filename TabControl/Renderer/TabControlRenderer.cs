@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -69,38 +68,6 @@ namespace Manina.Windows.Forms
                 {
                     State = state;
                     Bounds = bounds;
-                }
-            }
-            #endregion
-
-            #region DrawTabParamsComparer
-            /// <summary>
-            /// Compares items so that they are sorted as: Inactive > Hot > Active > Pressed
-            /// </summary>
-            private class DrawTabParamsComparer : IComparer<DrawTabParams>
-            {
-                /// <summary>
-                /// Compares tabs by draw order.
-                /// </summary>
-                public int Compare(DrawTabParams p1, DrawTabParams p2)
-                {
-                    if (ReferenceEquals(p1, p2) || p1.Index == p2.Index)
-                        return 0;
-
-                    if ((p1.State & ItemState.Pressed) != ItemState.Inactive)
-                        return 1;
-                    else if ((p2.State & ItemState.Pressed) != ItemState.Inactive)
-                        return -1;
-                    else if (p1.IsSelected)
-                        return 1;
-                    else if (p2.IsSelected)
-                        return -1;
-                    else if ((p1.State & ItemState.Hot) != ItemState.Inactive)
-                        return 1;
-                    else if ((p2.State & ItemState.Hot) != ItemState.Inactive)
-                        return -1;
-
-                    return p1.Index.CompareTo(p2.Index);
                 }
             }
             #endregion
@@ -195,18 +162,11 @@ namespace Manina.Windows.Forms
                 // clear backgound
                 g.Clear(Parent.BackColor);
 
-                // sort tabs
-                var drawParams = new List<DrawTabParams>();
+                // draw tabs
                 for (int i = 0; i < Parent.Tabs.Count; i++)
                 {
                     var tab = Parent.Tabs[i];
-                    drawParams.Add(new DrawTabParams(i, tab, (i == Parent.SelectedIndex), Parent.GetTabState(tab), Parent.GetTabBounds(tab)));
-                }
-                drawParams.Sort(new DrawTabParamsComparer());
-
-                // draw tabs
-                foreach (var param in drawParams)
-                {
+                    var param = new DrawTabParams(i, tab, ReferenceEquals(tab, Parent.SelectedTab), Parent.GetTabState(tab), Parent.GetTabBounds(tab));
                     DrawTabBackGround(g, param);
                     DrawTabContents(g, param);
                     DrawSeparator(g, param);
@@ -296,7 +256,7 @@ namespace Manina.Windows.Forms
             /// <param name="param">The parameters required to draw the tab.</param>
             public virtual void DrawSeparator(Graphics g, DrawTabParams param)
             {
-                if (param.Index != Parent.SelectedIndex)
+                if (!param.IsSelected)
                 {
                     using (var pen = new Pen(SeparatorColor))
                     {
@@ -325,8 +285,7 @@ namespace Manina.Windows.Forms
             /// <param name="borderBounds">Bounding rectangle of the display area of the control.</param>
             public virtual void DrawBorder(Graphics g, Rectangle borderBounds)
             {
-                int index = Parent.SelectedIndex;
-                if (index == -1)
+                if (Parent.SelectedIndex == -1)
                 {
                     using (Pen pen = new Pen(BorderColor))
                     {
