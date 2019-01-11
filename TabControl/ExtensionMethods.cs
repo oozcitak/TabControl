@@ -137,6 +137,8 @@ namespace Manina.Windows.Forms
 
         public static void DrawVerticalTextDown(this Graphics g, string text, Font font, Rectangle bounds, Color foreColor, Color backColor, TextFormatFlags flags)
         {
+            if (bounds.Height <= 0 || bounds.Width <= 0) return;
+
             var imageBounds = new Rectangle(0, 0, bounds.Height, bounds.Width);
 
             using (var image = new Bitmap(imageBounds.Width, imageBounds.Height, PixelFormat.Format32bppArgb))
@@ -155,6 +157,8 @@ namespace Manina.Windows.Forms
 
         public static void DrawVerticalTextUp(this Graphics g, string text, Font font, Rectangle bounds, Color foreColor, Color backColor, TextFormatFlags flags)
         {
+            if (bounds.Height <= 0 || bounds.Width <= 0) return;
+
             var imageBounds = new Rectangle(0, 0, bounds.Height, bounds.Width);
 
             using (var image = new Bitmap(imageBounds.Width, imageBounds.Height, PixelFormat.Format32bppArgb))

@@ -36,30 +36,30 @@ namespace Manina.Windows.Forms
             for (int i = 0; i < Tabs.Count; i++)
             {
                 var tab = Tabs[i];
+                var tabBounds = GetTabBounds(tab);
                 // find the first invisible tab
-                if (horizontal && tab.TabBounds.Left >= TabArea.Left)
+                if (horizontal && tabBounds.Left >= TabArea.Left)
                 {
                     if (i > 0)
                     {
                         tab = Tabs[i - 1];
                         // scroll the view to show it
-                        ViewOffset += tab.TabBounds.Width;
+                        ViewOffset += tabBounds.Width;
                     }
                     break;
                 }
-                else if (!horizontal && tab.TabBounds.Top >= TabArea.Top)
+                else if (!horizontal && tabBounds.Top >= TabArea.Top)
                 {
                     if (i > 0)
                     {
                         tab = Tabs[i - 1];
                         // scroll the view to show it
-                        ViewOffset += tab.TabBounds.Height;
+                        ViewOffset += tabBounds.Height;
                     }
                     break;
                 }
             }
 
-            UpdateTabLayout();
             Invalidate();
 
             NearScrollButtonClick?.Invoke(this, e);
@@ -71,22 +71,22 @@ namespace Manina.Windows.Forms
             for (int i = 0; i < Tabs.Count; i++)
             {
                 var tab = Tabs[i];
+                var tabBounds = GetTabBounds(tab);
                 // find the first visible tab
-                if (horizontal && tab.TabBounds.Left >= TabArea.Left)
+                if (horizontal && tabBounds.Left >= TabArea.Left)
                 {
                     // scroll the view to hide it
-                    ViewOffset -= tab.TabBounds.Width;
+                    ViewOffset -= tabBounds.Width;
                     break;
                 }
-                else if (!horizontal && tab.TabBounds.Top >= TabArea.Top)
+                else if (!horizontal && tabBounds.Top >= TabArea.Top)
                 {
                     // scroll the view to hide it
-                    ViewOffset -= tab.TabBounds.Height;
+                    ViewOffset -= tabBounds.Height;
                     break;
                 }
             }
 
-            UpdateTabLayout();
             Invalidate();
 
             FarScrollButtonClick?.Invoke(this, e);
@@ -268,14 +268,14 @@ namespace Manina.Windows.Forms
         /// </summary>
         [Category("Appearance"), DefaultValue(typeof(Size), "75, 23")]
         [Description("Gets or sets the size of tabs.")]
-        public Size TabSize { get => tabSize; set { tabSize = value; UpdateTabLayout(); UpdatePages(); Invalidate(); } }
+        public Size TabSize { get => tabSize; set { tabSize = value; UpdateTabLayout(); UpdatePages(); } }
 
         /// <summary>
         /// Gets or sets the padding between the contents a tab and its borders.
         /// </summary>
         [Category("Appearance"), DefaultValue(typeof(Padding), "4, 4, 4, 4")]
         [Description("Gets or sets the padding between the contents a tab and its borders.")]
-        public Padding TabPadding { get => tabPadding; set { tabPadding = value; UpdateTabLayout(); UpdatePages(); Invalidate(); } }
+        public Padding TabPadding { get => tabPadding; set { tabPadding = value; UpdateTabLayout(); } }
 
         /// <summary>
         /// Gets or sets the location of tabs.
@@ -283,48 +283,48 @@ namespace Manina.Windows.Forms
         [Category("Appearance"), DefaultValue(TabLocation.TopLeft)]
         [Description("Gets or sets the location of tabs.")]
         [Editor(typeof(TabLocationEditor), typeof(UITypeEditor))]
-        public TabLocation TabLocation { get => tabLocation; set { tabLocation = value; ViewOffset = 0; UpdateTabLayout(); UpdatePages(); Invalidate(); } }
+        public TabLocation TabLocation { get => tabLocation; set { tabLocation = value; ViewOffset = 0; UpdateTabLayout(); UpdatePages(); } }
 
         /// <summary>
         /// Gets or sets the sizing mode of tabs.
         /// </summary>
         [Category("Appearance"), DefaultValue(TabSizing.AutoFit)]
         [Description("Gets or sets the sizing mode of tabs.")]
-        public TabSizing TabSizing { get => tabSizing; set { tabSizing = value; ViewOffset = 0; UpdateTabLayout(); UpdatePages(); Invalidate(); } }
+        public TabSizing TabSizing { get => tabSizing; set { tabSizing = value; ViewOffset = 0; UpdateTabLayout(); UpdatePages(); } }
         /// <summary>
         /// Gets or sets the alignment of tab text.
         /// </summary>
         [Category("Appearance"), DefaultValue(Alignment.Near)]
         [Description("Gets or sets the alignment of tab text.")]
-        public Alignment ContentAlignment { get => contentAlignment; set { contentAlignment = value; UpdateTabLayout(); UpdatePages(); Invalidate(); } }
+        public Alignment ContentAlignment { get => contentAlignment; set { contentAlignment = value; UpdateTabLayout(); } }
         /// <summary>
         /// Gets or sets the direction of tab texts.
         /// </summary>
         [Category("Appearance"), DefaultValue(TextDirection.Right)]
         [Description("Gets or sets the direction of tab texts.")]
         [Editor(typeof(TextDirectionEditor), typeof(UITypeEditor))]
-        public TextDirection TextDirection { get => textDirection; set { textDirection = value; UpdateTabLayout(); UpdatePages(); Invalidate(); } }
+        public TextDirection TextDirection { get => textDirection; set { textDirection = value; UpdateTabLayout(); UpdatePages(); } }
 
         /// <summary>
         /// Gets or sets the image of close buttons.
         /// </summary>
         [Category("Appearance")]
         [Description("Gets or sets the image of close buttons.")]
-        public Image CloseTabImage { get => (closeImage ?? defaultCloseImage); set { closeImage = value; UpdateTabLayout(); UpdatePages(); Invalidate(); } }
+        public Image CloseTabImage { get => (closeImage ?? defaultCloseImage); set { closeImage = value; UpdateTabLayout(); UpdatePages(); } }
 
         /// <summary>
         /// Gets or sets whether to show close tab buttons.
         /// </summary>
         [Category("Appearance"), DefaultValue(false)]
         [Description("Gets or sets whether to show close tab buttons.")]
-        public bool ShowCloseTabButtons { get => showCloseTabButtons; set { showCloseTabButtons = value; UpdateTabLayout(); UpdatePages(); Invalidate(); } }
+        public bool ShowCloseTabButtons { get => showCloseTabButtons; set { showCloseTabButtons = value; UpdateTabLayout(); UpdatePages(); } }
 
         /// <summary>
         /// Gets or sets the spacing between tab contents (i.e. icon, text and close button).
         /// </summary>
         [Category("Appearance"), DefaultValue(3)]
         [Description("Gets or sets the spacing between tab contents (i.e. icon, text and close button).")]
-        public int ContentSpacing { get => contentSpacing; set { contentSpacing = value; UpdateTabLayout(); UpdatePages(); Invalidate(); } }
+        public int ContentSpacing { get => contentSpacing; set { contentSpacing = value; UpdateTabLayout(); UpdatePages(); } }
 
         /// <summary>
         /// Gets or sets the collection of pages.
@@ -388,32 +388,32 @@ namespace Manina.Windows.Forms
         [Localizable(true)]
         [Category("Appearance")]
         [Description("Gets or sets the font associated with the control.")]
-        public override Font Font { get => base.Font; set { base.Font = value; UpdateTabLayout(); UpdatePages(); Invalidate(); } }
+        public override Font Font { get => base.Font; set { base.Font = value; UpdateTabLayout(); UpdatePages(); } }
 
         /// <summary>
         /// Gets or sets the image of a scroll button pointing left.
         /// </summary>
         [Category("Appearance")]
         [Description("Gets or sets the image of a scroll button pointing left.")]
-        public Image LeftArrowImage { get => (leftArrowImage ?? defaultLeftArrowImage); set { leftArrowImage = value; UpdateTabLayout(); UpdatePages(); Invalidate(); } }
+        public Image LeftArrowImage { get => (leftArrowImage ?? defaultLeftArrowImage); set { leftArrowImage = value; UpdateTabLayout(); UpdatePages(); } }
         /// <summary>
         /// Gets or sets the image of a scroll button pointing right.
         /// </summary>
         [Category("Appearance")]
         [Description("Gets or sets the image of a scroll button pointing right.")]
-        public Image RightArrowImage { get => (rightArrowImage ?? defaultRightArrowImage); set { rightArrowImage = value; UpdateTabLayout(); UpdatePages(); Invalidate(); } }
+        public Image RightArrowImage { get => (rightArrowImage ?? defaultRightArrowImage); set { rightArrowImage = value; UpdateTabLayout(); UpdatePages(); } }
         /// <summary>
         /// Gets or sets the image of a scroll button pointing up.
         /// </summary>
         [Category("Appearance")]
         [Description("Gets or sets the image of a scroll button pointing up.")]
-        public Image UpArrowImage { get => (upArrowImage ?? defaultUpArrowImage); set { upArrowImage = value; UpdateTabLayout(); UpdatePages(); Invalidate(); } }
+        public Image UpArrowImage { get => (upArrowImage ?? defaultUpArrowImage); set { upArrowImage = value; UpdateTabLayout(); UpdatePages(); } }
         /// <summary>
         /// Gets or sets the image of a scroll button pointing down.
         /// </summary>
         [Category("Appearance")]
         [Description("Gets or sets the image of a scroll button pointing down.")]
-        public Image DownArrowImage { get => (downArrowImage ?? defaultDownArrowImage); set { downArrowImage = value; UpdateTabLayout(); UpdatePages(); Invalidate(); } }
+        public Image DownArrowImage { get => (downArrowImage ?? defaultDownArrowImage); set { downArrowImage = value; UpdateTabLayout(); UpdatePages(); } }
 
         /// <summary>
         /// Gets the bounds of the near scroll button. Although scroll button size is returned
@@ -525,7 +525,7 @@ namespace Manina.Windows.Forms
 
             foreach (var tab in Tabs)
             {
-                if (tab.TabBounds.Contains(pt)) return tab;
+                if (GetTabBounds(tab).Contains(pt)) return tab;
             }
             return null;
         }
@@ -533,49 +533,77 @@ namespace Manina.Windows.Forms
         /// <summary>
         /// Makes sure that the tab with the given index is visible.
         /// </summary>
-        /// <param name="index">The index of the tab to make visible.</param>
-        public void EnsureVisible(int index)
+        /// <param name="tab">The tab to make visible.</param>
+        public void EnsureVisible(Tab tab)
         {
-            var bounds = Tabs[index].TabBounds;
+            var tabBounds = GetTabBounds(tab);
 
             if ((tabLocation & TabLocation.Top) != TabLocation.None || (tabLocation & TabLocation.Bottom) != TabLocation.None)
             {
                 // horizontal
-                if (bounds.Left < TabArea.Left)
+                if (tabBounds.Left < TabArea.Left)
                 {
-                    ViewOffset -= bounds.Left - TabArea.Left;
+                    ViewOffset -= tabBounds.Left - TabArea.Left;
                 }
-                else if (bounds.Right > TabArea.Right)
+                else if (tabBounds.Right > TabArea.Right)
                 {
-                    ViewOffset -= bounds.Right - TabArea.Right;
+                    ViewOffset -= tabBounds.Right - TabArea.Right;
                 }
             }
             else
             {
                 // vertical
-                if (bounds.Top < TabArea.Top)
+                if (tabBounds.Top < TabArea.Top)
                 {
-                    ViewOffset -= bounds.Top - TabArea.Top;
+                    ViewOffset -= tabBounds.Top - TabArea.Top;
                 }
-                else if (bounds.Bottom > TabArea.Bottom)
+                else if (tabBounds.Bottom > TabArea.Bottom)
                 {
-                    ViewOffset -= bounds.Bottom - TabArea.Bottom;
+                    ViewOffset -= tabBounds.Bottom - TabArea.Bottom;
                 }
             }
 
-            UpdateTabLayout();
             Invalidate();
         }
+
+        /// <summary>
+        /// Gets the bounding rectangle of the tab in client coordinates.
+        /// </summary>
+        /// <param name="tab">The tab to calculate bounds for.</param>
+        public Rectangle GetTabBounds(Tab tab) => GetViewOffsetBounds(tab.TabBounds);
+
+        /// <summary>
+        /// Gets the bounding rectangle of the tab in client coordinates.
+        /// </summary>
+        /// <param name="tab">The tab to calculate bounds for.</param>
+        public Rectangle GetIconBounds(Tab tab) => GetViewOffsetBounds(tab.IconBounds);
+
+        /// <summary>
+        /// Gets the bounding rectangle of the tab in client coordinates.
+        /// </summary>
+        /// <param name="tab">The tab to calculate bounds for.</param>
+        public Rectangle GetCloseButtonBounds(Tab tab) => GetViewOffsetBounds(tab.CloseButtonBounds);
+
+        /// <summary>
+        /// Gets the bounding rectangle of the tab in client coordinates.
+        /// </summary>
+        /// <param name="tab">The tab to calculate bounds for.</param>
+        public Rectangle GetTextBounds(Tab tab) => GetViewOffsetBounds(tab.TextBounds);
         #endregion
 
         #region Overriden Methods
+        protected override void OnHandleCreated(EventArgs e)
+        {
+            UpdateTabLayout();
+            UpdatePages();
+        }
+
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
 
             UpdateTabLayout();
             UpdatePages();
-            Invalidate();
         }
 
         protected override void OnMouseClick(MouseEventArgs e)
@@ -711,7 +739,6 @@ namespace Manina.Windows.Forms
             base.OnPageAdded(e);
 
             UpdateTabLayout();
-            Invalidate();
         }
 
         protected override void OnPageRemoved(PageEventArgs e)
@@ -721,14 +748,13 @@ namespace Manina.Windows.Forms
             base.OnPageRemoved(e);
 
             UpdateTabLayout();
-            Invalidate();
         }
 
         protected override void OnPageChanged(PageChangedEventArgs e)
         {
             base.OnPageChanged(e);
 
-            EnsureVisible(SelectedIndex);
+            EnsureVisible(SelectedTab);
         }
         #endregion
 
@@ -806,24 +832,16 @@ namespace Manina.Windows.Forms
         private void Tab_ContentsChanged(object sender, EventArgs e)
         {
             UpdateTabLayout();
-            Invalidate();
-        }
-
-        /// <summary>
-        /// Updates tabs, pages, view offsets and redraws the control.
-        /// </summary>
-        protected internal void UpdateAll()
-        {
-            UpdateTabLayout();
-            UpdatePages();
-            Invalidate();
         }
 
         /// <summary>
         /// Updates the layout of all tabs.
         /// </summary>
-        private void UpdateTabLayout()
+        protected internal void UpdateTabLayout()
         {
+            if (!IsHandleCreated)
+                return;
+
             tabArea = Rectangle.Empty;
             displayArea = ClientRectangle;
             if (BorderStyle != BorderStyle.None)
@@ -1001,8 +1019,8 @@ namespace Manina.Windows.Forms
             // place tabs
             if (horizontal)
             {
-                if (ScrollButtons || (tabLocation & TabLocation.Near) != TabLocation.None)
-                    UpdateContentBounds(Tabs[0], new Rectangle(tabArea.Left + ViewOffset, tabArea.Top, tabSizes[0].Width, tabSizes[0].Height));
+                if ((tabLocation & TabLocation.Near) != TabLocation.None)
+                    UpdateContentBounds(Tabs[0], new Rectangle(tabArea.Left, tabArea.Top, tabSizes[0].Width, tabSizes[0].Height));
                 else if ((tabLocation & TabLocation.Far) != TabLocation.None)
                     UpdateContentBounds(Tabs[0], new Rectangle(tabArea.Left + (tabArea.Width - totalTabWidth), tabArea.Top, tabSizes[0].Width, tabSizes[0].Height));
                 else
@@ -1017,8 +1035,8 @@ namespace Manina.Windows.Forms
             }
             else
             {
-                if (ScrollButtons || (tabLocation & TabLocation.Near) != TabLocation.None)
-                    UpdateContentBounds(Tabs[0], new Rectangle(tabArea.Left, tabArea.Top + ViewOffset, tabSizes[0].Width, tabSizes[0].Height));
+                if ((tabLocation & TabLocation.Near) != TabLocation.None)
+                    UpdateContentBounds(Tabs[0], new Rectangle(tabArea.Left, tabArea.Top, tabSizes[0].Width, tabSizes[0].Height));
                 else if ((tabLocation & TabLocation.Far) != TabLocation.None)
                     UpdateContentBounds(Tabs[0], new Rectangle(tabArea.Left, tabArea.Top + (tabArea.Height - totalTabHeight), tabSizes[0].Width, tabSizes[0].Height));
                 else
@@ -1031,6 +1049,8 @@ namespace Manina.Windows.Forms
                     UpdateContentBounds(Tabs[i], new Rectangle(tabLocation, tabSizes[i]));
                 }
             }
+
+            Invalidate();
         }
 
         /// <summary>
@@ -1038,7 +1058,7 @@ namespace Manina.Windows.Forms
         /// </summary>
         /// <param name="tab">The tab to update.</param>
         /// <param name="tabBounds">The bounding rectangle of the tab.</param>
-        private void UpdateContentBounds(Tab tab, Rectangle tabBounds)
+        protected internal void UpdateContentBounds(Tab tab, Rectangle tabBounds)
         {
             var hasIcon = tab.Icon != null;
             var hasText = !string.IsNullOrEmpty(tab.Text);
@@ -1096,6 +1116,20 @@ namespace Manina.Windows.Forms
             tab.IconBounds = iconBounds.GetRotated(tabBounds, TextDirection).EnsureMinSize(1, 1);
             tab.CloseButtonBounds = closeButtonBounds.GetRotated(tabBounds, TextDirection).EnsureMinSize(1, 1);
             tab.TextBounds = textBounds.GetRotated(tabBounds, TextDirection).EnsureMinSize(1, 1);
+        }
+
+        /// <summary>
+        /// Offsets the given bounding rectangle with the view offset.
+        /// </summary>
+        /// <param name="bounds">The bounds to offset.</param>
+        protected internal Rectangle GetViewOffsetBounds(Rectangle bounds)
+        {
+            if (!ScrollButtons)
+                return bounds;
+            else if (IsHorizontal)
+                return bounds.GetOffset(ViewOffset, 0);
+            else
+                return bounds.GetOffset(0, ViewOffset);
         }
         #endregion
     }

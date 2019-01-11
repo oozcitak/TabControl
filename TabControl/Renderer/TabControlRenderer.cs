@@ -200,7 +200,7 @@ namespace Manina.Windows.Forms
                 for (int i = 0; i < Parent.Tabs.Count; i++)
                 {
                     var tab = Parent.Tabs[i];
-                    drawParams.Add(new DrawTabParams(i, tab, (i == Parent.SelectedIndex), Parent.GetTabState(tab), tab.TabBounds));
+                    drawParams.Add(new DrawTabParams(i, tab, (i == Parent.SelectedIndex), Parent.GetTabState(tab), Parent.GetTabBounds(tab)));
                 }
                 drawParams.Sort(new DrawTabParamsComparer());
 
@@ -255,22 +255,22 @@ namespace Manina.Windows.Forms
                     TextFormatFlags flags = TextFormatFlags.EndEllipsis | TextFormatFlags.VerticalCenter | TextFormatFlags.SingleLine;
 
                     if (Parent.TextDirection == TextDirection.Right)
-                        TextRenderer.DrawText(g, param.Tab.Text, param.Tab.Font, param.Tab.TextBounds, foreColor, backColor, flags);
+                        TextRenderer.DrawText(g, param.Tab.Text, param.Tab.Font, Parent.GetTextBounds(param.Tab), foreColor, backColor, flags);
                     else if (Parent.TextDirection == TextDirection.Down)
-                        g.DrawVerticalTextDown(param.Tab.Text, param.Tab.Font, param.Tab.TextBounds, foreColor, backColor, flags);
+                        g.DrawVerticalTextDown(param.Tab.Text, param.Tab.Font, Parent.GetTextBounds(param.Tab), foreColor, backColor, flags);
                     else
-                        g.DrawVerticalTextUp(param.Tab.Text, param.Tab.Font, param.Tab.TextBounds, foreColor, backColor, flags);
+                        g.DrawVerticalTextUp(param.Tab.Text, param.Tab.Font, Parent.GetTextBounds(param.Tab), foreColor, backColor, flags);
                 }
 
                 // icon
                 if (param.Tab.Icon != null)
                 {
                     if (Parent.TextDirection == TextDirection.Right)
-                        g.DrawImage(param.Tab.Icon, param.Tab.IconBounds);
+                        g.DrawImage(param.Tab.Icon, Parent.GetIconBounds(param.Tab));
                     else if (Parent.TextDirection == TextDirection.Down)
-                        g.DrawImageRotatedDown(param.Tab.Icon, param.Tab.IconBounds);
+                        g.DrawImageRotatedDown(param.Tab.Icon, Parent.GetIconBounds(param.Tab));
                     else
-                        g.DrawImageRotatedUp(param.Tab.Icon, param.Tab.IconBounds);
+                        g.DrawImageRotatedUp(param.Tab.Icon, Parent.GetIconBounds(param.Tab));
                 }
 
                 // close button
@@ -278,14 +278,14 @@ namespace Manina.Windows.Forms
                 {
                     Color buttonBackColor = GetCloseTabButtonBackColor(param);
                     using (var buttonBrush = new SolidBrush(buttonBackColor))
-                        g.FillRectangle(buttonBrush, param.Tab.CloseButtonBounds);
+                        g.FillRectangle(buttonBrush, Parent.GetCloseButtonBounds(param.Tab));
 
                     if (Parent.TextDirection == TextDirection.Right)
-                        g.DrawImage(Parent.CloseTabImage, param.Tab.CloseButtonBounds);
+                        g.DrawImage(Parent.CloseTabImage, Parent.GetCloseButtonBounds(param.Tab));
                     else if (Parent.TextDirection == TextDirection.Down)
-                        g.DrawImageRotatedDown(Parent.CloseTabImage, param.Tab.CloseButtonBounds);
+                        g.DrawImageRotatedDown(Parent.CloseTabImage, Parent.GetCloseButtonBounds(param.Tab));
                     else
-                        g.DrawImageRotatedUp(Parent.CloseTabImage, param.Tab.CloseButtonBounds);
+                        g.DrawImageRotatedUp(Parent.CloseTabImage, Parent.GetCloseButtonBounds(param.Tab));
                 }
             }
 
@@ -335,7 +335,7 @@ namespace Manina.Windows.Forms
                     return;
                 }
 
-                var tabBounds = Parent.SelectedTab.TabBounds;
+                var tabBounds = Parent.GetTabBounds(Parent.SelectedTab);
 
                 Point[] pt = new Point[8];
                 if ((Parent.TabLocation & TabLocation.Top) != TabLocation.None)

@@ -42,26 +42,30 @@ namespace Manina.Windows.Forms
         public override Font Font { get => base.Font; set { base.Font = value; OnContentsChanged(EventArgs.Empty); } }
 
         /// <summary>
-        /// Gets the bounding rectangle of the tab.
+        /// Gets the bounding rectangle of the tab in control's client coordinates 
+        /// but without the view offset applied.
         /// </summary>
         [Browsable(false)]
-        public Rectangle TabBounds { get; internal set; }
+        protected internal Rectangle TabBounds { get; set; }
 
         /// <summary>
-        /// Gets the bounding rectangle of tab icon in control's client coordinates.
+        /// Gets the bounding rectangle of tab icon in control's client coordinates
+        /// but without the view offset applied.
         /// </summary>
         [Browsable(false)]
-        public Rectangle IconBounds { get; internal set; }
+        protected internal Rectangle IconBounds { get; set; }
         /// <summary>
-        /// Gets the bounding rectangle of tab text in control's client coordinates.
+        /// Gets the bounding rectangle of tab text in control's client coordinates
+        /// but without the view offset applied.
         /// </summary>
         [Browsable(false)]
-        public Rectangle TextBounds { get; internal set; }
+        protected internal Rectangle TextBounds { get; set; }
         /// <summary>
-        /// Gets the bounding rectangle of close tab button in control's client coordinates.
+        /// Gets the bounding rectangle of close tab button in control's client coordinates
+        /// but without the view offset applied.
         /// </summary>
         [Browsable(false)]
-        public Rectangle CloseButtonBounds { get; internal set; }
+        protected internal Rectangle CloseButtonBounds { get; set; }
         #endregion
 
         #region Constructor

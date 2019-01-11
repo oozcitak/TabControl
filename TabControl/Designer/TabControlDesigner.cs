@@ -110,7 +110,7 @@ namespace Manina.Windows.Forms
                     point = Control.PointToClient(point);
                     foreach (var tab in Control.Tabs)
                     {
-                        if (tab.TabBounds.Contains(point))
+                        if (Control.GetTabBounds(tab).Contains(point))
                         {
                             return true;
                         }
