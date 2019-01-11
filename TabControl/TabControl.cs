@@ -1019,7 +1019,7 @@ namespace Manina.Windows.Forms
             // place tabs
             if (horizontal)
             {
-                if ((tabLocation & TabLocation.Near) != TabLocation.None)
+                if (ScrollButtons || (tabLocation & TabLocation.Near) != TabLocation.None)
                     UpdateContentBounds(Tabs[0], new Rectangle(tabArea.Left, tabArea.Top, tabSizes[0].Width, tabSizes[0].Height));
                 else if ((tabLocation & TabLocation.Far) != TabLocation.None)
                     UpdateContentBounds(Tabs[0], new Rectangle(tabArea.Left + (tabArea.Width - totalTabWidth), tabArea.Top, tabSizes[0].Width, tabSizes[0].Height));
@@ -1035,7 +1035,7 @@ namespace Manina.Windows.Forms
             }
             else
             {
-                if ((tabLocation & TabLocation.Near) != TabLocation.None)
+                if (ScrollButtons || (tabLocation & TabLocation.Near) != TabLocation.None)
                     UpdateContentBounds(Tabs[0], new Rectangle(tabArea.Left, tabArea.Top, tabSizes[0].Width, tabSizes[0].Height));
                 else if ((tabLocation & TabLocation.Far) != TabLocation.None)
                     UpdateContentBounds(Tabs[0], new Rectangle(tabArea.Left, tabArea.Top + (tabArea.Height - totalTabHeight), tabSizes[0].Width, tabSizes[0].Height));
