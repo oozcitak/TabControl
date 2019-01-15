@@ -506,7 +506,7 @@ namespace Manina.Windows.Forms
         #region Instance Methods
         /// <summary>
         /// Performs a hit test with given coordinates and returns the
-        /// <see cref="Tab"/> which contains the given point.
+        /// tab which contains the given point.
         /// </summary>
         /// <param name="pt">Hit test coordinates</param>
         /// <returns>The tab which contains the given point; or null
@@ -523,7 +523,7 @@ namespace Manina.Windows.Forms
         }
 
         /// <summary>
-        /// Makes sure that the tab with the given index is visible.
+        /// Scrolls the control to make sure that the given tab is visible.
         /// </summary>
         /// <param name="tab">The tab to make visible.</param>
         public void EnsureVisible(Tab tab)
