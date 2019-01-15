@@ -511,15 +511,25 @@ namespace Manina.Windows.Forms
         /// <param name="pt">Hit test coordinates</param>
         /// <returns>The tab which contains the given point; or null
         /// if none of the tabs contains the given point.</returns>
-        public Tab PerformHitTest(Point pt)
+        public HitResult PerformHitTest(Point pt)
         {
-            if (!TabArea.Contains(pt)) return null;
+            if (NearScrollButtonBounds.Contains(pt))
+                return new HitResult() { NearScrollButton = true };
+            else if (FarScrollButtonBounds.Contains(pt))
+                return new HitResult() { FarScrollButton = true };
 
             foreach (var tab in Tabs)
             {
-                if (GetTabBounds(tab).Contains(pt)) return tab;
+                if (GetTabBounds(tab).Contains(pt))
+                {
+                    var hit = new HitResult() { Tab = true, HitTab = tab };
+                    if (GetCloseButtonBounds(tab).Contains(pt))
+                        hit.CloseButton = true;
+                    return hit;
+                }
             }
-            return null;
+
+            return HitResult.Empty;
         }
 
         /// <summary>
@@ -610,23 +620,15 @@ namespace Manina.Windows.Forms
 
             var oldHoveredTab = hoveredTab;
             var oldHoveredButton = hoveredButton;
-            hoveredTab = PerformHitTest(e.Location);
-            hoveredButton = false;
             var oldHoveredScrollButton = hoveredScrollButton;
-            hoveredScrollButton = ScrollButton.None;
+
+            var hit = PerformHitTest(e.Location);
+            hoveredTab = hit.HitTab;
+            hoveredButton = hit.CloseButton;
+            hoveredScrollButton = hit.NearScrollButton ? ScrollButton.Near : hit.FarScrollButton ? ScrollButton.Far : ScrollButton.None;
+
             if (hoveredTab != null)
-            {
-                hoveredButton = GetCloseButtonBounds(hoveredTab).Contains(e.Location);
                 OnTabMouseMove(new TabMouseEventArgs(hoveredTab, e.Button, e.Clicks, e.Delta, e.Location));
-            }
-            else if (NearScrollButtonBounds.Contains(e.Location))
-            {
-                hoveredScrollButton = ScrollButton.Near;
-            }
-            else if (FarScrollButtonBounds.Contains(e.Location))
-            {
-                hoveredScrollButton = ScrollButton.Far;
-            }
 
             if (!ReferenceEquals(oldHoveredTab, hoveredTab) || oldHoveredButton != hoveredButton || oldHoveredScrollButton != hoveredScrollButton)
                 Invalidate();

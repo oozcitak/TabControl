@@ -66,6 +66,9 @@
     <Compile Include="Enums.cs" />
     <Compile Include="EventArgs.cs" />
     <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="HitResult.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
