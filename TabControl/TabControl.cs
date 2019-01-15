@@ -40,22 +40,14 @@ namespace Manina.Windows.Forms
                 // find the first invisible tab
                 if (horizontal && tabBounds.Left >= TabArea.Left)
                 {
-                    if (i > 0)
-                    {
-                        tab = Tabs[i - 1];
-                        // scroll the view to show it
-                        ViewOffset += tabBounds.Width;
-                    }
+                    // scroll the view to show it
+                    ViewOffset += tabBounds.Width;
                     break;
                 }
                 else if (!horizontal && tabBounds.Top >= TabArea.Top)
                 {
-                    if (i > 0)
-                    {
-                        tab = Tabs[i - 1];
-                        // scroll the view to show it
-                        ViewOffset += tabBounds.Height;
-                    }
+                    // scroll the view to show it
+                    ViewOffset += tabBounds.Height;
                     break;
                 }
             }
