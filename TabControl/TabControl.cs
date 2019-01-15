@@ -606,15 +606,6 @@ namespace Manina.Windows.Forms
             UpdatePages();
         }
 
-        protected override void OnMouseClick(MouseEventArgs e)
-        {
-            base.OnMouseClick(e);
-
-            var tab = PerformHitTest(e.Location);
-            if (tab != null && !ReferenceEquals(tab, SelectedPage))
-                SelectedPage = tab;
-        }
-
         protected override void OnMouseMove(MouseEventArgs e)
         {
             base.OnMouseMove(e);
@@ -693,12 +684,15 @@ namespace Manina.Windows.Forms
             if (hoveredTab != null)
                 OnTabMouseUp(new TabMouseEventArgs(hoveredTab, e.Button, e.Clicks, e.Delta, e.Location));
 
+            if (mouseDownTab != null && !ReferenceEquals(mouseDownTab, SelectedPage) && e.Button == MouseButtons.Left)
+                SelectedPage = mouseDownTab;
+
             if (mouseDownButton != false && e.Button == MouseButtons.Left)
                 OnCloseTabButtonClick(new CancelTabEventArgs(mouseDownTab));
 
-            if (mouseDownScrollButton == ScrollButton.Near && (GetNearScrollButtonState() & ItemState.Disabled) == ItemState.Inactive)
+            if (mouseDownScrollButton == ScrollButton.Near && (GetNearScrollButtonState() & ItemState.Disabled) == ItemState.Inactive && e.Button == MouseButtons.Left)
                 OnNearScrollButtonClick(EventArgs.Empty);
-            else if (mouseDownScrollButton == ScrollButton.Far && (GetFarScrollButtonState() & ItemState.Disabled) == ItemState.Inactive)
+            else if (mouseDownScrollButton == ScrollButton.Far && (GetFarScrollButtonState() & ItemState.Disabled) == ItemState.Inactive && e.Button == MouseButtons.Left)
                 OnFarScrollButtonClick(EventArgs.Empty);
 
             var oldmouseDownTab = mouseDownTab;
