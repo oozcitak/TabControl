@@ -528,6 +528,12 @@ namespace Manina.Windows.Forms
         /// <param name="tab">The tab to make visible.</param>
         public void EnsureVisible(Tab tab)
         {
+            if (tab == null)
+            {
+                ViewOffset = 0;
+                return;
+            }
+
             var tabBounds = GetTabBounds(tab);
 
             if ((tabLocation & TabLocation.Top) != TabLocation.None || (tabLocation & TabLocation.Bottom) != TabLocation.None)
@@ -610,7 +616,7 @@ namespace Manina.Windows.Forms
             hoveredScrollButton = ScrollButton.None;
             if (hoveredTab != null)
             {
-                hoveredButton = hoveredTab.CloseButtonBounds.Contains(e.Location);
+                hoveredButton = GetCloseButtonBounds(hoveredTab).Contains(e.Location);
                 OnTabMouseMove(new TabMouseEventArgs(hoveredTab, e.Button, e.Clicks, e.Delta, e.Location));
             }
             else if (NearScrollButtonBounds.Contains(e.Location))
@@ -651,7 +657,7 @@ namespace Manina.Windows.Forms
                 var oldMouseDownButton = mouseDownButton;
                 if (ReferenceEquals(mouseDownTab, SelectedPage) && hoveredButton != false)
                 {
-                    mouseDownButton = mouseDownTab.CloseButtonBounds.Contains(e.Location);
+                    mouseDownButton = GetCloseButtonBounds(mouseDownTab).Contains(e.Location);
                 }
                 OnTabMouseDown(new TabMouseEventArgs(hoveredTab, e.Button, e.Clicks, e.Delta, e.Location));
                 if (oldmouseDownTab != mouseDownTab || oldMouseDownButton != mouseDownButton)
