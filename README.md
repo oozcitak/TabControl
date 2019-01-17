@@ -21,7 +21,7 @@ Following public properties are available.
 |----|----|-----------|
 |SelectedTab       |Tab                           |Gets or sets the currently selected tab.|
 |SelectedIndex     |int                           |Gets or sets the index of the currently selected tab.|
-|Tab               |TabControl.TabCollection      |Gets the collection of tab.|
+|Tabs              |TabControl.TabCollection      |Gets the collection of tabs.|
 |CanGoBack         |bool                          |Gets whether the control can navigate to the previous tab.|
 |CanGoNext         |bool                          |Gets whether the control can navigate to the next tab.|
 |DisplayRectangle  |System.Drawing.Rectangle      |Gets the client rectangle where tabs are located. Deriving classes can override this property to modify tab bounds.|
@@ -41,8 +41,8 @@ Following events are raised by the control:
 
 |Name|Event Argument|Description|
 |----|--------------|-----------|
-|CurrentPageChanging|PagedControl.PageChangingEventArgs|Occurs before the selected page changes. The event arguments contains references to the currently selected page and the page to become selected. It is possible to make the control navigate to a different page by setting the `NewPage` property of the event arguments, or to cancel navigation entirely by setting `Cancel = true` while handling the event.|
-|CurrentPageChanged |PagedControl.PageChangedEventArgs |Occurs after the selected page changes. The event arguments contains references to the currently selected page and the previous selected page.|
+|PageChanging|PagedControl.PageChangingEventArgs|Occurs before the selected page changes. The event arguments contains references to the currently selected page and the page to become selected. It is possible to make the control navigate to a different page by setting the `NewPage` property of the event arguments, or to cancel navigation entirely by setting `Cancel = true` while handling the event.|
+|PageChanged |PagedControl.PageChangedEventArgs |Occurs after the selected page changes. The event arguments contains references to the currently selected page and the previous selected page.|
 |PageAdded  |PagedControl.PageEventArgs|Occurs after a new page is added to the page collection. The event arguments contains a reference to the new page.|
 |PageRemoved|PagedControl.PageEventArgs|Occurs after an existing page is removed from the page collection. The event arguments contains a reference to the removed page.|
 |PageValidating|PagedControl.PageValidatingEventArgs|Occurs before the selected page changes and it needs to be validated. The event arguments contains a reference to the currently selected page. By setting `Cancel = true` while handling the event, the validation stops and the selected page is not changed.|
