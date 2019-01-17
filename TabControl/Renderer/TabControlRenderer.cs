@@ -262,16 +262,16 @@ namespace Manina.Windows.Forms
                     {
                         if (Parent.IsHorizontal)
                         {
-                            if (param.Index != Parent.SelectedIndex + 1)
+                            if (param.Index != Parent.SelectedIndex + 1 && (param.Index != 0 || (param.Index == 0 && Parent.ScrollButtons)))
                                 g.DrawLine(pen, param.Bounds.Left, param.Bounds.Top + 4, param.Bounds.Left, param.Bounds.Bottom - 4);
-                            if (param.Index == Parent.Tabs.Count - 1)
+                            if (param.Index == Parent.Tabs.Count - 1 && Parent.ScrollButtons)
                                 g.DrawLine(pen, param.Bounds.Right - 1, param.Bounds.Top + 4, param.Bounds.Right - 1, param.Bounds.Bottom - 4);
                         }
                         else
                         {
-                            if (param.Index != Parent.SelectedIndex + 1)
+                            if (param.Index != Parent.SelectedIndex + 1 && (param.Index != 0 || (param.Index == 0 && Parent.ScrollButtons)))
                                 g.DrawLine(pen, param.Bounds.Left + 4, param.Bounds.Top, param.Bounds.Right - 4, param.Bounds.Top);
-                            if (param.Index == Parent.Tabs.Count - 1)
+                            if (param.Index == Parent.Tabs.Count - 1 && Parent.ScrollButtons)
                                 g.DrawLine(pen, param.Bounds.Left + 4, param.Bounds.Bottom - 1, param.Bounds.Right - 4, param.Bounds.Bottom - 1);
                         }
                     }
