@@ -95,9 +95,6 @@ namespace Manina.Windows.Forms
                     Control.SelectedTab = tab;
 
                     RaiseComponentChanged(member, null, null);
-
-                    if (SelectionService != null)
-                        SelectionService.SetSelectedComponents(new Component[] { Control });
                 }
             }
             #endregion
@@ -124,7 +121,7 @@ namespace Manina.Windows.Forms
             private void Control_PageChanged(object sender, PageChangedEventArgs e)
             {
                 if (SelectionService != null)
-                    SelectionService.SetSelectedComponents(new object[] { Control });
+                    SelectionService.SetSelectedComponents(new object[] { Control.SelectedTab });
             }
 
             private void SelectionService_SelectionChanged(object sender, EventArgs e)
@@ -132,8 +129,11 @@ namespace Manina.Windows.Forms
                 controlSelected = false;
                 foreach (var component in SelectionService.GetSelectedComponents())
                 {
-                    if (ReferenceEquals(component, Control))
+                    if (ReferenceEquals(component, Control) || (component is Tab tab && ReferenceEquals(tab.Parent, Control)))
+                    {
                         controlSelected = true;
+                        break;
+                    }
                 }
             }
             #endregion

@@ -80,9 +80,6 @@ namespace Manina.Windows.Forms
 
                     Control.Tabs.Add(tab);
                     Control.SelectedTab = tab;
-
-                    if (SelectionService != null)
-                        SelectionService.SetSelectedComponents(new Component[] { Control });
                 }
             }
 
@@ -104,9 +101,6 @@ namespace Manina.Windows.Forms
                             if (index == Control.Tabs.Count)
                                 index = Control.Tabs.Count - 1;
                             Control.SelectedIndex = index;
-
-                            if (SelectionService != null)
-                                SelectionService.SetSelectedComponents(new Component[] { Control });
                         }
                     }
                 }
