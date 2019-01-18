@@ -1,0 +1,6 @@
+- name: Api
+  topicUid: Manina.Windows.Forms.TabControl
+- name: Download
+  href: https://www.nuget.org/packages/TabControl
+- name: Source Code
+  href: https://github.com/oozcitak/TabControl
