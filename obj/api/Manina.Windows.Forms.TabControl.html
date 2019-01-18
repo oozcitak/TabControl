@@ -1,0 +1,2846 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class TabControl
+   | TabControl </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class TabControl
+   | TabControl ">
+    <meta name="generator" content="docfx 2.40.4.0">
+    
+    <link rel="shortcut icon" href="../../resources/icons/favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../resources/icons/logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-12">
+            <article class="content wrap" id="_content" data-uid="Manina.Windows.Forms.TabControl">
+  
+  
+  <h1 id="Manina_Windows_Forms_TabControl" data-uid="Manina.Windows.Forms.TabControl" class="text-break">Class TabControl
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">System.MarshalByRefObject</span></div>
+    <div class="level2"><span class="xref">System.ComponentModel.Component</span></div>
+    <div class="level3"><span class="xref">System.Windows.Forms.Control</span></div>
+    <div class="level4"><span class="xref">Manina.Windows.Forms.PagedControl</span></div>
+    <div class="level5"><span class="xref">TabControl</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">Manina.Windows.Forms.PagedControl.OnPageChanging(Manina.Windows.Forms.PageChangingEventArgs)</span>
+    </div>
+    <div>
+      <span class="xref">Manina.Windows.Forms.PagedControl.OnPageValidating(Manina.Windows.Forms.PageValidatingEventArgs)</span>
+    </div>
+    <div>
+      <span class="xref">Manina.Windows.Forms.PagedControl.OnPageValidated(Manina.Windows.Forms.PageEventArgs)</span>
+    </div>
+    <div>
+      <span class="xref">Manina.Windows.Forms.PagedControl.OnPageHidden(Manina.Windows.Forms.PageEventArgs)</span>
+    </div>
+    <div>
+      <span class="xref">Manina.Windows.Forms.PagedControl.OnPageShown(Manina.Windows.Forms.PageEventArgs)</span>
+    </div>
+    <div>
+      <span class="xref">Manina.Windows.Forms.PagedControl.OnPagePaint(Manina.Windows.Forms.PagePaintEventArgs)</span>
+    </div>
+    <div>
+      <span class="xref">Manina.Windows.Forms.PagedControl.OnCreateUIControls(Manina.Windows.Forms.CreateUIControlsEventArgs)</span>
+    </div>
+    <div>
+      <span class="xref">Manina.Windows.Forms.PagedControl.OnUpdateUIControls(System.EventArgs)</span>
+    </div>
+    <div>
+      <span class="xref">Manina.Windows.Forms.PagedControl.GoBack()</span>
+    </div>
+    <div>
+      <span class="xref">Manina.Windows.Forms.PagedControl.GoNext()</span>
+    </div>
+    <div>
+      <span class="xref">Manina.Windows.Forms.PagedControl.UpdatePages()</span>
+    </div>
+    <div>
+      <span class="xref">Manina.Windows.Forms.PagedControl.ChangePage(Manina.Windows.Forms.Page, System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">Manina.Windows.Forms.PagedControl.CreateControlsInstance()</span>
+    </div>
+    <div>
+      <span class="xref">Manina.Windows.Forms.PagedControl.OnInvalidated(System.Windows.Forms.InvalidateEventArgs)</span>
+    </div>
+    <div>
+      <span class="xref">Manina.Windows.Forms.PagedControl.BorderStyle</span>
+    </div>
+    <div>
+      <span class="xref">Manina.Windows.Forms.PagedControl.DefaultSize</span>
+    </div>
+    <div>
+      <span class="xref">Manina.Windows.Forms.PagedControl.CanGoBack</span>
+    </div>
+    <div>
+      <span class="xref">Manina.Windows.Forms.PagedControl.CanGoNext</span>
+    </div>
+    <div>
+      <span class="xref">Manina.Windows.Forms.PagedControl.PageAdded</span>
+    </div>
+    <div>
+      <span class="xref">Manina.Windows.Forms.PagedControl.PageRemoved</span>
+    </div>
+    <div>
+      <span class="xref">Manina.Windows.Forms.PagedControl.PageChanging</span>
+    </div>
+    <div>
+      <span class="xref">Manina.Windows.Forms.PagedControl.PageChanged</span>
+    </div>
+    <div>
+      <span class="xref">Manina.Windows.Forms.PagedControl.PageValidating</span>
+    </div>
+    <div>
+      <span class="xref">Manina.Windows.Forms.PagedControl.PageValidated</span>
+    </div>
+    <div>
+      <span class="xref">Manina.Windows.Forms.PagedControl.PageHidden</span>
+    </div>
+    <div>
+      <span class="xref">Manina.Windows.Forms.PagedControl.PageShown</span>
+    </div>
+    <div>
+      <span class="xref">Manina.Windows.Forms.PagedControl.PagePaint</span>
+    </div>
+    <div>
+      <span class="xref">Manina.Windows.Forms.PagedControl.CreateUIControls</span>
+    </div>
+    <div>
+      <span class="xref">Manina.Windows.Forms.PagedControl.UpdateUIControls</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Manina.Windows.Forms.html">Manina.Windows.Forms</a></h6>
+  <h6><strong>Assembly</strong>: TabControl.dll</h6>
+  <h5 id="Manina_Windows_Forms_TabControl_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[ToolboxBitmap(typeof(TabControl))]
+[Docking(DockingBehavior.Ask)]
+public class TabControl : PagedControl, UnsafeNativeMethods.IOleControl, UnsafeNativeMethods.IOleObject, UnsafeNativeMethods.IOleInPlaceObject, UnsafeNativeMethods.IOleInPlaceActiveObject, UnsafeNativeMethods.IOleWindow, UnsafeNativeMethods.IViewObject, UnsafeNativeMethods.IViewObject2, UnsafeNativeMethods.IPersist, UnsafeNativeMethods.IPersistStreamInit, UnsafeNativeMethods.IPersistPropertyBag, UnsafeNativeMethods.IPersistStorage, UnsafeNativeMethods.IQuickActivate, ISupportOleDropSource, IDropTarget, ISynchronizeInvoke, IWin32Window, IArrangedElement, IBindableComponent, IComponent, IDisposable</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl__ctor.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L474">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl__ctor_" data-uid="Manina.Windows.Forms.TabControl.#ctor*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl__ctor" data-uid="Manina.Windows.Forms.TabControl.#ctor">TabControl()</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Manina.Windows.Forms.TabControl.html">TabControl</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TabControl()</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_ClientRectangle.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.ClientRectangle%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L362">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_ClientRectangle_" data-uid="Manina.Windows.Forms.TabControl.ClientRectangle*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_ClientRectangle" data-uid="Manina.Windows.Forms.TabControl.ClientRectangle">ClientRectangle</h4>
+  <div class="markdown level1 summary"><p>Gets the rectangle that represents the client area of the control.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Browsable(false)]
+public Rectangle ClientRectangle { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Rectangle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_CloseTabImage.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.CloseTabImage%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L303">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_CloseTabImage_" data-uid="Manina.Windows.Forms.TabControl.CloseTabImage*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_CloseTabImage" data-uid="Manina.Windows.Forms.TabControl.CloseTabImage">CloseTabImage</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the image of close buttons.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Image CloseTabImage { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Image</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_ContentAlignment.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.ContentAlignment%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L289">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_ContentAlignment_" data-uid="Manina.Windows.Forms.TabControl.ContentAlignment*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_ContentAlignment" data-uid="Manina.Windows.Forms.TabControl.ContentAlignment">ContentAlignment</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the alignment of tab text.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Alignment ContentAlignment { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Manina.Windows.Forms.Alignment.html">Alignment</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_ContentSpacing.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.ContentSpacing%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L317">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_ContentSpacing_" data-uid="Manina.Windows.Forms.TabControl.ContentSpacing*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_ContentSpacing" data-uid="Manina.Windows.Forms.TabControl.ContentSpacing">ContentSpacing</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the spacing between tab contents (i.e. icon, text and close button).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ContentSpacing { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_DisplayRectangle.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.DisplayRectangle%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L368">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_DisplayRectangle_" data-uid="Manina.Windows.Forms.TabControl.DisplayRectangle*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_DisplayRectangle" data-uid="Manina.Windows.Forms.TabControl.DisplayRectangle">DisplayRectangle</h4>
+  <div class="markdown level1 summary"><p>Gets the client rectangle where pages are located.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Browsable(false)]
+public override Rectangle DisplayRectangle { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Rectangle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Manina.Windows.Forms.PagedControl.DisplayRectangle</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_DownArrowImage.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.DownArrowImage%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L406">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_DownArrowImage_" data-uid="Manina.Windows.Forms.TabControl.DownArrowImage*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_DownArrowImage" data-uid="Manina.Windows.Forms.TabControl.DownArrowImage">DownArrowImage</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the image of a scroll button pointing down.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Image DownArrowImage { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Image</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_FarScrollButtonBounds.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.FarScrollButtonBounds%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L421">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_FarScrollButtonBounds_" data-uid="Manina.Windows.Forms.TabControl.FarScrollButtonBounds*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_FarScrollButtonBounds" data-uid="Manina.Windows.Forms.TabControl.FarScrollButtonBounds">FarScrollButtonBounds</h4>
+  <div class="markdown level1 summary"><p>Gets the bounds of the far scroll button. Although scroll button size is returned
+by the renderer, it may be resized along with tabs while layout logic is applied.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Browsable(false)]
+protected Rectangle FarScrollButtonBounds { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Rectangle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_Font.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.Font%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L380">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_Font_" data-uid="Manina.Windows.Forms.TabControl.Font*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_Font" data-uid="Manina.Windows.Forms.TabControl.Font">Font</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the font associated with the control.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override Font Font { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Font</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Windows.Forms.Control.Font</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_IsHorizontal.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.IsHorizontal%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L427">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_IsHorizontal_" data-uid="Manina.Windows.Forms.TabControl.IsHorizontal*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_IsHorizontal" data-uid="Manina.Windows.Forms.TabControl.IsHorizontal">IsHorizontal</h4>
+  <div class="markdown level1 summary"><p>Determines whether the toolbar is horizontal (at top or bottom) or vertical (left or right).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Browsable(false)]
+protected bool IsHorizontal { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_LeftArrowImage.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.LeftArrowImage%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L388">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_LeftArrowImage_" data-uid="Manina.Windows.Forms.TabControl.LeftArrowImage*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_LeftArrowImage" data-uid="Manina.Windows.Forms.TabControl.LeftArrowImage">LeftArrowImage</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the image of a scroll button pointing left.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Image LeftArrowImage { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Image</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_MinViewOffset.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.MinViewOffset%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L451">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_MinViewOffset_" data-uid="Manina.Windows.Forms.TabControl.MinViewOffset*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_MinViewOffset" data-uid="Manina.Windows.Forms.TabControl.MinViewOffset">MinViewOffset</h4>
+  <div class="markdown level1 summary"><p>Gets the mininum value of the scrollable view offset.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Browsable(false)]
+protected int MinViewOffset { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_NearScrollButtonBounds.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.NearScrollButtonBounds%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L414">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_NearScrollButtonBounds_" data-uid="Manina.Windows.Forms.TabControl.NearScrollButtonBounds*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_NearScrollButtonBounds" data-uid="Manina.Windows.Forms.TabControl.NearScrollButtonBounds">NearScrollButtonBounds</h4>
+  <div class="markdown level1 summary"><p>Gets the bounds of the near scroll button. Although scroll button size is returned
+by the renderer, it may be resized along with tabs while layout logic is applied.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Browsable(false)]
+protected Rectangle NearScrollButtonBounds { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Rectangle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_Pages.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.Pages%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L324">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_Pages_" data-uid="Manina.Windows.Forms.TabControl.Pages*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_Pages" data-uid="Manina.Windows.Forms.TabControl.Pages">Pages</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the collection of pages.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Browsable(false)]
+public override PagedControl.PageCollection Pages { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Manina.Windows.Forms.PagedControl.PageCollection</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Manina.Windows.Forms.PagedControl.Pages</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_Renderer.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.Renderer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L255">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_Renderer_" data-uid="Manina.Windows.Forms.TabControl.Renderer*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_Renderer" data-uid="Manina.Windows.Forms.TabControl.Renderer">Renderer</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the renderer associated with the control.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Browsable(false)]
+public TabControl.TabControlRenderer Renderer { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Manina.Windows.Forms.TabControl.TabControlRenderer.html">TabControl.TabControlRenderer</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_RightArrowImage.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.RightArrowImage%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L394">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_RightArrowImage_" data-uid="Manina.Windows.Forms.TabControl.RightArrowImage*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_RightArrowImage" data-uid="Manina.Windows.Forms.TabControl.RightArrowImage">RightArrowImage</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the image of a scroll button pointing right.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Image RightArrowImage { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Image</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_ScrollButtons.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.ScrollButtons%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L466">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_ScrollButtons_" data-uid="Manina.Windows.Forms.TabControl.ScrollButtons*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_ScrollButtons" data-uid="Manina.Windows.Forms.TabControl.ScrollButtons">ScrollButtons</h4>
+  <div class="markdown level1 summary"><p>Gets whether the scroll buttons are visible.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Browsable(false)]
+public bool ScrollButtons { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_SelectedIndex.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.SelectedIndex%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L346">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_SelectedIndex_" data-uid="Manina.Windows.Forms.TabControl.SelectedIndex*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_SelectedIndex" data-uid="Manina.Windows.Forms.TabControl.SelectedIndex">SelectedIndex</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the zero-based index of the selected tab.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int SelectedIndex { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Manina.Windows.Forms.PagedControl.SelectedIndex</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_SelectedPage.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.SelectedPage%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L339">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_SelectedPage_" data-uid="Manina.Windows.Forms.TabControl.SelectedPage*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_SelectedPage" data-uid="Manina.Windows.Forms.TabControl.SelectedPage">SelectedPage</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the current page.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Browsable(false)]
+public override Page SelectedPage { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Manina.Windows.Forms.Page</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Manina.Windows.Forms.PagedControl.SelectedPage</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_SelectedTab.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.SelectedTab%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L353">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_SelectedTab_" data-uid="Manina.Windows.Forms.TabControl.SelectedTab*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_SelectedTab" data-uid="Manina.Windows.Forms.TabControl.SelectedTab">SelectedTab</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the current tab.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Tab SelectedTab { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Manina.Windows.Forms.Tab.html">Tab</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_ShowCloseTabButtons.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.ShowCloseTabButtons%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L310">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_ShowCloseTabButtons_" data-uid="Manina.Windows.Forms.TabControl.ShowCloseTabButtons*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_ShowCloseTabButtons" data-uid="Manina.Windows.Forms.TabControl.ShowCloseTabButtons">ShowCloseTabButtons</h4>
+  <div class="markdown level1 summary"><p>Gets or sets whether to show close tab buttons.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ShowCloseTabButtons { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_TabArea.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.TabArea%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L374">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_TabArea_" data-uid="Manina.Windows.Forms.TabControl.TabArea*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_TabArea" data-uid="Manina.Windows.Forms.TabControl.TabArea">TabArea</h4>
+  <div class="markdown level1 summary"><p>Gets the client rectangle where tabs are located.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Browsable(false)]
+public Rectangle TabArea { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Rectangle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_TabLocation.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.TabLocation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L275">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_TabLocation_" data-uid="Manina.Windows.Forms.TabControl.TabLocation*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_TabLocation" data-uid="Manina.Windows.Forms.TabControl.TabLocation">TabLocation</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the location of tabs.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TabLocation TabLocation { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Manina.Windows.Forms.TabLocation.html">TabLocation</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_TabPadding.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.TabPadding%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L268">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_TabPadding_" data-uid="Manina.Windows.Forms.TabControl.TabPadding*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_TabPadding" data-uid="Manina.Windows.Forms.TabControl.TabPadding">TabPadding</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the padding between the contents a tab and its borders.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Padding TabPadding { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Forms.Padding</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_Tabs.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.Tabs%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L331">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_Tabs_" data-uid="Manina.Windows.Forms.TabControl.Tabs*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_Tabs" data-uid="Manina.Windows.Forms.TabControl.Tabs">Tabs</h4>
+  <div class="markdown level1 summary"><p>Gets the collection of tabs.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TabControl.TabCollection Tabs { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Manina.Windows.Forms.TabControl.TabCollection.html">TabControl.TabCollection</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_TabSize.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.TabSize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L261">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_TabSize_" data-uid="Manina.Windows.Forms.TabControl.TabSize*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_TabSize" data-uid="Manina.Windows.Forms.TabControl.TabSize">TabSize</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the size of tabs.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Size TabSize { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Size</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_TabSizing.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.TabSizing%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L283">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_TabSizing_" data-uid="Manina.Windows.Forms.TabControl.TabSizing*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_TabSizing" data-uid="Manina.Windows.Forms.TabControl.TabSizing">TabSizing</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the sizing mode of tabs.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TabSizing TabSizing { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Manina.Windows.Forms.TabSizing.html">TabSizing</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_TextDirection.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.TextDirection%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L295">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_TextDirection_" data-uid="Manina.Windows.Forms.TabControl.TextDirection*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_TextDirection" data-uid="Manina.Windows.Forms.TabControl.TextDirection">TextDirection</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the direction of tab texts.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TextDirection TextDirection { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Manina.Windows.Forms.TextDirection.html">TextDirection</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_UpArrowImage.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.UpArrowImage%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L400">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_UpArrowImage_" data-uid="Manina.Windows.Forms.TabControl.UpArrowImage*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_UpArrowImage" data-uid="Manina.Windows.Forms.TabControl.UpArrowImage">UpArrowImage</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the image of a scroll button pointing up.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Image UpArrowImage { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Image</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_ViewOffset.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.ViewOffset%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L433">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_ViewOffset_" data-uid="Manina.Windows.Forms.TabControl.ViewOffset*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_ViewOffset" data-uid="Manina.Windows.Forms.TabControl.ViewOffset">ViewOffset</h4>
+  <div class="markdown level1 summary"><p>Gets the value of the scrollable view offset.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Browsable(false)]
+protected int ViewOffset { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_EnsureVisible_Manina_Windows_Forms_Tab_.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.EnsureVisible(Manina.Windows.Forms.Tab)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L539">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_EnsureVisible_" data-uid="Manina.Windows.Forms.TabControl.EnsureVisible*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_EnsureVisible_Manina_Windows_Forms_Tab_" data-uid="Manina.Windows.Forms.TabControl.EnsureVisible(Manina.Windows.Forms.Tab)">EnsureVisible(Tab)</h4>
+  <div class="markdown level1 summary"><p>Scrolls the control to make sure that the given tab is visible.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void EnsureVisible(Tab tab)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Manina.Windows.Forms.Tab.html">Tab</a></td>
+        <td><span class="parametername">tab</span></td>
+        <td><p>The tab to make visible.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_GetCloseButtonBounds_Manina_Windows_Forms_Tab_.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.GetCloseButtonBounds(Manina.Windows.Forms.Tab)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L593">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_GetCloseButtonBounds_" data-uid="Manina.Windows.Forms.TabControl.GetCloseButtonBounds*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_GetCloseButtonBounds_Manina_Windows_Forms_Tab_" data-uid="Manina.Windows.Forms.TabControl.GetCloseButtonBounds(Manina.Windows.Forms.Tab)">GetCloseButtonBounds(Tab)</h4>
+  <div class="markdown level1 summary"><p>Gets the bounding rectangle of the tab in client coordinates.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Rectangle GetCloseButtonBounds(Tab tab)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Manina.Windows.Forms.Tab.html">Tab</a></td>
+        <td><span class="parametername">tab</span></td>
+        <td><p>The tab to calculate bounds for.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Rectangle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_GetFarScrollButtonState.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.GetFarScrollButtonState%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L812">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_GetFarScrollButtonState_" data-uid="Manina.Windows.Forms.TabControl.GetFarScrollButtonState*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_GetFarScrollButtonState" data-uid="Manina.Windows.Forms.TabControl.GetFarScrollButtonState">GetFarScrollButtonState()</h4>
+  <div class="markdown level1 summary"><p>Gets the visual state of the far scroll button.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected ItemState GetFarScrollButtonState()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Manina.Windows.Forms.ItemState.html">ItemState</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_GetIconBounds_Manina_Windows_Forms_Tab_.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.GetIconBounds(Manina.Windows.Forms.Tab)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L587">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_GetIconBounds_" data-uid="Manina.Windows.Forms.TabControl.GetIconBounds*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_GetIconBounds_Manina_Windows_Forms_Tab_" data-uid="Manina.Windows.Forms.TabControl.GetIconBounds(Manina.Windows.Forms.Tab)">GetIconBounds(Tab)</h4>
+  <div class="markdown level1 summary"><p>Gets the bounding rectangle of the tab in client coordinates.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Rectangle GetIconBounds(Tab tab)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Manina.Windows.Forms.Tab.html">Tab</a></td>
+        <td><span class="parametername">tab</span></td>
+        <td><p>The tab to calculate bounds for.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Rectangle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_GetNearScrollButtonState.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.GetNearScrollButtonState%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L795">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_GetNearScrollButtonState_" data-uid="Manina.Windows.Forms.TabControl.GetNearScrollButtonState*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_GetNearScrollButtonState" data-uid="Manina.Windows.Forms.TabControl.GetNearScrollButtonState">GetNearScrollButtonState()</h4>
+  <div class="markdown level1 summary"><p>Gets the visual state of the near scroll button.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected ItemState GetNearScrollButtonState()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Manina.Windows.Forms.ItemState.html">ItemState</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_GetTabBounds_Manina_Windows_Forms_Tab_.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.GetTabBounds(Manina.Windows.Forms.Tab)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L581">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_GetTabBounds_" data-uid="Manina.Windows.Forms.TabControl.GetTabBounds*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_GetTabBounds_Manina_Windows_Forms_Tab_" data-uid="Manina.Windows.Forms.TabControl.GetTabBounds(Manina.Windows.Forms.Tab)">GetTabBounds(Tab)</h4>
+  <div class="markdown level1 summary"><p>Gets the bounding rectangle of the tab in client coordinates.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Rectangle GetTabBounds(Tab tab)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Manina.Windows.Forms.Tab.html">Tab</a></td>
+        <td><span class="parametername">tab</span></td>
+        <td><p>The tab to calculate bounds for.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Rectangle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_GetTabCloseButtonState_Manina_Windows_Forms_Tab_.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.GetTabCloseButtonState(Manina.Windows.Forms.Tab)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L778">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_GetTabCloseButtonState_" data-uid="Manina.Windows.Forms.TabControl.GetTabCloseButtonState*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_GetTabCloseButtonState_Manina_Windows_Forms_Tab_" data-uid="Manina.Windows.Forms.TabControl.GetTabCloseButtonState(Manina.Windows.Forms.Tab)">GetTabCloseButtonState(Tab)</h4>
+  <div class="markdown level1 summary"><p>Gets the visual state of the close tab button.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected ItemState GetTabCloseButtonState(Tab tab)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Manina.Windows.Forms.Tab.html">Tab</a></td>
+        <td><span class="parametername">tab</span></td>
+        <td><p>The tab to check.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Manina.Windows.Forms.ItemState.html">ItemState</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_GetTabState_Manina_Windows_Forms_Tab_.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.GetTabState(Manina.Windows.Forms.Tab)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L760">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_GetTabState_" data-uid="Manina.Windows.Forms.TabControl.GetTabState*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_GetTabState_Manina_Windows_Forms_Tab_" data-uid="Manina.Windows.Forms.TabControl.GetTabState(Manina.Windows.Forms.Tab)">GetTabState(Tab)</h4>
+  <div class="markdown level1 summary"><p>Gets the visual state of a tab.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected ItemState GetTabState(Tab tab)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Manina.Windows.Forms.Tab.html">Tab</a></td>
+        <td><span class="parametername">tab</span></td>
+        <td><p>The tab to check.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Manina.Windows.Forms.ItemState.html">ItemState</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_GetTextBounds_Manina_Windows_Forms_Tab_.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.GetTextBounds(Manina.Windows.Forms.Tab)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L599">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_GetTextBounds_" data-uid="Manina.Windows.Forms.TabControl.GetTextBounds*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_GetTextBounds_Manina_Windows_Forms_Tab_" data-uid="Manina.Windows.Forms.TabControl.GetTextBounds(Manina.Windows.Forms.Tab)">GetTextBounds(Tab)</h4>
+  <div class="markdown level1 summary"><p>Gets the bounding rectangle of the tab in client coordinates.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Rectangle GetTextBounds(Tab tab)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Manina.Windows.Forms.Tab.html">Tab</a></td>
+        <td><span class="parametername">tab</span></td>
+        <td><p>The tab to calculate bounds for.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Rectangle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_GetViewOffsetBounds_System_Drawing_Rectangle_.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.GetViewOffsetBounds(System.Drawing.Rectangle)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L1119">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_GetViewOffsetBounds_" data-uid="Manina.Windows.Forms.TabControl.GetViewOffsetBounds*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_GetViewOffsetBounds_System_Drawing_Rectangle_" data-uid="Manina.Windows.Forms.TabControl.GetViewOffsetBounds(System.Drawing.Rectangle)">GetViewOffsetBounds(Rectangle)</h4>
+  <div class="markdown level1 summary"><p>Offsets the given bounding rectangle with the view offset.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Rectangle GetViewOffsetBounds(Rectangle bounds)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Rectangle</span></td>
+        <td><span class="parametername">bounds</span></td>
+        <td><p>The bounds to offset.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Rectangle</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_OnCloseTabButtonClick_Manina_Windows_Forms_CancelTabEventArgs_.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.OnCloseTabButtonClick(Manina.Windows.Forms.CancelTabEventArgs)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L25">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_OnCloseTabButtonClick_" data-uid="Manina.Windows.Forms.TabControl.OnCloseTabButtonClick*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_OnCloseTabButtonClick_Manina_Windows_Forms_CancelTabEventArgs_" data-uid="Manina.Windows.Forms.TabControl.OnCloseTabButtonClick(Manina.Windows.Forms.CancelTabEventArgs)">OnCloseTabButtonClick(CancelTabEventArgs)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void OnCloseTabButtonClick(CancelTabEventArgs e)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Manina.Windows.Forms.CancelTabEventArgs.html">CancelTabEventArgs</a></td>
+        <td><span class="parametername">e</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_OnFarScrollButtonClick_System_EventArgs_.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.OnFarScrollButtonClick(System.EventArgs)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L59">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_OnFarScrollButtonClick_" data-uid="Manina.Windows.Forms.TabControl.OnFarScrollButtonClick*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_OnFarScrollButtonClick_System_EventArgs_" data-uid="Manina.Windows.Forms.TabControl.OnFarScrollButtonClick(System.EventArgs)">OnFarScrollButtonClick(EventArgs)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void OnFarScrollButtonClick(EventArgs e)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.EventArgs</span></td>
+        <td><span class="parametername">e</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_OnHandleCreated_System_EventArgs_.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.OnHandleCreated(System.EventArgs)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L603">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_OnHandleCreated_" data-uid="Manina.Windows.Forms.TabControl.OnHandleCreated*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_OnHandleCreated_System_EventArgs_" data-uid="Manina.Windows.Forms.TabControl.OnHandleCreated(System.EventArgs)">OnHandleCreated(EventArgs)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void OnHandleCreated(EventArgs e)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.EventArgs</span></td>
+        <td><span class="parametername">e</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Manina.Windows.Forms.PagedControl.OnHandleCreated(System.EventArgs)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_OnLayoutTabs_Manina_Windows_Forms_LayoutTabsEventArgs_.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.OnLayoutTabs(Manina.Windows.Forms.LayoutTabsEventArgs)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L135">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_OnLayoutTabs_" data-uid="Manina.Windows.Forms.TabControl.OnLayoutTabs*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_OnLayoutTabs_Manina_Windows_Forms_LayoutTabsEventArgs_" data-uid="Manina.Windows.Forms.TabControl.OnLayoutTabs(Manina.Windows.Forms.LayoutTabsEventArgs)">OnLayoutTabs(LayoutTabsEventArgs)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void OnLayoutTabs(LayoutTabsEventArgs e)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Manina.Windows.Forms.LayoutTabsEventArgs.html">LayoutTabsEventArgs</a></td>
+        <td><span class="parametername">e</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_OnMeasureScrollButton_Manina_Windows_Forms_MeasureEventArgs_.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.OnMeasureScrollButton(Manina.Windows.Forms.MeasureEventArgs)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L126">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_OnMeasureScrollButton_" data-uid="Manina.Windows.Forms.TabControl.OnMeasureScrollButton*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_OnMeasureScrollButton_Manina_Windows_Forms_MeasureEventArgs_" data-uid="Manina.Windows.Forms.TabControl.OnMeasureScrollButton(Manina.Windows.Forms.MeasureEventArgs)">OnMeasureScrollButton(MeasureEventArgs)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void OnMeasureScrollButton(MeasureEventArgs e)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Manina.Windows.Forms.MeasureEventArgs.html">MeasureEventArgs</a></td>
+        <td><span class="parametername">e</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_OnMeasureTab_Manina_Windows_Forms_MeasureTabEventArgs_.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.OnMeasureTab(Manina.Windows.Forms.MeasureTabEventArgs)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L87">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_OnMeasureTab_" data-uid="Manina.Windows.Forms.TabControl.OnMeasureTab*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_OnMeasureTab_Manina_Windows_Forms_MeasureTabEventArgs_" data-uid="Manina.Windows.Forms.TabControl.OnMeasureTab(Manina.Windows.Forms.MeasureTabEventArgs)">OnMeasureTab(MeasureTabEventArgs)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void OnMeasureTab(MeasureTabEventArgs e)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Manina.Windows.Forms.MeasureTabEventArgs.html">MeasureTabEventArgs</a></td>
+        <td><span class="parametername">e</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_OnMouseDoubleClick_System_Windows_Forms_MouseEventArgs_.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.OnMouseDoubleClick(System.Windows.Forms.MouseEventArgs)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L708">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_OnMouseDoubleClick_" data-uid="Manina.Windows.Forms.TabControl.OnMouseDoubleClick*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_OnMouseDoubleClick_System_Windows_Forms_MouseEventArgs_" data-uid="Manina.Windows.Forms.TabControl.OnMouseDoubleClick(System.Windows.Forms.MouseEventArgs)">OnMouseDoubleClick(MouseEventArgs)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void OnMouseDoubleClick(MouseEventArgs e)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Forms.MouseEventArgs</span></td>
+        <td><span class="parametername">e</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Windows.Forms.Control.OnMouseDoubleClick(System.Windows.Forms.MouseEventArgs)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_OnMouseDown_System_Windows_Forms_MouseEventArgs_.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.OnMouseDown(System.Windows.Forms.MouseEventArgs)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L650">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_OnMouseDown_" data-uid="Manina.Windows.Forms.TabControl.OnMouseDown*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_OnMouseDown_System_Windows_Forms_MouseEventArgs_" data-uid="Manina.Windows.Forms.TabControl.OnMouseDown(System.Windows.Forms.MouseEventArgs)">OnMouseDown(MouseEventArgs)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void OnMouseDown(MouseEventArgs e)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Forms.MouseEventArgs</span></td>
+        <td><span class="parametername">e</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Windows.Forms.Control.OnMouseDown(System.Windows.Forms.MouseEventArgs)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_OnMouseLeave_System_EventArgs_.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.OnMouseLeave(System.EventArgs)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L637">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_OnMouseLeave_" data-uid="Manina.Windows.Forms.TabControl.OnMouseLeave*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_OnMouseLeave_System_EventArgs_" data-uid="Manina.Windows.Forms.TabControl.OnMouseLeave(System.EventArgs)">OnMouseLeave(EventArgs)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void OnMouseLeave(EventArgs e)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.EventArgs</span></td>
+        <td><span class="parametername">e</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Windows.Forms.Control.OnMouseLeave(System.EventArgs)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_OnMouseMove_System_Windows_Forms_MouseEventArgs_.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.OnMouseMove(System.Windows.Forms.MouseEventArgs)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L617">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_OnMouseMove_" data-uid="Manina.Windows.Forms.TabControl.OnMouseMove*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_OnMouseMove_System_Windows_Forms_MouseEventArgs_" data-uid="Manina.Windows.Forms.TabControl.OnMouseMove(System.Windows.Forms.MouseEventArgs)">OnMouseMove(MouseEventArgs)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void OnMouseMove(MouseEventArgs e)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Forms.MouseEventArgs</span></td>
+        <td><span class="parametername">e</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Windows.Forms.Control.OnMouseMove(System.Windows.Forms.MouseEventArgs)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_OnMouseUp_System_Windows_Forms_MouseEventArgs_.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.OnMouseUp(System.Windows.Forms.MouseEventArgs)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L677">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_OnMouseUp_" data-uid="Manina.Windows.Forms.TabControl.OnMouseUp*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_OnMouseUp_System_Windows_Forms_MouseEventArgs_" data-uid="Manina.Windows.Forms.TabControl.OnMouseUp(System.Windows.Forms.MouseEventArgs)">OnMouseUp(MouseEventArgs)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void OnMouseUp(MouseEventArgs e)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Forms.MouseEventArgs</span></td>
+        <td><span class="parametername">e</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Windows.Forms.Control.OnMouseUp(System.Windows.Forms.MouseEventArgs)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_OnMouseWheel_System_Windows_Forms_MouseEventArgs_.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.OnMouseWheel(System.Windows.Forms.MouseEventArgs)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L716">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_OnMouseWheel_" data-uid="Manina.Windows.Forms.TabControl.OnMouseWheel*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_OnMouseWheel_System_Windows_Forms_MouseEventArgs_" data-uid="Manina.Windows.Forms.TabControl.OnMouseWheel(System.Windows.Forms.MouseEventArgs)">OnMouseWheel(MouseEventArgs)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void OnMouseWheel(MouseEventArgs e)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Forms.MouseEventArgs</span></td>
+        <td><span class="parametername">e</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Windows.Forms.Control.OnMouseWheel(System.Windows.Forms.MouseEventArgs)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_OnNearScrollButtonClick_System_EventArgs_.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.OnNearScrollButtonClick(System.EventArgs)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L32">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_OnNearScrollButtonClick_" data-uid="Manina.Windows.Forms.TabControl.OnNearScrollButtonClick*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_OnNearScrollButtonClick_System_EventArgs_" data-uid="Manina.Windows.Forms.TabControl.OnNearScrollButtonClick(System.EventArgs)">OnNearScrollButtonClick(EventArgs)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void OnNearScrollButtonClick(EventArgs e)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.EventArgs</span></td>
+        <td><span class="parametername">e</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_OnPageAdded_Manina_Windows_Forms_PageEventArgs_.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.OnPageAdded(Manina.Windows.Forms.PageEventArgs)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L729">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_OnPageAdded_" data-uid="Manina.Windows.Forms.TabControl.OnPageAdded*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_OnPageAdded_Manina_Windows_Forms_PageEventArgs_" data-uid="Manina.Windows.Forms.TabControl.OnPageAdded(Manina.Windows.Forms.PageEventArgs)">OnPageAdded(PageEventArgs)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void OnPageAdded(PageEventArgs e)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Manina.Windows.Forms.PageEventArgs</span></td>
+        <td><span class="parametername">e</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Manina.Windows.Forms.PagedControl.OnPageAdded(Manina.Windows.Forms.PageEventArgs)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_OnPageChanged_Manina_Windows_Forms_PageChangedEventArgs_.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.OnPageChanged(Manina.Windows.Forms.PageChangedEventArgs)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L747">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_OnPageChanged_" data-uid="Manina.Windows.Forms.TabControl.OnPageChanged*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_OnPageChanged_Manina_Windows_Forms_PageChangedEventArgs_" data-uid="Manina.Windows.Forms.TabControl.OnPageChanged(Manina.Windows.Forms.PageChangedEventArgs)">OnPageChanged(PageChangedEventArgs)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void OnPageChanged(PageChangedEventArgs e)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Manina.Windows.Forms.PageChangedEventArgs</span></td>
+        <td><span class="parametername">e</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Manina.Windows.Forms.PagedControl.OnPageChanged(Manina.Windows.Forms.PageChangedEventArgs)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_OnPageRemoved_Manina_Windows_Forms_PageEventArgs_.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.OnPageRemoved(Manina.Windows.Forms.PageEventArgs)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L738">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_OnPageRemoved_" data-uid="Manina.Windows.Forms.TabControl.OnPageRemoved*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_OnPageRemoved_Manina_Windows_Forms_PageEventArgs_" data-uid="Manina.Windows.Forms.TabControl.OnPageRemoved(Manina.Windows.Forms.PageEventArgs)">OnPageRemoved(PageEventArgs)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void OnPageRemoved(PageEventArgs e)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Manina.Windows.Forms.PageEventArgs</span></td>
+        <td><span class="parametername">e</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Manina.Windows.Forms.PagedControl.OnPageRemoved(Manina.Windows.Forms.PageEventArgs)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_OnPaint_System_Windows_Forms_PaintEventArgs_.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.OnPaint(System.Windows.Forms.PaintEventArgs)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L724">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_OnPaint_" data-uid="Manina.Windows.Forms.TabControl.OnPaint*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_OnPaint_System_Windows_Forms_PaintEventArgs_" data-uid="Manina.Windows.Forms.TabControl.OnPaint(System.Windows.Forms.PaintEventArgs)">OnPaint(PaintEventArgs)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void OnPaint(PaintEventArgs e)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Windows.Forms.PaintEventArgs</span></td>
+        <td><span class="parametername">e</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Manina.Windows.Forms.PagedControl.OnPaint(System.Windows.Forms.PaintEventArgs)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_OnResize_System_EventArgs_.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.OnResize(System.EventArgs)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L609">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_OnResize_" data-uid="Manina.Windows.Forms.TabControl.OnResize*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_OnResize_System_EventArgs_" data-uid="Manina.Windows.Forms.TabControl.OnResize(System.EventArgs)">OnResize(EventArgs)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void OnResize(EventArgs e)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.EventArgs</span></td>
+        <td><span class="parametername">e</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Manina.Windows.Forms.PagedControl.OnResize(System.EventArgs)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_OnTabClick_Manina_Windows_Forms_TabMouseEventArgs_.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.OnTabClick(Manina.Windows.Forms.TabMouseEventArgs)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L18">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_OnTabClick_" data-uid="Manina.Windows.Forms.TabControl.OnTabClick*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_OnTabClick_Manina_Windows_Forms_TabMouseEventArgs_" data-uid="Manina.Windows.Forms.TabControl.OnTabClick(Manina.Windows.Forms.TabMouseEventArgs)">OnTabClick(TabMouseEventArgs)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void OnTabClick(TabMouseEventArgs e)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Manina.Windows.Forms.TabMouseEventArgs.html">TabMouseEventArgs</a></td>
+        <td><span class="parametername">e</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_OnTabDoubleClick_Manina_Windows_Forms_TabMouseEventArgs_.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.OnTabDoubleClick(Manina.Windows.Forms.TabMouseEventArgs)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L19">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_OnTabDoubleClick_" data-uid="Manina.Windows.Forms.TabControl.OnTabDoubleClick*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_OnTabDoubleClick_Manina_Windows_Forms_TabMouseEventArgs_" data-uid="Manina.Windows.Forms.TabControl.OnTabDoubleClick(Manina.Windows.Forms.TabMouseEventArgs)">OnTabDoubleClick(TabMouseEventArgs)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void OnTabDoubleClick(TabMouseEventArgs e)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Manina.Windows.Forms.TabMouseEventArgs.html">TabMouseEventArgs</a></td>
+        <td><span class="parametername">e</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_OnTabMouseDown_Manina_Windows_Forms_TabMouseEventArgs_.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.OnTabMouseDown(Manina.Windows.Forms.TabMouseEventArgs)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L20">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_OnTabMouseDown_" data-uid="Manina.Windows.Forms.TabControl.OnTabMouseDown*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_OnTabMouseDown_Manina_Windows_Forms_TabMouseEventArgs_" data-uid="Manina.Windows.Forms.TabControl.OnTabMouseDown(Manina.Windows.Forms.TabMouseEventArgs)">OnTabMouseDown(TabMouseEventArgs)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void OnTabMouseDown(TabMouseEventArgs e)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Manina.Windows.Forms.TabMouseEventArgs.html">TabMouseEventArgs</a></td>
+        <td><span class="parametername">e</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_OnTabMouseMove_Manina_Windows_Forms_TabMouseEventArgs_.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.OnTabMouseMove(Manina.Windows.Forms.TabMouseEventArgs)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L22">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_OnTabMouseMove_" data-uid="Manina.Windows.Forms.TabControl.OnTabMouseMove*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_OnTabMouseMove_Manina_Windows_Forms_TabMouseEventArgs_" data-uid="Manina.Windows.Forms.TabControl.OnTabMouseMove(Manina.Windows.Forms.TabMouseEventArgs)">OnTabMouseMove(TabMouseEventArgs)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void OnTabMouseMove(TabMouseEventArgs e)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Manina.Windows.Forms.TabMouseEventArgs.html">TabMouseEventArgs</a></td>
+        <td><span class="parametername">e</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_OnTabMouseUp_Manina_Windows_Forms_TabMouseEventArgs_.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.OnTabMouseUp(Manina.Windows.Forms.TabMouseEventArgs)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L21">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_OnTabMouseUp_" data-uid="Manina.Windows.Forms.TabControl.OnTabMouseUp*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_OnTabMouseUp_Manina_Windows_Forms_TabMouseEventArgs_" data-uid="Manina.Windows.Forms.TabControl.OnTabMouseUp(Manina.Windows.Forms.TabMouseEventArgs)">OnTabMouseUp(TabMouseEventArgs)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void OnTabMouseUp(TabMouseEventArgs e)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Manina.Windows.Forms.TabMouseEventArgs.html">TabMouseEventArgs</a></td>
+        <td><span class="parametername">e</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_OnTabMouseWheel_Manina_Windows_Forms_TabMouseEventArgs_.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.OnTabMouseWheel(Manina.Windows.Forms.TabMouseEventArgs)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L23">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_OnTabMouseWheel_" data-uid="Manina.Windows.Forms.TabControl.OnTabMouseWheel*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_OnTabMouseWheel_Manina_Windows_Forms_TabMouseEventArgs_" data-uid="Manina.Windows.Forms.TabControl.OnTabMouseWheel(Manina.Windows.Forms.TabMouseEventArgs)">OnTabMouseWheel(TabMouseEventArgs)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void OnTabMouseWheel(TabMouseEventArgs e)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Manina.Windows.Forms.TabMouseEventArgs.html">TabMouseEventArgs</a></td>
+        <td><span class="parametername">e</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_PerformHitTest_System_Drawing_Point_.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.PerformHitTest(System.Drawing.Point)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L514">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_PerformHitTest_" data-uid="Manina.Windows.Forms.TabControl.PerformHitTest*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_PerformHitTest_System_Drawing_Point_" data-uid="Manina.Windows.Forms.TabControl.PerformHitTest(System.Drawing.Point)">PerformHitTest(Point)</h4>
+  <div class="markdown level1 summary"><p>Performs a hit test with given coordinates and returns the
+tab which contains the given point.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TabControl.HitResult PerformHitTest(Point pt)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Drawing.Point</span></td>
+        <td><span class="parametername">pt</span></td>
+        <td><p>Hit test coordinates</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Manina.Windows.Forms.TabControl.HitResult.html">TabControl.HitResult</a></td>
+        <td><p>The tab which contains the given point; or null
+if none of the tabs contains the given point.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_UpdateContentBounds_Manina_Windows_Forms_Tab_System_Drawing_Rectangle_.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.UpdateContentBounds(Manina.Windows.Forms.Tab%2CSystem.Drawing.Rectangle)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L1055">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_UpdateContentBounds_" data-uid="Manina.Windows.Forms.TabControl.UpdateContentBounds*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_UpdateContentBounds_Manina_Windows_Forms_Tab_System_Drawing_Rectangle_" data-uid="Manina.Windows.Forms.TabControl.UpdateContentBounds(Manina.Windows.Forms.Tab,System.Drawing.Rectangle)">UpdateContentBounds(Tab, Rectangle)</h4>
+  <div class="markdown level1 summary"><p>Updates the bounding rectangles of tab contents.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void UpdateContentBounds(Tab tab, Rectangle tabBounds)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Manina.Windows.Forms.Tab.html">Tab</a></td>
+        <td><span class="parametername">tab</span></td>
+        <td><p>The tab to update.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Drawing.Rectangle</span></td>
+        <td><span class="parametername">tabBounds</span></td>
+        <td><p>The bounding rectangle of the tab.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_UpdateTabLayout.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.UpdateTabLayout%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L834">View Source</a>
+  </span>
+  <a id="Manina_Windows_Forms_TabControl_UpdateTabLayout_" data-uid="Manina.Windows.Forms.TabControl.UpdateTabLayout*"></a>
+  <h4 id="Manina_Windows_Forms_TabControl_UpdateTabLayout" data-uid="Manina.Windows.Forms.TabControl.UpdateTabLayout">UpdateTabLayout()</h4>
+  <div class="markdown level1 summary"><p>Updates the layout of all tabs.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void UpdateTabLayout()</code></pre>
+  </div>
+  <h3 id="events">Events
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_CloseTabButtonClick.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.CloseTabButtonClick%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L155">View Source</a>
+  </span>
+  <h4 id="Manina_Windows_Forms_TabControl_CloseTabButtonClick" data-uid="Manina.Windows.Forms.TabControl.CloseTabButtonClick">CloseTabButtonClick</h4>
+  <div class="markdown level1 summary"><p>Occurs when a close tab button is clicked.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event EventHandler&lt;CancelTabEventArgs&gt; CloseTabButtonClick</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.EventHandler</span>&lt;<a class="xref" href="Manina.Windows.Forms.CancelTabEventArgs.html">CancelTabEventArgs</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_FarScrollButtonClick.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.FarScrollButtonClick%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L167">View Source</a>
+  </span>
+  <h4 id="Manina_Windows_Forms_TabControl_FarScrollButtonClick" data-uid="Manina.Windows.Forms.TabControl.FarScrollButtonClick">FarScrollButtonClick</h4>
+  <div class="markdown level1 summary"><p>Occurs when the far scroll button is clicked.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event EventHandler&lt;EventArgs&gt; FarScrollButtonClick</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.EventHandler</span>&lt;<span class="xref">System.EventArgs</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_LayoutTabs.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.LayoutTabs%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L209">View Source</a>
+  </span>
+  <h4 id="Manina_Windows_Forms_TabControl_LayoutTabs" data-uid="Manina.Windows.Forms.TabControl.LayoutTabs">LayoutTabs</h4>
+  <div class="markdown level1 summary"><p>Occurs when the layout of all interface elements are calculated.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event EventHandler&lt;LayoutTabsEventArgs&gt; LayoutTabs</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.EventHandler</span>&lt;<a class="xref" href="Manina.Windows.Forms.LayoutTabsEventArgs.html">LayoutTabsEventArgs</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_MeasureScrollButton.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.MeasureScrollButton%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L203">View Source</a>
+  </span>
+  <h4 id="Manina_Windows_Forms_TabControl_MeasureScrollButton" data-uid="Manina.Windows.Forms.TabControl.MeasureScrollButton">MeasureScrollButton</h4>
+  <div class="markdown level1 summary"><p>Occurs when the size of the scroll buttons needs to be determined.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event EventHandler&lt;MeasureEventArgs&gt; MeasureScrollButton</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.EventHandler</span>&lt;<a class="xref" href="Manina.Windows.Forms.MeasureEventArgs.html">MeasureEventArgs</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_MeasureTab.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.MeasureTab%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L197">View Source</a>
+  </span>
+  <h4 id="Manina_Windows_Forms_TabControl_MeasureTab" data-uid="Manina.Windows.Forms.TabControl.MeasureTab">MeasureTab</h4>
+  <div class="markdown level1 summary"><p>Occurs when the size of a tab needs to be determined.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event EventHandler&lt;MeasureTabEventArgs&gt; MeasureTab</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.EventHandler</span>&lt;<a class="xref" href="Manina.Windows.Forms.MeasureTabEventArgs.html">MeasureTabEventArgs</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_NearScrollButtonClick.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.NearScrollButtonClick%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L161">View Source</a>
+  </span>
+  <h4 id="Manina_Windows_Forms_TabControl_NearScrollButtonClick" data-uid="Manina.Windows.Forms.TabControl.NearScrollButtonClick">NearScrollButtonClick</h4>
+  <div class="markdown level1 summary"><p>Occurs when the near scroll button is clicked.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event EventHandler&lt;EventArgs&gt; NearScrollButtonClick</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.EventHandler</span>&lt;<span class="xref">System.EventArgs</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_TabClick.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.TabClick%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L143">View Source</a>
+  </span>
+  <h4 id="Manina_Windows_Forms_TabControl_TabClick" data-uid="Manina.Windows.Forms.TabControl.TabClick">TabClick</h4>
+  <div class="markdown level1 summary"><p>Occurs when a tab is clicked.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event EventHandler&lt;TabMouseEventArgs&gt; TabClick</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.EventHandler</span>&lt;<a class="xref" href="Manina.Windows.Forms.TabMouseEventArgs.html">TabMouseEventArgs</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_TabDoubleClick.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.TabDoubleClick%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L149">View Source</a>
+  </span>
+  <h4 id="Manina_Windows_Forms_TabControl_TabDoubleClick" data-uid="Manina.Windows.Forms.TabControl.TabDoubleClick">TabDoubleClick</h4>
+  <div class="markdown level1 summary"><p>Occurs when a tab is double clicked by the mouse.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event EventHandler&lt;TabMouseEventArgs&gt; TabDoubleClick</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.EventHandler</span>&lt;<a class="xref" href="Manina.Windows.Forms.TabMouseEventArgs.html">TabMouseEventArgs</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_TabMouseDown.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.TabMouseDown%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L173">View Source</a>
+  </span>
+  <h4 id="Manina_Windows_Forms_TabControl_TabMouseDown" data-uid="Manina.Windows.Forms.TabControl.TabMouseDown">TabMouseDown</h4>
+  <div class="markdown level1 summary"><p>Occurs when the mouse pointer is over a tab and a mouse button is pressed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event EventHandler&lt;TabMouseEventArgs&gt; TabMouseDown</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.EventHandler</span>&lt;<a class="xref" href="Manina.Windows.Forms.TabMouseEventArgs.html">TabMouseEventArgs</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_TabMouseMove.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.TabMouseMove%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L185">View Source</a>
+  </span>
+  <h4 id="Manina_Windows_Forms_TabControl_TabMouseMove" data-uid="Manina.Windows.Forms.TabControl.TabMouseMove">TabMouseMove</h4>
+  <div class="markdown level1 summary"><p>Occurs when the mouse pointer is moved over a tab.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event EventHandler&lt;TabMouseEventArgs&gt; TabMouseMove</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.EventHandler</span>&lt;<a class="xref" href="Manina.Windows.Forms.TabMouseEventArgs.html">TabMouseEventArgs</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_TabMouseUp.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.TabMouseUp%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L179">View Source</a>
+  </span>
+  <h4 id="Manina_Windows_Forms_TabControl_TabMouseUp" data-uid="Manina.Windows.Forms.TabControl.TabMouseUp">TabMouseUp</h4>
+  <div class="markdown level1 summary"><p>Occurs when the mouse pointer is over a tab and a mouse button is released.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event EventHandler&lt;TabMouseEventArgs&gt; TabMouseUp</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.EventHandler</span>&lt;<a class="xref" href="Manina.Windows.Forms.TabMouseEventArgs.html">TabMouseEventArgs</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/oozcitak/TabControl/new/master/apiSpec/new?filename=Manina_Windows_Forms_TabControl_TabMouseWheel.md&amp;value=---%0Auid%3A%20Manina.Windows.Forms.TabControl.TabMouseWheel%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/oozcitak/TabControl/blob/master/TabControl/TabControl.cs/#L191">View Source</a>
+  </span>
+  <h4 id="Manina_Windows_Forms_TabControl_TabMouseWheel" data-uid="Manina.Windows.Forms.TabControl.TabMouseWheel">TabMouseWheel</h4>
+  <div class="markdown level1 summary"><p>Occurs when the mouse pointer is over a tab and the mouse wheel is rotated.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event EventHandler&lt;TabMouseEventArgs&gt; TabMouseWheel</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.EventHandler</span>&lt;<a class="xref" href="Manina.Windows.Forms.TabMouseEventArgs.html">TabMouseEventArgs</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright © 2018 Özgür Özçıtak
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

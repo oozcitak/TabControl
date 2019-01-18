@@ -1,0 +1,370 @@
+{
+  "homepages": [],
+  "source_base_path": "C:/Users/PC/Source/Repos/TabControl/Documentation",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "zHQeyLuBObKfYziELsj2qg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Manina.Windows.Forms.Alignment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "obj/api/Manina.Windows.Forms.Alignment.html",
+          "hash": "k02dxcYU1c+38neZKbxxhQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Manina.Windows.Forms.CancelTabEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "obj/api/Manina.Windows.Forms.CancelTabEventArgs.html",
+          "hash": "zoRYPfbxNiX1bPVRN3VpwA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Manina.Windows.Forms.ItemState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "obj/api/Manina.Windows.Forms.ItemState.html",
+          "hash": "vKwSP54UTnlYZm+uLi+M7w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Manina.Windows.Forms.LayoutTabsEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "obj/api/Manina.Windows.Forms.LayoutTabsEventArgs.html",
+          "hash": "BFKUciCb0N7XpN4XbCqdLw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Manina.Windows.Forms.MeasureEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "obj/api/Manina.Windows.Forms.MeasureEventArgs.html",
+          "hash": "vrBhSy68gUHPVcq7jnWdpg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Manina.Windows.Forms.MeasureTabEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "obj/api/Manina.Windows.Forms.MeasureTabEventArgs.html",
+          "hash": "LV2Knwd1wevWv9LNvSczAA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Manina.Windows.Forms.Tab.yml",
+      "output": {
+        ".html": {
+          "relative_path": "obj/api/Manina.Windows.Forms.Tab.html",
+          "hash": "g8VHhweSHfpu4PqVKIurzg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Manina.Windows.Forms.TabControl.HitResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "obj/api/Manina.Windows.Forms.TabControl.HitResult.html",
+          "hash": "xbjc3OMyX4/v9Zxv9IVcCQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Manina.Windows.Forms.TabControl.TabCollection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "obj/api/Manina.Windows.Forms.TabControl.TabCollection.html",
+          "hash": "bUPX+LEmPxlATxdswipwwA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Manina.Windows.Forms.TabControl.TabControlRenderer.DrawButtonParams.yml",
+      "output": {
+        ".html": {
+          "relative_path": "obj/api/Manina.Windows.Forms.TabControl.TabControlRenderer.DrawButtonParams.html",
+          "hash": "ZDqLJcIW1/bjwZ8ritXeww=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Manina.Windows.Forms.TabControl.TabControlRenderer.DrawTabParams.yml",
+      "output": {
+        ".html": {
+          "relative_path": "obj/api/Manina.Windows.Forms.TabControl.TabControlRenderer.DrawTabParams.html",
+          "hash": "jXcLcHDEjmwIbBHWTmpW9w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Manina.Windows.Forms.TabControl.TabControlRenderer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "obj/api/Manina.Windows.Forms.TabControl.TabControlRenderer.html",
+          "hash": "TOSnR8Kv1eZ6sqXOKiKwmg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Manina.Windows.Forms.TabControl.TabLocationSelector.yml",
+      "output": {
+        ".html": {
+          "relative_path": "obj/api/Manina.Windows.Forms.TabControl.TabLocationSelector.html",
+          "hash": "xqFgEOd8rQ4uH+aUtcjVfQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Manina.Windows.Forms.TabControl.TextDirectionSelector.yml",
+      "output": {
+        ".html": {
+          "relative_path": "obj/api/Manina.Windows.Forms.TabControl.TextDirectionSelector.html",
+          "hash": "pB7tQNJLngSASr6OUUhg+w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Manina.Windows.Forms.TabControl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "obj/api/Manina.Windows.Forms.TabControl.html",
+          "hash": "lHjf8nTDubracDjMX93ydA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Manina.Windows.Forms.TabEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "obj/api/Manina.Windows.Forms.TabEventArgs.html",
+          "hash": "ldwKWrUhO1Ij5t190ttSWQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Manina.Windows.Forms.TabLocation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "obj/api/Manina.Windows.Forms.TabLocation.html",
+          "hash": "kOw83agfeBgJNoE7HUo1bA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Manina.Windows.Forms.TabMouseEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "obj/api/Manina.Windows.Forms.TabMouseEventArgs.html",
+          "hash": "SRBFcfx/QbyI4LcP9UUwGA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Manina.Windows.Forms.TabSizing.yml",
+      "output": {
+        ".html": {
+          "relative_path": "obj/api/Manina.Windows.Forms.TabSizing.html",
+          "hash": "6w78Rk86IoQFRi4zbHMlwg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Manina.Windows.Forms.TextDirection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "obj/api/Manina.Windows.Forms.TextDirection.html",
+          "hash": "qInSE5fJqsgx639dWUaUfQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Manina.Windows.Forms.yml",
+      "output": {
+        ".html": {
+          "relative_path": "obj/api/Manina.Windows.Forms.html",
+          "hash": "0A0ixTdXnhtcqBBCXBDV8A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "obj/api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "obj/api/toc.html",
+          "hash": "xFJOroFQvQegPjvR3UlBQA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "resources/icons/favicon.ico",
+      "output": {
+        "resource": {
+          "relative_path": "resources/icons/favicon.ico"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "resources/icons/logo.png",
+      "output": {
+        "resource": {
+          "relative_path": "resources/icons/logo.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "resources/images/TabControl.designer.png",
+      "output": {
+        "resource": {
+          "relative_path": "resources/images/TabControl.designer.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "WkW5bTU2ld6svu9mVRdqvg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": true,
+        "incrementalPhase": "build"
+      },
+      "processors": {
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build"
+        },
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build"
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build"
+        },
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build"
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
+        "incrementalPhase": "postProcessing"
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
