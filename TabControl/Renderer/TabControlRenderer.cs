@@ -163,13 +163,14 @@ namespace Manina.Windows.Forms
                 g.Clear(Parent.BackColor);
 
                 // draw tabs
-                for (int i = 0; i < Parent.Tabs.Count; i++)
+                int i = 0;
+                foreach (var tab in Parent.Tabs)
                 {
-                    var tab = Parent.Tabs[i];
                     var param = new DrawTabParams(i, tab, ReferenceEquals(tab, Parent.SelectedTab), Parent.GetTabState(tab), Parent.GetTabBounds(tab));
                     DrawTabBackGround(g, param);
                     DrawTabContents(g, param);
                     DrawSeparator(g, param);
+                    i++;
                 }
 
                 // draw border
