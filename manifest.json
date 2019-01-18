@@ -153,31 +153,7 @@
       "output": {
         ".html": {
           "relative_path": "obj/api/Manina.Windows.Forms.TabControl.TabControlRenderer.html",
-          "hash": "TOSnR8Kv1eZ6sqXOKiKwmg=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/api/Manina.Windows.Forms.TabControl.TabLocationSelector.yml",
-      "output": {
-        ".html": {
-          "relative_path": "obj/api/Manina.Windows.Forms.TabControl.TabLocationSelector.html",
-          "hash": "xqFgEOd8rQ4uH+aUtcjVfQ=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/api/Manina.Windows.Forms.TabControl.TextDirectionSelector.yml",
-      "output": {
-        ".html": {
-          "relative_path": "obj/api/Manina.Windows.Forms.TabControl.TextDirectionSelector.html",
-          "hash": "pB7tQNJLngSASr6OUUhg+w=="
+          "hash": "//PKU/DL82uFsl+SuuiKng=="
         }
       },
       "is_incremental": true,
@@ -190,6 +166,30 @@
         ".html": {
           "relative_path": "obj/api/Manina.Windows.Forms.TabControl.html",
           "hash": "lHjf8nTDubracDjMX93ydA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html",
+          "hash": "mQWKjeGw4JOlvYm2ZVpi5g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Manina.Windows.Forms.TabControlRenderers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "obj/api/Manina.Windows.Forms.TabControlRenderers.html",
+          "hash": "C3WeGavSTm6Vkuso0j38AA=="
         }
       },
       "is_incremental": true,
@@ -261,7 +261,7 @@
       "output": {
         ".html": {
           "relative_path": "obj/api/Manina.Windows.Forms.html",
-          "hash": "0A0ixTdXnhtcqBBCXBDV8A=="
+          "hash": "jKuaxPh/j7rFI0WtFbOV8w=="
         }
       },
       "is_incremental": true,
@@ -273,7 +273,7 @@
       "output": {
         ".html": {
           "relative_path": "obj/api/toc.html",
-          "hash": "xFJOroFQvQegPjvR3UlBQA=="
+          "hash": "VyDVnVIyHyULE0SfS7aoUA=="
         }
       },
       "is_incremental": false,
@@ -332,9 +332,12 @@
         "incrementalPhase": "build"
       },
       "processors": {
-        "TocDocumentProcessor": {
-          "can_incremental": false,
-          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build"
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
           "incrementalPhase": "build"
         },
         "ResourceDocumentProcessor": {
@@ -342,12 +345,9 @@
           "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build"
         },
-        "ManagedReferenceDocumentProcessor": {
-          "can_incremental": true,
-          "incrementalPhase": "build"
-        },
-        "ConceptualDocumentProcessor": {
-          "can_incremental": true,
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build"
         }
       }

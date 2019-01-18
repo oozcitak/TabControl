@@ -1504,6 +1504,19 @@ references:
   isSpec: "True"
   fullName: Manina.Windows.Forms.TabControl.TabControlRenderer.BorderColor
   nameWithType: TabControl.TabControlRenderer.BorderColor
+- uid: Manina.Windows.Forms.TabControl.TabControlRenderer.DrawBackGround(System.Drawing.Graphics)
+  name: DrawBackGround(Graphics)
+  href: obj/api/Manina.Windows.Forms.TabControl.TabControlRenderer.html#Manina_Windows_Forms_TabControl_TabControlRenderer_DrawBackGround_System_Drawing_Graphics_
+  commentId: M:Manina.Windows.Forms.TabControl.TabControlRenderer.DrawBackGround(System.Drawing.Graphics)
+  fullName: Manina.Windows.Forms.TabControl.TabControlRenderer.DrawBackGround(System.Drawing.Graphics)
+  nameWithType: TabControl.TabControlRenderer.DrawBackGround(Graphics)
+- uid: Manina.Windows.Forms.TabControl.TabControlRenderer.DrawBackGround*
+  name: DrawBackGround
+  href: obj/api/Manina.Windows.Forms.TabControl.TabControlRenderer.html#Manina_Windows_Forms_TabControl_TabControlRenderer_DrawBackGround_
+  commentId: Overload:Manina.Windows.Forms.TabControl.TabControlRenderer.DrawBackGround
+  isSpec: "True"
+  fullName: Manina.Windows.Forms.TabControl.TabControlRenderer.DrawBackGround
+  nameWithType: TabControl.TabControlRenderer.DrawBackGround
 - uid: Manina.Windows.Forms.TabControl.TabControlRenderer.DrawBorder(System.Drawing.Graphics,System.Drawing.Rectangle)
   name: DrawBorder(Graphics, Rectangle)
   href: obj/api/Manina.Windows.Forms.TabControl.TabControlRenderer.html#Manina_Windows_Forms_TabControl_TabControlRenderer_DrawBorder_System_Drawing_Graphics_System_Drawing_Rectangle_
@@ -1562,6 +1575,19 @@ references:
   isSpec: "True"
   fullName: Manina.Windows.Forms.TabControl.TabControlRenderer.DrawButtonParams.State
   nameWithType: TabControl.TabControlRenderer.DrawButtonParams.State
+- uid: Manina.Windows.Forms.TabControl.TabControlRenderer.DrawCloseButton(System.Drawing.Graphics,Manina.Windows.Forms.TabControl.TabControlRenderer.DrawTabParams)
+  name: DrawCloseButton(Graphics, TabControl.TabControlRenderer.DrawTabParams)
+  href: obj/api/Manina.Windows.Forms.TabControl.TabControlRenderer.html#Manina_Windows_Forms_TabControl_TabControlRenderer_DrawCloseButton_System_Drawing_Graphics_Manina_Windows_Forms_TabControl_TabControlRenderer_DrawTabParams_
+  commentId: M:Manina.Windows.Forms.TabControl.TabControlRenderer.DrawCloseButton(System.Drawing.Graphics,Manina.Windows.Forms.TabControl.TabControlRenderer.DrawTabParams)
+  fullName: Manina.Windows.Forms.TabControl.TabControlRenderer.DrawCloseButton(System.Drawing.Graphics, Manina.Windows.Forms.TabControl.TabControlRenderer.DrawTabParams)
+  nameWithType: TabControl.TabControlRenderer.DrawCloseButton(Graphics, TabControl.TabControlRenderer.DrawTabParams)
+- uid: Manina.Windows.Forms.TabControl.TabControlRenderer.DrawCloseButton*
+  name: DrawCloseButton
+  href: obj/api/Manina.Windows.Forms.TabControl.TabControlRenderer.html#Manina_Windows_Forms_TabControl_TabControlRenderer_DrawCloseButton_
+  commentId: Overload:Manina.Windows.Forms.TabControl.TabControlRenderer.DrawCloseButton
+  isSpec: "True"
+  fullName: Manina.Windows.Forms.TabControl.TabControlRenderer.DrawCloseButton
+  nameWithType: TabControl.TabControlRenderer.DrawCloseButton
 - uid: Manina.Windows.Forms.TabControl.TabControlRenderer.DrawFarScrollButton(System.Drawing.Graphics,Manina.Windows.Forms.TabControl.TabControlRenderer.DrawButtonParams)
   name: DrawFarScrollButton(Graphics, TabControl.TabControlRenderer.DrawButtonParams)
   href: obj/api/Manina.Windows.Forms.TabControl.TabControlRenderer.html#Manina_Windows_Forms_TabControl_TabControlRenderer_DrawFarScrollButton_System_Drawing_Graphics_Manina_Windows_Forms_TabControl_TabControlRenderer_DrawButtonParams_
@@ -1627,6 +1653,19 @@ references:
   isSpec: "True"
   fullName: Manina.Windows.Forms.TabControl.TabControlRenderer.DrawTabContents
   nameWithType: TabControl.TabControlRenderer.DrawTabContents
+- uid: Manina.Windows.Forms.TabControl.TabControlRenderer.DrawTabIcon(System.Drawing.Graphics,Manina.Windows.Forms.TabControl.TabControlRenderer.DrawTabParams)
+  name: DrawTabIcon(Graphics, TabControl.TabControlRenderer.DrawTabParams)
+  href: obj/api/Manina.Windows.Forms.TabControl.TabControlRenderer.html#Manina_Windows_Forms_TabControl_TabControlRenderer_DrawTabIcon_System_Drawing_Graphics_Manina_Windows_Forms_TabControl_TabControlRenderer_DrawTabParams_
+  commentId: M:Manina.Windows.Forms.TabControl.TabControlRenderer.DrawTabIcon(System.Drawing.Graphics,Manina.Windows.Forms.TabControl.TabControlRenderer.DrawTabParams)
+  fullName: Manina.Windows.Forms.TabControl.TabControlRenderer.DrawTabIcon(System.Drawing.Graphics, Manina.Windows.Forms.TabControl.TabControlRenderer.DrawTabParams)
+  nameWithType: TabControl.TabControlRenderer.DrawTabIcon(Graphics, TabControl.TabControlRenderer.DrawTabParams)
+- uid: Manina.Windows.Forms.TabControl.TabControlRenderer.DrawTabIcon*
+  name: DrawTabIcon
+  href: obj/api/Manina.Windows.Forms.TabControl.TabControlRenderer.html#Manina_Windows_Forms_TabControl_TabControlRenderer_DrawTabIcon_
+  commentId: Overload:Manina.Windows.Forms.TabControl.TabControlRenderer.DrawTabIcon
+  isSpec: "True"
+  fullName: Manina.Windows.Forms.TabControl.TabControlRenderer.DrawTabIcon
+  nameWithType: TabControl.TabControlRenderer.DrawTabIcon
 - uid: Manina.Windows.Forms.TabControl.TabControlRenderer.DrawTabParams
   name: TabControl.TabControlRenderer.DrawTabParams
   href: obj/api/Manina.Windows.Forms.TabControl.TabControlRenderer.DrawTabParams.html
@@ -1711,6 +1750,19 @@ references:
   isSpec: "True"
   fullName: Manina.Windows.Forms.TabControl.TabControlRenderer.DrawTabParams.Tab
   nameWithType: TabControl.TabControlRenderer.DrawTabParams.Tab
+- uid: Manina.Windows.Forms.TabControl.TabControlRenderer.DrawTabText(System.Drawing.Graphics,Manina.Windows.Forms.TabControl.TabControlRenderer.DrawTabParams)
+  name: DrawTabText(Graphics, TabControl.TabControlRenderer.DrawTabParams)
+  href: obj/api/Manina.Windows.Forms.TabControl.TabControlRenderer.html#Manina_Windows_Forms_TabControl_TabControlRenderer_DrawTabText_System_Drawing_Graphics_Manina_Windows_Forms_TabControl_TabControlRenderer_DrawTabParams_
+  commentId: M:Manina.Windows.Forms.TabControl.TabControlRenderer.DrawTabText(System.Drawing.Graphics,Manina.Windows.Forms.TabControl.TabControlRenderer.DrawTabParams)
+  fullName: Manina.Windows.Forms.TabControl.TabControlRenderer.DrawTabText(System.Drawing.Graphics, Manina.Windows.Forms.TabControl.TabControlRenderer.DrawTabParams)
+  nameWithType: TabControl.TabControlRenderer.DrawTabText(Graphics, TabControl.TabControlRenderer.DrawTabParams)
+- uid: Manina.Windows.Forms.TabControl.TabControlRenderer.DrawTabText*
+  name: DrawTabText
+  href: obj/api/Manina.Windows.Forms.TabControl.TabControlRenderer.html#Manina_Windows_Forms_TabControl_TabControlRenderer_DrawTabText_
+  commentId: Overload:Manina.Windows.Forms.TabControl.TabControlRenderer.DrawTabText
+  isSpec: "True"
+  fullName: Manina.Windows.Forms.TabControl.TabControlRenderer.DrawTabText
+  nameWithType: TabControl.TabControlRenderer.DrawTabText
 - uid: Manina.Windows.Forms.TabControl.TabControlRenderer.GetCloseTabButtonBackColor(Manina.Windows.Forms.TabControl.TabControlRenderer.DrawTabParams)
   name: GetCloseTabButtonBackColor(TabControl.TabControlRenderer.DrawTabParams)
   href: obj/api/Manina.Windows.Forms.TabControl.TabControlRenderer.html#Manina_Windows_Forms_TabControl_TabControlRenderer_GetCloseTabButtonBackColor_Manina_Windows_Forms_TabControl_TabControlRenderer_DrawTabParams_
@@ -1763,6 +1815,19 @@ references:
   isSpec: "True"
   fullName: Manina.Windows.Forms.TabControl.TabControlRenderer.GetTabForeColor
   nameWithType: TabControl.TabControlRenderer.GetTabForeColor
+- uid: Manina.Windows.Forms.TabControl.TabControlRenderer.HotAndActiveTabBackColor
+  name: HotAndActiveTabBackColor
+  href: obj/api/Manina.Windows.Forms.TabControl.TabControlRenderer.html#Manina_Windows_Forms_TabControl_TabControlRenderer_HotAndActiveTabBackColor
+  commentId: P:Manina.Windows.Forms.TabControl.TabControlRenderer.HotAndActiveTabBackColor
+  fullName: Manina.Windows.Forms.TabControl.TabControlRenderer.HotAndActiveTabBackColor
+  nameWithType: TabControl.TabControlRenderer.HotAndActiveTabBackColor
+- uid: Manina.Windows.Forms.TabControl.TabControlRenderer.HotAndActiveTabBackColor*
+  name: HotAndActiveTabBackColor
+  href: obj/api/Manina.Windows.Forms.TabControl.TabControlRenderer.html#Manina_Windows_Forms_TabControl_TabControlRenderer_HotAndActiveTabBackColor_
+  commentId: Overload:Manina.Windows.Forms.TabControl.TabControlRenderer.HotAndActiveTabBackColor
+  isSpec: "True"
+  fullName: Manina.Windows.Forms.TabControl.TabControlRenderer.HotAndActiveTabBackColor
+  nameWithType: TabControl.TabControlRenderer.HotAndActiveTabBackColor
 - uid: Manina.Windows.Forms.TabControl.TabControlRenderer.HotButtonBackColor
   name: HotButtonBackColor
   href: obj/api/Manina.Windows.Forms.TabControl.TabControlRenderer.html#Manina_Windows_Forms_TabControl_TabControlRenderer_HotButtonBackColor
@@ -1951,90 +2016,6 @@ references:
   isSpec: "True"
   fullName: Manina.Windows.Forms.TabControl.TabLocation
   nameWithType: TabControl.TabLocation
-- uid: Manina.Windows.Forms.TabControl.TabLocationSelector
-  name: TabControl.TabLocationSelector
-  href: obj/api/Manina.Windows.Forms.TabControl.TabLocationSelector.html
-  commentId: T:Manina.Windows.Forms.TabControl.TabLocationSelector
-  fullName: Manina.Windows.Forms.TabControl.TabLocationSelector
-  nameWithType: TabControl.TabLocationSelector
-- uid: Manina.Windows.Forms.TabControl.TabLocationSelector.#ctor
-  name: TabLocationSelector()
-  href: obj/api/Manina.Windows.Forms.TabControl.TabLocationSelector.html#Manina_Windows_Forms_TabControl_TabLocationSelector__ctor
-  commentId: M:Manina.Windows.Forms.TabControl.TabLocationSelector.#ctor
-  fullName: Manina.Windows.Forms.TabControl.TabLocationSelector.TabLocationSelector()
-  nameWithType: TabControl.TabLocationSelector.TabLocationSelector()
-- uid: Manina.Windows.Forms.TabControl.TabLocationSelector.#ctor*
-  name: TabLocationSelector
-  href: obj/api/Manina.Windows.Forms.TabControl.TabLocationSelector.html#Manina_Windows_Forms_TabControl_TabLocationSelector__ctor_
-  commentId: Overload:Manina.Windows.Forms.TabControl.TabLocationSelector.#ctor
-  isSpec: "True"
-  fullName: Manina.Windows.Forms.TabControl.TabLocationSelector.TabLocationSelector
-  nameWithType: TabControl.TabLocationSelector.TabLocationSelector
-- uid: Manina.Windows.Forms.TabControl.TabLocationSelector.OnMouseClick(System.Windows.Forms.MouseEventArgs)
-  name: OnMouseClick(MouseEventArgs)
-  href: obj/api/Manina.Windows.Forms.TabControl.TabLocationSelector.html#Manina_Windows_Forms_TabControl_TabLocationSelector_OnMouseClick_System_Windows_Forms_MouseEventArgs_
-  commentId: M:Manina.Windows.Forms.TabControl.TabLocationSelector.OnMouseClick(System.Windows.Forms.MouseEventArgs)
-  fullName: Manina.Windows.Forms.TabControl.TabLocationSelector.OnMouseClick(System.Windows.Forms.MouseEventArgs)
-  nameWithType: TabControl.TabLocationSelector.OnMouseClick(MouseEventArgs)
-- uid: Manina.Windows.Forms.TabControl.TabLocationSelector.OnMouseClick*
-  name: OnMouseClick
-  href: obj/api/Manina.Windows.Forms.TabControl.TabLocationSelector.html#Manina_Windows_Forms_TabControl_TabLocationSelector_OnMouseClick_
-  commentId: Overload:Manina.Windows.Forms.TabControl.TabLocationSelector.OnMouseClick
-  isSpec: "True"
-  fullName: Manina.Windows.Forms.TabControl.TabLocationSelector.OnMouseClick
-  nameWithType: TabControl.TabLocationSelector.OnMouseClick
-- uid: Manina.Windows.Forms.TabControl.TabLocationSelector.OnMouseLeave(System.EventArgs)
-  name: OnMouseLeave(EventArgs)
-  href: obj/api/Manina.Windows.Forms.TabControl.TabLocationSelector.html#Manina_Windows_Forms_TabControl_TabLocationSelector_OnMouseLeave_System_EventArgs_
-  commentId: M:Manina.Windows.Forms.TabControl.TabLocationSelector.OnMouseLeave(System.EventArgs)
-  fullName: Manina.Windows.Forms.TabControl.TabLocationSelector.OnMouseLeave(System.EventArgs)
-  nameWithType: TabControl.TabLocationSelector.OnMouseLeave(EventArgs)
-- uid: Manina.Windows.Forms.TabControl.TabLocationSelector.OnMouseLeave*
-  name: OnMouseLeave
-  href: obj/api/Manina.Windows.Forms.TabControl.TabLocationSelector.html#Manina_Windows_Forms_TabControl_TabLocationSelector_OnMouseLeave_
-  commentId: Overload:Manina.Windows.Forms.TabControl.TabLocationSelector.OnMouseLeave
-  isSpec: "True"
-  fullName: Manina.Windows.Forms.TabControl.TabLocationSelector.OnMouseLeave
-  nameWithType: TabControl.TabLocationSelector.OnMouseLeave
-- uid: Manina.Windows.Forms.TabControl.TabLocationSelector.OnMouseMove(System.Windows.Forms.MouseEventArgs)
-  name: OnMouseMove(MouseEventArgs)
-  href: obj/api/Manina.Windows.Forms.TabControl.TabLocationSelector.html#Manina_Windows_Forms_TabControl_TabLocationSelector_OnMouseMove_System_Windows_Forms_MouseEventArgs_
-  commentId: M:Manina.Windows.Forms.TabControl.TabLocationSelector.OnMouseMove(System.Windows.Forms.MouseEventArgs)
-  fullName: Manina.Windows.Forms.TabControl.TabLocationSelector.OnMouseMove(System.Windows.Forms.MouseEventArgs)
-  nameWithType: TabControl.TabLocationSelector.OnMouseMove(MouseEventArgs)
-- uid: Manina.Windows.Forms.TabControl.TabLocationSelector.OnMouseMove*
-  name: OnMouseMove
-  href: obj/api/Manina.Windows.Forms.TabControl.TabLocationSelector.html#Manina_Windows_Forms_TabControl_TabLocationSelector_OnMouseMove_
-  commentId: Overload:Manina.Windows.Forms.TabControl.TabLocationSelector.OnMouseMove
-  isSpec: "True"
-  fullName: Manina.Windows.Forms.TabControl.TabLocationSelector.OnMouseMove
-  nameWithType: TabControl.TabLocationSelector.OnMouseMove
-- uid: Manina.Windows.Forms.TabControl.TabLocationSelector.OnPaint(System.Windows.Forms.PaintEventArgs)
-  name: OnPaint(PaintEventArgs)
-  href: obj/api/Manina.Windows.Forms.TabControl.TabLocationSelector.html#Manina_Windows_Forms_TabControl_TabLocationSelector_OnPaint_System_Windows_Forms_PaintEventArgs_
-  commentId: M:Manina.Windows.Forms.TabControl.TabLocationSelector.OnPaint(System.Windows.Forms.PaintEventArgs)
-  fullName: Manina.Windows.Forms.TabControl.TabLocationSelector.OnPaint(System.Windows.Forms.PaintEventArgs)
-  nameWithType: TabControl.TabLocationSelector.OnPaint(PaintEventArgs)
-- uid: Manina.Windows.Forms.TabControl.TabLocationSelector.OnPaint*
-  name: OnPaint
-  href: obj/api/Manina.Windows.Forms.TabControl.TabLocationSelector.html#Manina_Windows_Forms_TabControl_TabLocationSelector_OnPaint_
-  commentId: Overload:Manina.Windows.Forms.TabControl.TabLocationSelector.OnPaint
-  isSpec: "True"
-  fullName: Manina.Windows.Forms.TabControl.TabLocationSelector.OnPaint
-  nameWithType: TabControl.TabLocationSelector.OnPaint
-- uid: Manina.Windows.Forms.TabControl.TabLocationSelector.TabLocation
-  name: TabLocation
-  href: obj/api/Manina.Windows.Forms.TabControl.TabLocationSelector.html#Manina_Windows_Forms_TabControl_TabLocationSelector_TabLocation
-  commentId: P:Manina.Windows.Forms.TabControl.TabLocationSelector.TabLocation
-  fullName: Manina.Windows.Forms.TabControl.TabLocationSelector.TabLocation
-  nameWithType: TabControl.TabLocationSelector.TabLocation
-- uid: Manina.Windows.Forms.TabControl.TabLocationSelector.TabLocation*
-  name: TabLocation
-  href: obj/api/Manina.Windows.Forms.TabControl.TabLocationSelector.html#Manina_Windows_Forms_TabControl_TabLocationSelector_TabLocation_
-  commentId: Overload:Manina.Windows.Forms.TabControl.TabLocationSelector.TabLocation
-  isSpec: "True"
-  fullName: Manina.Windows.Forms.TabControl.TabLocationSelector.TabLocation
-  nameWithType: TabControl.TabLocationSelector.TabLocation
 - uid: Manina.Windows.Forms.TabControl.TabMouseDown
   name: TabMouseDown
   href: obj/api/Manina.Windows.Forms.TabControl.html#Manina_Windows_Forms_TabControl_TabMouseDown
@@ -2124,90 +2105,6 @@ references:
   isSpec: "True"
   fullName: Manina.Windows.Forms.TabControl.TextDirection
   nameWithType: TabControl.TextDirection
-- uid: Manina.Windows.Forms.TabControl.TextDirectionSelector
-  name: TabControl.TextDirectionSelector
-  href: obj/api/Manina.Windows.Forms.TabControl.TextDirectionSelector.html
-  commentId: T:Manina.Windows.Forms.TabControl.TextDirectionSelector
-  fullName: Manina.Windows.Forms.TabControl.TextDirectionSelector
-  nameWithType: TabControl.TextDirectionSelector
-- uid: Manina.Windows.Forms.TabControl.TextDirectionSelector.#ctor
-  name: TextDirectionSelector()
-  href: obj/api/Manina.Windows.Forms.TabControl.TextDirectionSelector.html#Manina_Windows_Forms_TabControl_TextDirectionSelector__ctor
-  commentId: M:Manina.Windows.Forms.TabControl.TextDirectionSelector.#ctor
-  fullName: Manina.Windows.Forms.TabControl.TextDirectionSelector.TextDirectionSelector()
-  nameWithType: TabControl.TextDirectionSelector.TextDirectionSelector()
-- uid: Manina.Windows.Forms.TabControl.TextDirectionSelector.#ctor*
-  name: TextDirectionSelector
-  href: obj/api/Manina.Windows.Forms.TabControl.TextDirectionSelector.html#Manina_Windows_Forms_TabControl_TextDirectionSelector__ctor_
-  commentId: Overload:Manina.Windows.Forms.TabControl.TextDirectionSelector.#ctor
-  isSpec: "True"
-  fullName: Manina.Windows.Forms.TabControl.TextDirectionSelector.TextDirectionSelector
-  nameWithType: TabControl.TextDirectionSelector.TextDirectionSelector
-- uid: Manina.Windows.Forms.TabControl.TextDirectionSelector.OnMouseClick(System.Windows.Forms.MouseEventArgs)
-  name: OnMouseClick(MouseEventArgs)
-  href: obj/api/Manina.Windows.Forms.TabControl.TextDirectionSelector.html#Manina_Windows_Forms_TabControl_TextDirectionSelector_OnMouseClick_System_Windows_Forms_MouseEventArgs_
-  commentId: M:Manina.Windows.Forms.TabControl.TextDirectionSelector.OnMouseClick(System.Windows.Forms.MouseEventArgs)
-  fullName: Manina.Windows.Forms.TabControl.TextDirectionSelector.OnMouseClick(System.Windows.Forms.MouseEventArgs)
-  nameWithType: TabControl.TextDirectionSelector.OnMouseClick(MouseEventArgs)
-- uid: Manina.Windows.Forms.TabControl.TextDirectionSelector.OnMouseClick*
-  name: OnMouseClick
-  href: obj/api/Manina.Windows.Forms.TabControl.TextDirectionSelector.html#Manina_Windows_Forms_TabControl_TextDirectionSelector_OnMouseClick_
-  commentId: Overload:Manina.Windows.Forms.TabControl.TextDirectionSelector.OnMouseClick
-  isSpec: "True"
-  fullName: Manina.Windows.Forms.TabControl.TextDirectionSelector.OnMouseClick
-  nameWithType: TabControl.TextDirectionSelector.OnMouseClick
-- uid: Manina.Windows.Forms.TabControl.TextDirectionSelector.OnMouseLeave(System.EventArgs)
-  name: OnMouseLeave(EventArgs)
-  href: obj/api/Manina.Windows.Forms.TabControl.TextDirectionSelector.html#Manina_Windows_Forms_TabControl_TextDirectionSelector_OnMouseLeave_System_EventArgs_
-  commentId: M:Manina.Windows.Forms.TabControl.TextDirectionSelector.OnMouseLeave(System.EventArgs)
-  fullName: Manina.Windows.Forms.TabControl.TextDirectionSelector.OnMouseLeave(System.EventArgs)
-  nameWithType: TabControl.TextDirectionSelector.OnMouseLeave(EventArgs)
-- uid: Manina.Windows.Forms.TabControl.TextDirectionSelector.OnMouseLeave*
-  name: OnMouseLeave
-  href: obj/api/Manina.Windows.Forms.TabControl.TextDirectionSelector.html#Manina_Windows_Forms_TabControl_TextDirectionSelector_OnMouseLeave_
-  commentId: Overload:Manina.Windows.Forms.TabControl.TextDirectionSelector.OnMouseLeave
-  isSpec: "True"
-  fullName: Manina.Windows.Forms.TabControl.TextDirectionSelector.OnMouseLeave
-  nameWithType: TabControl.TextDirectionSelector.OnMouseLeave
-- uid: Manina.Windows.Forms.TabControl.TextDirectionSelector.OnMouseMove(System.Windows.Forms.MouseEventArgs)
-  name: OnMouseMove(MouseEventArgs)
-  href: obj/api/Manina.Windows.Forms.TabControl.TextDirectionSelector.html#Manina_Windows_Forms_TabControl_TextDirectionSelector_OnMouseMove_System_Windows_Forms_MouseEventArgs_
-  commentId: M:Manina.Windows.Forms.TabControl.TextDirectionSelector.OnMouseMove(System.Windows.Forms.MouseEventArgs)
-  fullName: Manina.Windows.Forms.TabControl.TextDirectionSelector.OnMouseMove(System.Windows.Forms.MouseEventArgs)
-  nameWithType: TabControl.TextDirectionSelector.OnMouseMove(MouseEventArgs)
-- uid: Manina.Windows.Forms.TabControl.TextDirectionSelector.OnMouseMove*
-  name: OnMouseMove
-  href: obj/api/Manina.Windows.Forms.TabControl.TextDirectionSelector.html#Manina_Windows_Forms_TabControl_TextDirectionSelector_OnMouseMove_
-  commentId: Overload:Manina.Windows.Forms.TabControl.TextDirectionSelector.OnMouseMove
-  isSpec: "True"
-  fullName: Manina.Windows.Forms.TabControl.TextDirectionSelector.OnMouseMove
-  nameWithType: TabControl.TextDirectionSelector.OnMouseMove
-- uid: Manina.Windows.Forms.TabControl.TextDirectionSelector.OnPaint(System.Windows.Forms.PaintEventArgs)
-  name: OnPaint(PaintEventArgs)
-  href: obj/api/Manina.Windows.Forms.TabControl.TextDirectionSelector.html#Manina_Windows_Forms_TabControl_TextDirectionSelector_OnPaint_System_Windows_Forms_PaintEventArgs_
-  commentId: M:Manina.Windows.Forms.TabControl.TextDirectionSelector.OnPaint(System.Windows.Forms.PaintEventArgs)
-  fullName: Manina.Windows.Forms.TabControl.TextDirectionSelector.OnPaint(System.Windows.Forms.PaintEventArgs)
-  nameWithType: TabControl.TextDirectionSelector.OnPaint(PaintEventArgs)
-- uid: Manina.Windows.Forms.TabControl.TextDirectionSelector.OnPaint*
-  name: OnPaint
-  href: obj/api/Manina.Windows.Forms.TabControl.TextDirectionSelector.html#Manina_Windows_Forms_TabControl_TextDirectionSelector_OnPaint_
-  commentId: Overload:Manina.Windows.Forms.TabControl.TextDirectionSelector.OnPaint
-  isSpec: "True"
-  fullName: Manina.Windows.Forms.TabControl.TextDirectionSelector.OnPaint
-  nameWithType: TabControl.TextDirectionSelector.OnPaint
-- uid: Manina.Windows.Forms.TabControl.TextDirectionSelector.TextDirection
-  name: TextDirection
-  href: obj/api/Manina.Windows.Forms.TabControl.TextDirectionSelector.html#Manina_Windows_Forms_TabControl_TextDirectionSelector_TextDirection
-  commentId: P:Manina.Windows.Forms.TabControl.TextDirectionSelector.TextDirection
-  fullName: Manina.Windows.Forms.TabControl.TextDirectionSelector.TextDirection
-  nameWithType: TabControl.TextDirectionSelector.TextDirection
-- uid: Manina.Windows.Forms.TabControl.TextDirectionSelector.TextDirection*
-  name: TextDirection
-  href: obj/api/Manina.Windows.Forms.TabControl.TextDirectionSelector.html#Manina_Windows_Forms_TabControl_TextDirectionSelector_TextDirection_
-  commentId: Overload:Manina.Windows.Forms.TabControl.TextDirectionSelector.TextDirection
-  isSpec: "True"
-  fullName: Manina.Windows.Forms.TabControl.TextDirectionSelector.TextDirection
-  nameWithType: TabControl.TextDirectionSelector.TextDirection
 - uid: Manina.Windows.Forms.TabControl.UpArrowImage
   name: UpArrowImage
   href: obj/api/Manina.Windows.Forms.TabControl.html#Manina_Windows_Forms_TabControl_UpArrowImage
@@ -2260,6 +2157,304 @@ references:
   isSpec: "True"
   fullName: Manina.Windows.Forms.TabControl.ViewOffset
   nameWithType: TabControl.ViewOffset
+- uid: Manina.Windows.Forms.TabControlRenderers
+  name: Manina.Windows.Forms.TabControlRenderers
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.html
+  commentId: N:Manina.Windows.Forms.TabControlRenderers
+  fullName: Manina.Windows.Forms.TabControlRenderers
+  nameWithType: Manina.Windows.Forms.TabControlRenderers
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer
+  name: NoirRenderer
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html
+  commentId: T:Manina.Windows.Forms.TabControlRenderers.NoirRenderer
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer
+  nameWithType: NoirRenderer
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.#ctor(Manina.Windows.Forms.TabControl)
+  name: NoirRenderer(TabControl)
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer__ctor_Manina_Windows_Forms_TabControl_
+  commentId: M:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.#ctor(Manina.Windows.Forms.TabControl)
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.NoirRenderer(Manina.Windows.Forms.TabControl)
+  nameWithType: NoirRenderer.NoirRenderer(TabControl)
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.#ctor*
+  name: NoirRenderer
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer__ctor_
+  commentId: Overload:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.#ctor
+  isSpec: "True"
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.NoirRenderer
+  nameWithType: NoirRenderer.NoirRenderer
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.ActiveTabBackColor
+  name: ActiveTabBackColor
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_ActiveTabBackColor
+  commentId: P:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.ActiveTabBackColor
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.ActiveTabBackColor
+  nameWithType: NoirRenderer.ActiveTabBackColor
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.ActiveTabBackColor*
+  name: ActiveTabBackColor
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_ActiveTabBackColor_
+  commentId: Overload:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.ActiveTabBackColor
+  isSpec: "True"
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.ActiveTabBackColor
+  nameWithType: NoirRenderer.ActiveTabBackColor
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.ActiveTabForeColor
+  name: ActiveTabForeColor
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_ActiveTabForeColor
+  commentId: P:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.ActiveTabForeColor
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.ActiveTabForeColor
+  nameWithType: NoirRenderer.ActiveTabForeColor
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.ActiveTabForeColor*
+  name: ActiveTabForeColor
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_ActiveTabForeColor_
+  commentId: Overload:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.ActiveTabForeColor
+  isSpec: "True"
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.ActiveTabForeColor
+  nameWithType: NoirRenderer.ActiveTabForeColor
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawBackGround(System.Drawing.Graphics)
+  name: DrawBackGround(Graphics)
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_DrawBackGround_System_Drawing_Graphics_
+  commentId: M:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawBackGround(System.Drawing.Graphics)
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawBackGround(System.Drawing.Graphics)
+  nameWithType: NoirRenderer.DrawBackGround(Graphics)
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawBackGround*
+  name: DrawBackGround
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_DrawBackGround_
+  commentId: Overload:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawBackGround
+  isSpec: "True"
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawBackGround
+  nameWithType: NoirRenderer.DrawBackGround
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawBorder(System.Drawing.Graphics,System.Drawing.Rectangle)
+  name: DrawBorder(Graphics, Rectangle)
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_DrawBorder_System_Drawing_Graphics_System_Drawing_Rectangle_
+  commentId: M:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawBorder(System.Drawing.Graphics,System.Drawing.Rectangle)
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawBorder(System.Drawing.Graphics, System.Drawing.Rectangle)
+  nameWithType: NoirRenderer.DrawBorder(Graphics, Rectangle)
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawBorder*
+  name: DrawBorder
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_DrawBorder_
+  commentId: Overload:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawBorder
+  isSpec: "True"
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawBorder
+  nameWithType: NoirRenderer.DrawBorder
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawCloseButton(System.Drawing.Graphics,Manina.Windows.Forms.TabControl.TabControlRenderer.DrawTabParams)
+  name: DrawCloseButton(Graphics, TabControl.TabControlRenderer.DrawTabParams)
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_DrawCloseButton_System_Drawing_Graphics_Manina_Windows_Forms_TabControl_TabControlRenderer_DrawTabParams_
+  commentId: M:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawCloseButton(System.Drawing.Graphics,Manina.Windows.Forms.TabControl.TabControlRenderer.DrawTabParams)
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawCloseButton(System.Drawing.Graphics, Manina.Windows.Forms.TabControl.TabControlRenderer.DrawTabParams)
+  nameWithType: NoirRenderer.DrawCloseButton(Graphics, TabControl.TabControlRenderer.DrawTabParams)
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawCloseButton*
+  name: DrawCloseButton
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_DrawCloseButton_
+  commentId: Overload:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawCloseButton
+  isSpec: "True"
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawCloseButton
+  nameWithType: NoirRenderer.DrawCloseButton
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawFarScrollButton(System.Drawing.Graphics,Manina.Windows.Forms.TabControl.TabControlRenderer.DrawButtonParams)
+  name: DrawFarScrollButton(Graphics, TabControl.TabControlRenderer.DrawButtonParams)
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_DrawFarScrollButton_System_Drawing_Graphics_Manina_Windows_Forms_TabControl_TabControlRenderer_DrawButtonParams_
+  commentId: M:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawFarScrollButton(System.Drawing.Graphics,Manina.Windows.Forms.TabControl.TabControlRenderer.DrawButtonParams)
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawFarScrollButton(System.Drawing.Graphics, Manina.Windows.Forms.TabControl.TabControlRenderer.DrawButtonParams)
+  nameWithType: NoirRenderer.DrawFarScrollButton(Graphics, TabControl.TabControlRenderer.DrawButtonParams)
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawFarScrollButton*
+  name: DrawFarScrollButton
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_DrawFarScrollButton_
+  commentId: Overload:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawFarScrollButton
+  isSpec: "True"
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawFarScrollButton
+  nameWithType: NoirRenderer.DrawFarScrollButton
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawNearScrollButton(System.Drawing.Graphics,Manina.Windows.Forms.TabControl.TabControlRenderer.DrawButtonParams)
+  name: DrawNearScrollButton(Graphics, TabControl.TabControlRenderer.DrawButtonParams)
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_DrawNearScrollButton_System_Drawing_Graphics_Manina_Windows_Forms_TabControl_TabControlRenderer_DrawButtonParams_
+  commentId: M:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawNearScrollButton(System.Drawing.Graphics,Manina.Windows.Forms.TabControl.TabControlRenderer.DrawButtonParams)
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawNearScrollButton(System.Drawing.Graphics, Manina.Windows.Forms.TabControl.TabControlRenderer.DrawButtonParams)
+  nameWithType: NoirRenderer.DrawNearScrollButton(Graphics, TabControl.TabControlRenderer.DrawButtonParams)
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawNearScrollButton*
+  name: DrawNearScrollButton
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_DrawNearScrollButton_
+  commentId: Overload:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawNearScrollButton
+  isSpec: "True"
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawNearScrollButton
+  nameWithType: NoirRenderer.DrawNearScrollButton
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawSeparator(System.Drawing.Graphics,Manina.Windows.Forms.TabControl.TabControlRenderer.DrawTabParams)
+  name: DrawSeparator(Graphics, TabControl.TabControlRenderer.DrawTabParams)
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_DrawSeparator_System_Drawing_Graphics_Manina_Windows_Forms_TabControl_TabControlRenderer_DrawTabParams_
+  commentId: M:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawSeparator(System.Drawing.Graphics,Manina.Windows.Forms.TabControl.TabControlRenderer.DrawTabParams)
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawSeparator(System.Drawing.Graphics, Manina.Windows.Forms.TabControl.TabControlRenderer.DrawTabParams)
+  nameWithType: NoirRenderer.DrawSeparator(Graphics, TabControl.TabControlRenderer.DrawTabParams)
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawSeparator*
+  name: DrawSeparator
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_DrawSeparator_
+  commentId: Overload:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawSeparator
+  isSpec: "True"
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawSeparator
+  nameWithType: NoirRenderer.DrawSeparator
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawTabContents(System.Drawing.Graphics,Manina.Windows.Forms.TabControl.TabControlRenderer.DrawTabParams)
+  name: DrawTabContents(Graphics, TabControl.TabControlRenderer.DrawTabParams)
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_DrawTabContents_System_Drawing_Graphics_Manina_Windows_Forms_TabControl_TabControlRenderer_DrawTabParams_
+  commentId: M:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawTabContents(System.Drawing.Graphics,Manina.Windows.Forms.TabControl.TabControlRenderer.DrawTabParams)
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawTabContents(System.Drawing.Graphics, Manina.Windows.Forms.TabControl.TabControlRenderer.DrawTabParams)
+  nameWithType: NoirRenderer.DrawTabContents(Graphics, TabControl.TabControlRenderer.DrawTabParams)
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawTabContents*
+  name: DrawTabContents
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_DrawTabContents_
+  commentId: Overload:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawTabContents
+  isSpec: "True"
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.DrawTabContents
+  nameWithType: NoirRenderer.DrawTabContents
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.HotAndActiveTabBackColor
+  name: HotAndActiveTabBackColor
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_HotAndActiveTabBackColor
+  commentId: P:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.HotAndActiveTabBackColor
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.HotAndActiveTabBackColor
+  nameWithType: NoirRenderer.HotAndActiveTabBackColor
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.HotAndActiveTabBackColor*
+  name: HotAndActiveTabBackColor
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_HotAndActiveTabBackColor_
+  commentId: Overload:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.HotAndActiveTabBackColor
+  isSpec: "True"
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.HotAndActiveTabBackColor
+  nameWithType: NoirRenderer.HotAndActiveTabBackColor
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.HotButtonBackColor
+  name: HotButtonBackColor
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_HotButtonBackColor
+  commentId: P:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.HotButtonBackColor
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.HotButtonBackColor
+  nameWithType: NoirRenderer.HotButtonBackColor
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.HotButtonBackColor*
+  name: HotButtonBackColor
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_HotButtonBackColor_
+  commentId: Overload:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.HotButtonBackColor
+  isSpec: "True"
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.HotButtonBackColor
+  nameWithType: NoirRenderer.HotButtonBackColor
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.HotTabBackColor
+  name: HotTabBackColor
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_HotTabBackColor
+  commentId: P:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.HotTabBackColor
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.HotTabBackColor
+  nameWithType: NoirRenderer.HotTabBackColor
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.HotTabBackColor*
+  name: HotTabBackColor
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_HotTabBackColor_
+  commentId: Overload:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.HotTabBackColor
+  isSpec: "True"
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.HotTabBackColor
+  nameWithType: NoirRenderer.HotTabBackColor
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.HotTabForeColor
+  name: HotTabForeColor
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_HotTabForeColor
+  commentId: P:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.HotTabForeColor
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.HotTabForeColor
+  nameWithType: NoirRenderer.HotTabForeColor
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.HotTabForeColor*
+  name: HotTabForeColor
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_HotTabForeColor_
+  commentId: Overload:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.HotTabForeColor
+  isSpec: "True"
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.HotTabForeColor
+  nameWithType: NoirRenderer.HotTabForeColor
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.InactiveButtonBackColor
+  name: InactiveButtonBackColor
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_InactiveButtonBackColor
+  commentId: P:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.InactiveButtonBackColor
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.InactiveButtonBackColor
+  nameWithType: NoirRenderer.InactiveButtonBackColor
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.InactiveButtonBackColor*
+  name: InactiveButtonBackColor
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_InactiveButtonBackColor_
+  commentId: Overload:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.InactiveButtonBackColor
+  isSpec: "True"
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.InactiveButtonBackColor
+  nameWithType: NoirRenderer.InactiveButtonBackColor
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.InactiveTabBackColor
+  name: InactiveTabBackColor
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_InactiveTabBackColor
+  commentId: P:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.InactiveTabBackColor
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.InactiveTabBackColor
+  nameWithType: NoirRenderer.InactiveTabBackColor
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.InactiveTabBackColor*
+  name: InactiveTabBackColor
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_InactiveTabBackColor_
+  commentId: Overload:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.InactiveTabBackColor
+  isSpec: "True"
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.InactiveTabBackColor
+  nameWithType: NoirRenderer.InactiveTabBackColor
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.InactiveTabForeColor
+  name: InactiveTabForeColor
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_InactiveTabForeColor
+  commentId: P:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.InactiveTabForeColor
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.InactiveTabForeColor
+  nameWithType: NoirRenderer.InactiveTabForeColor
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.InactiveTabForeColor*
+  name: InactiveTabForeColor
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_InactiveTabForeColor_
+  commentId: Overload:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.InactiveTabForeColor
+  isSpec: "True"
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.InactiveTabForeColor
+  nameWithType: NoirRenderer.InactiveTabForeColor
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.MarkerColor
+  name: MarkerColor
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_MarkerColor
+  commentId: P:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.MarkerColor
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.MarkerColor
+  nameWithType: NoirRenderer.MarkerColor
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.MarkerColor*
+  name: MarkerColor
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_MarkerColor_
+  commentId: Overload:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.MarkerColor
+  isSpec: "True"
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.MarkerColor
+  nameWithType: NoirRenderer.MarkerColor
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.PressedButtonBackColor
+  name: PressedButtonBackColor
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_PressedButtonBackColor
+  commentId: P:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.PressedButtonBackColor
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.PressedButtonBackColor
+  nameWithType: NoirRenderer.PressedButtonBackColor
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.PressedButtonBackColor*
+  name: PressedButtonBackColor
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_PressedButtonBackColor_
+  commentId: Overload:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.PressedButtonBackColor
+  isSpec: "True"
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.PressedButtonBackColor
+  nameWithType: NoirRenderer.PressedButtonBackColor
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.PressedTabBackColor
+  name: PressedTabBackColor
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_PressedTabBackColor
+  commentId: P:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.PressedTabBackColor
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.PressedTabBackColor
+  nameWithType: NoirRenderer.PressedTabBackColor
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.PressedTabBackColor*
+  name: PressedTabBackColor
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_PressedTabBackColor_
+  commentId: Overload:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.PressedTabBackColor
+  isSpec: "True"
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.PressedTabBackColor
+  nameWithType: NoirRenderer.PressedTabBackColor
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.PressedTabForeColor
+  name: PressedTabForeColor
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_PressedTabForeColor
+  commentId: P:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.PressedTabForeColor
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.PressedTabForeColor
+  nameWithType: NoirRenderer.PressedTabForeColor
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.PressedTabForeColor*
+  name: PressedTabForeColor
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_PressedTabForeColor_
+  commentId: Overload:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.PressedTabForeColor
+  isSpec: "True"
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.PressedTabForeColor
+  nameWithType: NoirRenderer.PressedTabForeColor
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.UseTabColors
+  name: UseTabColors
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_UseTabColors
+  commentId: P:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.UseTabColors
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.UseTabColors
+  nameWithType: NoirRenderer.UseTabColors
+- uid: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.UseTabColors*
+  name: UseTabColors
+  href: obj/api/Manina.Windows.Forms.TabControlRenderers.NoirRenderer.html#Manina_Windows_Forms_TabControlRenderers_NoirRenderer_UseTabColors_
+  commentId: Overload:Manina.Windows.Forms.TabControlRenderers.NoirRenderer.UseTabColors
+  isSpec: "True"
+  fullName: Manina.Windows.Forms.TabControlRenderers.NoirRenderer.UseTabColors
+  nameWithType: NoirRenderer.UseTabColors
 - uid: Manina.Windows.Forms.TabEventArgs
   name: TabEventArgs
   href: obj/api/Manina.Windows.Forms.TabEventArgs.html
