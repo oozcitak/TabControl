@@ -49,6 +49,7 @@
     <None Include="filterConfig.yml" />
     <None Include="index.md" />
     <None Include="docfx.json" />
+    <None Include="overwrites\Manina.Windows.Forms.TabControlRenderers.md" />
     <None Include="overwrites\Manina.Windows.Forms.md" />
     <None Include="packages.config" />
     <None Include="resources\materialize\LICENSE" />

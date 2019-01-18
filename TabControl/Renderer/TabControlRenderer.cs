@@ -106,6 +106,10 @@ namespace Manina.Windows.Forms
             /// Gets or sets the background color of pressed tabs.
             /// </summary>
             public virtual Color PressedTabBackColor { get; set; } = Color.White;
+            /// <summary>
+            /// Gets or sets the background color of hot and active tabs.
+            /// </summary>
+            public virtual Color HotAndActiveTabBackColor { get; set; } = Color.White;
 
             /// <summary>
             /// Gets or sets the foreground color of inactive tabs.
@@ -159,8 +163,8 @@ namespace Manina.Windows.Forms
             /// </summary>
             public virtual void Render(Graphics g)
             {
-                // clear backgound
-                g.Clear(Parent.BackColor);
+                // draw backgound
+                DrawBackGround(g);
 
                 // draw tabs
                 int i = 0;
@@ -188,7 +192,16 @@ namespace Manina.Windows.Forms
             }
 
             /// <summary>
-            /// Draws the backgound of a tab.
+            /// Draws the background of the control.
+            /// </summary>
+            /// <param name="g">The graphics to draw on.</param>
+            public virtual void DrawBackGround(Graphics g)
+            {
+                g.Clear(Parent.BackColor);
+            }
+
+            /// <summary>
+            /// Draws the background of a tab.
             /// </summary>
             /// <param name="g">The graphics to draw on.</param>
             /// <param name="param">The parameters required to draw the tab.</param>
@@ -209,45 +222,69 @@ namespace Manina.Windows.Forms
             {
                 // text
                 if (!string.IsNullOrEmpty(param.Tab.Text))
-                {
-                    var backColor = GetTabBackColor(param);
-                    var foreColor = GetTabForeColor(param);
-
-                    TextFormatFlags flags = TextFormatFlags.EndEllipsis | TextFormatFlags.VerticalCenter | TextFormatFlags.SingleLine;
-
-                    if (Parent.TextDirection == TextDirection.Right)
-                        TextRenderer.DrawText(g, param.Tab.Text, param.Tab.Font, Parent.GetTextBounds(param.Tab), foreColor, backColor, flags);
-                    else if (Parent.TextDirection == TextDirection.Down)
-                        g.DrawVerticalTextDown(param.Tab.Text, param.Tab.Font, Parent.GetTextBounds(param.Tab), foreColor, backColor, flags);
-                    else
-                        g.DrawVerticalTextUp(param.Tab.Text, param.Tab.Font, Parent.GetTextBounds(param.Tab), foreColor, backColor, flags);
-                }
+                    DrawTabText(g, param);
 
                 // icon
                 if (param.Tab.Icon != null)
-                {
-                    if (Parent.TextDirection == TextDirection.Right)
-                        g.DrawImage(param.Tab.Icon, Parent.GetIconBounds(param.Tab));
-                    else if (Parent.TextDirection == TextDirection.Down)
-                        g.DrawImageRotatedDown(param.Tab.Icon, Parent.GetIconBounds(param.Tab));
-                    else
-                        g.DrawImageRotatedUp(param.Tab.Icon, Parent.GetIconBounds(param.Tab));
-                }
+                    DrawTabIcon(g, param);
 
                 // close button
                 if (Parent.ShowCloseTabButtons && param.IsSelected)
-                {
-                    Color buttonBackColor = GetCloseTabButtonBackColor(param);
-                    using (var buttonBrush = new SolidBrush(buttonBackColor))
-                        g.FillRectangle(buttonBrush, Parent.GetCloseButtonBounds(param.Tab));
+                    DrawCloseButton(g, param);
+            }
 
-                    if (Parent.TextDirection == TextDirection.Right)
-                        g.DrawImage(Parent.CloseTabImage, Parent.GetCloseButtonBounds(param.Tab));
-                    else if (Parent.TextDirection == TextDirection.Down)
-                        g.DrawImageRotatedDown(Parent.CloseTabImage, Parent.GetCloseButtonBounds(param.Tab));
-                    else
-                        g.DrawImageRotatedUp(Parent.CloseTabImage, Parent.GetCloseButtonBounds(param.Tab));
-                }
+            /// <summary>
+            /// Draws the icon of a tab.
+            /// </summary>
+            /// <param name="g">The graphics to draw on.</param>
+            /// <param name="param">The parameters required to draw the tab.</param>
+            public virtual void DrawTabIcon(Graphics g, DrawTabParams param)
+            {
+                if (Parent.TextDirection == TextDirection.Right)
+                    g.DrawImage(param.Tab.Icon, Parent.GetIconBounds(param.Tab));
+                else if (Parent.TextDirection == TextDirection.Down)
+                    g.DrawImageRotatedDown(param.Tab.Icon, Parent.GetIconBounds(param.Tab));
+                else
+                    g.DrawImageRotatedUp(param.Tab.Icon, Parent.GetIconBounds(param.Tab));
+            }
+
+            /// <summary>
+            /// Draws the text of a tab.
+            /// </summary>
+            /// <param name="g">The graphics to draw on.</param>
+            /// <param name="param">The parameters required to draw the tab.</param>
+            public virtual void DrawTabText(Graphics g, DrawTabParams param)
+            {
+                var backColor = GetTabBackColor(param);
+                var foreColor = GetTabForeColor(param);
+
+                TextFormatFlags flags = TextFormatFlags.EndEllipsis | TextFormatFlags.VerticalCenter | TextFormatFlags.SingleLine;
+
+                if (Parent.TextDirection == TextDirection.Right)
+                    TextRenderer.DrawText(g, param.Tab.Text, param.Tab.Font, Parent.GetTextBounds(param.Tab), foreColor, backColor, flags);
+                else if (Parent.TextDirection == TextDirection.Down)
+                    g.DrawVerticalTextDown(param.Tab.Text, param.Tab.Font, Parent.GetTextBounds(param.Tab), foreColor, backColor, flags);
+                else
+                    g.DrawVerticalTextUp(param.Tab.Text, param.Tab.Font, Parent.GetTextBounds(param.Tab), foreColor, backColor, flags);
+            }
+
+            /// <summary>
+            /// Draws the close button of a tab.
+            /// </summary>
+            /// <param name="g">The graphics to draw on.</param>
+            /// <param name="param">The parameters required to draw the tab.</param>
+            public virtual void DrawCloseButton(Graphics g, DrawTabParams param)
+            {
+                Color buttonBackColor = GetCloseTabButtonBackColor(param);
+                using (var buttonBrush = new SolidBrush(buttonBackColor))
+                    g.FillRectangle(buttonBrush, Parent.GetCloseButtonBounds(param.Tab));
+
+                if (Parent.TextDirection == TextDirection.Right)
+                    g.DrawImage(Parent.CloseTabImage, Parent.GetCloseButtonBounds(param.Tab));
+                else if (Parent.TextDirection == TextDirection.Down)
+                    g.DrawImageRotatedDown(Parent.CloseTabImage, Parent.GetCloseButtonBounds(param.Tab));
+                else
+                    g.DrawImageRotatedUp(Parent.CloseTabImage, Parent.GetCloseButtonBounds(param.Tab));
             }
 
             /// <summary>
@@ -431,6 +468,8 @@ namespace Manina.Windows.Forms
             {
                 if ((param.State & ItemState.Pressed) != ItemState.Inactive)
                     return UseTabColors ? param.Tab.BackColor.Lighten(0.1f) : PressedTabBackColor;
+                else if ((param.State & ItemState.Hot) != ItemState.Inactive && param.IsSelected)
+                    return UseTabColors ? param.Tab.BackColor.Darken(0.05f) : HotAndActiveTabBackColor;
                 else if ((param.State & ItemState.Hot) != ItemState.Inactive && !param.IsSelected)
                     return UseTabColors ? param.Tab.BackColor.Darken(0.05f) : HotTabBackColor;
                 else if (param.IsSelected)
