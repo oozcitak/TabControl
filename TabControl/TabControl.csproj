@@ -32,7 +32,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PagedControl, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\PagedControl.2.2.0\lib\net35\PagedControl.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\PagedControl\PagedControl\bin\Release\PagedControl.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -90,6 +91,12 @@
     </Compile>
     <Compile Include="Tab.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TempControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TempControl.Designer.cs">
+      <DependentUpon>TempControl.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

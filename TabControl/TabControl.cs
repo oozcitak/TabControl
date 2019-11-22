@@ -483,7 +483,9 @@ namespace Manina.Windows.Forms
             Tabs = new TabCollection(this);
             renderer = new TabControlRenderer(this);
             UpdateTabLayout();
+
         }
+
         #endregion
 
         #region Property Defaults
@@ -598,10 +600,13 @@ namespace Manina.Windows.Forms
         /// <param name="tab">The tab to calculate bounds for.</param>
         public Rectangle GetTextBounds(Tab tab) => GetViewOffsetBounds(tab.TextBounds);
         #endregion
-
+        
         #region Overriden Methods
         protected override void OnHandleCreated(EventArgs e)
         {
+            // Av 2019-11-22: Without this line, we can't drag & drop onto the control
+            base.OnHandleCreated(e);
+
             UpdateTabLayout();
             UpdatePages();
         }
@@ -613,7 +618,8 @@ namespace Manina.Windows.Forms
             UpdateTabLayout();
             UpdatePages();
         }
-
+        
+        
         protected override void OnMouseMove(MouseEventArgs e)
         {
             base.OnMouseMove(e);
@@ -673,7 +679,8 @@ namespace Manina.Windows.Forms
                     Invalidate();
             }
         }
-
+        
+        
         protected override void OnMouseUp(MouseEventArgs e)
         {
             base.OnMouseUp(e);
@@ -704,6 +711,7 @@ namespace Manina.Windows.Forms
             if (oldmouseDownTab != null || oldmouseDownScrollButton != ScrollButton.None)
                 Invalidate();
         }
+        
 
         protected override void OnMouseDoubleClick(MouseEventArgs e)
         {
@@ -720,11 +728,13 @@ namespace Manina.Windows.Forms
             if (hoveredTab != null)
                 OnTabMouseWheel(new TabMouseEventArgs(hoveredTab, e.Button, e.Clicks, e.Delta, e.Location));
         }
-
+        
+    
         protected override void OnPaint(PaintEventArgs e)
         {
             renderer.Render(e.Graphics);
         }
+        
 
         protected override void OnPageAdded(PageEventArgs e)
         {
@@ -751,6 +761,7 @@ namespace Manina.Windows.Forms
             EnsureVisible(SelectedTab);
         }
         #endregion
+    
 
         #region Helper Methods
         /// <summary>
