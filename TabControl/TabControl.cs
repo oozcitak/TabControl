@@ -602,6 +602,8 @@ namespace Manina.Windows.Forms
         #region Overriden Methods
         protected override void OnHandleCreated(EventArgs e)
         {
+            base.OnHandleCreated(e);
+
             UpdateTabLayout();
             UpdatePages();
         }
