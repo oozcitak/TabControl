@@ -121,7 +121,12 @@ namespace Manina.Windows.Forms
             private void Control_PageChanged(object sender, PageChangedEventArgs e)
             {
                 if (SelectionService != null)
-                    SelectionService.SetSelectedComponents(new object[] { Control.SelectedTab });
+                {
+                    if (e.CurrentPage != null)
+                        SelectionService.SetSelectedComponents(new object[] { e.CurrentPage });
+                    else
+                        SelectionService.SetSelectedComponents(new object[] { Control });
+                }
             }
 
             private void SelectionService_SelectionChanged(object sender, EventArgs e)
