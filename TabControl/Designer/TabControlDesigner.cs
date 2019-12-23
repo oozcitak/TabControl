@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections;
 using System.ComponentModel;
 using System.ComponentModel.Design;
@@ -120,8 +120,7 @@ namespace Manina.Windows.Forms
             #region Event Handlers
             private void Control_PageChanged(object sender, PageChangedEventArgs e)
             {
-                if (SelectionService != null)
-                    SelectionService.SetSelectedComponents(new object[] { Control.SelectedTab });
+                SelectionService?.SetSelectedComponents(Control.SelectedTab != null ? new object[] { Control.SelectedTab } : null);
             }
 
             private void SelectionService_SelectionChanged(object sender, EventArgs e)
